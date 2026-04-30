@@ -1,0 +1,4 @@
+-keep class com.vrikshaayush.model.** { *; }
+-keep class com.vrikshaayush.data.** { *; }
+-keepattributes *Annotation*
+-dontwarn org.tensorflow.**
