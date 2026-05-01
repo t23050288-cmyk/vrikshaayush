@@ -3,6 +3,7 @@ package com.vrikshaayush.ui
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -42,8 +43,8 @@ class ResultActivity : AppCompatActivity() {
     }
 
     private fun runDiagnosis() {
-        binding.progressBar.visibility = android.view.View.VISIBLE
-        binding.layoutResult.visibility = android.view.View.GONE
+        binding.progressBar.visibility = View.VISIBLE
+        binding.layoutResult.visibility = View.GONE
 
         val bitmap = BitmapFactory.decodeFile(imagePath)
         binding.ivPlantPhoto.setImageBitmap(bitmap)
@@ -58,22 +59,36 @@ class ResultActivity : AppCompatActivity() {
                 cropType = result.cropType
                 severity = result.severity
                 confidence = result.confidence
-
                 displayResult(result)
             }
         }
     }
 
     private fun displayResult(result: com.vrikshaayush.ml.DiagnosisResult) {
-        binding.progressBar.visibility = android.view.View.GONE
-        binding.layoutResult.visibility = android.view.View.VISIBLE
+        binding.progressBar.visibility = View.GONE
+        binding.layoutResult.visibility = View.VISIBLE
+
+        if (result.isUncertain) {
+            // Show uncertain state - prompt user to retake
+            binding.tvDiseaseName.text = "⚠️ Cannot Identify Plant"
+            binding.tvCropType.text = "Please retake with better lighting"
+            binding.tvConfidence.text = "${result.confidence.toInt()}%"
+            binding.progressConfidence.progress = result.confidence.toInt()
+            binding.tvSeverity.text = "UNCLEAR"
+            binding.tvSeverity.setBackgroundColor(ContextCompat.getColor(this, R.color.severity_low))
+            binding.tvTreatment1.text = "• Make sure leaf fills most of the photo"
+            binding.tvTreatment2.text = "• Take photo in good natural lighting"
+            binding.tvTreatment3.text = "• Avoid shadows or blurry images"
+            binding.btnSeeDetails.visibility = View.GONE
+            binding.btnSaveHistory.visibility = View.GONE
+            return
+        }
 
         binding.tvDiseaseName.text = result.diseaseName
         binding.tvCropType.text = result.cropType
         binding.tvConfidence.text = "${result.confidence.toInt()}%"
         binding.progressConfidence.progress = result.confidence.toInt()
 
-        // Severity color
         val severityColor = when (result.severity) {
             "HIGH" -> ContextCompat.getColor(this, R.color.severity_high)
             "MEDIUM" -> ContextCompat.getColor(this, R.color.severity_medium)
@@ -82,11 +97,13 @@ class ResultActivity : AppCompatActivity() {
         binding.tvSeverity.text = result.severity
         binding.tvSeverity.setBackgroundColor(severityColor)
 
-        // Treatment tips (loaded from disease repo)
         val treatments = getTreatmentTips(result.diseaseName)
         binding.tvTreatment1.text = "• ${treatments[0]}"
         binding.tvTreatment2.text = "• ${treatments[1]}"
         binding.tvTreatment3.text = "• ${treatments[2]}"
+
+        binding.btnSeeDetails.visibility = View.VISIBLE
+        binding.btnSaveHistory.visibility = View.VISIBLE
 
         binding.btnSeeDetails.setOnClickListener {
             val intent = Intent(this, DiseaseDetailActivity::class.java)
@@ -122,35 +139,76 @@ class ResultActivity : AppCompatActivity() {
     private fun getTreatmentTips(disease: String): List<String> {
         return when {
             disease.contains("Early Blight", ignoreCase = true) -> listOf(
-                "Remove infected leaves and burn them",
-                "Apply organic fungicide spray every 7 days",
-                "Avoid overhead watering to keep leaves dry"
+                "Remove infected leaves immediately and burn them",
+                "Apply organic fungicide (neem oil) every 7 days",
+                "Avoid overhead watering — water at base only"
             )
             disease.contains("Late Blight", ignoreCase = true) -> listOf(
-                "Remove and destroy infected plants immediately",
-                "Spray copper-based solution every 5-7 days",
-                "Avoid overhead irrigation"
+                "Remove and destroy infected plants same day",
+                "Spray copper-based fungicide every 5-7 days",
+                "Do not compost infected material"
+            )
+            disease.contains("Leaf Mold", ignoreCase = true) -> listOf(
+                "Improve air circulation around plants",
+                "Apply chlorothalonil fungicide spray",
+                "Reduce humidity and avoid overcrowding"
+            )
+            disease.contains("Septoria", ignoreCase = true) -> listOf(
+                "Remove infected lower leaves first",
+                "Apply mancozeb or copper fungicide",
+                "Mulch soil to prevent spore splash"
+            )
+            disease.contains("Mosaic", ignoreCase = true) -> listOf(
+                "No chemical cure — remove infected plant",
+                "Control aphids which spread the virus",
+                "Wash hands after touching infected plants"
+            )
+            disease.contains("Yellow Leaf Curl", ignoreCase = true) -> listOf(
+                "Remove infected plants to stop spread",
+                "Control whiteflies using yellow sticky traps",
+                "Use virus-resistant tomato varieties"
+            )
+            disease.contains("Spider", ignoreCase = true) -> listOf(
+                "Spray neem oil solution on undersides of leaves",
+                "Increase humidity — spider mites hate moisture",
+                "Use insecticidal soap spray"
+            )
+            disease.contains("Bacterial Spot", ignoreCase = true) -> listOf(
+                "Apply copper hydroxide spray every 7-10 days",
+                "Avoid working with plants when wet",
+                "Rotate crops each season"
             )
             disease.contains("Blast", ignoreCase = true) -> listOf(
                 "Apply Tricyclazole fungicide at 0.6g per liter",
                 "Avoid excess nitrogen fertilizer",
-                "Ensure proper water management"
+                "Drain field for 3-4 days if severe"
             )
             disease.contains("Rust", ignoreCase = true) -> listOf(
                 "Apply Propiconazole 1ml per liter at first sign",
                 "Plant rust-resistant varieties next season",
-                "Monitor fields weekly"
+                "Remove and burn all fallen leaves"
+            )
+            disease.contains("Powdery Mildew", ignoreCase = true) -> listOf(
+                "Apply baking soda + water spray (1 tbsp per liter)",
+                "Improve air circulation between plants",
+                "Apply sulfur-based fungicide if severe"
+            )
+            disease.contains("Black Rot", ignoreCase = true) -> listOf(
+                "Remove and destroy all infected fruit and leaves",
+                "Apply copper fungicide spray",
+                "Prune to improve airflow through canopy"
             )
             disease.contains("healthy", ignoreCase = true) -> listOf(
-                "Plant looks healthy — keep monitoring weekly",
-                "Maintain soil health with compost",
+                "Plant looks healthy! Keep monitoring weekly",
+                "Maintain soil health with organic compost",
                 "Water consistently at base of plant"
             )
             else -> listOf(
-                "Consult your local agricultural officer",
-                "Remove visibly infected parts",
-                "Apply general fungicide as preventive measure"
+                "Consult your local Krishi Vigyan Kendra (KVK)",
+                "Remove visibly infected leaves or parts",
+                "Apply general neem-based fungicide as preventive"
             )
         }
     }
 }
+
