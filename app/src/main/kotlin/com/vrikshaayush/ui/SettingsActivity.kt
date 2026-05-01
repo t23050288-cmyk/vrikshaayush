@@ -1,5 +1,8 @@
 package com.vrikshaayush.ui
 
+import android.app.AlertDialog
+import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +12,7 @@ import com.vrikshaayush.databinding.ActivitySettingsBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.Locale
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -24,25 +28,25 @@ class SettingsActivity : AppCompatActivity() {
 
         binding.btnBack.setOnClickListener { finish() }
 
-        // Language selection
-        binding.btnEnglish.setOnClickListener { selectLanguage("en") }
-        binding.btnHindi.setOnClickListener { selectLanguage("hi") }
-        binding.btnKannada.setOnClickListener { selectLanguage("kn") }
+        // Highlight current language
+        val currentLang = getSharedPreferences("app_prefs", MODE_PRIVATE).getString("language", "en") ?: "en"
+        updateButtonStates(currentLang)
+
+        // Language selection - actually applies locale and restarts
+        binding.btnEnglish.setOnClickListener { applyLanguage("en", "English") }
+        binding.btnHindi.setOnClickListener { applyLanguage("hi", "हिंदी") }
+        binding.btnKannada.setOnClickListener { applyLanguage("kn", "ಕನ್ನಡ") }
 
         // Clear history
         binding.btnClearHistory.setOnClickListener {
-            android.app.AlertDialog.Builder(this)
+            AlertDialog.Builder(this)
                 .setTitle("Clear Scan History")
                 .setMessage("This will permanently delete all your scan records. Are you sure?")
                 .setPositiveButton("Clear") { _, _ ->
                     lifecycleScope.launch(Dispatchers.IO) {
                         db.scanDao().deleteAll()
                         withContext(Dispatchers.Main) {
-                            Toast.makeText(
-                                this@SettingsActivity,
-                                "Scan history cleared",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            Toast.makeText(this@SettingsActivity, "Scan history cleared", Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
@@ -50,27 +54,37 @@ class SettingsActivity : AppCompatActivity() {
                 .show()
         }
 
-        // App version
         binding.tvAppVersion.text = "v1.0.0"
     }
 
-    private fun selectLanguage(lang: String) {
-        // Save language preference
+    private fun applyLanguage(lang: String, langName: String) {
+        // Save preference
         getSharedPreferences("app_prefs", MODE_PRIVATE)
             .edit()
             .putString("language", lang)
             .apply()
 
-        val langName = when (lang) {
-            "hi" -> "Hindi"
-            "kn" -> "Kannada"
-            else -> "English"
-        }
-        Toast.makeText(this, "Language set to $langName", Toast.LENGTH_SHORT).show()
+        // Apply locale immediately
+        val locale = Locale(lang)
+        Locale.setDefault(locale)
+        val config = Configuration(resources.configuration)
+        config.setLocale(locale)
+        resources.updateConfiguration(config, resources.displayMetrics)
+        applicationContext.resources.updateConfiguration(config, resources.displayMetrics)
 
-        // Update button states
+        Toast.makeText(this, "Language changed to $langName", Toast.LENGTH_SHORT).show()
+
+        // Restart app from SplashActivity so all screens reload with new language
+        val intent = Intent(this, SplashActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
+    }
+
+    private fun updateButtonStates(lang: String) {
         binding.btnEnglish.isSelected = lang == "en"
         binding.btnHindi.isSelected = lang == "hi"
         binding.btnKannada.isSelected = lang == "kn"
     }
 }
+
