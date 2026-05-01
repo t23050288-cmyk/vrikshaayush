@@ -1,6 +1,7 @@
 package com.vrikshaayush.ui
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -8,7 +9,8 @@ import com.vrikshaayush.data.AppDatabase
 import com.vrikshaayush.databinding.ActivityMainBinding
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var db: AppDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        applyLocale()
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -28,7 +31,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        loadStats() // refresh stats each time user returns
+        loadStats()
+    }
+
+    private fun applyLocale() {
+        val lang = getSharedPreferences("app_prefs", MODE_PRIVATE).getString("language", "en") ?: "en"
+        val locale = Locale(lang)
+        Locale.setDefault(locale)
+        val config = Configuration(resources.configuration)
+        config.setLocale(locale)
+        resources.updateConfiguration(config, resources.displayMetrics)
     }
 
     private fun loadStats() {
@@ -57,25 +69,21 @@ class MainActivity : AppCompatActivity() {
         binding.btnScanPlant.setOnClickListener {
             startActivity(Intent(this, ScannerActivity::class.java))
         }
-
         binding.fabScan.setOnClickListener {
             startActivity(Intent(this, ScannerActivity::class.java))
         }
-
         binding.navHistory.setOnClickListener {
             startActivity(Intent(this, HistoryActivity::class.java))
         }
-
         binding.navLibrary.setOnClickListener {
             startActivity(Intent(this, LibraryActivity::class.java))
         }
-
         binding.navSettings.setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
         }
-
         binding.cardLastAudit.setOnClickListener {
             startActivity(Intent(this, HistoryActivity::class.java))
         }
     }
 }
+
