@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'org.jetbrains.kotlin.kapt'
+    id 'com.google.devtools.ksp'
 }
 
 android {
@@ -58,10 +58,10 @@ dependencies {
     // Image loading
     implementation 'com.github.bumptech.glide:glide:4.16.0'
 
-    // Room Database
+    // Room Database — using KSP instead of kapt
     implementation 'androidx.room:room-runtime:2.6.1'
     implementation 'androidx.room:room-ktx:2.6.1'
-    kapt 'androidx.room:room-compiler:2.6.1'
+    ksp 'androidx.room:room-compiler:2.6.1'
 
     // Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1'
