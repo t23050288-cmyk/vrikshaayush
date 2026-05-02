@@ -138,5 +138,10 @@ class DiseaseClassifier(private val context: Context) {
         }
         return byteBuffer
     }
+
+    fun close() {
+        interpreter?.close()
+        interpreter = null
+    }
 }
 

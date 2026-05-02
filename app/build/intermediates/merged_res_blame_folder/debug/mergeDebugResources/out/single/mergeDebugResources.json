@@ -1,0 +1,74 @@
+[
+    {
+        "merged": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-debug-40:\\drawable_ic_leaf_placeholder.xml.flat",
+        "source": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-main-42:\\drawable\\ic_leaf_placeholder.xml"
+    },
+    {
+        "merged": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-debug-40:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-main-42:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-debug-40:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-main-42:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-debug-40:\\layout_item_scan_history.xml.flat",
+        "source": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-main-42:\\layout\\item_scan_history.xml"
+    },
+    {
+        "merged": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-debug-40:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-main-42:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-debug-40:\\layout_activity_splash.xml.flat",
+        "source": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-main-42:\\layout\\activity_splash.xml"
+    },
+    {
+        "merged": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-debug-40:\\layout_activity_settings.xml.flat",
+        "source": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-main-42:\\layout\\activity_settings.xml"
+    },
+    {
+        "merged": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-debug-40:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-main-42:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-debug-40:\\layout_activity_history.xml.flat",
+        "source": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-main-42:\\layout\\activity_history.xml"
+    },
+    {
+        "merged": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-debug-40:\\layout_activity_disease_detail.xml.flat",
+        "source": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-main-42:\\layout\\activity_disease_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-debug-40:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-main-42:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-debug-40:\\layout_activity_scanner.xml.flat",
+        "source": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-main-42:\\layout\\activity_scanner.xml"
+    },
+    {
+        "merged": "com.vrikshaayush.app-debug-40:/mipmap_ic_launcher_round.xml.flat",
+        "source": "com.vrikshaayush.app-main-42:/mipmap/ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-debug-40:\\layout_activity_library.xml.flat",
+        "source": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-main-42:\\layout\\activity_library.xml"
+    },
+    {
+        "merged": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-debug-40:\\xml_file_paths.xml.flat",
+        "source": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-main-42:\\xml\\file_paths.xml"
+    },
+    {
+        "merged": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-debug-40:\\layout_activity_result.xml.flat",
+        "source": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-main-42:\\layout\\activity_result.xml"
+    },
+    {
+        "merged": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-debug-40:\\layout_item_disease_library.xml.flat",
+        "source": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-main-42:\\layout\\item_disease_library.xml"
+    },
+    {
+        "merged": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-debug-40:\\mipmap_ic_launcher.xml.flat",
+        "source": "C:\\Users\\rudra\\.gradle\\daemon\\9.0.0\\com.vrikshaayush.app-main-42:\\mipmap\\ic_launcher.xml"
+    }
+]

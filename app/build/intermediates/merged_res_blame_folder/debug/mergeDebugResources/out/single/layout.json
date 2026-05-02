@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "com.vrikshaayush.app-mergeDebugResources-39:/layout/activity_result.xml",
+        "source": "com.vrikshaayush.app-main-42:/layout/activity_result.xml"
+    },
+    {
+        "merged": "com.vrikshaayush.app-mergeDebugResources-39:/layout/item_disease_library.xml",
+        "source": "com.vrikshaayush.app-main-42:/layout/item_disease_library.xml"
+    },
+    {
+        "merged": "com.vrikshaayush.app-mergeDebugResources-39:/layout/activity_history.xml",
+        "source": "com.vrikshaayush.app-main-42:/layout/activity_history.xml"
+    },
+    {
+        "merged": "com.vrikshaayush.app-mergeDebugResources-39:/layout/activity_disease_detail.xml",
+        "source": "com.vrikshaayush.app-main-42:/layout/activity_disease_detail.xml"
+    },
+    {
+        "merged": "com.vrikshaayush.app-mergeDebugResources-39:/layout/activity_scanner.xml",
+        "source": "com.vrikshaayush.app-main-42:/layout/activity_scanner.xml"
+    },
+    {
+        "merged": "com.vrikshaayush.app-mergeDebugResources-39:/layout/activity_main.xml",
+        "source": "com.vrikshaayush.app-main-42:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.vrikshaayush.app-mergeDebugResources-39:/layout/activity_splash.xml",
+        "source": "com.vrikshaayush.app-main-42:/layout/activity_splash.xml"
+    },
+    {
+        "merged": "com.vrikshaayush.app-mergeDebugResources-39:/layout/activity_settings.xml",
+        "source": "com.vrikshaayush.app-main-42:/layout/activity_settings.xml"
+    },
+    {
+        "merged": "com.vrikshaayush.app-mergeDebugResources-39:/layout/item_scan_history.xml",
+        "source": "com.vrikshaayush.app-main-42:/layout/item_scan_history.xml"
+    },
+    {
+        "merged": "com.vrikshaayush.app-mergeDebugResources-39:/layout/activity_library.xml",
+        "source": "com.vrikshaayush.app-main-42:/layout/activity_library.xml"
+    }
+]

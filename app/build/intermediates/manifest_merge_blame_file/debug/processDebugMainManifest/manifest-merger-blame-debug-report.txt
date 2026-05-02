@@ -1,0 +1,224 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.vrikshaayush"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="24"
+9        android:targetSdkVersion="35" />
+10
+11    <!-- Permissions -->
+12    <uses-permission android:name="android.permission.CAMERA" />
+12-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:5:5-65
+12-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:5:22-62
+13    <uses-permission
+13-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:6:5-7:38
+14        android:name="android.permission.READ_EXTERNAL_STORAGE"
+14-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:6:22-77
+15        android:maxSdkVersion="32" />
+15-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:7:9-35
+16    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+16-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:8:5-76
+16-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:8:22-73
+17    <uses-permission
+17-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:9:5-10:38
+18        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+18-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:9:22-78
+19        android:maxSdkVersion="28" />
+19-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:10:9-35
+20
+21    <uses-feature
+21-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:12:5-85
+22        android:name="android.hardware.camera"
+22-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:12:19-57
+23        android:required="false" />
+23-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:12:58-82
+24
+25    <permission
+25-->[androidx.core:core:1.13.1] C:\Users\rudra\.gradle\caches\9.0.0\transforms\00d89a91ea26988d9e57f4afe81401ba\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
+26        android:name="com.vrikshaayush.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+26-->[androidx.core:core:1.13.1] C:\Users\rudra\.gradle\caches\9.0.0\transforms\00d89a91ea26988d9e57f4afe81401ba\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
+27        android:protectionLevel="signature" />
+27-->[androidx.core:core:1.13.1] C:\Users\rudra\.gradle\caches\9.0.0\transforms\00d89a91ea26988d9e57f4afe81401ba\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
+28
+29    <uses-permission android:name="com.vrikshaayush.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+29-->[androidx.core:core:1.13.1] C:\Users\rudra\.gradle\caches\9.0.0\transforms\00d89a91ea26988d9e57f4afe81401ba\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
+29-->[androidx.core:core:1.13.1] C:\Users\rudra\.gradle\caches\9.0.0\transforms\00d89a91ea26988d9e57f4afe81401ba\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
+30
+31    <application
+31-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:14:5-52:19
+32        android:allowBackup="true"
+32-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:15:9-35
+33        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+33-->[androidx.core:core:1.13.1] C:\Users\rudra\.gradle\caches\9.0.0\transforms\00d89a91ea26988d9e57f4afe81401ba\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
+34        android:debuggable="true"
+35        android:extractNativeLibs="false"
+36        android:icon="@mipmap/ic_launcher"
+36-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:16:9-43
+37        android:label="@string/app_name"
+37-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:17:9-41
+38        android:roundIcon="@mipmap/ic_launcher_round"
+38-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:18:9-54
+39        android:supportsRtl="true"
+39-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:19:9-35
+40        android:theme="@style/Theme.Vrikshaayush"
+40-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:20:9-50
+41        android:usesCleartextTraffic="false" >
+41-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:21:9-45
+42        <activity
+42-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:23:9-31:20
+43            android:name="com.vrikshaayush.ui.SplashActivity"
+43-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:24:13-46
+44            android:exported="true"
+44-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:25:13-36
+45            android:theme="@style/Theme.Vrikshaayush.Splash" >
+45-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:26:13-61
+46            <intent-filter>
+46-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:27:13-30:29
+47                <action android:name="android.intent.action.MAIN" />
+47-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:28:17-69
+47-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:28:25-66
+48
+49                <category android:name="android.intent.category.LAUNCHER" />
+49-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:29:17-77
+49-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:29:27-74
+50            </intent-filter>
+51        </activity>
+52        <activity
+52-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:33:9-78
+53            android:name="com.vrikshaayush.ui.MainActivity"
+53-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:33:19-50
+54            android:exported="false" />
+54-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:33:51-75
+55        <activity
+55-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:34:9-81
+56            android:name="com.vrikshaayush.ui.ScannerActivity"
+56-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:34:19-53
+57            android:exported="false" />
+57-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:34:54-78
+58        <activity
+58-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:35:9-80
+59            android:name="com.vrikshaayush.ui.ResultActivity"
+59-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:35:19-52
+60            android:exported="false" />
+60-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:35:53-77
+61        <activity
+61-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:36:9-87
+62            android:name="com.vrikshaayush.ui.DiseaseDetailActivity"
+62-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:36:19-59
+63            android:exported="false" />
+63-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:36:60-84
+64        <activity
+64-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:37:9-81
+65            android:name="com.vrikshaayush.ui.HistoryActivity"
+65-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:37:19-53
+66            android:exported="false" />
+66-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:37:54-78
+67        <activity
+67-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:38:9-81
+68            android:name="com.vrikshaayush.ui.LibraryActivity"
+68-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:38:19-53
+69            android:exported="false" />
+69-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:38:54-78
+70        <activity
+70-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:39:9-82
+71            android:name="com.vrikshaayush.ui.SettingsActivity"
+71-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:39:19-54
+72            android:exported="false" />
+72-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:39:55-79
+73
+74        <!-- FileProvider for camera capture -->
+75        <provider
+76            android:name="androidx.core.content.FileProvider"
+76-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:43:13-62
+77            android:authorities="com.vrikshaayush.fileprovider"
+77-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:44:13-64
+78            android:exported="false"
+78-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:45:13-37
+79            android:grantUriPermissions="true" >
+79-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:46:13-47
+80            <meta-data
+80-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:47:13-49:54
+81                android:name="android.support.FILE_PROVIDER_PATHS"
+81-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:48:17-67
+82                android:resource="@xml/file_paths" />
+82-->C:\Users\rudra\StudioProjects\vrikshaayush\app\src\main\AndroidManifest.xml:49:17-51
+83        </provider>
+84        <provider
+84-->[androidx.emoji2:emoji2:1.3.0] C:\Users\rudra\.gradle\caches\9.0.0\transforms\7f4e402730f5cb37b930cda3bd2778ce\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+85            android:name="androidx.startup.InitializationProvider"
+85-->[androidx.emoji2:emoji2:1.3.0] C:\Users\rudra\.gradle\caches\9.0.0\transforms\7f4e402730f5cb37b930cda3bd2778ce\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:25:13-67
+86            android:authorities="com.vrikshaayush.androidx-startup"
+86-->[androidx.emoji2:emoji2:1.3.0] C:\Users\rudra\.gradle\caches\9.0.0\transforms\7f4e402730f5cb37b930cda3bd2778ce\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:26:13-68
+87            android:exported="false" >
+87-->[androidx.emoji2:emoji2:1.3.0] C:\Users\rudra\.gradle\caches\9.0.0\transforms\7f4e402730f5cb37b930cda3bd2778ce\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:27:13-37
+88            <meta-data
+88-->[androidx.emoji2:emoji2:1.3.0] C:\Users\rudra\.gradle\caches\9.0.0\transforms\7f4e402730f5cb37b930cda3bd2778ce\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+89                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+89-->[androidx.emoji2:emoji2:1.3.0] C:\Users\rudra\.gradle\caches\9.0.0\transforms\7f4e402730f5cb37b930cda3bd2778ce\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:30:17-75
+90                android:value="androidx.startup" />
+90-->[androidx.emoji2:emoji2:1.3.0] C:\Users\rudra\.gradle\caches\9.0.0\transforms\7f4e402730f5cb37b930cda3bd2778ce\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:31:17-49
+91            <meta-data
+91-->[androidx.lifecycle:lifecycle-process:2.8.3] C:\Users\rudra\.gradle\caches\9.0.0\transforms\3701c73dd00a7a9ad7b9e099270eac79\transformed\jetified-lifecycle-process-2.8.3\AndroidManifest.xml:29:13-31:52
+92                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+92-->[androidx.lifecycle:lifecycle-process:2.8.3] C:\Users\rudra\.gradle\caches\9.0.0\transforms\3701c73dd00a7a9ad7b9e099270eac79\transformed\jetified-lifecycle-process-2.8.3\AndroidManifest.xml:30:17-78
+93                android:value="androidx.startup" />
+93-->[androidx.lifecycle:lifecycle-process:2.8.3] C:\Users\rudra\.gradle\caches\9.0.0\transforms\3701c73dd00a7a9ad7b9e099270eac79\transformed\jetified-lifecycle-process-2.8.3\AndroidManifest.xml:31:17-49
+94            <meta-data
+94-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\rudra\.gradle\caches\9.0.0\transforms\54f0c293875c977062bbd635430feec9\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
+95                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+95-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\rudra\.gradle\caches\9.0.0\transforms\54f0c293875c977062bbd635430feec9\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
+96                android:value="androidx.startup" />
+96-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\rudra\.gradle\caches\9.0.0\transforms\54f0c293875c977062bbd635430feec9\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
+97        </provider>
+98
+99        <service
+99-->[androidx.room:room-runtime:2.6.1] C:\Users\rudra\.gradle\caches\9.0.0\transforms\4feabb07e27529ae6665d70b58f191ef\transformed\room-runtime-2.6.1\AndroidManifest.xml:24:9-28:63
+100            android:name="androidx.room.MultiInstanceInvalidationService"
+100-->[androidx.room:room-runtime:2.6.1] C:\Users\rudra\.gradle\caches\9.0.0\transforms\4feabb07e27529ae6665d70b58f191ef\transformed\room-runtime-2.6.1\AndroidManifest.xml:25:13-74
+101            android:directBootAware="true"
+101-->[androidx.room:room-runtime:2.6.1] C:\Users\rudra\.gradle\caches\9.0.0\transforms\4feabb07e27529ae6665d70b58f191ef\transformed\room-runtime-2.6.1\AndroidManifest.xml:26:13-43
+102            android:exported="false" />
+102-->[androidx.room:room-runtime:2.6.1] C:\Users\rudra\.gradle\caches\9.0.0\transforms\4feabb07e27529ae6665d70b58f191ef\transformed\room-runtime-2.6.1\AndroidManifest.xml:27:13-37
+103
+104        <receiver
+104-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\rudra\.gradle\caches\9.0.0\transforms\54f0c293875c977062bbd635430feec9\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
+105            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+105-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\rudra\.gradle\caches\9.0.0\transforms\54f0c293875c977062bbd635430feec9\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
+106            android:directBootAware="false"
+106-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\rudra\.gradle\caches\9.0.0\transforms\54f0c293875c977062bbd635430feec9\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
+107            android:enabled="true"
+107-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\rudra\.gradle\caches\9.0.0\transforms\54f0c293875c977062bbd635430feec9\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
+108            android:exported="true"
+108-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\rudra\.gradle\caches\9.0.0\transforms\54f0c293875c977062bbd635430feec9\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
+109            android:permission="android.permission.DUMP" >
+109-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\rudra\.gradle\caches\9.0.0\transforms\54f0c293875c977062bbd635430feec9\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
+110            <intent-filter>
+110-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\rudra\.gradle\caches\9.0.0\transforms\54f0c293875c977062bbd635430feec9\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
+111                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+111-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\rudra\.gradle\caches\9.0.0\transforms\54f0c293875c977062bbd635430feec9\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
+111-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\rudra\.gradle\caches\9.0.0\transforms\54f0c293875c977062bbd635430feec9\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
+112            </intent-filter>
+113            <intent-filter>
+113-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\rudra\.gradle\caches\9.0.0\transforms\54f0c293875c977062bbd635430feec9\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
+114                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+114-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\rudra\.gradle\caches\9.0.0\transforms\54f0c293875c977062bbd635430feec9\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
+114-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\rudra\.gradle\caches\9.0.0\transforms\54f0c293875c977062bbd635430feec9\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
+115            </intent-filter>
+116            <intent-filter>
+116-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\rudra\.gradle\caches\9.0.0\transforms\54f0c293875c977062bbd635430feec9\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
+117                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+117-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\rudra\.gradle\caches\9.0.0\transforms\54f0c293875c977062bbd635430feec9\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
+117-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\rudra\.gradle\caches\9.0.0\transforms\54f0c293875c977062bbd635430feec9\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
+118            </intent-filter>
+119            <intent-filter>
+119-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\rudra\.gradle\caches\9.0.0\transforms\54f0c293875c977062bbd635430feec9\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
+120                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+120-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\rudra\.gradle\caches\9.0.0\transforms\54f0c293875c977062bbd635430feec9\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
+120-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\rudra\.gradle\caches\9.0.0\transforms\54f0c293875c977062bbd635430feec9\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:50:25-92
+121            </intent-filter>
+122        </receiver>
+123    </application>
+124
+125</manifest>

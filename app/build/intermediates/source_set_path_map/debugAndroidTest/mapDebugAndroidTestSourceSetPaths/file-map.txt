@@ -1,0 +1,4 @@
+com.vrikshaayush.test.app-androidTest-0 C:\Users\rudra\StudioProjects\vrikshaayush\app\build\generated\res\resValues\androidTest\debug
+com.vrikshaayush.test.app-mergeDebugAndroidTestResources-1 C:\Users\rudra\StudioProjects\vrikshaayush\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.vrikshaayush.test.app-mergeDebugAndroidTestResources-2 C:\Users\rudra\StudioProjects\vrikshaayush\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.vrikshaayush.test.app-debugAndroidTest-3 C:\Users\rudra\StudioProjects\vrikshaayush\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources

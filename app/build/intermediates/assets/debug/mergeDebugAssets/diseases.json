@@ -1,0 +1,182 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-04-30",
+  "total_diseases": 15,
+  "diseases": [
+    {
+      "id": "tomato_early_blight",
+      "disease_name": "Early Blight",
+      "crop_type": "Tomato",
+      "severity_default": "HIGH",
+      "description": {
+        "en": "Early blight is a fungal disease caused by Alternaria solani. It affects the leaves, stems, and fruits of crops, often causing major harvest loss if not managed quickly.",
+        "hi": "अर्ली ब्लाइट एक कवक रोग है जो Alternaria solani के कारण होता है। यह पत्तियों, तनों और फलों को प्रभावित करता है।",
+        "kn": "ಅರ್ಲಿ ಬ್ಲೈಟ್ ಎನ್ನುವುದು Alternaria solani ಎಂಬ ಶಿಲೀಂಧ್ರದಿಂದ ಉಂಟಾಗುವ ರೋಗ."
+      },
+      "common_in": ["Tomato", "Potato"],
+      "symptoms": {
+        "en": [
+          "Brown spots with yellow halos on lower leaves",
+          "Target-like concentric rings inside leaf spots",
+          "Fruit dropping early or showing dark, leathery pits"
+        ],
+        "hi": [
+          "निचली पत्तियों पर पीले घेरे के साथ भूरे धब्बे",
+          "पत्ती के धब्बों में लक्ष्य जैसे वलय",
+          "फल का जल्दी गिरना"
+        ],
+        "kn": [
+          "ಕೆಳಗಿನ ಎಲೆಗಳಲ್ಲಿ ಹಳದಿ ಚುಕ್ಕೆಗಳೊಂದಿಗೆ ಕಂದು ಕಲೆಗಳು",
+          "ಎಲೆ ಕಲೆಗಳಲ್ಲಿ ಗುರಿಯಂತಹ ಉಂಗುರಗಳು",
+          "ಹಣ್ಣು ಮುಂಚೆಯೇ ಉದುರುವುದು"
+        ]
+      },
+      "causes": {
+        "en": ["High Humidity", "Warm Temperatures", "Infected Soil", "Heavy Rain"],
+        "hi": ["अधिक नमी", "गर्म तापमान", "संक्रमित मिट्टी", "भारी बारिश"],
+        "kn": ["ಹೆಚ್ಚಿನ ಆರ್ದ್ರತೆ", "ಬೆಚ್ಚಗಿನ ತಾಪಮಾನ", "ಸೋಂಕಿತ ಮಣ್ಣು", "ಭಾರಿ ಮಳೆ"]
+      },
+      "prevention_tips": {
+        "en": [
+          "Rotate crops every 2-3 years",
+          "Ensure proper spacing between plants for airflow",
+          "Water at the base of the plant, not the leaves",
+          "Mulch soil to prevent fungus from splashing up"
+        ],
+        "hi": [
+          "हर 2-3 साल में फसल चक्र बदलें",
+          "पौधों के बीच उचित दूरी रखें",
+          "पत्तियों पर नहीं, जड़ में पानी दें",
+          "मिट्टी को मल्च करें"
+        ],
+        "kn": [
+          "ಪ್ರತಿ 2-3 ವರ್ಷಗಳಿಗೊಮ್ಮೆ ಬೆಳೆ ತಿರುಗಿಸಿ",
+          "ಗಾಳಿ ಚಲಾವಣೆಗೆ ಸಸ್ಯಗಳ ನಡುವೆ ಸರಿಯಾದ ಅಂತರ ಇರಲಿ",
+          "ಎಲೆಗಳಿಗೆ ಅಲ್ಲ, ಬುಡಕ್ಕೆ ನೀರು ಹಾಕಿ",
+          "ಶಿಲೀಂಧ್ರ ಸಿಡಿಯದಂತೆ ಮಣ್ಣು ಮುಚ್ಚಿ"
+        ]
+      },
+      "organic_treatments": {
+        "en": [
+          {"step": 1, "title": "Prune Infected Parts", "description": "Remove and burn all infected leaves. Do not compost them."},
+          {"step": 2, "title": "Baking Soda Spray", "description": "Mix 1 tbsp baking soda with 1 gallon water. Spray weekly."},
+          {"step": 3, "title": "Neem Oil", "description": "Apply Neem oil solution to the entire plant during evening hours."}
+        ]
+      },
+      "chemical_treatments": {
+        "en": [
+          {"step": 1, "title": "Mancozeb Fungicide", "description": "Apply 2.5g per liter of water every 10 days."},
+          {"step": 2, "title": "Copper Oxychloride", "description": "Apply 3g per liter. Stop 2 weeks before harvest."},
+          {"step": 3, "title": "Chlorothalonil", "description": "Apply as directed on label. Use gloves and mask."}
+        ]
+      }
+    },
+    {
+      "id": "tomato_late_blight",
+      "disease_name": "Late Blight",
+      "crop_type": "Tomato",
+      "severity_default": "HIGH",
+      "description": {
+        "en": "Late blight is a highly destructive disease caused by Phytophthora infestans. It can destroy an entire crop within days under humid conditions.",
+        "hi": "लेट ब्लाइट Phytophthora infestans के कारण होने वाली विनाशकारी बीमारी है।",
+        "kn": "ಲೇಟ್ ಬ್ಲೈಟ್ Phytophthora infestans ನಿಂದ ಉಂಟಾಗುವ ವಿನಾಶಕಾರಿ ರೋಗ."
+      },
+      "common_in": ["Tomato", "Potato"],
+      "symptoms": {
+        "en": [
+          "Dark brown water-soaked patches on leaves",
+          "White mold on underside of leaves in humid conditions",
+          "Fruits show dark, firm, greasy-looking lesions"
+        ]
+      },
+      "causes": {"en": ["Cool Temperatures", "High Humidity", "Rain Splash", "Infected Seeds"]},
+      "prevention_tips": {"en": ["Use disease-resistant varieties", "Avoid overhead irrigation", "Destroy infected plant debris", "Apply preventive fungicide before rainy season"]},
+      "organic_treatments": {"en": [
+        {"step": 1, "title": "Remove and Destroy", "description": "Pull out infected plants immediately. Burn them."},
+        {"step": 2, "title": "Copper Spray", "description": "Spray copper-based solution every 5-7 days during wet weather."}
+      ]},
+      "chemical_treatments": {"en": [
+        {"step": 1, "title": "Metalaxyl + Mancozeb", "description": "Apply 2.5g per liter every 7-10 days."},
+        {"step": 2, "title": "Cymoxanil", "description": "Apply at first sign of disease. Very effective in early stages."}
+      ]}
+    },
+    {
+      "id": "rice_blast",
+      "disease_name": "Rice Blast",
+      "crop_type": "Rice",
+      "severity_default": "HIGH",
+      "description": {
+        "en": "Rice blast caused by Magnaporthe oryzae is one of the most devastating rice diseases worldwide, capable of causing 100% yield loss.",
+        "hi": "चावल का ब्लास्ट Magnaporthe oryzae के कारण होता है और 100% फसल नुकसान कर सकता है।",
+        "kn": "ಭತ್ತದ ಬ್ಲಾಸ್ಟ್ Magnaporthe oryzae ನಿಂದ ಉಂಟಾಗಿ 100% ಇಳುವರಿ ನಷ್ಟ ಮಾಡಬಹುದು."
+      },
+      "common_in": ["Rice"],
+      "symptoms": {"en": ["Diamond-shaped lesions with grey center on leaves", "Neck of panicle turns brown and breaks", "White empty grains at harvest"]},
+      "causes": {"en": ["High Nitrogen fertilizer use", "Continuous flooding", "Dense planting", "Cool nights + warm days"]},
+      "prevention_tips": {"en": ["Use blast-resistant varieties", "Avoid excess nitrogen", "Ensure proper water management", "Plant in rows with adequate spacing"]},
+      "organic_treatments": {"en": [
+        {"step": 1, "title": "Silicon Application", "description": "Apply silica-rich material to soil to strengthen cell walls."},
+        {"step": 2, "title": "Trichoderma", "description": "Apply Trichoderma viride as seed treatment."}
+      ]},
+      "chemical_treatments": {"en": [
+        {"step": 1, "title": "Tricyclazole", "description": "0.6g per liter. Most effective against blast."},
+        {"step": 2, "title": "Isoprothiolane", "description": "Apply at tillering and panicle initiation stages."}
+      ]}
+    },
+    {
+      "id": "wheat_leaf_rust",
+      "disease_name": "Leaf Rust",
+      "crop_type": "Wheat",
+      "severity_default": "MEDIUM",
+      "description": {"en": "Leaf rust caused by Puccinia triticina is the most common rust disease of wheat globally, causing 10-40% yield losses."},
+      "common_in": ["Wheat"],
+      "symptoms": {"en": ["Orange-brown pustules on upper leaf surface", "Circular to oval lesions scattered on leaves", "Yellow chlorosis around pustules"]},
+      "causes": {"en": ["Cool moist conditions", "Wind-spread spores", "Susceptible varieties"]},
+      "prevention_tips": {"en": ["Plant rust-resistant varieties", "Early sowing to avoid peak rust season", "Remove volunteer wheat plants", "Monitor fields weekly during growing season"]},
+      "organic_treatments": {"en": [{"step": 1, "title": "Sulfur Dust", "description": "Apply sulfur dust in morning when dew is present."}]},
+      "chemical_treatments": {"en": [
+        {"step": 1, "title": "Propiconazole", "description": "Apply 1ml per liter at first sign of rust."},
+        {"step": 2, "title": "Tebuconazole", "description": "Apply 1ml per liter. Protects for 3-4 weeks."}
+      ]}
+    },
+    {
+      "id": "cotton_boll_rot",
+      "disease_name": "Boll Rot",
+      "crop_type": "Cotton",
+      "severity_default": "HIGH",
+      "description": {"en": "Boll rot is a complex disease involving multiple fungi and bacteria that cause cotton bolls to rot before they open, causing major yield loss."},
+      "common_in": ["Cotton"],
+      "symptoms": {"en": ["Dark water-soaked spots on young bolls", "Bolls fail to open, remain closed and black", "Foul smell from infected bolls"]},
+      "causes": {"en": ["High humidity", "Insect damage (entry points)", "Poor drainage", "Dense canopy"]},
+      "prevention_tips": {"en": ["Control insects that create entry wounds", "Improve drainage", "Prune lower branches for airflow", "Avoid late-season nitrogen"]},
+      "organic_treatments": {"en": [{"step": 1, "title": "Remove Infected Bolls", "description": "Remove and destroy all infected bolls immediately."}]},
+      "chemical_treatments": {"en": [{"step": 1, "title": "Copper Fungicide", "description": "Apply preventively at boll formation stage."}]}
+    },
+    {
+      "id": "maize_common_rust",
+      "disease_name": "Common Rust",
+      "crop_type": "Maize",
+      "severity_default": "MEDIUM",
+      "description": {"en": "Common rust caused by Puccinia sorghi produces brick-red pustules on both leaf surfaces and can reduce yield significantly in severe cases."},
+      "common_in": ["Maize", "Corn"],
+      "symptoms": {"en": ["Brick-red oval pustules on both sides of leaves", "Pustules turn dark brown as they age", "Severe infection causes leaf death"]},
+      "causes": {"en": ["Cool temperatures 16-23°C", "High humidity", "Wind-dispersed spores"]},
+      "prevention_tips": {"en": ["Plant rust-resistant hybrids", "Early planting", "Balanced fertilization — avoid excess nitrogen"]},
+      "organic_treatments": {"en": [{"step": 1, "title": "Neem Oil Spray", "description": "Apply weekly as preventive measure."}]},
+      "chemical_treatments": {"en": [{"step": 1, "title": "Azoxystrobin", "description": "Apply at first pustule appearance."}]}
+    },
+    {
+      "id": "tomato_healthy",
+      "disease_name": "Healthy Leaf",
+      "crop_type": "Tomato",
+      "severity_default": "LOW",
+      "description": {"en": "No disease detected. Your tomato plant appears healthy. Continue regular monitoring.", "hi": "कोई रोग नहीं मिला। आपका टमाटर का पौधा स्वस्थ है।", "kn": "ಯಾವುದೇ ರೋಗ ಕಂಡುಬಂದಿಲ್ಲ. ನಿಮ್ಮ ಟೊಮ್ಯಾಟೊ ಸಸ್ಯ ಆರೋಗ್ಯಕರವಾಗಿದೆ."},
+      "common_in": ["Tomato"],
+      "symptoms": {"en": ["Deep green uniform leaf color", "No spots, lesions, or discoloration", "Firm, healthy-looking fruit"]},
+      "causes": {"en": ["Good soil nutrition", "Proper watering", "Adequate sunlight"]},
+      "prevention_tips": {"en": ["Continue regular monitoring every week", "Maintain soil health with compost", "Check undersides of leaves for pests", "Water consistently at base of plant"]},
+      "organic_treatments": {"en": [{"step": 1, "title": "Preventive Neem Spray", "description": "Apply neem oil spray monthly to prevent future disease."}]},
+      "chemical_treatments": {"en": [{"step": 1, "title": "No treatment needed", "description": "Plant is healthy. No chemical intervention required."}]}
+    }
+  ]
+}
