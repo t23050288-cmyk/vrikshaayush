@@ -1,38 +1,86 @@
-apple apple scab
-apple black rot
-apple cedar apple rust
-apple healthy
-blueberry healthy
-cherry including sour powdery mildew
-cherry including sour healthy
-corn maize cercospora leaf spot gray leaf spot
-corn maize common rust 
-corn maize northern leaf blight
-corn maize healthy
-grape black rot
-grape esca black measles
-grape leaf blight isariopsis leaf spot
-grape healthy
-orange haunglongbing citrus greening
-peach bacterial spot
-peach healthy
-pepper bell bacterial spot
-pepper bell healthy
-potato early blight
-potato late blight
-potato healthy
-raspberry healthy
-soybean healthy
-squash powdery mildew
-strawberry leaf scorch
-strawberry healthy
-tomato bacterial spot
-tomato early blight
-tomato late blight
-tomato leaf mold
-tomato septoria leaf spot
-tomato spider mites two-spotted spider mite
-tomato target spot
-tomato tomato yellow leaf curl virus
-tomato tomato mosaic virus
-tomato healthy
+apple_apple_scab
+apple_black_rot
+apple_cedar_apple_rust
+bean_angular_leaf_spot
+bean_rust
+bell_pepper_bacterial_spot
+cherry_powdery_mildew
+corn_cercospora_leaf_spot
+corn_common_rust
+corn_gray_leaf_spot
+corn_northern_leaf_blight
+cotton_aphids
+cotton_army_worm
+cotton_bacterial_blight
+cotton_powdery_mildew
+cotton_target_spot
+diseased_cucumber
+diseased_rice
+grape_black_rot
+grape_esca_black_measles
+grape_leaf_blight
+groundnut_early_leaf_spot
+groundnut_late_leaf_spot
+groundnut_nutrition_deficiency
+groundnut_rust
+guava_anthracnose
+guava_fruit_fly
+healthy_apple
+healthy_bean
+healthy_bell_pepper
+healthy_cherry
+healthy_corn
+healthy_cotton
+healthy_cucumber
+healthy_grape
+healthy_groundnut
+healthy_guava
+healthy_lemon
+healthy_peach
+healthy_potato
+healthy_pumpkin
+healthy_rice
+healthy_strawberry
+healthy_sugarcane
+healthy_tomato
+healthy_wheat
+lemon_anthracnose
+lemon_bacterial_blight
+lemon_citrus_canker
+lemon_curl_virus
+lemon_deficiency
+lemon_dry_leaf
+lemon_sooty_mould
+lemon_spider_mites
+peach_bacterial_spot
+potato_early_blight
+potato_late_blight
+pumpkin_bacterial_leaf_spot
+pumpkin_downy_mildew
+pumpkin_mosaic_disease
+pumpkin_powdery_mildew
+strawberry_leaf_scorch
+sugarcane_bacterial_blight
+sugarcane_mosaic
+sugarcane_red_rot
+sugarcane_rust
+sugarcane_yellow_leaf_disease
+tomato_bacterial_spot
+tomato_early_blight
+tomato_late_blight
+tomato_septoria_leaf_spot
+tomato_yellow_leaf_curl_virus
+wheat_aphid
+wheat_black_rust
+wheat_blast
+wheat_brown_rust
+wheat_common_root_rot
+wheat_fusarium_head_blight
+wheat_leaf_blight
+wheat_mildew
+wheat_mite
+wheat_septoria
+wheat_smut
+wheat_stem_fly
+wheat_tan_spot
+wheat_yellow_rust
