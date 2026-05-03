@@ -3,6 +3,7 @@ package com.vrikshaayush.model
 data class DiseaseInfo(
     val id: String = "",
     val disease_name: String = "",
+    val model_labels: List<String>? = null,
     val crop_type: String = "",
     val severity_default: String = "MEDIUM",
     val description: Map<String, String> = emptyMap(),
