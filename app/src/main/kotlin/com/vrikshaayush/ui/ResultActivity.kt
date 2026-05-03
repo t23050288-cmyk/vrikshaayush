@@ -12,6 +12,7 @@ import com.vrikshaayush.R
 import com.vrikshaayush.data.AppDatabase
 import com.vrikshaayush.data.ScanRecord
 import com.vrikshaayush.databinding.ActivityResultBinding
+import com.vrikshaayush.ml.DiagnosisResult
 import com.vrikshaayush.ml.DiseaseClassifier
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -47,6 +48,11 @@ class ResultActivity : AppCompatActivity() {
         binding.layoutResult.visibility = View.GONE
 
         val bitmap = BitmapFactory.decodeFile(imagePath)
+        if (bitmap == null) {
+            Toast.makeText(this, "Error: Could not load image", Toast.LENGTH_SHORT).show()
+            finish()
+            return
+        }
         binding.ivPlantPhoto.setImageBitmap(bitmap)
 
         lifecycleScope.launch(Dispatchers.IO) {
@@ -64,7 +70,7 @@ class ResultActivity : AppCompatActivity() {
         }
     }
 
-    private fun displayResult(result: com.vrikshaayush.ml.DiagnosisResult) {
+    private fun displayResult(result: DiagnosisResult) {
         binding.progressBar.visibility = View.GONE
         binding.layoutResult.visibility = View.VISIBLE
 
