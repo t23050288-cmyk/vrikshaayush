@@ -28,19 +28,17 @@ class DiseaseClassifier(private val context: Context) {
         const val MODEL_FILE = "plant_disease_model.tflite"
         const val LABELS_FILE = "labels.txt"
         const val INPUT_SIZE = 224
-        const val PIXEL_SIZE = 3
-        const val IMAGE_STD = 255.0f
-        const val CONFIDENCE_THRESHOLD = 0.35f
+        const val CONFIDENCE_THRESHOLD = 0.25f
 
-        // Map for human-friendly names
-        val CROP_NAME_MAP = mapOf(
+        // Map label prefix -> friendly crop name
+        val CROP_MAP = mapOf(
             "apple" to "Apple (Seb)",
-            "bean" to "Bean",
+            "bean" to "Bean (Rajma)",
             "bell_pepper" to "Bell Pepper (Shimla Mirch)",
             "cherry" to "Cherry",
             "corn" to "Maize (Makka)",
-            "cotton" to "Cotton",
-            "cucumber" to "Cucumber",
+            "cotton" to "Cotton (Kapas)",
+            "cucumber" to "Cucumber (Kheera)",
             "grape" to "Grape (Angoor)",
             "groundnut" to "Groundnut (Moongphali)",
             "guava" to "Guava (Amrood)",
@@ -62,7 +60,7 @@ class DiseaseClassifier(private val context: Context) {
         loadLabels()
     }
 
-    private fun loadModel(): MappedByteBuffer {
+    private fun loadModel() {
         val assetFileDescriptor = context.assets.openFd(MODEL_FILE)
         val inputStream = FileInputStream(assetFileDescriptor.fileDescriptor)
         val fileChannel = inputStream.channel
@@ -70,7 +68,6 @@ class DiseaseClassifier(private val context: Context) {
         val declaredLength = assetFileDescriptor.declaredLength
         val model = fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, declaredLength)
         interpreter = Interpreter(model)
-        return model
     }
 
     private fun loadLabels() {
@@ -101,33 +98,53 @@ class DiseaseClassifier(private val context: Context) {
             )
         }
 
-        val rawLabel = labels[maxIndex] // e.g., "apple_black_rot" or "healthy_wheat"
-        
-        // Parsing logic for new underscore format
-        val parts = rawLabel.split("_")
-        val cropTypeRaw: String
-        val diseaseRaw: String
+        val rawLabel = labels[maxIndex] // e.g. "tomato_early_blight" or "healthy_rice"
 
-        if (rawLabel.startsWith("healthy_")) {
-            cropTypeRaw = rawLabel.removePrefix("healthy_")
-            diseaseRaw = "healthy"
-        } else {
-            cropTypeRaw = parts[0]
-            diseaseRaw = parts.drop(1).joinToString(" ")
+        // Parse label: format is "crop_disease" or "healthy_crop" or "diseased_crop"
+        val parts = rawLabel.split("_")
+        
+        val cropType: String
+        val diseaseName: String
+        
+        when {
+            // healthy_cropname
+            parts[0] == "healthy" -> {
+                val crop = parts.drop(1).joinToString("_")
+                cropType = CROP_MAP[crop] ?: crop.replaceFirstChar { it.uppercase() }
+                diseaseName = "Healthy ✅"
+            }
+            // diseased_cropname
+            parts[0] == "diseased" -> {
+                val crop = parts.drop(1).joinToString("_")
+                cropType = CROP_MAP[crop] ?: crop.replaceFirstChar { it.uppercase() }
+                diseaseName = "Disease Detected"
+            }
+            // Try 2-word crop prefix: e.g. bell_pepper_bacterial_spot
+            parts.size >= 3 && CROP_MAP.containsKey("${parts[0]}_${parts[1]}") -> {
+                val cropKey = "${parts[0]}_${parts[1]}"
+                cropType = CROP_MAP[cropKey]!!
+                diseaseName = parts.drop(2).joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
+            }
+            // Single word crop prefix: e.g. tomato_early_blight
+            CROP_MAP.containsKey(parts[0]) -> {
+                cropType = CROP_MAP[parts[0]]!!
+                diseaseName = parts.drop(1).joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
+            }
+            else -> {
+                cropType = parts[0].replaceFirstChar { it.uppercase() }
+                diseaseName = parts.drop(1).joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
+            }
         }
 
-        val cropType = CROP_NAME_MAP[cropTypeRaw] ?: cropTypeRaw.replaceFirstChar { it.uppercase() }
-        val diseaseName = diseaseRaw.split(" ").joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
-
         val severity = when {
-            diseaseName.lowercase() == "healthy" -> "LOW"
+            diseaseName.contains("Healthy", ignoreCase = true) -> "HEALTHY"
             confidence >= 0.80f -> "HIGH"
             confidence >= 0.50f -> "MEDIUM"
             else -> "LOW"
         }
 
         return DiagnosisResult(
-            diseaseName = diseaseName,
+            diseaseName = if (diseaseName.isBlank()) "Unknown" else diseaseName,
             cropType = cropType,
             confidence = confidence * 100,
             severity = severity,
@@ -137,18 +154,14 @@ class DiseaseClassifier(private val context: Context) {
     }
 
     private fun convertBitmapToByteBuffer(bitmap: Bitmap): ByteBuffer {
-        val byteBuffer = ByteBuffer.allocateDirect(4 * INPUT_SIZE * INPUT_SIZE * PIXEL_SIZE)
+        val byteBuffer = ByteBuffer.allocateDirect(4 * INPUT_SIZE * INPUT_SIZE * 3)
         byteBuffer.order(ByteOrder.nativeOrder())
         val intValues = IntArray(INPUT_SIZE * INPUT_SIZE)
         bitmap.getPixels(intValues, 0, bitmap.width, 0, 0, bitmap.width, bitmap.height)
-        var pixel = 0
-        for (i in 0 until INPUT_SIZE) {
-            for (j in 0 until INPUT_SIZE) {
-                val `val` = intValues[pixel++]
-                byteBuffer.putFloat(((`val` shr 16) and 0xFF) / IMAGE_STD)
-                byteBuffer.putFloat(((`val` shr 8) and 0xFF) / IMAGE_STD)
-                byteBuffer.putFloat((`val` and 0xFF) / IMAGE_STD)
-            }
+        intValues.forEach { pixel ->
+            byteBuffer.putFloat(((pixel shr 16 and 0xFF) / 255.0f))
+            byteBuffer.putFloat(((pixel shr 8 and 0xFF) / 255.0f))
+            byteBuffer.putFloat(((pixel and 0xFF) / 255.0f))
         }
         return byteBuffer
     }
