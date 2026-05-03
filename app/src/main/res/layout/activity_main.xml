@@ -1,75 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/background_cream">
+
+    <!-- Top toolbar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@color/primary_green"
+        android:paddingStart="16dp"
+        android:paddingEnd="12dp">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🌿 Vrikshaayush"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Plant Health Auditor"
+                android:textSize="11sp"
+                android:textColor="@color/white"
+                android:alpha="0.8"/>
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🔒 Offline"
+            android:textSize="11sp"
+            android:textColor="@color/primary_green"
+            android:background="@color/white"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"/>
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="20dp">
-
-            <!-- Header -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="24dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="🌿 Vrikshaayush"
-                        android:textSize="22sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/primary_green"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Plant Health Auditor"
-                        android:textSize="13sp"
-                        android:textColor="@color/text_secondary"/>
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="🔒 Offline"
-                    android:textSize="11sp"
-                    android:textColor="@color/primary_green"
-                    android:background="@color/primary_green_light"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
-                    android:paddingTop="4dp"
-                    android:paddingBottom="4dp"/>
-            </LinearLayout>
+            android:orientation="vertical">
 
             <!-- Scan Button -->
             <Button
                 android:id="@+id/btnScanPlant"
                 android:layout_width="match_parent"
                 android:layout_height="64dp"
-                android:text="📷  Scan Plant Now"
+                android:text="📷  SCAN PLANT NOW"
                 android:textSize="18sp"
                 android:textColor="@color/white"
                 android:backgroundTint="@color/primary_green"
-                android:layout_marginBottom="24dp"/>
+                android:layout_marginBottom="24dp"
+                android:textStyle="bold"/>
 
             <!-- Stats Row -->
             <LinearLayout
@@ -78,7 +79,6 @@
                 android:orientation="horizontal"
                 android:layout_marginBottom="20dp">
 
-                <!-- Scans -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -110,7 +110,6 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- Diseases -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -142,7 +141,6 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- Crops -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -206,13 +204,14 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Bottom Nav -->
+            <!-- Bottom Nav Row -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="16dp">
+                android:layout_marginTop="8dp">
 
+                <!-- History -->
                 <LinearLayout
                     android:id="@+id/navHistory"
                     android:layout_width="0dp"
@@ -220,31 +219,51 @@
                     android:layout_weight="1"
                     android:orientation="vertical"
                     android:gravity="center"
-                    android:padding="12dp">
+                    android:padding="12dp"
+                    android:background="@color/white"
+                    android:layout_marginEnd="4dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="🕐"
-                        android:textSize="24sp"/>
+                        android:textSize="28sp"
+                        android:gravity="center"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="History"
                         android:textSize="12sp"
-                        android:textColor="@color/text_secondary"/>
+                        android:textColor="@color/text_secondary"
+                        android:gravity="center"/>
                 </LinearLayout>
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                <!-- Scan FAB -->
+                <LinearLayout
                     android:id="@+id/fabScan"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@android:drawable/ic_menu_camera"
-                    app:backgroundTint="@color/primary_green"
-                    app:tint="@color/white"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"/>
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:background="@color/primary_green"
+                    android:layout_marginEnd="4dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📷"
+                        android:textSize="28sp"
+                        android:gravity="center"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Scan"
+                        android:textSize="12sp"
+                        android:textColor="@color/white"
+                        android:gravity="center"/>
+                </LinearLayout>
 
+                <!-- Library -->
                 <LinearLayout
                     android:id="@+id/navLibrary"
                     android:layout_width="0dp"
@@ -252,34 +271,52 @@
                     android:layout_weight="1"
                     android:orientation="vertical"
                     android:gravity="center"
-                    android:padding="12dp">
+                    android:padding="12dp"
+                    android:background="@color/white"
+                    android:layout_marginEnd="4dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="📚"
-                        android:textSize="24sp"/>
+                        android:textSize="28sp"
+                        android:gravity="center"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Library"
                         android:textSize="12sp"
-                        android:textColor="@color/text_secondary"/>
+                        android:textColor="@color/text_secondary"
+                        android:gravity="center"/>
                 </LinearLayout>
-            </LinearLayout>
 
-            <!-- Settings link -->
-            <TextView
-                android:id="@+id/navSettings"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="⚙ Settings"
-                android:textSize="13sp"
-                android:textColor="@color/text_secondary"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="8dp"
-                android:paddingBottom="16dp"/>
+                <!-- Settings - NOW VISIBLE AS PROPER BUTTON -->
+                <LinearLayout
+                    android:id="@+id/navSettings"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="12dp"
+                    android:background="@color/white">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="⚙"
+                        android:textSize="28sp"
+                        android:gravity="center"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Settings"
+                        android:textSize="12sp"
+                        android:textColor="@color/text_secondary"
+                        android:gravity="center"/>
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

@@ -1,1825 +1,3064 @@
 {
-  "version": "2.0",
-  "last_updated": "2026-05-03",
-  "total_diseases": 38,
   "diseases": [
     {
-      "id": 1,
+      "id": "apple_apple_scab",
       "disease_name": "Apple Scab",
-      "model_labels": [
-        "apple apple scab"
-      ],
       "crop_type": "Apple",
-      "severity_default": "MEDIUM",
-      "description": {
-        "en": "Apple scab is a fungal disease caused by Venturia inaequalis. It creates dark, scabby lesions on leaves and fruit, reducing yield and fruit quality significantly."
-      },
-      "common_in": [
-        "Apple orchards",
-        "Cool humid regions"
+      "severity": "Medium",
+      "symptoms": [
+        "Dark, scaly lesions on leaves and fruit",
+        "Yellowing around lesions",
+        "Premature leaf drop"
       ],
-      "symptoms": {
-        "en": [
-          "Olive-green or brown spots on leaves",
-          "Dark scabby patches on fruit surface",
-          "Leaves turn yellow and fall early",
-          "Fruit becomes cracked and deformed"
-        ]
-      },
-      "causes": {
-        "en": [
-          "Fungal spores spread by rain splash",
-          "Cool wet weather in spring",
-          "Infected fallen leaves from previous season"
-        ]
-      },
-      "prevention_tips": {
-        "en": [
-          "Rake and destroy fallen leaves every season",
-          "Prune to improve air circulation",
-          "Plant scab-resistant varieties",
-          "Avoid overhead irrigation"
-        ]
-      },
-      "organic_treatments": {
-        "en": [
-          {
-            "title": "Neem Oil Spray",
-            "description": "Mix 2 tbsp neem oil in 1 litre water + few drops soap. Spray every 7 days on all leaf surfaces."
-          },
-          {
-            "title": "Baking Soda Solution",
-            "description": "Mix 1 tsp baking soda + 1 tsp soap in 1 litre water. Spray weekly as preventive."
-          },
-          {
-            "title": "Remove Infected Parts",
-            "description": "Cut and burn all infected leaves and fruit. Do not compost them."
-          }
-        ]
-      },
-      "chemical_treatments": {
-        "en": [
-          {
-            "title": "Mancozeb 75WP",
-            "description": "Spray 2.5g per litre water every 10-14 days during wet season. Start before symptoms appear."
-          },
-          {
-            "title": "Captan 50WP",
-            "description": "Apply 2g per litre water. Very effective against scab. Repeat every 7-10 days."
-          },
-          {
-            "title": "Thiophanate-methyl",
-            "description": "Apply 1g per litre as systemic fungicide. Use when disease pressure is high."
-          }
-        ]
-      }
+      "causes": [
+        "Fungal pathogen Venturia inaequalis",
+        "Cool wet spring weather",
+        "Poor air circulation"
+      ],
+      "prevention": [
+        "Plant resistant varieties",
+        "Remove fallen leaves",
+        "Prune for airflow"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Neem Oil Spray",
+          "description": "Mix 30ml neem oil per liter, spray weekly"
+        },
+        {
+          "name": "Lime Sulfur",
+          "description": "Apply before bud break each spring"
+        },
+        {
+          "name": "Remove Infected Parts",
+          "description": "Prune and burn affected branches"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Captan 50 WP",
+          "description": "Apply 2g/liter at 10-day intervals"
+        },
+        {
+          "name": "Mancozeb 75 WP",
+          "description": "Spray 2.5g/liter from bud break"
+        },
+        {
+          "name": "Myclobutanil",
+          "description": "Systemic fungicide, apply at first sign"
+        }
+      ]
     },
     {
-      "id": 2,
+      "id": "apple_black_rot",
       "disease_name": "Apple Black Rot",
-      "model_labels": [
-        "apple black rot"
-      ],
       "crop_type": "Apple",
-      "severity_default": "HIGH",
-      "description": {
-        "en": "Black rot is caused by the fungus Botryosphaeria obtusa. It causes fruit rot, leaf spots, and cankers on branches, leading to major crop loss."
-      },
-      "common_in": [
-        "Apple orchards",
-        "Warm humid regions"
+      "severity": "High",
+      "symptoms": [
+        "Brown circular spots with purple borders",
+        "Fruit becomes black and mummified",
+        "Cankers on branches"
       ],
-      "symptoms": {
-        "en": [
-          "Brown circular spots on fruit turning black",
-          "Purple-bordered leaf spots",
-          "Cankers on branches",
-          "Mummified fruit remaining on tree"
-        ]
-      },
-      "causes": {
-        "en": [
-          "Fungal infection through wounds",
-          "Warm wet weather",
-          "Dead wood and mummified fruit as source"
-        ]
-      },
-      "prevention_tips": {
-        "en": [
-          "Remove all mummified fruit from tree and ground",
-          "Prune dead or diseased branches",
-          "Avoid injuring bark during pruning",
-          "Destroy pruned material \u2014 do not leave in orchard"
-        ]
-      },
-      "organic_treatments": {
-        "en": [
-          {
-            "title": "Copper Spray (Organic)",
-            "description": "Apply copper sulphate + lime (Bordeaux mixture) 1% spray. Apply before bud break and after petal fall."
-          },
-          {
-            "title": "Remove Infected Fruit",
-            "description": "Immediately remove and destroy all infected or mummified fruit from tree and ground."
-          },
-          {
-            "title": "Pruning",
-            "description": "Cut cankers out of branches at least 15cm below visible infection. Sterilize tools between cuts."
-          }
-        ]
-      },
-      "chemical_treatments": {
-        "en": [
-          {
-            "title": "Thiophanate-methyl 70WP",
-            "description": "Spray 1g per litre at petal fall and repeat every 10-14 days during wet weather."
-          },
-          {
-            "title": "Ziram 76WG",
-            "description": "Apply 3g per litre water. Good protectant fungicide for black rot control."
-          },
-          {
-            "title": "Captan 50WP",
-            "description": "Apply 2g per litre starting at petal fall. Repeat every 10 days during wet season."
-          }
-        ]
-      }
+      "causes": [
+        "Fungus Diplodia seriata",
+        "Warm humid weather",
+        "Wounds from insects or hail"
+      ],
+      "prevention": [
+        "Remove mummified fruits",
+        "Prune dead branches",
+        "Control insects"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Bordeaux Mixture",
+          "description": "1% solution, spray monthly"
+        },
+        {
+          "name": "Copper Hydroxide",
+          "description": "Apply at petal fall"
+        },
+        {
+          "name": "Sanitation",
+          "description": "Remove all infected fruit and wood"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Captan 50 WP",
+          "description": "2g/liter every 10-14 days"
+        },
+        {
+          "name": "Thiophanate-methyl",
+          "description": "Systemic, apply at fruit set"
+        },
+        {
+          "name": "Ziram",
+          "description": "Apply before rain events"
+        }
+      ]
     },
     {
-      "id": 3,
+      "id": "apple_cedar_apple_rust",
       "disease_name": "Cedar Apple Rust",
-      "model_labels": [
-        "apple cedar apple rust"
-      ],
       "crop_type": "Apple",
-      "severity_default": "MEDIUM",
-      "description": {
-        "en": "Cedar apple rust is caused by Gymnosporangium juniperi-virginianae. It requires two hosts \u2014 cedar/juniper trees and apple trees \u2014 to complete its life cycle."
-      },
-      "common_in": [
-        "Apple orchards near cedar trees",
-        "Eastern USA, some parts of India"
+      "severity": "Medium",
+      "symptoms": [
+        "Orange-yellow spots on upper leaf surface",
+        "Tube-like growths on leaf underside",
+        "Fruit deformation"
       ],
-      "symptoms": {
-        "en": [
-          "Bright orange-yellow spots on upper leaf surface",
-          "Tube-like growths on undersides of leaves",
-          "Fruit develops orange spots and deforms",
-          "Heavy leaf drop in severe cases"
-        ]
-      },
-      "causes": {
-        "en": [
-          "Fungal spores spread from nearby cedar/juniper trees",
-          "Wet spring weather promotes spore release",
-          "Wind carries spores up to several kilometers"
-        ]
-      },
-      "prevention_tips": {
-        "en": [
-          "Remove cedar/juniper trees near orchard if possible",
-          "Plant rust-resistant apple varieties",
-          "Apply protective fungicide before and during wet spring weather",
-          "Monitor weather forecasts for infection periods"
-        ]
-      },
-      "organic_treatments": {
-        "en": [
-          {
-            "title": "Sulfur-based Spray",
-            "description": "Apply wettable sulfur 3g per litre water. Start at bud break, repeat every 7-10 days during wet weather."
-          },
-          {
-            "title": "Neem Oil",
-            "description": "Apply neem oil 2% spray at first sign of orange spots. Repeat weekly."
-          },
-          {
-            "title": "Remove Infected Leaves",
-            "description": "Pick off and destroy heavily infected leaves to reduce local spore load."
-          }
-        ]
-      },
-      "chemical_treatments": {
-        "en": [
-          {
-            "title": "Myclobutanil (Rally 40WP)",
-            "description": "Spray 0.5g per litre water starting at pink bud stage. Very effective against rust fungi."
-          },
-          {
-            "title": "Propiconazole",
-            "description": "Apply 1ml per litre water. Systemic fungicide \u2014 absorbed by plant and protects from inside."
-          },
-          {
-            "title": "Fenarimol",
-            "description": "Apply at first sign of infection. Repeat every 14 days during wet spring."
-          }
-        ]
-      }
+      "causes": [
+        "Fungus Gymnosporangium juniperi-virginianae",
+        "Requires cedar/juniper alternate host",
+        "Wet spring weather"
+      ],
+      "prevention": [
+        "Remove nearby cedars/junipers",
+        "Plant resistant varieties",
+        "Avoid overhead irrigation"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Sulfur Dust",
+          "description": "Apply every 7-10 days during spring"
+        },
+        {
+          "name": "Neem Oil",
+          "description": "Preventive spray before infection season"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Myclobutanil",
+          "description": "Apply from pink stage through petal fall"
+        },
+        {
+          "name": "Propiconazole",
+          "description": "Systemic fungicide, apply at first sign"
+        }
+      ]
     },
     {
-      "id": 4,
+      "id": "healthy_apple",
       "disease_name": "Healthy Apple",
-      "model_labels": [
-        "apple healthy"
-      ],
       "crop_type": "Apple",
-      "severity_default": "LOW",
-      "description": {
-        "en": "Your apple plant appears healthy! Regular monitoring and good agricultural practices will keep it productive and disease-free."
-      },
-      "common_in": [
-        "All apple growing regions"
+      "severity": "None",
+      "symptoms": [
+        "No disease symptoms",
+        "Vibrant green leaves",
+        "Normal fruit development"
       ],
-      "symptoms": {
-        "en": [
-          "Leaves are green and firm with no spots",
-          "No discoloration or abnormal growth",
-          "Fruit developing normally"
-        ]
-      },
-      "causes": {
-        "en": [
-          "Good soil health",
-          "Proper watering",
-          "No disease pressure"
-        ]
-      },
-      "prevention_tips": {
-        "en": [
-          "Continue regular monitoring every week",
-          "Maintain soil health with compost",
-          "Prune annually for good air circulation",
-          "Remove fallen leaves and fruit promptly"
-        ]
-      },
-      "organic_treatments": {
-        "en": [
-          {
-            "title": "Preventive Neem Spray",
-            "description": "Monthly neem oil spray as preventive. Mix 2 tbsp in 1 litre water and spray all leaves."
-          },
-          {
-            "title": "Compost Application",
-            "description": "Apply well-composted organic matter around tree base. Improves soil health and resistance."
-          },
-          {
-            "title": "Keep Monitoring",
-            "description": "Check leaves every 7 days for any early signs of spots, discoloration, or wilting."
-          }
-        ]
-      },
-      "chemical_treatments": {
-        "en": [
-          {
-            "title": "No Treatment Needed",
-            "description": "Plant is healthy. Avoid unnecessary chemicals to protect beneficial insects."
-          },
-          {
-            "title": "Preventive Copper Spray",
-            "description": "Optional: 0.5% Bordeaux mixture spray before monsoon season as broad-spectrum preventive."
-          },
-          {
-            "title": "Micronutrient Spray",
-            "description": "Foliar spray of zinc sulphate 0.5% and boron 0.1% once in season for better fruit quality."
-          }
-        ]
-      }
+      "causes": [],
+      "prevention": [
+        "Regular monitoring",
+        "Balanced fertilization",
+        "Proper irrigation"
+      ],
+      "organic_treatment": [],
+      "chemical_treatment": []
     },
     {
-      "id": 5,
-      "disease_name": "Corn Northern Leaf Blight",
-      "model_labels": [
-        "corn maize northern leaf blight"
+      "id": "bean_angular_leaf_spot",
+      "disease_name": "Bean Angular Leaf Spot",
+      "crop_type": "Rajma/Bean",
+      "severity": "High",
+      "symptoms": [
+        "Angular brown spots on leaves",
+        "Spots limited by leaf veins",
+        "Premature defoliation"
       ],
-      "crop_type": "Maize",
-      "severity_default": "HIGH",
-      "description": {
-        "en": "Northern Leaf Blight (NLB) is caused by the fungus Exserohilum turcicum. It is one of the most destructive maize diseases worldwide, including India where it causes 30-60% yield loss."
-      },
-      "common_in": [
-        "Maize fields",
-        "Karnataka, Maharashtra, Bihar",
-        "High altitude areas with cool humid weather"
+      "causes": [
+        "Fungus Phaeoisariopsis griseola",
+        "High humidity and warm temperatures",
+        "Infected seeds"
       ],
-      "symptoms": {
-        "en": [
-          "Long cigar-shaped grayish-green lesions on leaves",
-          "Lesions turn tan/brown as they mature",
-          "Lesions can be 2.5-15cm long",
-          "Severe cases: entire plant turns brown and dies"
-        ]
-      },
-      "causes": {
-        "en": [
-          "Fungal spores spread by wind and rain",
-          "Cool temperatures (18-27\u00b0C) with high humidity",
-          "Infected crop debris in soil",
-          "Susceptible maize varieties"
-        ]
-      },
-      "prevention_tips": {
-        "en": [
-          "Plant resistant hybrid varieties (HQPM-1, DHM-117)",
-          "Deep plowing to bury infected crop debris",
-          "Crop rotation with non-host crops",
-          "Avoid dense planting \u2014 maintain proper spacing",
-          "Drain waterlogged fields quickly"
-        ]
-      },
-      "organic_treatments": {
-        "en": [
-          {
-            "title": "Trichoderma Spray",
-            "description": "Mix Trichoderma viride 4g per litre water. Spray on leaves and drench soil. Biological control \u2014 safe and effective."
-          },
-          {
-            "title": "Neem Kernel Extract",
-            "description": "Soak 500g neem kernels overnight in 10 litres water. Filter and spray on affected leaves every 10 days."
-          },
-          {
-            "title": "Remove Infected Leaves",
-            "description": "Remove and burn heavily infected leaves. Reduces spore load and slows spread."
-          }
-        ]
-      },
-      "chemical_treatments": {
-        "en": [
-          {
-            "title": "Mancozeb 75WP",
-            "description": "Spray 2.5g per litre water at first sign of disease. Repeat every 10-14 days. Most commonly used in India."
-          },
-          {
-            "title": "Propiconazole 25EC",
-            "description": "Mix 1ml per litre water. Systemic fungicide \u2014 very effective. Apply 2-3 times at 14-day intervals."
-          },
-          {
-            "title": "Tebuconazole 25WG",
-            "description": "Apply 1g per litre at early infection stage. Provides both curative and preventive action."
-          }
-        ]
-      }
+      "prevention": [
+        "Use certified disease-free seeds",
+        "Crop rotation (3 years)",
+        "Avoid overhead watering"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Copper-based spray",
+          "description": "Bordeaux mixture 1%, apply fortnightly"
+        },
+        {
+          "name": "Neem leaf extract",
+          "description": "5% solution, spray weekly"
+        },
+        {
+          "name": "Trichoderma",
+          "description": "Seed treatment with Trichoderma viride"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Carbendazim 50 WP",
+          "description": "1g/liter, spray at first sign"
+        },
+        {
+          "name": "Mancozeb 75 WP",
+          "description": "2.5g/liter, apply fortnightly"
+        },
+        {
+          "name": "Chlorothalonil",
+          "description": "2g/liter, preventive and curative"
+        }
+      ]
     },
     {
-      "id": 6,
-      "disease_name": "Corn Gray Leaf Spot",
-      "model_labels": [
-        "corn maize cercospora leaf spot gray leaf spot"
+      "id": "bean_rust",
+      "disease_name": "Bean Rust",
+      "crop_type": "Rajma/Bean",
+      "severity": "High",
+      "symptoms": [
+        "Reddish-brown pustules on leaf undersides",
+        "Yellow halos around pustules",
+        "Severe leaf drop"
       ],
-      "crop_type": "Maize",
-      "severity_default": "HIGH",
-      "description": {
-        "en": "Gray Leaf Spot (GLS) caused by Cercospora zeae-maydis is a major fungal disease of maize. It thrives in humid conditions and causes significant yield loss in Indian maize growing areas."
-      },
-      "common_in": [
-        "Maize fields",
-        "Karnataka, Andhra Pradesh, Tamil Nadu",
-        "Humid regions with morning dew"
+      "causes": [
+        "Fungus Uromyces appendiculatus",
+        "Cool temperatures (17-27°C)",
+        "High humidity and dew"
       ],
-      "symptoms": {
-        "en": [
-          "Rectangular gray-tan lesions between leaf veins",
-          "Lesions have yellow borders initially",
-          "Leaves turn completely brown in severe infection",
-          "Lower leaves affected first, moves upward"
-        ]
-      },
-      "causes": {
-        "en": [
-          "Cercospora fungus surviving in old crop debris",
-          "High humidity and warm nights (21-30\u00b0C)",
-          "Dew formation on leaves",
-          "Dense canopy reducing air flow"
-        ]
-      },
-      "prevention_tips": {
-        "en": [
-          "Use resistant hybrids (check with KVK)",
-          "Deep plow after harvest to bury debris",
-          "Proper row spacing for air circulation",
-          "Avoid late planting when humidity is high",
-          "Rotate crops with soybean or wheat"
-        ]
-      },
-      "organic_treatments": {
-        "en": [
-          {
-            "title": "Pseudomonas fluorescens Spray",
-            "description": "Mix 10g per litre water. Spray 2-3 times at 15-day intervals. Effective biocontrol agent available at KVK."
-          },
-          {
-            "title": "Neem Oil Spray",
-            "description": "Mix 3ml neem oil + 2ml liquid soap in 1 litre water. Spray thoroughly on all leaf surfaces every 7-10 days."
-          },
-          {
-            "title": "Baking Soda Spray",
-            "description": "Mix 10g baking soda in 1 litre water with a drop of soap. Spray weekly as preventive measure."
-          }
-        ]
-      },
-      "chemical_treatments": {
-        "en": [
-          {
-            "title": "Azoxystrobin 23SC",
-            "description": "Mix 1ml per litre water. Apply at first sign of disease. Very effective strobilurin fungicide for GLS."
-          },
-          {
-            "title": "Propiconazole 25EC",
-            "description": "Apply 1ml per litre water. Provides both protective and curative action. Use 2-3 times at 14-day intervals."
-          },
-          {
-            "title": "Chlorothalonil 75WP",
-            "description": "Mix 2g per litre water. Protectant fungicide. Apply preventively every 10-14 days in high risk period."
-          }
-        ]
-      }
+      "prevention": [
+        "Plant resistant varieties",
+        "Avoid dense planting",
+        "Use drip irrigation"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Sulfur Dust",
+          "description": "Dust 20-25 kg/hectare every 10 days"
+        },
+        {
+          "name": "Garlic-Chilli Spray",
+          "description": "Crush 100g garlic + 50g chilli in 10L water, filter and spray"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Propiconazole 25 EC",
+          "description": "1ml/liter, spray at appearance"
+        },
+        {
+          "name": "Hexaconazole 5 EC",
+          "description": "2ml/liter, systemic action"
+        },
+        {
+          "name": "Tebuconazole",
+          "description": "0.5ml/liter, highly effective"
+        }
+      ]
     },
     {
-      "id": 7,
-      "disease_name": "Corn Common Rust",
-      "model_labels": [
-        "corn maize common rust"
+      "id": "healthy_bean",
+      "disease_name": "Healthy Bean",
+      "crop_type": "Rajma/Bean",
+      "severity": "None",
+      "symptoms": [
+        "No visible disease",
+        "Dark green healthy leaves"
       ],
-      "crop_type": "Maize",
-      "severity_default": "MEDIUM",
-      "description": {
-        "en": "Common rust caused by Puccinia sorghi is a widespread maize disease. While rarely causing total crop failure, it can reduce yields by 10-40% if not controlled."
-      },
-      "common_in": [
-        "All maize growing regions of India",
-        "More severe in hills and high altitude areas"
+      "causes": [],
+      "prevention": [
+        "Regular field inspection",
+        "Balanced NPK fertilization"
       ],
-      "symptoms": {
-        "en": [
-          "Cinnamon-brown pustules on both leaf surfaces",
-          "Pustules are oval to elongated, 1-2mm",
-          "Heavy infection causes yellowing and leaf death",
-          "Pustules turn dark brown-black late in season"
-        ]
-      },
-      "causes": {
-        "en": [
-          "Airborne fungal spores from distant sources",
-          "Cool temperatures (16-25\u00b0C)",
-          "High humidity and frequent rains",
-          "Susceptible varieties"
-        ]
-      },
-      "prevention_tips": {
-        "en": [
-          "Plant rust-resistant hybrid varieties",
-          "Avoid late planting in cool season",
-          "Monitor crop weekly during humid weather",
-          "Remove and burn severely infected plants"
-        ]
-      },
-      "organic_treatments": {
-        "en": [
-          {
-            "title": "Sulfur Dust",
-            "description": "Dust wettable sulfur 20-25kg per hectare at first appearance of rust. Repeat after 10 days. Effective and cheap."
-          },
-          {
-            "title": "Neem Oil Spray",
-            "description": "Spray 2% neem oil solution every 7-10 days. Reduces spore germination and disease spread."
-          },
-          {
-            "title": "Trichoderma Application",
-            "description": "Apply Trichoderma viride as soil drench 4g per litre water to boost plant immunity."
-          }
-        ]
-      },
-      "chemical_treatments": {
-        "en": [
-          {
-            "title": "Mancozeb 75WP",
-            "description": "Spray 2.5g per litre water at first sign. Repeat every 10-14 days. Most economical option."
-          },
-          {
-            "title": "Propiconazole 25EC",
-            "description": "Apply 1ml per litre water. Controls rust quickly. One or two sprays usually sufficient."
-          },
-          {
-            "title": "Tebuconazole + Trifloxystrobin",
-            "description": "Combination fungicide \u2014 apply 0.5g per litre. Excellent control of all maize rust diseases."
-          }
-        ]
-      }
+      "organic_treatment": [],
+      "chemical_treatment": []
     },
     {
-      "id": 8,
-      "disease_name": "Healthy Maize",
-      "model_labels": [
-        "corn maize healthy"
+      "id": "bell_pepper_bacterial_spot",
+      "disease_name": "Bacterial Spot",
+      "crop_type": "Capsicum/Bell Pepper",
+      "severity": "High",
+      "symptoms": [
+        "Water-soaked spots on leaves",
+        "Spots turn brown with yellow halo",
+        "Fruit lesions with scab-like appearance"
       ],
-      "crop_type": "Maize",
-      "severity_default": "LOW",
-      "description": {
-        "en": "Your maize plant appears healthy! Keep up the good work. Continue monitoring regularly to catch any early disease signs."
-      },
-      "common_in": [
-        "All maize regions"
-      ],
-      "symptoms": {
-        "en": [
-          "Dark green healthy leaves",
-          "No spots, lesions or discoloration",
-          "Strong upright growth"
-        ]
-      },
-      "causes": {
-        "en": [
-          "Good soil and crop management",
-          "Adequate nutrition and water"
-        ]
-      },
-      "prevention_tips": {
-        "en": [
-          "Continue weekly monitoring",
-          "Maintain balanced NPK fertilization",
-          "Control weeds that harbor pests",
-          "Ensure proper drainage in fields"
-        ]
-      },
-      "organic_treatments": {
-        "en": [
-          {
-            "title": "Preventive Neem Spray",
-            "description": "Monthly preventive spray of 2% neem oil to keep diseases and pests away."
-          },
-          {
-            "title": "Compost Application",
-            "description": "Apply well-composted FYM (Farm Yard Manure) at 10 tonnes per hectare for soil health."
-          },
-          {
-            "title": "Monitoring",
-            "description": "Inspect at least 10 plants per field weekly. Check both sides of leaves for early symptoms."
-          }
-        ]
-      },
-      "chemical_treatments": {
-        "en": [
-          {
-            "title": "No Treatment Needed",
-            "description": "Plant is healthy. Focus on soil nutrition and timely irrigation."
-          },
-          {
-            "title": "Preventive Mancozeb Spray",
-            "description": "Optional: 0.2% Mancozeb spray before monsoon as broad-spectrum preventive."
-          },
-          {
-            "title": "Micronutrient Application",
-            "description": "Spray zinc sulphate 0.5% at knee-high stage for better yield and disease resistance."
-          }
-        ]
-      }
-    },
-    {
-      "id": 9,
-      "disease_name": "Tomato Early Blight",
-      "model_labels": [
-        "tomato early blight"
-      ],
-      "crop_type": "Tomato",
-      "severity_default": "HIGH",
-      "description": {
-        "en": "Early Blight caused by Alternaria solani is one of the most common tomato diseases in India. It can cause 50-80% yield loss if untreated. Common in Karnataka, Maharashtra and Andhra Pradesh."
-      },
-      "common_in": [
-        "Tomato fields",
-        "Karnataka, Maharashtra, AP",
-        "Warm humid weather"
-      ],
-      "symptoms": {
-        "en": [
-          "Brown spots with yellow halos on lower leaves first",
-          "Target-like concentric rings inside leaf spots",
-          "Fruit develops dark leathery patches near stem",
-          "Spots enlarge and leaves turn yellow and drop"
-        ]
-      },
-      "causes": {
-        "en": [
-          "Alternaria fungus surviving in soil and old debris",
-          "Warm temperatures 24-29\u00b0C with high humidity",
-          "Overhead irrigation wetting leaves",
-          "Stressed or nitrogen-deficient plants"
-        ]
-      },
-      "prevention_tips": {
-        "en": [
-          "Rotate crops \u2014 avoid tomato in same field 2-3 years",
-          "Avoid wetting leaves \u2014 water at base only",
-          "Mulch soil to prevent soil splash",
-          "Ensure good plant spacing for air circulation",
-          "Remove lower infected leaves immediately"
-        ]
-      },
-      "organic_treatments": {
-        "en": [
-          {
-            "title": "Copper Bordeaux Spray",
-            "description": "Mix 100g copper sulphate + 100g lime in 10 litres water. Spray every 10 days. Safe and very effective."
-          },
-          {
-            "title": "Neem Oil Spray",
-            "description": "Mix 2 tbsp neem oil + 1 tsp soap in 1 litre water. Spray all leaf surfaces every 7 days."
-          },
-          {
-            "title": "Baking Soda Spray",
-            "description": "Mix 1 tbsp baking soda in 1 litre water + soap. Spray weekly. Changes leaf surface pH to prevent fungal growth."
-          },
-          {
-            "title": "Remove Infected Leaves",
-            "description": "Remove all spotted leaves immediately and burn. Never compost infected plant material."
-          }
-        ]
-      },
-      "chemical_treatments": {
-        "en": [
-          {
-            "title": "Mancozeb 75WP",
-            "description": "Spray 2.5g per litre water every 7-10 days. Preventive fungicide \u2014 start before disease appears in rainy season."
-          },
-          {
-            "title": "Chlorothalonil 75WP",
-            "description": "Mix 2g per litre water. Excellent contact fungicide for early blight. Apply every 7-14 days."
-          },
-          {
-            "title": "Iprodione 50WP",
-            "description": "Apply 2g per litre for curative action when infection is already present. 2-3 applications needed."
-          },
-          {
-            "title": "Azoxystrobin 23SC",
-            "description": "Mix 1ml per litre water. Systemic \u2014 absorbed by plant. Highly effective, use when disease is spreading fast."
-          }
-        ]
-      }
-    },
-    {
-      "id": 10,
-      "disease_name": "Tomato Late Blight",
-      "model_labels": [
-        "tomato late blight"
-      ],
-      "crop_type": "Tomato",
-      "severity_default": "HIGH",
-      "description": {
-        "en": "Late Blight caused by Phytophthora infestans is an extremely destructive disease. It can destroy entire crops within days in humid conditions. The same disease caused the Irish Potato Famine."
-      },
-      "common_in": [
-        "Tomato and potato fields",
-        "Cool humid conditions",
-        "Hills, coastal Karnataka, Maharashtra"
-      ],
-      "symptoms": {
-        "en": [
-          "Water-soaked dark brown patches on leaves",
-          "White fuzzy growth on leaf undersides in early morning",
-          "Stem lesions turn dark brown and collapse",
-          "Fruit develops large firm brown rot from outside"
-        ]
-      },
-      "causes": {
-        "en": [
-          "Phytophthora water mold spreading in rain",
-          "Cool temperatures 10-25\u00b0C with high humidity",
-          "Overhead irrigation or rain keeping leaves wet",
-          "Rapidly spreads in dense plantings"
-        ]
-      },
-      "prevention_tips": {
-        "en": [
-          "Never plant tomato where late blight occurred last season",
-          "Avoid overhead irrigation \u2014 use drip irrigation",
-          "Space plants well \u2014 minimum 60cm apart",
-          "Remove and destroy first infected plants immediately",
-          "Monitor weather \u2014 spray before rain if blight expected"
-        ]
-      },
-      "organic_treatments": {
-        "en": [
-          {
-            "title": "Copper Sulphate Spray",
-            "description": "Apply 0.5% copper sulphate solution immediately at first sign. Spray every 5-7 days. Critical \u2014 do not delay."
-          },
-          {
-            "title": "Bordeaux Mixture",
-            "description": "Prepare 1% Bordeaux mixture (100g copper sulphate + 100g lime per 10 litres). Apply every 7-10 days preventively."
-          },
-          {
-            "title": "Remove Infected Plants",
-            "description": "Remove and burn infected plants same day. Do NOT leave in field or compost. One infected plant can destroy entire crop."
-          }
-        ]
-      },
-      "chemical_treatments": {
-        "en": [
-          {
-            "title": "Metalaxyl + Mancozeb",
-            "description": "Apply 2.5g per litre water. Systemic + contact action. Best option for late blight control in India."
-          },
-          {
-            "title": "Cymoxanil + Mancozeb",
-            "description": "Mix 2g per litre water. Apply every 7 days during blight-favorable weather. Curative and preventive."
-          },
-          {
-            "title": "Dimethomorph 50WP",
-            "description": "Apply 1g per litre. Excellent against Phytophthora. Use when infection has already started."
-          }
-        ]
-      }
-    },
-    {
-      "id": 11,
-      "disease_name": "Tomato Leaf Mold",
-      "model_labels": [
-        "tomato leaf mold"
-      ],
-      "crop_type": "Tomato",
-      "severity_default": "MEDIUM",
-      "description": {
-        "en": "Leaf Mold caused by Passalora fulva (formerly Fulvia fulva) mainly affects greenhouse/protected tomatoes. It causes yellowing and premature leaf drop, reducing photosynthesis and yield."
-      },
-      "common_in": [
-        "Greenhouse tomatoes",
-        "High humidity regions",
-        "Monsoon season"
-      ],
-      "symptoms": {
-        "en": [
-          "Yellow patches on upper leaf surface",
-          "Olive-green to gray fuzzy mold on underside of leaves",
-          "Infected leaves curl upward and drop",
-          "Severe cases: entire plant defoliates"
-        ]
-      },
-      "causes": {
-        "en": [
-          "Fungal spores spread in humid air",
-          "Humidity above 85% for prolonged periods",
-          "Poor ventilation in greenhouse or dense planting",
-          "Warm temperatures 21-24\u00b0C with high humidity"
-        ]
-      },
-      "prevention_tips": {
-        "en": [
-          "Improve ventilation in greenhouse \u2014 open vents",
-          "Reduce humidity by spacing plants properly",
-          "Avoid overhead watering",
-          "Remove lower leaves to improve air flow",
-          "Plant resistant varieties where available"
-        ]
-      },
-      "organic_treatments": {
-        "en": [
-          {
-            "title": "Improve Air Circulation",
-            "description": "Open greenhouse vents fully. Remove 2-3 lower leaves per plant. This alone can stop mild infections."
-          },
-          {
-            "title": "Copper Spray",
-            "description": "Apply 0.5% copper sulphate or Bordeaux mixture. Spray undersides of leaves thoroughly every 10 days."
-          },
-          {
-            "title": "Neem Oil + Garlic Spray",
-            "description": "Mix 2 tbsp neem oil + 1 tbsp crushed garlic extract in 1 litre water. Spray undersides of leaves every 7 days."
-          }
-        ]
-      },
-      "chemical_treatments": {
-        "en": [
-          {
-            "title": "Chlorothalonil 75WP",
-            "description": "Spray 2g per litre water on undersides of leaves. Apply every 7-10 days. Good protective fungicide."
-          },
-          {
-            "title": "Mancozeb 75WP",
-            "description": "Mix 2.5g per litre. Apply every 10-14 days preventively before humid season begins."
-          },
-          {
-            "title": "Difenoconazole 25EC",
-            "description": "Apply 0.5ml per litre water for curative action. 2-3 applications at 10-day intervals."
-          }
-        ]
-      }
-    },
-    {
-      "id": 12,
-      "disease_name": "Tomato Septoria Leaf Spot",
-      "model_labels": [
-        "tomato septoria leaf spot"
-      ],
-      "crop_type": "Tomato",
-      "severity_default": "MEDIUM",
-      "description": {
-        "en": "Septoria leaf spot caused by Septoria lycopersici is a very common tomato disease in India. It starts on lower leaves and moves upward, causing severe defoliation."
-      },
-      "common_in": [
-        "Tomato fields throughout India",
+      "causes": [
+        "Bacteria Xanthomonas campestris",
         "Warm wet weather",
-        "Post-monsoon season"
+        "Splashing rain or irrigation"
       ],
-      "symptoms": {
-        "en": [
-          "Small circular spots with dark borders and light centers",
-          "Tiny black specks (spore bodies) visible in spot centers",
-          "Lower leaves affected first",
-          "Rapid spread upward in wet weather",
-          "Leaves yellow, wither and drop"
-        ]
-      },
-      "causes": {
-        "en": [
-          "Fungal spores in infected soil and plant debris",
-          "Warm temperatures 20-25\u00b0C",
-          "Rain splash spreading spores to leaves",
-          "Overhead irrigation"
-        ]
-      },
-      "prevention_tips": {
-        "en": [
-          "Mulch soil to prevent rain splash",
-          "Remove lower leaves touching soil",
-          "Rotate crops \u2014 avoid tomato same field 3 years",
-          "Use disease-free seeds",
-          "Stake plants to improve air circulation"
-        ]
-      },
-      "organic_treatments": {
-        "en": [
-          {
-            "title": "Copper Bordeaux Spray",
-            "description": "Apply 1% Bordeaux mixture every 10 days starting at first sign. Very effective against Septoria."
-          },
-          {
-            "title": "Neem Oil Spray",
-            "description": "Mix 2% neem oil with soap emulsifier. Spray every 7-10 days \u2014 especially on lower leaves."
-          },
-          {
-            "title": "Remove Infected Leaves",
-            "description": "Remove all spotted leaves from bottom. Wash hands after touching. Reduces spread significantly."
-          }
-        ]
-      },
-      "chemical_treatments": {
-        "en": [
-          {
-            "title": "Chlorothalonil 75WP",
-            "description": "Spray 2g per litre water. Start early in season before infection appears. Highly effective."
-          },
-          {
-            "title": "Mancozeb 75WP",
-            "description": "Mix 2.5g per litre water. Apply every 7-10 days during wet weather. Standard treatment in India."
-          },
-          {
-            "title": "Thiophanate-methyl 70WP",
-            "description": "Apply 1g per litre for systemic action. Use when disease is spreading rapidly."
-          }
-        ]
-      }
+      "prevention": [
+        "Use disease-free seeds",
+        "Avoid working in wet fields",
+        "Copper-based seed treatment"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Copper Hydroxide",
+          "description": "3g/liter spray every 7 days"
+        },
+        {
+          "name": "Neem Oil",
+          "description": "5ml/liter with emulsifier, weekly spray"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Streptomycin 9 + Copper 1%",
+          "description": "0.3g + 3g per liter"
+        },
+        {
+          "name": "Kasugamycin",
+          "description": "2ml/liter, bactericide spray"
+        }
+      ]
     },
     {
-      "id": 13,
-      "disease_name": "Tomato Bacterial Spot",
-      "model_labels": [
-        "tomato bacterial spot"
+      "id": "healthy_bell_pepper",
+      "disease_name": "Healthy Bell Pepper",
+      "crop_type": "Capsicum/Bell Pepper",
+      "severity": "None",
+      "symptoms": [
+        "No disease symptoms",
+        "Healthy shiny leaves"
       ],
-      "crop_type": "Tomato",
-      "severity_default": "HIGH",
-      "description": {
-        "en": "Bacterial Spot caused by Xanthomonas vesicatoria affects both leaves and fruit. It is difficult to control once established and can cause 10-50% fruit loss."
-      },
-      "common_in": [
-        "Tomato and pepper fields",
-        "Hot humid weather",
-        "Post-monsoon season"
+      "causes": [],
+      "prevention": [
+        "Regular monitoring",
+        "Proper nutrition"
       ],
-      "symptoms": {
-        "en": [
-          "Small water-soaked spots on leaves turning brown",
-          "Spots have yellow halo around them",
-          "Raised scabby lesions on fruit",
-          "Lesions crack open in dry weather",
-          "Severe defoliation in humid conditions"
-        ]
-      },
-      "causes": {
-        "en": [
-          "Bacterial infection through leaf openings and wounds",
-          "Warm temperatures 25-30\u00b0C with high humidity",
-          "Seed-borne infection",
-          "Rain and wind spreading bacteria",
-          "Contaminated tools and workers"
-        ]
-      },
-      "prevention_tips": {
-        "en": [
-          "Use certified disease-free seeds",
-          "Avoid working in field when plants are wet",
-          "Sanitize tools with 10% bleach solution",
-          "Rotate crops for 2-3 years",
-          "Remove infected plants immediately"
-        ]
-      },
-      "organic_treatments": {
-        "en": [
-          {
-            "title": "Copper Hydroxide Spray",
-            "description": "Apply copper hydroxide 50WP at 3g per litre water. Spray every 7-10 days. Best organic option for bacterial diseases."
-          },
-          {
-            "title": "Neem + Garlic Spray",
-            "description": "Mix 2% neem oil + 2% garlic extract in water. Antibacterial properties help slow spread."
-          },
-          {
-            "title": "Remove Infected Material",
-            "description": "Remove infected leaves and fruit. Wash hands with soap after contact. Sanitize tools with bleach."
-          }
-        ]
-      },
-      "chemical_treatments": {
-        "en": [
-          {
-            "title": "Copper Oxychloride 50WP",
-            "description": "Mix 3g per litre water. Apply every 7-10 days. Standard treatment for bacterial diseases \u2014 widely available in India."
-          },
-          {
-            "title": "Streptomycin Sulphate + Copper",
-            "description": "Mix streptomycin 500ppm + copper oxychloride 0.3%. Apply in early morning every 10 days."
-          },
-          {
-            "title": "Kasugamycin 3SL",
-            "description": "Apply 2ml per litre water. Antibiotic fungicide effective against bacterial spot. 2-3 applications needed."
-          }
-        ]
-      }
+      "organic_treatment": [],
+      "chemical_treatment": []
     },
     {
-      "id": 14,
-      "disease_name": "Tomato Spider Mites",
-      "model_labels": [
-        "tomato spider mites two-spotted spider mite"
+      "id": "cherry_powdery_mildew",
+      "disease_name": "Cherry Powdery Mildew",
+      "crop_type": "Cherry",
+      "severity": "Medium",
+      "symptoms": [
+        "White powdery coating on leaves",
+        "Curled and distorted new leaves",
+        "Fruit russeting"
       ],
-      "crop_type": "Tomato",
-      "severity_default": "MEDIUM",
-      "description": {
-        "en": "Two-spotted spider mites (Tetranychus urticae) are tiny pests that suck plant sap from leaf undersides, causing stippling, yellowing and in severe cases, complete plant death."
-      },
-      "common_in": [
-        "Tomato, capsicum fields",
-        "Hot dry weather",
-        "Summer season in India"
+      "causes": [
+        "Fungus Podosphaera clandestina",
+        "Warm dry days with cool nights",
+        "Dense canopy"
       ],
-      "symptoms": {
-        "en": [
-          "Tiny yellow or white stippling/dots on upper leaf surface",
-          "Fine webbing visible on underside of leaves",
-          "Leaves turn bronze, yellow then brown",
-          "Tiny moving dots visible under magnifying glass",
-          "Dry crinkled leaves in severe infestation"
-        ]
-      },
-      "causes": {
-        "en": [
-          "Hot dry conditions (above 30\u00b0C, low humidity)",
-          "Overcrowding of plants",
-          "Dusty field conditions",
-          "Broad-spectrum pesticide use killing natural predators"
-        ]
-      },
-      "prevention_tips": {
-        "en": [
-          "Maintain adequate moisture \u2014 mites hate humid conditions",
-          "Spray water on leaf undersides to dislodge mites",
-          "Avoid broad-spectrum pesticides that kill predatory mites",
-          "Introduce predatory mites (Phytoseiidae) as biocontrol",
-          "Keep field edges weed-free"
-        ]
-      },
-      "organic_treatments": {
-        "en": [
-          {
-            "title": "Strong Water Spray",
-            "description": "Spray water forcefully on leaf undersides daily for 3-5 days. Simple but very effective for mild infestations."
-          },
-          {
-            "title": "Neem Oil Spray",
-            "description": "Mix 2% neem oil + 0.5% soap in water. Spray undersides of leaves every 5-7 days. Kills mites and eggs."
-          },
-          {
-            "title": "Onion-Garlic Spray",
-            "description": "Blend 100g onion + 50g garlic in 1 litre water. Filter and spray undiluted on leaf undersides. Natural miticide."
-          }
-        ]
-      },
-      "chemical_treatments": {
-        "en": [
-          {
-            "title": "Abamectin 1.9EC",
-            "description": "Mix 1ml per litre water. Very effective miticide. 2 applications at 7-day interval usually sufficient."
-          },
-          {
-            "title": "Spiromesifen 22.9SC",
-            "description": "Apply 1ml per litre water. Excellent for two-spotted spider mite. Controls all life stages."
-          },
-          {
-            "title": "Propargite 57EC",
-            "description": "Mix 2ml per litre water. Contact miticide. Spray thoroughly on undersides of leaves."
-          }
-        ]
-      }
+      "prevention": [
+        "Prune for good airflow",
+        "Avoid excess nitrogen",
+        "Remove infected shoots"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Baking Soda Spray",
+          "description": "10g/liter + few drops soap, spray weekly"
+        },
+        {
+          "name": "Milk Spray",
+          "description": "1:9 milk to water ratio, spray in morning"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Sulfur 80 WP",
+          "description": "3g/liter, spray every 10 days"
+        },
+        {
+          "name": "Myclobutanil",
+          "description": "1ml/liter, systemic protection"
+        }
+      ]
     },
     {
-      "id": 15,
-      "disease_name": "Tomato Target Spot",
-      "model_labels": [
-        "tomato target spot"
+      "id": "healthy_cherry",
+      "disease_name": "Healthy Cherry",
+      "crop_type": "Cherry",
+      "severity": "None",
+      "symptoms": [],
+      "causes": [],
+      "prevention": [
+        "Regular monitoring"
       ],
-      "crop_type": "Tomato",
-      "severity_default": "MEDIUM",
-      "description": {
-        "en": "Target Spot caused by Corynespora cassiicola is an emerging disease of tomato in India. It causes significant defoliation and fruit spotting."
-      },
-      "common_in": [
-        "Tomato fields",
-        "Karnataka, Tamil Nadu, AP"
-      ],
-      "symptoms": {
-        "en": [
-          "Circular brown spots with concentric ring pattern (target-like)",
-          "Yellow halo around spots",
-          "Fruit develops sunken dark spots",
-          "Rapid spread in warm humid conditions"
-        ]
-      },
-      "causes": {
-        "en": [
-          "Fungal infection in warm humid weather",
-          "Infected plant debris",
-          "Rain and wind spreading spores"
-        ]
-      },
-      "prevention_tips": {
-        "en": [
-          "Use resistant varieties",
-          "Crop rotation every 2-3 years",
-          "Remove infected leaves promptly",
-          "Avoid excessive nitrogen fertilization"
-        ]
-      },
-      "organic_treatments": {
-        "en": [
-          {
-            "title": "Copper Spray",
-            "description": "Apply 1% Bordeaux mixture or copper hydroxide every 10 days. Start preventively in humid season."
-          },
-          {
-            "title": "Neem Oil Spray",
-            "description": "2% neem oil spray every 7-10 days provides moderate control."
-          },
-          {
-            "title": "Remove Infected Leaves",
-            "description": "Regularly remove spotted leaves to slow disease progress."
-          }
-        ]
-      },
-      "chemical_treatments": {
-        "en": [
-          {
-            "title": "Azoxystrobin 23SC",
-            "description": "Apply 1ml per litre water. Excellent systemic action. 2-3 applications at 10-14 day intervals."
-          },
-          {
-            "title": "Boscalid + Pyraclostrobin",
-            "description": "Apply 1g per litre. Premium fungicide combination \u2014 excellent control of target spot."
-          },
-          {
-            "title": "Chlorothalonil 75WP",
-            "description": "Mix 2g per litre water as protective spray every 10-14 days."
-          }
-        ]
-      }
+      "organic_treatment": [],
+      "chemical_treatment": []
     },
     {
-      "id": 16,
-      "disease_name": "Tomato Yellow Leaf Curl Virus",
-      "model_labels": [
-        "tomato tomato yellow leaf curl virus"
+      "id": "corn_cercospora_leaf_spot",
+      "disease_name": "Gray Leaf Spot (Maize)",
+      "crop_type": "Maize (Makka)",
+      "severity": "High",
+      "symptoms": [
+        "Rectangular gray-brown lesions",
+        "Lesions parallel to leaf veins",
+        "Tan coloured centre with brown margins"
       ],
-      "crop_type": "Tomato",
-      "severity_default": "HIGH",
-      "description": {
-        "en": "Tomato Yellow Leaf Curl Virus (TYLCV) is one of the most devastating tomato diseases in India. It is transmitted by whiteflies and has no chemical cure \u2014 only management through vector control."
-      },
-      "common_in": [
-        "All tomato growing regions",
-        "Karnataka, AP, Tamil Nadu",
-        "Year-round in southern India"
+      "causes": [
+        "Fungus Cercospora zeae-maydis",
+        "High humidity and warm nights (22-30°C)",
+        "Crop residue in field"
       ],
-      "symptoms": {
-        "en": [
-          "Leaves curl upward with yellow edges",
-          "Leaves become small and crinkled",
-          "Stunted plant growth",
-          "Very few or no fruits formed",
-          "Veins on underside appear purple"
-        ]
-      },
-      "causes": {
-        "en": [
-          "Begomovirus spread exclusively by Bemisia tabaci (silverleaf whitefly)",
-          "No other transmission method",
-          "Whiteflies migrate from infected fields",
-          "No resistant varieties widely available in India"
-        ]
-      },
-      "prevention_tips": {
-        "en": [
-          "Use yellow sticky traps to catch whiteflies",
-          "Install 50-mesh insect-proof net houses for nurseries",
-          "Apply reflective mulch to repel whiteflies",
-          "Remove and destroy infected plants immediately",
-          "Do not plant near infected fields"
-        ]
-      },
-      "organic_treatments": {
-        "en": [
-          {
-            "title": "Remove Infected Plants",
-            "description": "Remove infected plants immediately and bury or burn them. Keeping infected plants in field is the main source of spread."
-          },
-          {
-            "title": "Yellow Sticky Traps",
-            "description": "Install 15-20 yellow sticky traps per acre. Catches adult whiteflies and monitors population. Hang at plant height."
-          },
-          {
-            "title": "Neem Oil Spray for Whitefly",
-            "description": "Mix 3% neem oil + soap in water. Spray on undersides of leaves every 5 days to kill whitefly nymphs."
-          }
-        ]
-      },
-      "chemical_treatments": {
-        "en": [
-          {
-            "title": "Imidacloprid 17.8SL",
-            "description": "Mix 0.5ml per litre water. Spray on undersides of leaves to kill whiteflies. No direct effect on virus."
-          },
-          {
-            "title": "Thiamethoxam 25WG",
-            "description": "Apply 0.3g per litre as soil drench or foliar spray. Systemic insecticide controlling whitefly effectively."
-          },
-          {
-            "title": "Spiromesifen 22.9SC",
-            "description": "Mix 1ml per litre water. Controls whitefly nymphs. Rotate with other insecticides to prevent resistance."
-          }
-        ]
-      }
+      "prevention": [
+        "Crop rotation with non-host crops",
+        "Use resistant hybrids",
+        "Reduce crop density"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Trichoderma viride",
+          "description": "Seed treatment @ 4g/kg seed"
+        },
+        {
+          "name": "Neem Oil Spray",
+          "description": "3ml/liter, apply at first symptoms"
+        },
+        {
+          "name": "Remove Crop Debris",
+          "description": "Deep ploughing after harvest"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Propiconazole 25 EC",
+          "description": "1ml/liter, foliar spray at VT stage"
+        },
+        {
+          "name": "Azoxystrobin 23 SC",
+          "description": "1ml/liter, preventive and curative"
+        },
+        {
+          "name": "Mancozeb 75 WP",
+          "description": "2.5g/liter, spray at early infection"
+        }
+      ]
     },
     {
-      "id": 17,
-      "disease_name": "Tomato Mosaic Virus",
-      "model_labels": [
-        "tomato tomato mosaic virus"
+      "id": "corn_common_rust",
+      "disease_name": "Common Rust (Maize)",
+      "crop_type": "Maize (Makka)",
+      "severity": "Medium",
+      "symptoms": [
+        "Oval to elongated brown pustules on both leaf surfaces",
+        "Dusty reddish-brown spore masses",
+        "Yellowing of heavily infected leaves"
       ],
-      "crop_type": "Tomato",
-      "severity_default": "HIGH",
-      "description": {
-        "en": "Tomato Mosaic Virus (ToMV) is a mechanically transmitted virus causing mosaic patterns, distortion and yield loss. Very stable \u2014 can survive in dry soil for 2 years."
-      },
-      "common_in": [
-        "All tomato growing areas",
-        "Greenhouse tomatoes especially"
+      "causes": [
+        "Fungus Puccinia sorghi",
+        "Cool temperatures (16-23°C)",
+        "High humidity and dew"
       ],
-      "symptoms": {
-        "en": [
-          "Yellow-green mosaic pattern on leaves",
-          "Leaves distorted, curled or fernleaf appearance",
-          "Stunted plant with reduced fruit set",
-          "Fruit may show yellow streaks or rings",
-          "Plants infected early: no fruit at all"
-        ]
-      },
-      "causes": {
-        "en": [
-          "Mechanical transmission \u2014 touching infected then healthy plant",
-          "Seed-borne \u2014 infected seeds carry virus",
-          "Spread by workers, tools, grafting",
-          "No insect vector \u2014 spreads by touch"
-        ]
-      },
-      "prevention_tips": {
-        "en": [
-          "Use virus-free certified seeds",
-          "Dip seeds in 10% trisodium phosphate for 15 min before sowing",
-          "Wash hands with soap before working with plants",
-          "Sterilize tools with bleach or fire",
-          "Remove infected plants immediately"
-        ]
-      },
-      "organic_treatments": {
-        "en": [
-          {
-            "title": "Remove Infected Plants",
-            "description": "Remove and bury infected plants. Wear gloves. No cure exists \u2014 only prevent spread."
-          },
-          {
-            "title": "Milk Spray",
-            "description": "Spray 10% milk solution on healthy plants. Research shows milk proteins inhibit Tobamovirus transmission."
-          },
-          {
-            "title": "Hand Hygiene",
-            "description": "Wash hands with soap for 30 seconds before touching plants. Do not touch plants after handling infected material."
-          }
-        ]
-      },
-      "chemical_treatments": {
-        "en": [
-          {
-            "title": "No Curative Treatment",
-            "description": "No chemical can cure virus infection. Focus on prevention and removing infected plants."
-          },
-          {
-            "title": "Seed Treatment",
-            "description": "Soak seeds in 10% trisodium phosphate solution for 15 minutes before planting. Kills seed-borne virus."
-          },
-          {
-            "title": "Tool Sterilization",
-            "description": "Use 1% sodium hypochlorite (bleach) solution to sterilize pruning tools between plants. Prevents spread."
-          }
-        ]
-      }
+      "prevention": [
+        "Plant resistant varieties",
+        "Early planting",
+        "Monitor from seedling stage"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Sulfur Dust",
+          "description": "20kg/hectare dusting at first sign"
+        },
+        {
+          "name": "Neem-based spray",
+          "description": "NSKE 5% solution, spray weekly"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Mancozeb + Carbendazim",
+          "description": "2g + 1g per liter"
+        },
+        {
+          "name": "Propiconazole 25 EC",
+          "description": "1ml/liter foliar spray"
+        },
+        {
+          "name": "Tebuconazole",
+          "description": "1ml/liter, highly effective systemic"
+        }
+      ]
     },
     {
-      "id": 18,
-      "disease_name": "Healthy Tomato",
-      "model_labels": [
-        "tomato healthy"
+      "id": "corn_gray_leaf_spot",
+      "disease_name": "Gray Leaf Spot (Maize)",
+      "crop_type": "Maize (Makka)",
+      "severity": "High",
+      "symptoms": [
+        "Long narrow gray lesions",
+        "Lesions enlarge to rectangular shape",
+        "Blighting of leaves"
       ],
-      "crop_type": "Tomato",
-      "severity_default": "LOW",
-      "description": {
-        "en": "Your tomato plant appears healthy! Continue good agricultural practices to maintain this health throughout the season."
-      },
-      "common_in": [
-        "All tomato regions"
+      "causes": [
+        "Cercospora zeae-maydis fungus",
+        "High moisture and warm weather",
+        "Dense planting"
       ],
-      "symptoms": {
-        "en": [
-          "Deep green leaves with no spots",
-          "Strong upright stems",
-          "Flowers and fruit forming normally"
-        ]
-      },
-      "causes": {
-        "en": [
-          "Good crop management",
-          "Balanced nutrition",
-          "Proper irrigation"
-        ]
-      },
-      "prevention_tips": {
-        "en": [
-          "Water at base \u2014 avoid wetting leaves",
-          "Check weekly for early disease signs",
-          "Maintain NPK fertilization schedule",
-          "Control weeds around plants"
-        ]
-      },
-      "organic_treatments": {
-        "en": [
-          {
-            "title": "Preventive Neem Spray",
-            "description": "Monthly neem oil spray as preventive against fungal diseases and pests."
-          },
-          {
-            "title": "Compost Tea",
-            "description": "Apply diluted compost tea as foliar spray monthly. Adds beneficial microbes that protect against disease."
-          },
-          {
-            "title": "Mulching",
-            "description": "Maintain organic mulch layer around plants. Prevents soil splash which spreads many diseases."
-          }
-        ]
-      },
-      "chemical_treatments": {
-        "en": [
-          {
-            "title": "No Treatment Needed",
-            "description": "Plant is healthy. No chemicals needed."
-          },
-          {
-            "title": "Preventive Copper Spray",
-            "description": "Optional: 0.5% copper spray before monsoon season as broad preventive measure."
-          },
-          {
-            "title": "Micronutrient Foliar Spray",
-            "description": "Calcium nitrate 0.5% spray during fruit development improves fruit quality and shelf life."
-          }
-        ]
-      }
+      "prevention": [
+        "Resistant hybrids",
+        "Crop rotation",
+        "Adequate spacing"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Copper Oxychloride",
+          "description": "3g/liter spray"
+        },
+        {
+          "name": "Trichoderma",
+          "description": "Seed and soil treatment"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Azoxystrobin",
+          "description": "1ml/liter preventive spray"
+        },
+        {
+          "name": "Propiconazole",
+          "description": "1ml/liter at onset of disease"
+        }
+      ]
     },
     {
-      "id": 19,
-      "disease_name": "Potato Early Blight",
-      "model_labels": [
-        "potato early blight"
+      "id": "corn_northern_leaf_blight",
+      "disease_name": "Northern Leaf Blight (Maize)",
+      "crop_type": "Maize (Makka)",
+      "severity": "High",
+      "symptoms": [
+        "Long cigar-shaped gray-green lesions",
+        "Lesions 2.5-15 cm long",
+        "Grayish-green spores on lesions"
       ],
-      "crop_type": "Potato",
-      "severity_default": "HIGH",
-      "description": {
-        "en": "Early Blight caused by Alternaria solani is a major potato disease in India. Same pathogen as tomato early blight. Very common in UP, Bihar, West Bengal during monsoon."
-      },
-      "common_in": [
-        "Potato fields in UP, Bihar, WB",
-        "Warm humid conditions"
+      "causes": [
+        "Fungus Exserohilum turcicum",
+        "Moderate temperatures (18-27°C)",
+        "Long periods of leaf wetness"
       ],
-      "symptoms": {
-        "en": [
-          "Dark brown spots with yellow halo on older lower leaves",
-          "Target-like rings inside leaf spots",
-          "Spots enlarge and merge \u2014 leaf dies",
-          "Tubers show dark sunken lesions at harvest"
-        ]
-      },
-      "causes": {
-        "en": [
-          "Alternaria fungus in infected soil and debris",
-          "Warm temperatures 24-29\u00b0C",
-          "Wet weather and overhead irrigation",
-          "Plants under nutrient stress most susceptible"
-        ]
-      },
-      "prevention_tips": {
-        "en": [
-          "Use certified disease-free seed potatoes",
-          "Rotate crop \u2014 no potato same field for 3 years",
-          "Avoid nitrogen deficiency",
-          "Remove and destroy infected leaves",
-          "Earthing up reduces tuber infection"
-        ]
-      },
-      "organic_treatments": {
-        "en": [
-          {
-            "title": "Bordeaux Mixture",
-            "description": "Apply 1% Bordeaux mixture every 10-14 days preventively. Start at crop emergence."
-          },
-          {
-            "title": "Neem Oil Spray",
-            "description": "2% neem oil spray every 7 days. Moderately effective against early blight."
-          },
-          {
-            "title": "Remove Infected Foliage",
-            "description": "Cut and remove infected leaves. Reduces spore load and slows spread."
-          }
-        ]
-      },
-      "chemical_treatments": {
-        "en": [
-          {
-            "title": "Mancozeb 75WP",
-            "description": "Mix 2.5g per litre water. Apply every 7-10 days during vulnerable period. Standard treatment in India."
-          },
-          {
-            "title": "Chlorothalonil 75WP",
-            "description": "Apply 2g per litre. Excellent protective fungicide. Start early before disease appears."
-          },
-          {
-            "title": "Iprodione 50WP",
-            "description": "Apply 2g per litre for curative action when disease is already present."
-          }
-        ]
-      }
+      "prevention": [
+        "Resistant varieties",
+        "Crop rotation",
+        "Balanced nitrogen fertilization"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Mancozeb spray",
+          "description": "2.5g/liter at pre-tassel stage"
+        },
+        {
+          "name": "Trichoderma seed treatment",
+          "description": "4g/kg seed before sowing"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Propiconazole 25 EC",
+          "description": "1ml/liter at first symptom"
+        },
+        {
+          "name": "Carbendazim 50 WP",
+          "description": "1g/liter foliar spray"
+        },
+        {
+          "name": "Chlorothalonil",
+          "description": "2g/liter preventive spray"
+        }
+      ]
     },
     {
-      "id": 20,
-      "disease_name": "Potato Late Blight",
-      "model_labels": [
-        "potato late blight"
+      "id": "healthy_corn",
+      "disease_name": "Healthy Maize",
+      "crop_type": "Maize (Makka)",
+      "severity": "None",
+      "symptoms": [],
+      "causes": [],
+      "prevention": [
+        "Balanced NPK",
+        "Proper irrigation",
+        "Field monitoring"
       ],
-      "crop_type": "Potato",
-      "severity_default": "HIGH",
-      "description": {
-        "en": "Potato Late Blight caused by Phytophthora infestans is the most destructive potato disease worldwide. In India it devastates crops in hill regions and causes major losses in plains during cool humid weather."
-      },
-      "common_in": [
-        "Shimla, Nilgiris",
-        "UP, Bihar potato belt",
-        "Cool humid weather 10-20\u00b0C"
-      ],
-      "symptoms": {
-        "en": [
-          "Water-soaked dark lesions on leaves at margins or tips",
-          "White fuzzy mold on undersides in early morning",
-          "Stems develop dark brown rot and collapse",
-          "Tubers show reddish-brown rot from skin inward",
-          "Disease spreads extremely fast \u2014 field can collapse in 3-5 days"
-        ]
-      },
-      "causes": {
-        "en": [
-          "Phytophthora water mold",
-          "Cool temperatures 10-20\u00b0C with rain or heavy dew",
-          "Infected tubers used as seed",
-          "Diseased volunteer potato plants"
-        ]
-      },
-      "prevention_tips": {
-        "en": [
-          "Use certified disease-free seed potatoes",
-          "Never use tubers from infected fields as seed",
-          "Apply preventive fungicide before blight-favorable weather",
-          "Plant resistant varieties (Kufri Jyoti, Kufri Bahar)",
-          "Destroy haulms (tops) before harvest to prevent tuber infection"
-        ]
-      },
-      "organic_treatments": {
-        "en": [
-          {
-            "title": "Copper Sulphate Spray",
-            "description": "Apply 0.5% copper sulphate immediately at first sign. Spray every 5-7 days. Critical to act fast."
-          },
-          {
-            "title": "Bordeaux Mixture 1%",
-            "description": "Apply every 7 days preventively in cool humid weather. Classic and effective treatment."
-          },
-          {
-            "title": "Remove Infected Plants",
-            "description": "Remove entire infected plant including roots immediately. Do not leave in field \u2014 one plant can infect entire crop."
-          }
-        ]
-      },
-      "chemical_treatments": {
-        "en": [
-          {
-            "title": "Metalaxyl + Mancozeb (Ridomil Gold)",
-            "description": "Mix 2.5g per litre water. Best option \u2014 systemic + contact. Apply every 7 days in high-risk weather."
-          },
-          {
-            "title": "Dimethomorph 50WP",
-            "description": "Apply 1g per litre water. Excellent systemic fungicide. Use when late blight has started."
-          },
-          {
-            "title": "Cymoxanil + Mancozeb",
-            "description": "Mix 2g per litre. Apply every 7 days. Good curative and preventive action."
-          }
-        ]
-      }
+      "organic_treatment": [],
+      "chemical_treatment": []
     },
     {
-      "id": 21,
-      "disease_name": "Healthy Potato",
-      "model_labels": [
-        "potato healthy"
+      "id": "cotton_aphids",
+      "disease_name": "Cotton Aphids",
+      "crop_type": "Kapas (Cotton)",
+      "severity": "High",
+      "symptoms": [
+        "Curled and puckered leaves",
+        "Sticky honeydew on leaves",
+        "Sooty mold growth",
+        "Stunted plant growth"
       ],
-      "crop_type": "Potato",
-      "severity_default": "LOW",
-      "description": {
-        "en": "Your potato plant appears healthy! Maintain good practices to ensure a good harvest."
-      },
-      "common_in": [
-        "All potato regions"
+      "causes": [
+        "Aphid Aphis gossypii",
+        "Hot dry weather with high humidity",
+        "Excessive nitrogen application"
       ],
-      "symptoms": {
-        "en": [
-          "Green healthy foliage",
-          "No spots or lesions",
-          "Normal growth"
-        ]
-      },
-      "causes": {
-        "en": [
-          "Good crop management"
-        ]
-      },
-      "prevention_tips": {
-        "en": [
-          "Monitor weekly especially in humid weather",
-          "Apply preventive fungicide before monsoon",
-          "Ensure good drainage in field"
-        ]
-      },
-      "organic_treatments": {
-        "en": [
-          {
-            "title": "Preventive Bordeaux Spray",
-            "description": "Apply 0.5% Bordeaux mixture monthly as preventive in monsoon season."
-          },
-          {
-            "title": "Earthing Up",
-            "description": "Earth up well around plants to protect tubers and improve drainage."
-          },
-          {
-            "title": "Compost Application",
-            "description": "Apply FYM 15-20 tonnes per hectare for soil health and disease resistance."
-          }
-        ]
-      },
-      "chemical_treatments": {
-        "en": [
-          {
-            "title": "No Treatment Needed",
-            "description": "Plant is healthy."
-          },
-          {
-            "title": "Preventive Mancozeb Spray",
-            "description": "Optional: 0.25% Mancozeb spray weekly during monsoon as preventive against late blight."
-          },
-          {
-            "title": "Micronutrient Application",
-            "description": "Boron 0.1% + zinc 0.5% foliar spray at tuber initiation stage improves yield."
-          }
-        ]
-      }
+      "prevention": [
+        "Monitor weekly from seedling stage",
+        "Conserve natural enemies",
+        "Avoid excess nitrogen"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Neem Oil Spray",
+          "description": "5ml neem oil/liter + soap, spray on undersides of leaves"
+        },
+        {
+          "name": "Tobacco Decoction",
+          "description": "Boil 250g tobacco in 5L water, filter and spray 1:4"
+        },
+        {
+          "name": "Release of Ladybird Beetles",
+          "description": "Natural predators, release 50/acre"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Imidacloprid 17.8 SL",
+          "description": "0.5ml/liter, highly effective systemic"
+        },
+        {
+          "name": "Dimethoate 30 EC",
+          "description": "2ml/liter foliar spray"
+        },
+        {
+          "name": "Acetamiprid 20 SP",
+          "description": "0.2g/liter spray"
+        }
+      ]
     },
     {
-      "id": 22,
+      "id": "cotton_army_worm",
+      "disease_name": "Cotton Army Worm",
+      "crop_type": "Kapas (Cotton)",
+      "severity": "Very High",
+      "symptoms": [
+        "Ragged holes in leaves",
+        "Leaves skeletonized",
+        "Caterpillars visible on plants",
+        "Severe defoliation"
+      ],
+      "causes": [
+        "Spodoptera litura caterpillars",
+        "Egg masses on leaves",
+        "Night feeding by larvae"
+      ],
+      "prevention": [
+        "Pheromone traps (5/acre)",
+        "Deep summer ploughing",
+        "Install bird perches"
+      ],
+      "organic_treatment": [
+        {
+          "name": "NPV Spray (Nuclear Polyhedrosis Virus)",
+          "description": "250 LE/hectare, spray in evening"
+        },
+        {
+          "name": "Bacillus thuringiensis (Bt)",
+          "description": "2g/liter spray on young caterpillars"
+        },
+        {
+          "name": "Neem Seed Extract",
+          "description": "NSKE 5%, spray at egg hatching stage"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Chlorpyriphos 20 EC",
+          "description": "2.5ml/liter foliar spray"
+        },
+        {
+          "name": "Lambda-cyhalothrin 5 EC",
+          "description": "1ml/liter spray"
+        },
+        {
+          "name": "Emamectin Benzoate 5 SG",
+          "description": "0.4g/liter, highly effective"
+        }
+      ]
+    },
+    {
+      "id": "cotton_bacterial_blight",
+      "disease_name": "Cotton Bacterial Blight",
+      "crop_type": "Kapas (Cotton)",
+      "severity": "High",
+      "symptoms": [
+        "Angular water-soaked lesions",
+        "Lesions turn brown with yellow margins",
+        "Black arm - stem darkening",
+        "Boll rot in severe cases"
+      ],
+      "causes": [
+        "Bacteria Xanthomonas citri pv. malvacearum",
+        "Wet weather after sowing",
+        "Infected seeds"
+      ],
+      "prevention": [
+        "Acid-delinted seeds only",
+        "Seed treatment with HCl",
+        "Avoid flood irrigation"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Copper Hydroxide 77 WP",
+          "description": "3g/liter preventive spray every 15 days"
+        },
+        {
+          "name": "Streptomycin Sulfate",
+          "description": "Seed soak in 200ppm solution for 30 min"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Streptomycin + Copper Oxychloride",
+          "description": "0.1g + 3g per liter"
+        },
+        {
+          "name": "Bactericide Kocide",
+          "description": "3g/liter spray at symptom appearance"
+        }
+      ]
+    },
+    {
+      "id": "cotton_powdery_mildew",
+      "disease_name": "Cotton Powdery Mildew",
+      "crop_type": "Kapas (Cotton)",
+      "severity": "Medium",
+      "symptoms": [
+        "White powdery growth on leaves",
+        "Affected leaves turn yellow",
+        "Premature defoliation"
+      ],
+      "causes": [
+        "Fungus Leveillula taurica",
+        "Dry weather with moderate temperature",
+        "High crop density"
+      ],
+      "prevention": [
+        "Wide spacing between plants",
+        "Avoid late season irrigation",
+        "Remove infected plant parts"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Sulfur Dust",
+          "description": "25 kg/hectare at first sign"
+        },
+        {
+          "name": "Baking Soda",
+          "description": "10g/liter + wetting agent spray"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Hexaconazole 5 SC",
+          "description": "2ml/liter foliar spray"
+        },
+        {
+          "name": "Dinocap 48 EC",
+          "description": "1ml/liter spray"
+        }
+      ]
+    },
+    {
+      "id": "cotton_target_spot",
+      "disease_name": "Cotton Target Spot",
+      "crop_type": "Kapas (Cotton)",
+      "severity": "Medium",
+      "symptoms": [
+        "Circular brown spots with concentric rings (target pattern)",
+        "Spots merge causing large dead areas",
+        "Premature leaf drop"
+      ],
+      "causes": [
+        "Fungus Corynespora cassiicola",
+        "Warm humid conditions",
+        "Dense canopy"
+      ],
+      "prevention": [
+        "Wider planting distance",
+        "Good ventilation",
+        "Reduce humidity by drip irrigation"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Neem Oil Spray",
+          "description": "5ml/liter spray every 10 days"
+        },
+        {
+          "name": "Trichoderma Spray",
+          "description": "5g/liter soil drench + foliar spray"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Azoxystrobin 23 SC",
+          "description": "1ml/liter preventive spray"
+        },
+        {
+          "name": "Carbendazim",
+          "description": "1g/liter foliar spray"
+        }
+      ]
+    },
+    {
+      "id": "healthy_cotton",
+      "disease_name": "Healthy Cotton",
+      "crop_type": "Kapas (Cotton)",
+      "severity": "None",
+      "symptoms": [],
+      "causes": [],
+      "prevention": [
+        "Scout weekly",
+        "Balanced fertilization",
+        "Timely irrigation"
+      ],
+      "organic_treatment": [],
+      "chemical_treatment": []
+    },
+    {
+      "id": "diseased_cucumber",
+      "disease_name": "Cucumber Disease",
+      "crop_type": "Kheera (Cucumber)",
+      "severity": "Medium",
+      "symptoms": [
+        "Yellow or brown spots on leaves",
+        "Wilting and stunting",
+        "Mosaic patterns on leaves"
+      ],
+      "causes": [
+        "Various fungal/viral pathogens",
+        "Insect vectors",
+        "Poor drainage"
+      ],
+      "prevention": [
+        "Use certified seeds",
+        "Control whitefly/aphids",
+        "Avoid waterlogging"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Neem Oil",
+          "description": "5ml/liter spray every 7-10 days"
+        },
+        {
+          "name": "Copper Spray",
+          "description": "Bordeaux 1% mixture spray"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Mancozeb 75 WP",
+          "description": "2.5g/liter spray"
+        },
+        {
+          "name": "Carbendazim",
+          "description": "1g/liter for fungal diseases"
+        }
+      ]
+    },
+    {
+      "id": "healthy_cucumber",
+      "disease_name": "Healthy Cucumber",
+      "crop_type": "Kheera (Cucumber)",
+      "severity": "None",
+      "symptoms": [],
+      "causes": [],
+      "prevention": [
+        "Regular scouting",
+        "Good field hygiene"
+      ],
+      "organic_treatment": [],
+      "chemical_treatment": []
+    },
+    {
+      "id": "diseased_rice",
+      "disease_name": "Rice Disease",
+      "crop_type": "Chawal (Rice)",
+      "severity": "High",
+      "symptoms": [
+        "Brown spots or lesions on leaves",
+        "Discoloration of grains",
+        "Wilting and stunting"
+      ],
+      "causes": [
+        "Fungal or bacterial infection",
+        "High humidity in paddy fields",
+        "Nitrogen imbalance"
+      ],
+      "prevention": [
+        "Balanced NPK (especially reduce N)",
+        "Drain fields periodically",
+        "Use certified seeds"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Trichoderma Seed Treatment",
+          "description": "4g Trichoderma per kg seed"
+        },
+        {
+          "name": "Pseudomonas fluorescens",
+          "description": "Seed treatment + soil drench"
+        },
+        {
+          "name": "Neem Cake",
+          "description": "Apply 250 kg/hectare in nursery"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Tricyclazole 75 WP",
+          "description": "0.6g/liter spray for blast disease"
+        },
+        {
+          "name": "Propiconazole 25 EC",
+          "description": "1ml/liter for sheath blight"
+        },
+        {
+          "name": "Carbendazim 50 WP",
+          "description": "1g/liter broad spectrum"
+        }
+      ]
+    },
+    {
+      "id": "healthy_rice",
+      "disease_name": "Healthy Rice",
+      "crop_type": "Chawal (Rice)",
+      "severity": "None",
+      "symptoms": [],
+      "causes": [],
+      "prevention": [
+        "Regular field monitoring",
+        "Balanced fertilization",
+        "Proper water management"
+      ],
+      "organic_treatment": [],
+      "chemical_treatment": []
+    },
+    {
+      "id": "grape_black_rot",
       "disease_name": "Grape Black Rot",
-      "model_labels": [
-        "grape black rot"
+      "crop_type": "Angoor (Grape)",
+      "severity": "Very High",
+      "symptoms": [
+        "Brown circular lesions on leaves",
+        "Tan centers with dark borders",
+        "Fruit shrinks to black mummies"
       ],
-      "crop_type": "Grape",
-      "severity_default": "HIGH",
-      "description": {
-        "en": "Grape Black Rot caused by Guignardia bidwellii causes fruit and leaf lesions. A major disease in Indian vineyards, especially in Maharashtra (Nashik region)."
-      },
-      "common_in": [
-        "Vineyards in Nashik, Karnataka",
-        "Warm wet seasons"
+      "causes": [
+        "Fungus Guignardia bidwellii",
+        "Warm wet weather (24-30°C)",
+        "Spring rainfall"
       ],
-      "symptoms": {
-        "en": [
-          "Small reddish-brown circular spots on leaves",
-          "Fruit develops reddish spots, shrivels to hard black mummy",
-          "Lesions on shoots with dark margins",
-          "Berries completely lost in severe infection"
-        ]
-      },
-      "causes": {
-        "en": [
-          "Fungal infection through rain splash",
-          "Warm wet weather during berry development",
-          "Mummified fruit as primary inoculum source"
-        ]
-      },
-      "prevention_tips": {
-        "en": [
-          "Remove all mummified fruit from vine and ground",
-          "Prune for good air circulation",
-          "Apply protective fungicide before rain",
-          "Destroy prunings \u2014 do not leave in vineyard"
-        ]
-      },
-      "organic_treatments": {
-        "en": [
-          {
-            "title": "Bordeaux Mixture",
-            "description": "Apply 1% Bordeaux mixture at bud break and repeat every 10-14 days through berry development."
-          },
-          {
-            "title": "Remove Mummies",
-            "description": "Remove all mummified berries from vine before new season. Major source of infection."
-          },
-          {
-            "title": "Sulfur Dust",
-            "description": "Apply sulfur dust 20-25kg per hectare. Reduces spore germination."
-          }
-        ]
-      },
-      "chemical_treatments": {
-        "en": [
-          {
-            "title": "Myclobutanil 10WP",
-            "description": "Apply 1g per litre water. Excellent systemic fungicide for grape diseases. Apply preventively."
-          },
-          {
-            "title": "Mancozeb 75WP",
-            "description": "Mix 2.5g per litre water. Apply every 10-14 days as contact protectant."
-          },
-          {
-            "title": "Fludioxonil + Cyprodinil",
-            "description": "Apply as per label. Premium combination fungicide for grape disease management."
-          }
-        ]
-      }
+      "prevention": [
+        "Remove mummified berries",
+        "Good canopy management",
+        "Early season fungicide program"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Bordeaux Mixture",
+          "description": "1% spray from bud break every 10-14 days"
+        },
+        {
+          "name": "Copper Oxychloride",
+          "description": "3g/liter spray"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Mancozeb 75 WP",
+          "description": "2.5g/liter, spray from pre-bloom"
+        },
+        {
+          "name": "Myclobutanil",
+          "description": "1g/liter systemic fungicide"
+        }
+      ]
     },
     {
-      "id": 23,
-      "disease_name": "Orange Citrus Greening",
-      "model_labels": [
-        "orange haunglongbing citrus greening"
+      "id": "grape_esca_black_measles",
+      "disease_name": "Grape Esca (Black Measles)",
+      "crop_type": "Angoor (Grape)",
+      "severity": "Very High",
+      "symptoms": [
+        "Tiger-stripe pattern on leaves",
+        "Interveinal necrosis",
+        "Berries show dark spots and rot"
       ],
-      "crop_type": "Orange",
-      "severity_default": "HIGH",
-      "description": {
-        "en": "Citrus Greening (Huanglongbing/HLB) caused by Candidatus Liberibacter asiaticus is the most devastating citrus disease worldwide. Transmitted by Asian citrus psyllid. No cure exists."
-      },
-      "common_in": [
-        "Citrus orchards in Maharashtra, Karnataka, AP",
-        "Nagpur orange belt"
+      "causes": [
+        "Wood-rotting fungi complex",
+        "Pruning wounds",
+        "Hot dry summers"
       ],
-      "symptoms": {
-        "en": [
-          "Asymmetric yellowing of leaves (blotchy mottle)",
-          "Leaves small, leathery and upright",
-          "Fruit remains green, misshapen and bitter",
-          "Tree slowly declines over years",
-          "Shoots die back from tips"
-        ]
-      },
-      "causes": {
-        "en": [
-          "Bacterial infection transmitted by Asian citrus psyllid (Diaphorina citri)",
-          "Grafting from infected trees",
-          "No other transmission method"
-        ]
-      },
-      "prevention_tips": {
-        "en": [
-          "Use certified disease-free grafted plants only",
-          "Control citrus psyllid population rigorously",
-          "Remove and destroy infected trees immediately",
-          "Do not bring planting material from unknown sources",
-          "Survey orchard monthly for psyllid and symptoms"
-        ]
-      },
-      "organic_treatments": {
-        "en": [
-          {
-            "title": "Remove Infected Trees",
-            "description": "Remove and destroy infected trees immediately. They cannot be cured and will infect neighbors."
-          },
-          {
-            "title": "Neem Oil for Psyllid",
-            "description": "Spray 3% neem oil every 5-7 days to control psyllid population. Focus on new flush growth where psyllid breeds."
-          },
-          {
-            "title": "Sticky Yellow Traps",
-            "description": "Install yellow sticky traps to monitor and trap adult psyllids. 20-25 traps per acre."
-          }
-        ]
-      },
-      "chemical_treatments": {
-        "en": [
-          {
-            "title": "Imidacloprid 17.8SL for Psyllid",
-            "description": "Apply 0.5ml per litre water. Spray on new flush to kill psyllids before they transmit disease."
-          },
-          {
-            "title": "Dimethoate 30EC",
-            "description": "Mix 2ml per litre water. Apply every 2-3 weeks during flush growth. Controls psyllid adults and nymphs."
-          },
-          {
-            "title": "No Cure for Tree",
-            "description": "No chemical cures HLB. Management focuses entirely on killing the psyllid vector."
-          }
-        ]
-      }
+      "prevention": [
+        "Protect pruning wounds with sealant",
+        "Use clean pruning tools",
+        "Avoid large pruning cuts"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Trichoderma paste on wounds",
+          "description": "Apply after each pruning cut"
+        },
+        {
+          "name": "Garlic extract",
+          "description": "Trunk injection of garlic extract solution"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Fosetyl-Al",
+          "description": "2g/liter spray for prevention"
+        },
+        {
+          "name": "Thiophanate-methyl",
+          "description": "Apply to pruning wounds"
+        }
+      ]
     },
     {
-      "id": 24,
-      "disease_name": "Pepper Bacterial Spot",
-      "model_labels": [
-        "pepper bell bacterial spot"
+      "id": "grape_leaf_blight",
+      "disease_name": "Grape Leaf Blight",
+      "crop_type": "Angoor (Grape)",
+      "severity": "High",
+      "symptoms": [
+        "Brown irregular lesions on leaves",
+        "Lesions with dark borders",
+        "Premature defoliation"
       ],
-      "crop_type": "Bell Pepper",
-      "severity_default": "HIGH",
-      "description": {
-        "en": "Bacterial Spot of pepper caused by Xanthomonas euvesicatoria causes serious leaf drop and fruit lesions. Common in capsicum growing regions of India."
-      },
-      "common_in": [
-        "Capsicum/pepper fields",
-        "Karnataka, HP, Maharashtra"
+      "causes": [
+        "Isariopsis leaf spot fungus",
+        "High humidity during growing season"
       ],
-      "symptoms": {
-        "en": [
-          "Small water-soaked spots on leaves turning dark brown",
-          "Yellow halo surrounding spots",
-          "Raised scabby spots on fruit",
-          "Severe defoliation in wet weather"
-        ]
-      },
-      "causes": {
-        "en": [
-          "Bacterial infection through leaf pores and wounds",
-          "Warm wet weather",
-          "Seed-borne bacteria",
-          "Spread by rain splash and tools"
-        ]
-      },
-      "prevention_tips": {
-        "en": [
-          "Use certified disease-free seeds",
-          "Avoid overhead irrigation",
-          "Rotate crops for 2-3 years",
-          "Sanitize tools regularly",
-          "Remove infected plants promptly"
-        ]
-      },
-      "organic_treatments": {
-        "en": [
-          {
-            "title": "Copper Hydroxide Spray",
-            "description": "Apply 3g per litre water every 7-10 days. Most effective organic option for bacterial diseases."
-          },
-          {
-            "title": "Neem-Garlic Spray",
-            "description": "Mix 2% neem oil + 2% garlic extract. Spray every 7 days for antibacterial effect."
-          },
-          {
-            "title": "Remove Infected Leaves",
-            "description": "Remove spotted leaves and burn. Wash hands with soap after handling infected material."
-          }
-        ]
-      },
-      "chemical_treatments": {
-        "en": [
-          {
-            "title": "Copper Oxychloride 50WP",
-            "description": "Mix 3g per litre water. Apply every 7-10 days. Standard treatment for bacterial spot."
-          },
-          {
-            "title": "Streptomycin + Copper",
-            "description": "500ppm streptomycin + 0.3% copper oxychloride. Apply every 10 days. Effective combination."
-          },
-          {
-            "title": "Kasugamycin 3SL",
-            "description": "Apply 2ml per litre. Antibiotic mode of action. 2-3 applications needed."
-          }
-        ]
-      }
+      "prevention": [
+        "Good canopy management",
+        "Avoid overhead irrigation"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Copper spray",
+          "description": "Bordeaux 1% every 14 days"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Mancozeb",
+          "description": "2.5g/liter spray"
+        }
+      ]
     },
     {
-      "id": 25,
+      "id": "healthy_grape",
+      "disease_name": "Healthy Grape",
+      "crop_type": "Angoor (Grape)",
+      "severity": "None",
+      "symptoms": [],
+      "causes": [],
+      "prevention": [
+        "Regular canopy management",
+        "Balanced fertilization"
+      ],
+      "organic_treatment": [],
+      "chemical_treatment": []
+    },
+    {
+      "id": "groundnut_early_leaf_spot",
+      "disease_name": "Early Leaf Spot (Groundnut)",
+      "crop_type": "Moongphali (Groundnut)",
+      "severity": "High",
+      "symptoms": [
+        "Circular brown spots with yellow halo",
+        "Spots appear 4-6 weeks after sowing",
+        "Severe defoliation in late season"
+      ],
+      "causes": [
+        "Fungus Cercospora arachidicola",
+        "Warm humid conditions (25-30°C)",
+        "Rainy season"
+      ],
+      "prevention": [
+        "Use tolerant varieties like TAG-24, ICGV-86031",
+        "Crop rotation (2-3 years)",
+        "Timely sowing"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Carbendazim + Mancozeb",
+          "description": "Seed treatment @ 2g+3g per kg seed"
+        },
+        {
+          "name": "Neem-based spray",
+          "description": "NSKE 5%, spray at 30 DAS"
+        },
+        {
+          "name": "Trichoderma viride",
+          "description": "Seed treatment 4g/kg + soil application"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Chlorothalonil 75 WP",
+          "description": "2g/liter spray every 10-14 days"
+        },
+        {
+          "name": "Mancozeb 75 WP",
+          "description": "2.5g/liter spray from 30 DAS"
+        },
+        {
+          "name": "Propiconazole 25 EC",
+          "description": "1ml/liter at first sign of disease"
+        }
+      ]
+    },
+    {
+      "id": "groundnut_late_leaf_spot",
+      "disease_name": "Late Leaf Spot (Groundnut)",
+      "crop_type": "Moongphali (Groundnut)",
+      "severity": "Very High",
+      "symptoms": [
+        "Circular dark brown/black spots",
+        "Appears 6-8 weeks after sowing",
+        "More severe than early leaf spot"
+      ],
+      "causes": [
+        "Fungus Phaeoisariopsis personata",
+        "High humidity and temperature 25-28°C",
+        "Late in growing season"
+      ],
+      "prevention": [
+        "Early sowing",
+        "Resistant varieties",
+        "Adequate plant spacing"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Sulfur 80 WP",
+          "description": "3g/liter spray every 10 days"
+        },
+        {
+          "name": "Copper Oxychloride",
+          "description": "3g/liter spray fortnightly"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Propiconazole 25 EC",
+          "description": "1ml/liter - 2-3 sprays from 45 DAS"
+        },
+        {
+          "name": "Tebuconazole 25 EC",
+          "description": "1ml/liter at onset"
+        },
+        {
+          "name": "Carbendazim 50 WP",
+          "description": "1g/liter spray"
+        }
+      ]
+    },
+    {
+      "id": "groundnut_nutrition_deficiency",
+      "disease_name": "Groundnut Nutrition Deficiency",
+      "crop_type": "Moongphali (Groundnut)",
+      "severity": "Medium",
+      "symptoms": [
+        "Yellowing between leaf veins",
+        "Purple or red discoloration",
+        "Stunted growth"
+      ],
+      "causes": [
+        "Iron/Zinc/Manganese deficiency",
+        "High pH soil",
+        "Waterlogged conditions"
+      ],
+      "prevention": [
+        "Soil testing before sowing",
+        "Gypsum application @ 500kg/ha",
+        "Iron sulfate spray"
+      ],
+      "organic_treatment": [
+        {
+          "name": "FeSO4 Spray",
+          "description": "0.5% iron sulfate spray for iron deficiency"
+        },
+        {
+          "name": "Zinc Sulfate",
+          "description": "25kg/ha soil application or 0.5% spray"
+        },
+        {
+          "name": "Compost Application",
+          "description": "5 tonnes/ha farmyard manure"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Ferrous Sulfate 0.5%",
+          "description": "Foliar spray 2-3 times for iron chlorosis"
+        },
+        {
+          "name": "Zinc Sulfate 21%",
+          "description": "Soil application 25 kg/ha before sowing"
+        }
+      ]
+    },
+    {
+      "id": "groundnut_rust",
+      "disease_name": "Groundnut Rust",
+      "crop_type": "Moongphali (Groundnut)",
+      "severity": "Very High",
+      "symptoms": [
+        "Orange-brown pustules on leaf undersides",
+        "Yellow flecks on upper surface",
+        "Complete defoliation in severe cases"
+      ],
+      "causes": [
+        "Fungus Puccinia arachidis",
+        "Humid conditions (25-30°C)",
+        "Rainy weather"
+      ],
+      "prevention": [
+        "Early sowing (kharif)",
+        "Resistant varieties like ICGV-87846",
+        "Wider spacing"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Sulfur Dust",
+          "description": "25 kg/hectare dusting every 10 days"
+        },
+        {
+          "name": "NSKE 5%",
+          "description": "Neem Seed Kernel Extract spray weekly"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Mancozeb 75 WP",
+          "description": "2.5g/liter, first spray at 45 DAS"
+        },
+        {
+          "name": "Chlorothalonil 75 WP",
+          "description": "2g/liter spray every 10 days"
+        },
+        {
+          "name": "Propiconazole 25 EC",
+          "description": "1ml/liter - very effective systemic"
+        }
+      ]
+    },
+    {
+      "id": "healthy_groundnut",
+      "disease_name": "Healthy Groundnut",
+      "crop_type": "Moongphali (Groundnut)",
+      "severity": "None",
+      "symptoms": [],
+      "causes": [],
+      "prevention": [
+        "Weekly field monitoring",
+        "Balanced NPK fertilization"
+      ],
+      "organic_treatment": [],
+      "chemical_treatment": []
+    },
+    {
+      "id": "guava_anthracnose",
+      "disease_name": "Guava Anthracnose",
+      "crop_type": "Amrood (Guava)",
+      "severity": "High",
+      "symptoms": [
+        "Dark sunken spots on fruit",
+        "Spots enlarge with pink spore masses",
+        "Post-harvest fruit rot"
+      ],
+      "causes": [
+        "Fungus Colletotrichum gloeosporioides",
+        "Warm humid conditions",
+        "Wounds during harvest"
+      ],
+      "prevention": [
+        "Avoid fruit injuries",
+        "Proper post-harvest handling",
+        "Remove fallen fruit"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Bordeaux Mixture",
+          "description": "1% spray at fruit development stage"
+        },
+        {
+          "name": "Garlic Extract",
+          "description": "5% spray before harvest"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Carbendazim 50 WP",
+          "description": "1g/liter spray + post-harvest dip"
+        },
+        {
+          "name": "Mancozeb 75 WP",
+          "description": "2.5g/liter spray during fruit set"
+        }
+      ]
+    },
+    {
+      "id": "guava_fruit_fly",
+      "disease_name": "Guava Fruit Fly",
+      "crop_type": "Amrood (Guava)",
+      "severity": "Very High",
+      "symptoms": [
+        "Small puncture marks on fruit",
+        "Fruit rot from inside",
+        "Maggots inside fruit",
+        "Premature fruit drop"
+      ],
+      "causes": [
+        "Bactrocera dorsalis fruit fly",
+        "Female lays eggs in developing fruits",
+        "Warm weather"
+      ],
+      "prevention": [
+        "Fruit bagging with paper/polythene",
+        "Pheromone traps (5-8/acre)",
+        "Remove and destroy fallen fruit"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Protein Hydrolysate Bait Spray",
+          "description": "Mix with Malathion, spray on tree trunks"
+        },
+        {
+          "name": "Pheromone Traps",
+          "description": "Methyl eugenol traps @ 8-10/acre"
+        },
+        {
+          "name": "Neem Oil",
+          "description": "3ml/liter spray on fruits before maturity"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Malathion 50 EC",
+          "description": "2ml/liter + protein bait spray"
+        },
+        {
+          "name": "Spinosad 45 SC",
+          "description": "0.3ml/liter bait spray"
+        }
+      ]
+    },
+    {
+      "id": "healthy_guava",
+      "disease_name": "Healthy Guava",
+      "crop_type": "Amrood (Guava)",
+      "severity": "None",
+      "symptoms": [],
+      "causes": [],
+      "prevention": [
+        "Regular monitoring",
+        "Fruit bagging"
+      ],
+      "organic_treatment": [],
+      "chemical_treatment": []
+    },
+    {
+      "id": "lemon_anthracnose",
+      "disease_name": "Lemon Anthracnose",
+      "crop_type": "Nimbu (Lemon)",
+      "severity": "High",
+      "symptoms": [
+        "Dark spots on fruit and leaves",
+        "Spots with pink spore masses in humid weather",
+        "Twig dieback"
+      ],
+      "causes": [
+        "Colletotrichum gloeosporioides",
+        "Warm wet conditions"
+      ],
+      "prevention": [
+        "Prune dead branches",
+        "Good canopy management"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Bordeaux Mixture",
+          "description": "1% spray every 15 days during rainy season"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Carbendazim",
+          "description": "1g/liter spray"
+        },
+        {
+          "name": "Copper Oxychloride",
+          "description": "3g/liter spray"
+        }
+      ]
+    },
+    {
+      "id": "lemon_bacterial_blight",
+      "disease_name": "Lemon Bacterial Blight",
+      "crop_type": "Nimbu (Lemon)",
+      "severity": "High",
+      "symptoms": [
+        "Water-soaked angular spots on leaves",
+        "Yellow halos around spots",
+        "Twig dieback"
+      ],
+      "causes": [
+        "Xanthomonas bacteria",
+        "Warm rainy weather",
+        "Insect wounds"
+      ],
+      "prevention": [
+        "Prune infected parts",
+        "Copper sprays preventively"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Copper Hydroxide",
+          "description": "3g/liter spray fortnightly"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Streptomycin + Copper",
+          "description": "0.3g + 3g per liter"
+        }
+      ]
+    },
+    {
+      "id": "lemon_citrus_canker",
+      "disease_name": "Citrus Canker",
+      "crop_type": "Nimbu (Lemon)",
+      "severity": "Very High",
+      "symptoms": [
+        "Raised corky lesions on leaves, twigs, and fruit",
+        "Yellow halo around lesions",
+        "Premature leaf drop and fruit drop"
+      ],
+      "causes": [
+        "Bacteria Xanthomonas axonopodis",
+        "Wind-driven rain",
+        "Leaf miner wounds"
+      ],
+      "prevention": [
+        "Use certified disease-free plants",
+        "Control citrus leafminer",
+        "Copper spray prophylactically"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Copper Oxychloride 50 WP",
+          "description": "3g/liter spray every 15 days"
+        },
+        {
+          "name": "Bordeaux Mixture 1%",
+          "description": "Spray after flush emergence"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Streptomycin Sulfate 0.1%",
+          "description": "Spray 3-4 times per flush"
+        },
+        {
+          "name": "Copper Hydroxide",
+          "description": "3g/liter, highly effective preventive"
+        }
+      ]
+    },
+    {
+      "id": "lemon_curl_virus",
+      "disease_name": "Lemon Leaf Curl Virus",
+      "crop_type": "Nimbu (Lemon)",
+      "severity": "High",
+      "symptoms": [
+        "Upward or downward curling of leaves",
+        "Small distorted leaves",
+        "Stunted growth"
+      ],
+      "causes": [
+        "Virus transmitted by whitefly",
+        "Tristeza virus in severe cases"
+      ],
+      "prevention": [
+        "Control whitefly with yellow sticky traps",
+        "Remove infected plants",
+        "Use virus-free nursery plants"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Neem Oil",
+          "description": "5ml/liter to control whitefly vector"
+        },
+        {
+          "name": "Yellow Sticky Traps",
+          "description": "Place 5 traps per 200 sq.m"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Imidacloprid 17.8 SL",
+          "description": "0.5ml/liter spray for whitefly control"
+        },
+        {
+          "name": "Thiamethoxam 25 WG",
+          "description": "0.3g/liter spray"
+        }
+      ]
+    },
+    {
+      "id": "lemon_deficiency",
+      "disease_name": "Lemon Nutrient Deficiency",
+      "crop_type": "Nimbu (Lemon)",
+      "severity": "Medium",
+      "symptoms": [
+        "Yellowing between leaf veins (chlorosis)",
+        "Small pale leaves",
+        "Reduced fruit size"
+      ],
+      "causes": [
+        "Iron/Zinc deficiency",
+        "High pH soil",
+        "Waterlogging"
+      ],
+      "prevention": [
+        "Soil pH 6.0-7.0",
+        "Regular micronutrient application"
+      ],
+      "organic_treatment": [
+        {
+          "name": "FeSO4 0.5%",
+          "description": "Foliar spray for iron chlorosis"
+        },
+        {
+          "name": "Zinc Sulfate 0.5%",
+          "description": "Foliar spray for zinc deficiency"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Chelated Iron",
+          "description": "Soil drench or foliar spray"
+        },
+        {
+          "name": "Multi-micronutrient",
+          "description": "Foliar spray as per label"
+        }
+      ]
+    },
+    {
+      "id": "lemon_dry_leaf",
+      "disease_name": "Lemon Dry Leaf",
+      "crop_type": "Nimbu (Lemon)",
+      "severity": "Medium",
+      "symptoms": [
+        "Leaves dry and drop prematurely",
+        "Twig tip dieback",
+        "Browning from leaf margins"
+      ],
+      "causes": [
+        "Water stress",
+        "Salt toxicity",
+        "Root damage"
+      ],
+      "prevention": [
+        "Adequate irrigation",
+        "Proper drainage",
+        "Avoid salt accumulation"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Mulching",
+          "description": "Apply organic mulch to conserve moisture"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Antitranspirant spray",
+          "description": "Kaolin clay or silicone-based spray"
+        }
+      ]
+    },
+    {
+      "id": "lemon_sooty_mould",
+      "disease_name": "Lemon Sooty Mould",
+      "crop_type": "Nimbu (Lemon)",
+      "severity": "Medium",
+      "symptoms": [
+        "Black powdery coating on leaves and fruit",
+        "Coating wipes off easily",
+        "Reduced photosynthesis"
+      ],
+      "causes": [
+        "Fungus growing on honeydew from aphids/scales/whitefly",
+        "Secondary problem after insect infestation"
+      ],
+      "prevention": [
+        "Control sucking insects",
+        "Reduce honeydew production"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Starch Spray",
+          "description": "1% starch solution removes sooty mold"
+        },
+        {
+          "name": "Neem Oil",
+          "description": "5ml/liter to control underlying insects"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Copper Oxychloride",
+          "description": "3g/liter spray"
+        },
+        {
+          "name": "Insecticide for pests first",
+          "description": "Control mealybug/scale first with Chlorpyrifos"
+        }
+      ]
+    },
+    {
+      "id": "lemon_spider_mites",
+      "disease_name": "Lemon Spider Mites",
+      "crop_type": "Nimbu (Lemon)",
+      "severity": "Medium",
+      "symptoms": [
+        "Tiny dots/stippling on leaves",
+        "Bronze or silvery discoloration",
+        "Fine webbing on leaves"
+      ],
+      "causes": [
+        "Panonychus citri mites",
+        "Hot dry weather",
+        "Dusty field conditions"
+      ],
+      "prevention": [
+        "Maintain field hygiene",
+        "Sprinkle water to increase humidity",
+        "Conserve predatory mites"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Neem Oil 5ml/liter",
+          "description": "Spray on leaf undersides thoroughly"
+        },
+        {
+          "name": "Sulfur Dust 25kg/ha",
+          "description": "Effective in hot dry weather"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Dicofol 18.5 EC",
+          "description": "2ml/liter spray"
+        },
+        {
+          "name": "Propargite 57 EC",
+          "description": "2ml/liter specific miticide"
+        }
+      ]
+    },
+    {
+      "id": "healthy_lemon",
+      "disease_name": "Healthy Lemon",
+      "crop_type": "Nimbu (Lemon)",
+      "severity": "None",
+      "symptoms": [],
+      "causes": [],
+      "prevention": [
+        "Regular monitoring"
+      ],
+      "organic_treatment": [],
+      "chemical_treatment": []
+    },
+    {
+      "id": "peach_bacterial_spot",
+      "disease_name": "Peach Bacterial Spot",
+      "crop_type": "Aadoo (Peach)",
+      "severity": "High",
+      "symptoms": [
+        "Water-soaked spots on leaves that turn purple-brown",
+        "Shot-hole appearance as spots fall out",
+        "Fruit with dark sunken spots"
+      ],
+      "causes": [
+        "Xanthomonas arboricola bacteria",
+        "Warm wet spring weather"
+      ],
+      "prevention": [
+        "Resistant varieties",
+        "Copper sprays before rain"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Copper Hydroxide",
+          "description": "3g/liter spray preventively"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Oxytetracycline",
+          "description": "Apply at shuck split stage"
+        },
+        {
+          "name": "Copper + Mancozeb",
+          "description": "3g + 2.5g per liter"
+        }
+      ]
+    },
+    {
+      "id": "healthy_peach",
+      "disease_name": "Healthy Peach",
+      "crop_type": "Aadoo (Peach)",
+      "severity": "None",
+      "symptoms": [],
+      "causes": [],
+      "prevention": [
+        "Regular monitoring"
+      ],
+      "organic_treatment": [],
+      "chemical_treatment": []
+    },
+    {
+      "id": "potato_early_blight",
+      "disease_name": "Aalu Early Blight",
+      "crop_type": "Aalu (Potato)",
+      "severity": "High",
+      "symptoms": [
+        "Dark brown concentric ring lesions (target board pattern)",
+        "Yellow area around lesions",
+        "Lower leaves affected first"
+      ],
+      "causes": [
+        "Fungus Alternaria solani",
+        "Warm temperatures (25-30°C)",
+        "High humidity after dry periods"
+      ],
+      "prevention": [
+        "Certified disease-free seed tubers",
+        "Crop rotation every 3 years",
+        "Adequate potassium fertilization"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Trichoderma Seed Treatment",
+          "description": "Treat seed pieces with Trichoderma viride 4g/kg"
+        },
+        {
+          "name": "Copper Oxychloride",
+          "description": "3g/liter spray fortnightly"
+        },
+        {
+          "name": "Neem Oil",
+          "description": "5ml/liter spray at first sign"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Mancozeb 75 WP",
+          "description": "2.5g/liter, spray every 7-10 days"
+        },
+        {
+          "name": "Chlorothalonil 75 WP",
+          "description": "2g/liter, preventive spray"
+        },
+        {
+          "name": "Difenoconazole 25 EC",
+          "description": "0.5ml/liter, systemic curative"
+        }
+      ]
+    },
+    {
+      "id": "potato_late_blight",
+      "disease_name": "Aalu Late Blight",
+      "crop_type": "Aalu (Potato)",
+      "severity": "Very High",
+      "symptoms": [
+        "Dark water-soaked lesions on leaves",
+        "White fungal growth on underside in humid weather",
+        "Tuber rot - brown internal rot"
+      ],
+      "causes": [
+        "Oomycete Phytophthora infestans",
+        "Cool wet weather (10-20°C)",
+        "Highly contagious - spreads rapidly"
+      ],
+      "prevention": [
+        "Plant certified disease-free tubers",
+        "Hilling up soil around plants",
+        "Avoid overhead irrigation"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Copper Oxychloride 50 WP",
+          "description": "3g/liter spray at 7-day intervals"
+        },
+        {
+          "name": "Bordeaux Mixture 1%",
+          "description": "Preventive spray before monsoon"
+        },
+        {
+          "name": "Destroy infected plants",
+          "description": "Remove and burn infected plants immediately"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Metalaxyl + Mancozeb (Ridomil Gold)",
+          "description": "2.5g/liter spray every 7 days"
+        },
+        {
+          "name": "Cymoxanil 8 + Mancozeb 64 WP",
+          "description": "3g/liter at first appearance"
+        },
+        {
+          "name": "Famoxadone + Cymoxanil",
+          "description": "0.6g/liter, highly effective systemic"
+        }
+      ]
+    },
+    {
+      "id": "healthy_potato",
+      "disease_name": "Healthy Potato",
+      "crop_type": "Aalu (Potato)",
+      "severity": "None",
+      "symptoms": [],
+      "causes": [],
+      "prevention": [
+        "Use certified seeds",
+        "Regular field scouting"
+      ],
+      "organic_treatment": [],
+      "chemical_treatment": []
+    },
+    {
+      "id": "pumpkin_bacterial_leaf_spot",
+      "disease_name": "Pumpkin Bacterial Leaf Spot",
+      "crop_type": "Kaddu (Pumpkin)",
+      "severity": "Medium",
+      "symptoms": [
+        "Angular water-soaked spots",
+        "Spots turn brown",
+        "Yellow margins around spots"
+      ],
+      "causes": [
+        "Pseudomonas syringae bacteria",
+        "Wet warm weather"
+      ],
+      "prevention": [
+        "Avoid overhead irrigation",
+        "Crop rotation"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Copper spray",
+          "description": "Bordeaux 1%, spray every 10-15 days"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Copper Hydroxide",
+          "description": "3g/liter spray"
+        }
+      ]
+    },
+    {
+      "id": "pumpkin_downy_mildew",
+      "disease_name": "Pumpkin Downy Mildew",
+      "crop_type": "Kaddu (Pumpkin)",
+      "severity": "High",
+      "symptoms": [
+        "Yellow angular spots on upper leaf surface",
+        "Purple/gray mold on underside",
+        "Rapid defoliation"
+      ],
+      "causes": [
+        "Pseudoperonospora cubensis",
+        "Humid weather"
+      ],
+      "prevention": [
+        "Good air circulation",
+        "Avoid excess irrigation"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Copper Oxychloride",
+          "description": "3g/liter spray preventively"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Metalaxyl + Mancozeb",
+          "description": "2.5g/liter spray"
+        },
+        {
+          "name": "Cymoxanil",
+          "description": "At first appearance"
+        }
+      ]
+    },
+    {
+      "id": "pumpkin_mosaic_disease",
+      "disease_name": "Pumpkin Mosaic Virus",
+      "crop_type": "Kaddu (Pumpkin)",
+      "severity": "High",
+      "symptoms": [
+        "Mosaic (light/dark green mottling) on leaves",
+        "Leaf distortion and curling",
+        "Stunted growth"
+      ],
+      "causes": [
+        "CMV or WMV virus",
+        "Aphid transmission",
+        "Infected seeds"
+      ],
+      "prevention": [
+        "Control aphids with neem oil",
+        "Use virus-free seeds",
+        "Remove infected plants"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Neem Oil 5ml/liter",
+          "description": "For aphid vector control"
+        },
+        {
+          "name": "Yellow Sticky Traps",
+          "description": "5/200 sq.m for aphid monitoring"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Imidacloprid 0.5ml/liter",
+          "description": "For aphid control"
+        },
+        {
+          "name": "No cure for virus itself",
+          "description": "Remove and destroy infected plants"
+        }
+      ]
+    },
+    {
+      "id": "pumpkin_powdery_mildew",
+      "disease_name": "Pumpkin Powdery Mildew",
+      "crop_type": "Kaddu (Pumpkin)",
+      "severity": "Medium",
+      "symptoms": [
+        "White powdery patches on leaves",
+        "Leaves turn yellow and dry",
+        "Premature defoliation"
+      ],
+      "causes": [
+        "Sphaerotheca fuliginea fungus",
+        "Warm dry weather with cool nights"
+      ],
+      "prevention": [
+        "Wider spacing",
+        "Reduce humidity"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Sulfur Dust 25kg/ha",
+          "description": "Apply at first sign"
+        },
+        {
+          "name": "Baking Soda 10g/liter",
+          "description": "Spray weekly"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Hexaconazole 5 EC",
+          "description": "2ml/liter spray"
+        },
+        {
+          "name": "Dinocap",
+          "description": "1ml/liter spray"
+        }
+      ]
+    },
+    {
+      "id": "healthy_pumpkin",
+      "disease_name": "Healthy Pumpkin",
+      "crop_type": "Kaddu (Pumpkin)",
+      "severity": "None",
+      "symptoms": [],
+      "causes": [],
+      "prevention": [],
+      "organic_treatment": [],
+      "chemical_treatment": []
+    },
+    {
+      "id": "strawberry_leaf_scorch",
       "disease_name": "Strawberry Leaf Scorch",
-      "model_labels": [
-        "strawberry leaf scorch"
-      ],
       "crop_type": "Strawberry",
-      "severity_default": "MEDIUM",
-      "description": {
-        "en": "Leaf Scorch caused by Diplocarpon earlianum is a common strawberry disease causing reddish-purple spots and leaf death. Reduces plant vigour and fruit production."
-      },
-      "common_in": [
-        "Strawberry plantations",
-        "Mahabaleshwar, Himachal Pradesh"
+      "severity": "Medium",
+      "symptoms": [
+        "Small dark purple spots on leaves",
+        "Spots grow causing leaf to look scorched",
+        "Reddish leaf margins"
       ],
-      "symptoms": {
-        "en": [
-          "Irregular reddish-purple spots on leaf surface",
-          "Centers of spots turn light brown or gray",
-          "Leaves look scorched in severe cases",
-          "Spots do not have halos unlike other diseases"
-        ]
-      },
-      "causes": {
-        "en": [
-          "Fungal infection in wet conditions",
-          "Cool wet weather",
-          "Overhead irrigation wetting foliage",
-          "High planting density"
-        ]
-      },
-      "prevention_tips": {
-        "en": [
-          "Use drip irrigation \u2014 avoid wetting leaves",
-          "Remove infected leaves promptly",
-          "Improve air circulation by proper spacing",
-          "Plant certified disease-free runners"
-        ]
-      },
-      "organic_treatments": {
-        "en": [
-          {
-            "title": "Bordeaux Mixture",
-            "description": "Apply 0.5% Bordeaux mixture every 10-14 days during wet season."
-          },
-          {
-            "title": "Neem Oil",
-            "description": "Spray 2% neem oil solution weekly to slow disease spread."
-          },
-          {
-            "title": "Remove Infected Leaves",
-            "description": "Remove all infected leaves and burn. Significantly reduces spore load."
-          }
-        ]
-      },
-      "chemical_treatments": {
-        "en": [
-          {
-            "title": "Captan 50WP",
-            "description": "Apply 2g per litre water every 10 days. Most commonly recommended for strawberry leaf diseases."
-          },
-          {
-            "title": "Myclobutanil 10WP",
-            "description": "Apply 1g per litre for systemic control. 2-3 applications at 14-day intervals."
-          },
-          {
-            "title": "Thiophanate-methyl 70WP",
-            "description": "Apply 1g per litre for curative action when disease is already present."
-          }
-        ]
-      }
+      "causes": [
+        "Fungus Diplocarpon earliana",
+        "Warm humid weather",
+        "Dense planting"
+      ],
+      "prevention": [
+        "Adequate spacing",
+        "Drip irrigation instead of overhead"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Copper Spray",
+          "description": "Bordeaux 1%, spray at first sign"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Captan 50 WP",
+          "description": "2g/liter spray"
+        },
+        {
+          "name": "Myclobutanil",
+          "description": "1g/liter spray"
+        }
+      ]
+    },
+    {
+      "id": "healthy_strawberry",
+      "disease_name": "Healthy Strawberry",
+      "crop_type": "Strawberry",
+      "severity": "None",
+      "symptoms": [],
+      "causes": [],
+      "prevention": [],
+      "organic_treatment": [],
+      "chemical_treatment": []
+    },
+    {
+      "id": "sugarcane_bacterial_blight",
+      "disease_name": "Sugarcane Bacterial Blight",
+      "crop_type": "Ganna (Sugarcane)",
+      "severity": "High",
+      "symptoms": [
+        "Water-soaked cream to brown leaf streaks",
+        "Leaves dry from tip",
+        "Bloody rot in stalk"
+      ],
+      "causes": [
+        "Xanthomonas albilineans bacteria",
+        "Infected cuttings (setts)",
+        "Waterlogging"
+      ],
+      "prevention": [
+        "Hot water seed treatment (50°C for 2 hours)",
+        "Disease-free cuttings",
+        "Proper drainage"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Hot Water Treatment",
+          "description": "Sett treatment at 50°C for 2 hours before planting"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Carbendazim sett treatment",
+          "description": "Soak setts in 0.1% solution for 30 min"
+        }
+      ]
+    },
+    {
+      "id": "sugarcane_mosaic",
+      "disease_name": "Sugarcane Mosaic Virus",
+      "crop_type": "Ganna (Sugarcane)",
+      "severity": "High",
+      "symptoms": [
+        "Light and dark green mottling on leaves",
+        "Chlorotic streaks along leaf veins",
+        "Stunted growth"
+      ],
+      "causes": [
+        "Sugarcane mosaic virus (SCMV)",
+        "Aphid transmission",
+        "Infected setts"
+      ],
+      "prevention": [
+        "Disease-free planting material",
+        "Resistant varieties like CO-86032",
+        "Control aphids"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Neem Oil 5ml/liter",
+          "description": "For aphid vector control"
+        },
+        {
+          "name": "Remove infected clumps",
+          "description": "Rogue out infected plants immediately"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Imidacloprid",
+          "description": "0.5ml/liter for aphid vector control"
+        },
+        {
+          "name": "No chemical cure for virus",
+          "description": "Focus on vector control"
+        }
+      ]
+    },
+    {
+      "id": "sugarcane_red_rot",
+      "disease_name": "Sugarcane Red Rot",
+      "crop_type": "Ganna (Sugarcane)",
+      "severity": "Very High",
+      "symptoms": [
+        "Red discoloration inside stalk with white patches",
+        "Sour smell from affected stalks",
+        "Wilting of top leaves"
+      ],
+      "causes": [
+        "Fungus Colletotrichum falcatum",
+        "High humidity and temperature",
+        "Mechanical injuries and waterlogging"
+      ],
+      "prevention": [
+        "Disease-free seed cane",
+        "Hot water sett treatment",
+        "Drain fields properly"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Trichoderma sett treatment",
+          "description": "Dip setts in Trichoderma solution 5g/liter"
+        },
+        {
+          "name": "Hot Water Treatment",
+          "description": "50°C for 2 hours before planting"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Carbendazim 0.1%",
+          "description": "Sett dipping for 30 minutes"
+        },
+        {
+          "name": "Mancozeb 0.3%",
+          "description": "Spray at first symptoms on leaves"
+        }
+      ]
+    },
+    {
+      "id": "sugarcane_rust",
+      "disease_name": "Sugarcane Rust",
+      "crop_type": "Ganna (Sugarcane)",
+      "severity": "Medium",
+      "symptoms": [
+        "Small orange-brown elongated pustules on leaves",
+        "Yellow halos around pustules",
+        "Severe infection causes premature drying"
+      ],
+      "causes": [
+        "Puccinia melanocephala fungus",
+        "Humid weather (temperature 21-28°C)",
+        "Late season"
+      ],
+      "prevention": [
+        "Resistant varieties",
+        "Proper spacing",
+        "Balanced fertilization (avoid excess N)"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Sulfur Dust 25kg/ha",
+          "description": "Apply at first sign of infection"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Propiconazole 25 EC",
+          "description": "1ml/liter spray"
+        },
+        {
+          "name": "Mancozeb 75 WP",
+          "description": "2.5g/liter spray fortnightly"
+        }
+      ]
+    },
+    {
+      "id": "sugarcane_yellow_leaf_disease",
+      "disease_name": "Sugarcane Yellow Leaf Disease",
+      "crop_type": "Ganna (Sugarcane)",
+      "severity": "High",
+      "symptoms": [
+        "Yellowing along midrib of leaves",
+        "Midrib turns bright yellow first",
+        "Yellowing spreads to whole leaf"
+      ],
+      "causes": [
+        "Sugarcane Yellow Leaf Virus (ScYLV)",
+        "Aphid Melanaphis sacchari transmission",
+        "Infected seed cane"
+      ],
+      "prevention": [
+        "Disease-free seed material",
+        "Control aphid vectors",
+        "Rogue out infected plants"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Neem Oil for aphids",
+          "description": "5ml/liter spray"
+        },
+        {
+          "name": "Yellow sticky traps",
+          "description": "5-8 per acre"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Imidacloprid 17.8 SL",
+          "description": "0.5ml/liter for vector control"
+        },
+        {
+          "name": "Thiamethoxam 25 WG",
+          "description": "0.3g/liter spray"
+        }
+      ]
+    },
+    {
+      "id": "healthy_sugarcane",
+      "disease_name": "Healthy Sugarcane",
+      "crop_type": "Ganna (Sugarcane)",
+      "severity": "None",
+      "symptoms": [],
+      "causes": [],
+      "prevention": [
+        "Regular field inspection",
+        "Balanced NPK + micronutrients"
+      ],
+      "organic_treatment": [],
+      "chemical_treatment": []
+    },
+    {
+      "id": "tomato_bacterial_spot",
+      "disease_name": "Tomato Bacterial Spot",
+      "crop_type": "Tamatar (Tomato)",
+      "severity": "High",
+      "symptoms": [
+        "Small dark spots with yellow halos",
+        "Spots on leaves, stems, and fruit",
+        "Scab-like lesions on fruit"
+      ],
+      "causes": [
+        "Xanthomonas vesicatoria bacteria",
+        "Warm wet weather (24-30°C)",
+        "Splashing rain"
+      ],
+      "prevention": [
+        "Certified disease-free seeds",
+        "Avoid overhead irrigation",
+        "Copper seed treatment"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Copper Hydroxide",
+          "description": "3g/liter spray every 7 days in wet weather"
+        },
+        {
+          "name": "Neem Oil",
+          "description": "5ml/liter spray as protective treatment"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Streptomycin + Copper Oxychloride",
+          "description": "0.3g + 3g per liter spray"
+        },
+        {
+          "name": "Kasugamycin 3 SL",
+          "description": "2ml/liter spray at symptom appearance"
+        }
+      ]
+    },
+    {
+      "id": "tomato_early_blight",
+      "disease_name": "Tamatar Early Blight",
+      "crop_type": "Tamatar (Tomato)",
+      "severity": "High",
+      "symptoms": [
+        "Concentric ring spots (target board pattern) on lower leaves",
+        "Yellow area surrounding spots",
+        "Stem collar rot in seedlings"
+      ],
+      "causes": [
+        "Fungus Alternaria solani",
+        "Warm humid weather (24-29°C)",
+        "Old or stressed plants"
+      ],
+      "prevention": [
+        "Crop rotation every 2-3 years",
+        "Remove lower infected leaves",
+        "Balanced NPK fertilization"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Neem Oil Spray",
+          "description": "5ml neem oil + 2ml soap per liter, spray weekly"
+        },
+        {
+          "name": "Copper Oxychloride",
+          "description": "3g/liter spray fortnightly"
+        },
+        {
+          "name": "Trichoderma viride",
+          "description": "Soil application 2.5 kg/hectare"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Mancozeb 75 WP",
+          "description": "2.5g/liter, spray every 7-10 days"
+        },
+        {
+          "name": "Iprodione 50 WP",
+          "description": "1g/liter at first appearance"
+        },
+        {
+          "name": "Difenoconazole",
+          "description": "0.5ml/liter, systemic curative action"
+        }
+      ]
+    },
+    {
+      "id": "tomato_late_blight",
+      "disease_name": "Tamatar Late Blight",
+      "crop_type": "Tamatar (Tomato)",
+      "severity": "Very High",
+      "symptoms": [
+        "Dark water-soaked lesions on leaves and stems",
+        "White mold on undersides in humid weather",
+        "Fruit shows brown greasy patches"
+      ],
+      "causes": [
+        "Phytophthora infestans oomycete",
+        "Cool wet weather (10-25°C)",
+        "Spreads very rapidly in wet conditions"
+      ],
+      "prevention": [
+        "Remove infected plants immediately",
+        "Avoid overhead watering",
+        "Stake plants for good airflow"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Bordeaux Mixture 1%",
+          "description": "Preventive spray before monsoon"
+        },
+        {
+          "name": "Copper Oxychloride 50 WP",
+          "description": "3g/liter spray every 7 days"
+        },
+        {
+          "name": "Remove infected plants",
+          "description": "Burn infected plant material"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Metalaxyl + Mancozeb (Ridomil)",
+          "description": "2.5g/liter spray every 7 days"
+        },
+        {
+          "name": "Cymoxanil 8% + Mancozeb 64%",
+          "description": "3g/liter at first sign"
+        },
+        {
+          "name": "Amistar (Azoxystrobin)",
+          "description": "1ml/liter preventive spray"
+        }
+      ]
+    },
+    {
+      "id": "tomato_septoria_leaf_spot",
+      "disease_name": "Tomato Septoria Leaf Spot",
+      "crop_type": "Tamatar (Tomato)",
+      "severity": "Medium",
+      "symptoms": [
+        "Small circular spots with dark borders and white centers",
+        "Many spots cause severe defoliation",
+        "Starts on lower leaves"
+      ],
+      "causes": [
+        "Fungus Septoria lycopersici",
+        "Warm wet weather (20-25°C)",
+        "Water splash from soil"
+      ],
+      "prevention": [
+        "Mulch soil around plants",
+        "Remove infected leaves",
+        "Stake plants"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Copper Spray",
+          "description": "Copper oxychloride 3g/liter spray"
+        },
+        {
+          "name": "Baking Soda",
+          "description": "10g/liter spray weekly"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Chlorothalonil 75 WP",
+          "description": "2g/liter spray every 7-10 days"
+        },
+        {
+          "name": "Mancozeb 75 WP",
+          "description": "2.5g/liter preventive spray"
+        }
+      ]
+    },
+    {
+      "id": "tomato_yellow_leaf_curl_virus",
+      "disease_name": "Tomato Yellow Leaf Curl Virus",
+      "crop_type": "Tamatar (Tomato)",
+      "severity": "Very High",
+      "symptoms": [
+        "Yellowing and upward curling of leaves",
+        "Leaves become small and leathery",
+        "Stunted plants with little or no fruit"
+      ],
+      "causes": [
+        "Begomovirus transmitted by whitefly",
+        "Bemisia tabaci whitefly vector",
+        "Warm season with high whitefly pressure"
+      ],
+      "prevention": [
+        "Use virus-resistant varieties like Abhinav, Arka Rakshak",
+        "Yellow sticky traps (5/100 sqm)",
+        "Reflective mulch to repel whitefly"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Neem Oil 5ml/liter",
+          "description": "Weekly spray to control whitefly"
+        },
+        {
+          "name": "Yellow Sticky Traps",
+          "description": "Install 5 traps per 100 sq.m"
+        },
+        {
+          "name": "Rogue infected plants",
+          "description": "Remove and destroy infected plants early"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Imidacloprid 17.8 SL",
+          "description": "0.5ml/liter spray for whitefly"
+        },
+        {
+          "name": "Thiamethoxam 25 WG",
+          "description": "0.3g/liter spray - very effective"
+        },
+        {
+          "name": "Diafenthiuron 50 WP",
+          "description": "1g/liter spray, rotate to avoid resistance"
+        }
+      ]
+    },
+    {
+      "id": "healthy_tomato",
+      "disease_name": "Healthy Tomato",
+      "crop_type": "Tamatar (Tomato)",
+      "severity": "None",
+      "symptoms": [],
+      "causes": [],
+      "prevention": [
+        "Regular monitoring",
+        "Balanced NPK",
+        "Drip irrigation"
+      ],
+      "organic_treatment": [],
+      "chemical_treatment": []
+    },
+    {
+      "id": "wheat_aphid",
+      "disease_name": "Wheat Aphid",
+      "crop_type": "Gehun (Wheat)",
+      "severity": "High",
+      "symptoms": [
+        "Tiny insects on leaves, stems, and ears",
+        "Yellowing and curling leaves",
+        "Sticky honeydew on plants"
+      ],
+      "causes": [
+        "Sitobion avenae or Rhopalosiphum padi aphids",
+        "Cool weather (15-20°C)",
+        "Dry conditions"
+      ],
+      "prevention": [
+        "Timely sowing (Oct-Nov)",
+        "Avoid excess nitrogen",
+        "Preserve natural enemies (ladybirds)"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Neem Oil 5ml/liter",
+          "description": "Spray when infestation starts"
+        },
+        {
+          "name": "Tobacco Extract",
+          "description": "250g tobacco in 5L water, filter, spray 1:4"
+        },
+        {
+          "name": "Encourage natural predators",
+          "description": "Ladybird beetles, lacewings"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Dimethoate 30 EC",
+          "description": "2ml/liter spray at first appearance"
+        },
+        {
+          "name": "Imidacloprid 17.8 SL",
+          "description": "0.5ml/liter spray"
+        },
+        {
+          "name": "Chlorpyrifos 20 EC",
+          "description": "2ml/liter spray"
+        }
+      ]
+    },
+    {
+      "id": "wheat_black_rust",
+      "disease_name": "Wheat Black Rust (Stem Rust)",
+      "crop_type": "Gehun (Wheat)",
+      "severity": "Very High",
+      "symptoms": [
+        "Brick red/black elongated pustules on stem and leaves",
+        "Pustules break open releasing dusty spores",
+        "Weakened stems causing lodging"
+      ],
+      "causes": [
+        "Puccinia graminis f.sp. tritici fungus",
+        "Warm temperature (15-25°C)",
+        "High humidity and dew"
+      ],
+      "prevention": [
+        "Resistant varieties like HD-2967, PBW-343",
+        "Early sowing before Ug99 race spread",
+        "Timely fungicide application"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Sulfur Dust 25kg/ha",
+          "description": "Apply at first sign of rust"
+        },
+        {
+          "name": "Remove infected crop debris",
+          "description": "Deep ploughing after harvest"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Propiconazole 25 EC",
+          "description": "1ml/liter spray at first appearance"
+        },
+        {
+          "name": "Tebuconazole 25 EC",
+          "description": "1ml/liter spray - highly effective"
+        },
+        {
+          "name": "Hexaconazole 5 EC",
+          "description": "2ml/liter spray"
+        }
+      ]
+    },
+    {
+      "id": "wheat_blast",
+      "disease_name": "Wheat Blast",
+      "crop_type": "Gehun (Wheat)",
+      "severity": "Very High",
+      "symptoms": [
+        "Bleached white/gray ears (partial or complete)",
+        "Dark brown lesions at node junction",
+        "Grains shriveled or absent"
+      ],
+      "causes": [
+        "Magnaporthe oryzae triticum pathotype",
+        "Warm humid conditions (25-30°C)",
+        "New devastating disease"
+      ],
+      "prevention": [
+        "Use blast-resistant varieties",
+        "Early sowing",
+        "Avoid dense sowing"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Trichoderma seed treatment",
+          "description": "4g/kg seed before sowing"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Tricyclazole 75 WP",
+          "description": "0.6g/liter at boot stage"
+        },
+        {
+          "name": "Tebuconazole",
+          "description": "1ml/liter spray at flag leaf stage"
+        }
+      ]
+    },
+    {
+      "id": "wheat_brown_rust",
+      "disease_name": "Wheat Brown Rust (Leaf Rust)",
+      "crop_type": "Gehun (Wheat)",
+      "severity": "High",
+      "symptoms": [
+        "Orange-brown circular pustules on upper leaf surface",
+        "Chlorotic halo around pustules",
+        "Leaves dry prematurely"
+      ],
+      "causes": [
+        "Puccinia triticina fungus",
+        "Moderate temperature (15-22°C)",
+        "Most common wheat disease in India"
+      ],
+      "prevention": [
+        "Resistant varieties (HD-2967, PBW-550)",
+        "Timely sowing (Oct-Nov)",
+        "Monitor after heading"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Sulfur Dust",
+          "description": "20-25 kg/ha at first sign"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Propiconazole 25 EC",
+          "description": "1ml/liter spray - very effective"
+        },
+        {
+          "name": "Tebuconazole 25 EC",
+          "description": "1ml/liter spray"
+        },
+        {
+          "name": "Triadimefon 25 WP",
+          "description": "1g/liter spray"
+        }
+      ]
+    },
+    {
+      "id": "wheat_common_root_rot",
+      "disease_name": "Wheat Common Root Rot",
+      "crop_type": "Gehun (Wheat)",
+      "severity": "High",
+      "symptoms": [
+        "Browning of subcrown internode",
+        "Reduced tillering",
+        "Premature ripening (whiteheads)"
+      ],
+      "causes": [
+        "Bipolaris sorokiniana fungus",
+        "Dry warm soils",
+        "Monoculture and infected seeds"
+      ],
+      "prevention": [
+        "Crop rotation",
+        "Deep ploughing",
+        "Seed treatment"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Trichoderma seed treatment",
+          "description": "4g/kg seed"
+        },
+        {
+          "name": "Pseudomonas fluorescens",
+          "description": "10g/kg seed as biocontrol"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Carbendazim 50 WP",
+          "description": "2.5g/kg seed treatment"
+        },
+        {
+          "name": "Thiram 75 WP",
+          "description": "2.5g/kg seed + Carbendazim 1.25g/kg"
+        }
+      ]
+    },
+    {
+      "id": "wheat_fusarium_head_blight",
+      "disease_name": "Wheat Fusarium Head Blight (Scab)",
+      "crop_type": "Gehun (Wheat)",
+      "severity": "Very High",
+      "symptoms": [
+        "Bleached whitish-pink florets/spikelets",
+        "Pink/orange spore masses in humid weather",
+        "Shriveled grain with mycotoxins"
+      ],
+      "causes": [
+        "Fusarium graminearum fungus",
+        "Warm humid weather at heading (20-30°C)",
+        "Corn in previous crop"
+      ],
+      "prevention": [
+        "Resistant varieties",
+        "Crop rotation (avoid corn before wheat)",
+        "Delayed sowing"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Trichoderma asperellum",
+          "description": "Seed treatment 4g/kg"
+        },
+        {
+          "name": "Bacillus subtilis",
+          "description": "Biological spray at flowering"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Tebuconazole 25 EC",
+          "description": "1ml/liter spray at early flowering"
+        },
+        {
+          "name": "Carbendazim 50 WP",
+          "description": "1g/liter spray at flowering stage"
+        }
+      ]
+    },
+    {
+      "id": "wheat_leaf_blight",
+      "disease_name": "Wheat Leaf Blight",
+      "crop_type": "Gehun (Wheat)",
+      "severity": "Medium",
+      "symptoms": [
+        "Oval to elongated brown lesions on leaves",
+        "Lesions with yellow halos",
+        "Leaf drying from tips"
+      ],
+      "causes": [
+        "Alternaria triticina fungus",
+        "Warm humid weather during grain filling"
+      ],
+      "prevention": [
+        "Seed treatment",
+        "Balanced fertilization",
+        "Resistant varieties"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Mancozeb + Carbendazim seed treatment",
+          "description": "2.5g + 1g per kg seed"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Mancozeb 75 WP",
+          "description": "2.5g/liter foliar spray"
+        },
+        {
+          "name": "Propiconazole",
+          "description": "1ml/liter spray"
+        }
+      ]
+    },
+    {
+      "id": "wheat_mildew",
+      "disease_name": "Wheat Powdery Mildew",
+      "crop_type": "Gehun (Wheat)",
+      "severity": "Medium",
+      "symptoms": [
+        "White powdery patches on leaves and sheaths",
+        "Lower leaves affected first",
+        "Black cleistothecia in older lesions"
+      ],
+      "causes": [
+        "Blumeria graminis f.sp. tritici",
+        "Cool humid weather (15-20°C)",
+        "Dense crop stand"
+      ],
+      "prevention": [
+        "Resistant varieties",
+        "Moderate nitrogen use",
+        "Adequate spacing"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Sulfur Dust 20 kg/ha",
+          "description": "Apply at first sign"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Propiconazole 25 EC",
+          "description": "1ml/liter spray"
+        },
+        {
+          "name": "Hexaconazole 5 EC",
+          "description": "2ml/liter spray"
+        }
+      ]
+    },
+    {
+      "id": "wheat_mite",
+      "disease_name": "Wheat Mite",
+      "crop_type": "Gehun (Wheat)",
+      "severity": "Medium",
+      "symptoms": [
+        "Silvery stippling on leaves",
+        "Leaves turn pale yellow/white",
+        "Reduced grain filling"
+      ],
+      "causes": [
+        "Aceria tosichella wheat curl mite",
+        "Dry warm conditions",
+        "Late harvesting"
+      ],
+      "prevention": [
+        "Early sowing",
+        "Remove volunteer wheat plants",
+        "Timely harvest"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Sulfur Dust 25 kg/ha",
+          "description": "Effective in warm weather"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Dicofol 18.5 EC",
+          "description": "2ml/liter spray"
+        },
+        {
+          "name": "Dimethoate 30 EC",
+          "description": "2ml/liter spray"
+        }
+      ]
+    },
+    {
+      "id": "wheat_septoria",
+      "disease_name": "Wheat Septoria Leaf Blotch",
+      "crop_type": "Gehun (Wheat)",
+      "severity": "High",
+      "symptoms": [
+        "Irregular pale green-yellow to brown blotches on leaves",
+        "Black pycnidia dots within lesions",
+        "Severe yield loss in wet seasons"
+      ],
+      "causes": [
+        "Zymoseptoria tritici fungus",
+        "Cool wet weather",
+        "Infected crop debris"
+      ],
+      "prevention": [
+        "Resistant varieties",
+        "Crop rotation",
+        "Avoid dense sowing"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Copper Oxychloride 3g/liter",
+          "description": "Preventive spray"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Propiconazole 25 EC",
+          "description": "1ml/liter spray"
+        },
+        {
+          "name": "Tebuconazole",
+          "description": "1ml/liter spray - systemic action"
+        }
+      ]
+    },
+    {
+      "id": "wheat_smut",
+      "disease_name": "Wheat Loose Smut",
+      "crop_type": "Gehun (Wheat)",
+      "severity": "High",
+      "symptoms": [
+        "Entire ear replaced by black smut mass",
+        "Smut masses blow away in wind leaving bare spike",
+        "Plant appears normal until heading"
+      ],
+      "causes": [
+        "Ustilago tritici fungus",
+        "Seed-borne disease",
+        "Infection during flowering"
+      ],
+      "prevention": [
+        "Certified smut-free seed",
+        "Seed treatment is critical",
+        "Hot water treatment of seeds"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Hot Water Seed Treatment",
+          "description": "Soak at 49°C for 3 hours, then dry before sowing"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Carboxin 37.5 + Thiram 37.5 WP",
+          "description": "3g/kg seed treatment - very effective"
+        },
+        {
+          "name": "Vitavax Power 2g/kg",
+          "description": "Best seed treatment for smut"
+        }
+      ]
+    },
+    {
+      "id": "wheat_stem_fly",
+      "disease_name": "Wheat Stem Fly",
+      "crop_type": "Gehun (Wheat)",
+      "severity": "High",
+      "symptoms": [
+        "Dead hearts in seedlings (primary shoot dead)",
+        "Yellowing and drying of tillers",
+        "Maggot visible inside stem"
+      ],
+      "causes": [
+        "Atherigona spp. fly larvae",
+        "Early sown crop more affected",
+        "Warm temperature at sowing"
+      ],
+      "prevention": [
+        "Timely sowing (November)",
+        "Seed treatment with imidacloprid",
+        "Avoid early sowing"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Carbofuran 3G granules",
+          "description": "Apply in soil at sowing 33kg/ha"
+        },
+        {
+          "name": "Neem Seed Extract",
+          "description": "5% NSKE spray at seedling stage"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Imidacloprid 70 WS",
+          "description": "5g/kg seed treatment - best control"
+        },
+        {
+          "name": "Chlorpyrifos 20 EC",
+          "description": "2ml/liter foliar spray at 3-4 leaf stage"
+        }
+      ]
+    },
+    {
+      "id": "wheat_tan_spot",
+      "disease_name": "Wheat Tan Spot",
+      "crop_type": "Gehun (Wheat)",
+      "severity": "Medium",
+      "symptoms": [
+        "Tan-brown oval lesions with yellow halo",
+        "Lesion has tan center with darker border",
+        "Lesions may merge causing blighting"
+      ],
+      "causes": [
+        "Pyrenophora tritici-repentis fungus",
+        "Wheat stubble in field",
+        "Warm wet weather"
+      ],
+      "prevention": [
+        "Deep ploughing to bury stubble",
+        "Crop rotation",
+        "Balanced N fertilization"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Trichoderma seed treatment 4g/kg",
+          "description": "Before sowing"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Propiconazole 1ml/liter",
+          "description": "Spray at first sign"
+        },
+        {
+          "name": "Mancozeb 2.5g/liter",
+          "description": "Preventive spray"
+        }
+      ]
+    },
+    {
+      "id": "wheat_yellow_rust",
+      "disease_name": "Wheat Yellow Rust (Stripe Rust)",
+      "crop_type": "Gehun (Wheat)",
+      "severity": "Very High",
+      "symptoms": [
+        "Bright yellow-orange pustules in stripes along leaves",
+        "Pustules aligned in rows between veins",
+        "Cool weather disease - most common in North India hills"
+      ],
+      "causes": [
+        "Puccinia striiformis fungus",
+        "Cool temperatures (5-15°C)",
+        "Himalayan foothills and irrigated areas"
+      ],
+      "prevention": [
+        "Resistant varieties (PBW-343, HD-2967)",
+        "Avoid very early sowing in hills",
+        "Monitor from January onwards"
+      ],
+      "organic_treatment": [
+        {
+          "name": "Sulfur Dust 25kg/ha",
+          "description": "At first sign, effective in early stages"
+        }
+      ],
+      "chemical_treatment": [
+        {
+          "name": "Propiconazole 25 EC",
+          "description": "1ml/liter - most effective spray"
+        },
+        {
+          "name": "Tebuconazole 25 EC",
+          "description": "1ml/liter spray"
+        },
+        {
+          "name": "Mancozeb + Karathane",
+          "description": "For mixed infection with other rusts"
+        }
+      ]
+    },
+    {
+      "id": "healthy_wheat",
+      "disease_name": "Healthy Wheat",
+      "crop_type": "Gehun (Wheat)",
+      "severity": "None",
+      "symptoms": [],
+      "causes": [],
+      "prevention": [
+        "Regular scouting from 30 DAS",
+        "Balanced NPK + micronutrients"
+      ],
+      "organic_treatment": [],
+      "chemical_treatment": []
     }
   ]
 }
