@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">వృక్షాయుష్</string>
+    <string name="tagline">మీ మొక్క ఆరోగ్యం తెలుసుకోండి</string>
+    <string name="get_started">ప్రారంభించండి</string>
+    <string name="scan_plant">మొక్క స్కాన్ చేయండి</string>
+    <string name="scan_your_plant">మీ మొక్క స్కాన్ చేయండి</string>
+    <string name="take_photo">ఫోటో తీయండి</string>
+    <string name="gallery">గ్యాలరీ</string>
+    <string name="diagnose_now">రోగ నిర్ధారణ చేయండి</string>
+    <string name="diagnosis_result">రోగ నిర్ధారణ ఫలితం</string>
+    <string name="see_full_details">పూర్తి వివరాలు చూడండి</string>
+    <string name="save_to_history">చరిత్రలో సేవ్ చేయండి</string>
+    <string name="scan_history">స్కాన్ చరిత్ర</string>
+    <string name="crop_library">పంట లైబ్రరీ</string>
+    <string name="settings">సెట్టింగ్‌లు</string>
+    <string name="treatment_recommendations">చికిత్స సిఫార్సులు</string>
+    <string name="confidence_score">నమ్మకం స్కోర్</string>
+    <string name="available_offline">ఆఫ్‌లైన్‌లో అందుబాటులో ఉంది — ఇంటర్నెట్ అవసరం లేదు</string>
+    <string name="works_offline">ఆఫ్‌లైన్‌లో పని చేస్తుంది</string>
+    <string name="tip_photo">చిట్కా: ఆకు మంచి వెలుతురులో ఫ్రేమ్‌ను నింపాలి.</string>
+    <string name="no_scans_yet">ఇంకా స్కాన్ లేదు — మొదటి మొక్కను స్కాన్ చేయండి!</string>
+    <string name="search_disease_crop">వ్యాధి లేదా పంట వెతకండి</string>
+    <string name="search_by_crop">పంట పేరు ద్వారా వెతకండి</string>
+    <string name="language_selection">భాష ఎంచుకోండి</string>
+    <string name="notifications">నోటిఫికేషన్‌లు</string>
+    <string name="weather_alerts">వాతావరణ హెచ్చరికలు</string>
+    <string name="disease_outbreak_alerts">వ్యాధి విస్తరణ హెచ్చరికలు</string>
+    <string name="export_pdf">PDF నివేదిక ఎగుమతి</string>
+    <string name="clear_history">స్కాన్ చరిత్ర తొలగించండి</string>
+    <string name="available_in">హిందీ | కన్నడ | ఇంగ్లీష్‌లో అందుబాటులో ఉంది</string>
+    <string name="what_is_it">ఇది ఏమిటి?</string>
+    <string name="symptoms">లక్షణాలు</string>
+    <string name="causes">కారణాలు</string>
+    <string name="prevention_tips">నివారణ చిట్కాలు</string>
+    <string name="organic">సేంద్రీయ</string>
+    <string name="chemical">రసాయన</string>
+</resources>
