@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ವೃಕ್ಷಾಯುಷ</string>
+    <string name="tagline">ನಿಮ್ಮ ಗಿಡದ ಆರೋಗ್ಯ ತಿಳಿಯಿರಿ</string>
+    <string name="get_started">ಪ್ರಾರಂಭಿಸಿ</string>
+    <string name="scan_plant">ಗಿಡ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ</string>
+    <string name="scan_your_plant">ನಿಮ್ಮ ಗಿಡ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ</string>
+    <string name="take_photo">ಫೋಟೋ ತೆಗೆಯಿರಿ</string>
+    <string name="gallery">ಗ್ಯಾಲರಿ</string>
+    <string name="diagnose_now">ರೋಗ ಪರೀಕ್ಷಿಸಿ</string>
+    <string name="diagnosis_result">ರೋಗ ಫಲಿತಾಂಶ</string>
+    <string name="see_full_details">ಪೂರ್ಣ ವಿವರ ನೋಡಿ</string>
+    <string name="save_to_history">ಇತಿಹಾಸದಲ್ಲಿ ಉಳಿಸಿ</string>
+    <string name="scan_history">ಸ್ಕ್ಯಾನ್ ಇತಿಹಾಸ</string>
+    <string name="crop_library">ಬೆಳೆ ಗ್ರಂಥಾಲಯ</string>
+    <string name="settings">ಸೆಟ್ಟಿಂಗ್‌ಗಳು</string>
+    <string name="treatment_recommendations">ಚಿಕಿತ್ಸಾ ಸಲಹೆಗಳು</string>
+    <string name="confidence_score">ವಿಶ್ವಾಸ ಅಂಕ</string>
+    <string name="available_offline">ಆಫ್‌ಲೈನ್‌ನಲ್ಲಿ ಲಭ್ಯ — ಇಂಟರ್ನೆಟ್ ಅಗತ್ಯವಿಲ್ಲ</string>
+    <string name="works_offline">ಆಫ್‌ಲೈನ್‌ನಲ್ಲಿ ಕಾರ್ಯ ನಿರ್ವಹಿಸುತ್ತದೆ</string>
+    <string name="tip_photo">ಸಲಹೆ: ಎಲೆ ಚೌಕಟ್ಟಿನಲ್ಲಿ ಉತ್ತಮ ಬೆಳಕಿನಲ್ಲಿ ಇರಬೇಕು.</string>
+    <string name="no_scans_yet">ಇನ್ನೂ ಯಾವುದೇ ಸ್ಕ್ಯಾನ್ ಇಲ್ಲ — ಮೊದಲ ಗಿಡ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ!</string>
+    <string name="search_disease_crop">ರೋಗ ಅಥವಾ ಬೆಳೆ ಹುಡುಕಿ</string>
+    <string name="search_by_crop">ಬೆಳೆ ಹೆಸರಿನಿಂದ ಹುಡುಕಿ</string>
+    <string name="language_selection">ಭಾಷೆ ಆಯ್ಕೆಮಾಡಿ</string>
+    <string name="notifications">ಅಧಿಸೂಚನೆಗಳು</string>
+    <string name="weather_alerts">ಹವಾಮಾನ ಎಚ್ಚರಿಕೆಗಳು</string>
+    <string name="disease_outbreak_alerts">ರೋಗ ಪ್ರಕೋಪ ಎಚ್ಚರಿಕೆಗಳು</string>
+    <string name="export_pdf">PDF ವರದಿ ರಫ್ತು ಮಾಡಿ</string>
+    <string name="clear_history">ಸ್ಕ್ಯಾನ್ ಇತಿಹಾಸ ತೆರವುಗೊಳಿಸಿ</string>
+    <string name="available_in">ಹಿಂದಿ | ಕನ್ನಡ | ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಲಭ್ಯ</string>
+    <string name="what_is_it">ಇದು ಏನು?</string>
+    <string name="symptoms">ಲಕ್ಷಣಗಳು</string>
+    <string name="causes">ಕಾರಣಗಳು</string>
+    <string name="prevention_tips">ತಡೆಗಟ್ಟುವ ಸಲಹೆಗಳು</string>
+    <string name="organic">ಸಾವಯವ</string>
+    <string name="chemical">ರಾಸಾಯನಿಕ</string>
+</resources>
