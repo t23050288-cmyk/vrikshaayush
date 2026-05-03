@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">വൃക്ഷായുഷ്</string>
+    <string name="tagline">നിങ്ങളുടെ ചെടിയുടെ ആരോഗ്യം അറിയൂ</string>
+    <string name="get_started">ആരംഭിക്കൂ</string>
+    <string name="scan_plant">ചെടി സ്കാൻ ചെയ്യൂ</string>
+    <string name="scan_your_plant">നിങ്ങളുടെ ചെടി സ്കാൻ ചെയ്യൂ</string>
+    <string name="take_photo">ഫോട്ടോ എടുക്കൂ</string>
+    <string name="gallery">ഗാലറി</string>
+    <string name="diagnose_now">രോഗം കണ്ടെത്തൂ</string>
+    <string name="diagnosis_result">രോഗ നിർണ്ണയ ഫലം</string>
+    <string name="see_full_details">പൂർണ്ണ വിവരങ്ങൾ കാണൂ</string>
+    <string name="save_to_history">ചരിത്രത്തിൽ സേവ് ചെയ്യൂ</string>
+    <string name="scan_history">സ്കാൻ ചരിത്രം</string>
+    <string name="crop_library">വിള ലൈബ്രറി</string>
+    <string name="settings">ക്രമീകരണങ്ങൾ</string>
+    <string name="treatment_recommendations">ചികിത്സ ശുപാർശകൾ</string>
+    <string name="confidence_score">ആത്മവിശ്വാസ സ്കോർ</string>
+    <string name="available_offline">ഓഫ്‌ലൈനിൽ ലഭ്യം — ഇന്റർനെറ്റ് ആവശ്യമില്ല</string>
+    <string name="works_offline">ഓഫ്‌ലൈനിൽ പ്രവർത്തിക്കുന്നു</string>
+    <string name="tip_photo">നുറുങ്ങ്: ഇല നല്ല വെളിച്ചത്തിൽ ഫ്രേം നിറയ്ക്കണം.</string>
+    <string name="no_scans_yet">ഇതുവരെ സ്കാൻ ഇല്ല — ആദ്യ ചെടി സ്കാൻ ചെയ്യൂ!</string>
+    <string name="search_disease_crop">രോഗം അല്ലെങ്കിൽ വിള തിരയൂ</string>
+    <string name="search_by_crop">വിള പേര് ഉപയോഗിച്ച് തിരയൂ</string>
+    <string name="language_selection">ഭാഷ തിരഞ്ഞെടുക്കൂ</string>
+    <string name="notifications">അറിയിപ്പുകൾ</string>
+    <string name="weather_alerts">കാലാവസ്ഥ മുന്നറിയിപ്പുകൾ</string>
+    <string name="disease_outbreak_alerts">രോഗ വ്യാപന മുന്നറിയിപ്പുകൾ</string>
+    <string name="export_pdf">PDF റിപ്പോർട്ട് എക്‌സ്‌പോർട്ട്</string>
+    <string name="clear_history">സ്കാൻ ചരിത്രം മായ്ക്കൂ</string>
+    <string name="available_in">ഹിന്ദി | കന്നഡ | ഇംഗ്ലീഷിൽ ലഭ്യം</string>
+    <string name="what_is_it">ഇതെന്താണ്?</string>
+    <string name="symptoms">ലക്ഷണങ്ങൾ</string>
+    <string name="causes">കാരണങ്ങൾ</string>
+    <string name="prevention_tips">തടയൽ നുറുങ്ങുകൾ</string>
+    <string name="organic">ജൈവ</string>
+    <string name="chemical">രാസ</string>
+</resources>
