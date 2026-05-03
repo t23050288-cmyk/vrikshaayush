@@ -16,6 +16,7 @@ import com.vrikshaayush.ml.DiseaseClassifier
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.io.File
 
 class ResultActivity : AppCompatActivity() {
 
@@ -38,8 +39,22 @@ class ResultActivity : AppCompatActivity() {
 
         binding.btnBack.setOnClickListener { finish() }
 
-        if (imagePath.isNotEmpty()) {
+        if (imagePath.isNotEmpty() && File(imagePath).exists()) {
             runDiagnosis()
+        } else {
+            // Show error - do NOT finish, let user see the problem
+            binding.progressBar.visibility = View.GONE
+            binding.layoutResult.visibility = View.VISIBLE
+            binding.tvDiseaseName.text = "⚠️ Image Not Found"
+            binding.tvCropType.text = "Please go back and select a photo again"
+            binding.tvConfidence.text = "0%"
+            binding.progressConfidence.progress = 0
+            binding.tvSeverity.text = "ERROR"
+            binding.tvTreatment1.text = "• Go back using the ← button"
+            binding.tvTreatment2.text = "• Take a new photo or select from gallery"
+            binding.tvTreatment3.text = "• Make sure the photo is clear and well-lit"
+            binding.btnSeeDetails.visibility = View.GONE
+            binding.btnSaveHistory.visibility = View.GONE
         }
     }
 
@@ -47,21 +62,42 @@ class ResultActivity : AppCompatActivity() {
         binding.progressBar.visibility = View.VISIBLE
         binding.layoutResult.visibility = View.GONE
 
-        val bitmap = BitmapFactory.decodeFile(imagePath)
-        binding.ivPlantPhoto.setImageBitmap(bitmap)
-
         lifecycleScope.launch(Dispatchers.IO) {
-            val classifier = DiseaseClassifier(this@ResultActivity)
-            val result = classifier.classify(bitmap)
-            classifier.close()
+            try {
+                val bitmap = BitmapFactory.decodeFile(imagePath)
+                    ?: throw Exception("Failed to decode image")
+                
+                withContext(Dispatchers.Main) {
+                    binding.ivPlantPhoto.setImageBitmap(bitmap)
+                }
 
-            withContext(Dispatchers.Main) {
-                diseaseName = result.diseaseName
-                cropType = result.cropType
-                severity = result.severity
-                confidence = result.confidence
-                modelLabel = result.label
-                displayResult(result)
+                val classifier = DiseaseClassifier(this@ResultActivity)
+                val result = classifier.classify(bitmap)
+                classifier.close()
+
+                withContext(Dispatchers.Main) {
+                    diseaseName = result.diseaseName
+                    cropType = result.cropType
+                    severity = result.severity
+                    confidence = result.confidence
+                    modelLabel = result.label
+                    displayResult(result)
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    binding.progressBar.visibility = View.GONE
+                    binding.layoutResult.visibility = View.VISIBLE
+                    binding.tvDiseaseName.text = "⚠️ Diagnosis Failed"
+                    binding.tvCropType.text = "Error: ${e.message}"
+                    binding.tvConfidence.text = "0%"
+                    binding.progressConfidence.progress = 0
+                    binding.tvSeverity.text = "ERROR"
+                    binding.tvTreatment1.text = "• Go back and try with a clearer photo"
+                    binding.tvTreatment2.text = "• Ensure the leaf is well-lit"
+                    binding.tvTreatment3.text = "• Try selecting from gallery instead"
+                    binding.btnSeeDetails.visibility = View.GONE
+                    binding.btnSaveHistory.visibility = View.GONE
+                }
             }
         }
     }
@@ -93,12 +129,13 @@ class ResultActivity : AppCompatActivity() {
         val severityColor = when (result.severity) {
             "HIGH" -> ContextCompat.getColor(this, R.color.severity_high)
             "MEDIUM" -> ContextCompat.getColor(this, R.color.severity_medium)
+            "HEALTHY" -> ContextCompat.getColor(this, R.color.severity_low)
             else -> ContextCompat.getColor(this, R.color.severity_low)
         }
         binding.tvSeverity.text = result.severity
         binding.tvSeverity.setBackgroundColor(severityColor)
 
-        val treatments = getTreatmentTips(result.diseaseName)
+        val treatments = getTreatmentTips(result.label, result.diseaseName)
         binding.tvTreatment1.text = "• ${treatments[0]}"
         binding.tvTreatment2.text = "• ${treatments[1]}"
         binding.tvTreatment3.text = "• ${treatments[2]}"
@@ -131,112 +168,107 @@ class ResultActivity : AppCompatActivity() {
                 )
             )
             withContext(Dispatchers.Main) {
-                Toast.makeText(this@ResultActivity, "Saved to history!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@ResultActivity, "✅ Saved to history!", Toast.LENGTH_SHORT).show()
                 binding.btnSaveHistory.isEnabled = false
                 binding.btnSaveHistory.text = "✓ Saved"
             }
         }
     }
 
-    private fun getTreatmentTips(disease: String): List<String> {
+    private fun getTreatmentTips(label: String, disease: String): List<String> {
         return when {
-            disease.contains("Early Blight", ignoreCase = true) -> listOf(
+            // HEALTHY
+            disease.contains("Healthy", ignoreCase = true) -> listOf(
+                "Your plant looks healthy! Keep up the good care.",
+                "Water regularly and ensure adequate sunlight.",
+                "Monitor weekly for any early signs of disease."
+            )
+            // RICE
+            label.contains("rice") -> listOf(
+                "Remove infected leaves and apply Tricyclazole 75WP 0.6g/L spray",
+                "Ensure proper water drainage in paddy fields",
+                "Use certified disease-resistant rice seeds next season"
+            )
+            // WHEAT
+            label.contains("wheat") -> listOf(
+                "Apply Propiconazole 25EC 1ml/L at first sign of rust or blight",
+                "Harvest early if disease is severe to reduce losses",
+                "Use treated seeds with Carboxin + Thiram next sowing"
+            )
+            // COTTON
+            label.contains("cotton") -> listOf(
+                "Apply Imidacloprid 17.8SL 0.5ml/L for aphid/army worm control",
+                "Remove and burn heavily infected plants to stop spread",
+                "Spray copper oxychloride for bacterial blight control"
+            )
+            // SUGARCANE
+            label.contains("sugarcane") -> listOf(
+                "Use disease-free setts for planting",
+                "Apply Carbendazim 50WP 1g/L for fungal diseases",
+                "Rogue out infected plants early in the season"
+            )
+            // GROUNDNUT
+            label.contains("groundnut") -> listOf(
+                "Spray Mancozeb 75WP 2.5g/L for leaf spot diseases",
+                "Maintain proper spacing for air circulation",
+                "Apply gypsum at flowering stage to improve pod filling"
+            )
+            // LEMON / CITRUS
+            label.contains("lemon") -> listOf(
+                "Apply copper oxychloride 50WP 3g/L for canker and blight",
+                "Remove and burn infected twigs and fruits",
+                "Spray Imidacloprid for citrus psyllid vector control"
+            )
+            // TOMATO
+            label.contains("tomato") && disease.contains("Early Blight", ignoreCase = true) -> listOf(
                 "Remove infected leaves immediately and burn them",
-                "Apply neem oil spray every 7 days",
+                "Apply neem oil 2% spray every 7 days",
                 "Avoid overhead watering — water at base only"
             )
-            disease.contains("Late Blight", ignoreCase = true) -> listOf(
+            label.contains("tomato") && disease.contains("Late Blight", ignoreCase = true) -> listOf(
                 "Remove and destroy infected plants same day",
                 "Spray copper-based fungicide every 5-7 days",
                 "Do not compost infected material"
             )
-            disease.contains("Northern Leaf Blight", ignoreCase = true) ||
-            disease.contains("Leaf Blight", ignoreCase = true) -> listOf(
-                "Apply Mancozeb 75WP 2.5g/litre every 10-14 days",
-                "Use resistant hybrid maize varieties next season",
-                "Deep plow after harvest to bury infected debris"
-            )
-            disease.contains("Gray Leaf Spot", ignoreCase = true) ||
-            disease.contains("Cercospora", ignoreCase = true) -> listOf(
-                "Spray Propiconazole 25EC 1ml/litre at first sign",
-                "Ensure proper plant spacing for air circulation",
-                "Rotate crops with soybean or wheat next season"
-            )
-            disease.contains("Common Rust", ignoreCase = true) -> listOf(
-                "Apply sulfur dust or Mancozeb 75WP spray",
-                "Monitor weekly — rust spreads fast in cool weather",
-                "Use rust-resistant hybrid varieties next season"
-            )
-            disease.contains("Leaf Mold", ignoreCase = true) -> listOf(
-                "Improve air circulation around plants",
-                "Apply chlorothalonil fungicide spray",
-                "Reduce humidity and avoid overcrowding"
-            )
-            disease.contains("Septoria", ignoreCase = true) -> listOf(
-                "Remove infected lower leaves first",
-                "Apply mancozeb or copper fungicide",
-                "Mulch soil to prevent spore splash"
-            )
-            disease.contains("Mosaic", ignoreCase = true) -> listOf(
+            label.contains("tomato") && disease.contains("Mosaic", ignoreCase = true) -> listOf(
                 "No chemical cure — remove infected plant immediately",
                 "Wash hands with soap before touching other plants",
                 "Use certified virus-free seeds next season"
             )
-            disease.contains("Yellow Leaf Curl", ignoreCase = true) -> listOf(
+            label.contains("tomato") && disease.contains("Yellow Leaf Curl", ignoreCase = true) -> listOf(
                 "Remove infected plants to stop spread",
                 "Control whiteflies using yellow sticky traps",
                 "Spray Imidacloprid to kill whitefly vectors"
             )
-            disease.contains("Spider", ignoreCase = true) -> listOf(
-                "Spray water forcefully on leaf undersides daily",
-                "Apply neem oil 2% on undersides of leaves",
-                "Use Abamectin 1EC if severe"
+            // POTATO
+            label.contains("potato") -> listOf(
+                "Apply Mancozeb 75WP 2.5g/L every 10 days",
+                "Destroy infected tubers — do not leave in field",
+                "Use certified disease-free seed potatoes next season"
             )
-            disease.contains("Bacterial Spot", ignoreCase = true) -> listOf(
-                "Apply copper oxychloride 50WP spray every 7-10 days",
-                "Avoid working with plants when wet",
-                "Rotate crops each season"
+            // CORN/MAIZE
+            label.contains("corn") -> listOf(
+                "Apply Mancozeb 75WP 2.5g/L every 10-14 days",
+                "Use resistant hybrid maize varieties next season",
+                "Deep plow after harvest to bury infected debris"
             )
-            disease.contains("Rust", ignoreCase = true) -> listOf(
-                "Apply Propiconazole 1ml/litre at first sign",
-                "Plant rust-resistant varieties next season",
-                "Remove and burn all fallen leaves"
+            // APPLE
+            label.contains("apple") -> listOf(
+                "Apply captan 50WP or myclobutanil fungicide spray",
+                "Prune dead branches and remove fallen leaves",
+                "Use resistant apple varieties like Enterprise or Liberty"
             )
-            disease.contains("Powdery Mildew", ignoreCase = true) -> listOf(
-                "Apply baking soda + water spray (1 tbsp per litre)",
-                "Improve air circulation between plants",
-                "Apply sulfur-based fungicide if severe"
+            // GRAPE
+            label.contains("grape") -> listOf(
+                "Apply copper-based fungicide before and after rain",
+                "Prune to improve air circulation in canopy",
+                "Remove and destroy all infected leaves and fruit"
             )
-            disease.contains("Black Rot", ignoreCase = true) -> listOf(
-                "Remove and destroy all infected fruit and leaves",
-                "Apply copper fungicide spray",
-                "Prune to improve airflow through canopy"
-            )
-            disease.contains("Citrus Greening", ignoreCase = true) ||
-            disease.contains("Haunglongbing", ignoreCase = true) -> listOf(
-                "Remove infected trees immediately — no cure exists",
-                "Control citrus psyllid with Imidacloprid spray",
-                "Install yellow sticky traps to monitor psyllid"
-            )
-            disease.contains("Leaf Scorch", ignoreCase = true) -> listOf(
-                "Remove infected leaves and destroy them",
-                "Apply Captan 50WP every 10 days",
-                "Switch to drip irrigation — avoid wetting leaves"
-            )
-            disease.contains("Target Spot", ignoreCase = true) -> listOf(
-                "Apply Azoxystrobin 23SC 1ml/litre spray",
-                "Remove heavily infected leaves promptly",
-                "Improve air circulation around plants"
-            )
-            disease.contains("healthy", ignoreCase = true) -> listOf(
-                "Plant looks healthy! Keep monitoring weekly",
-                "Maintain soil health with organic compost",
-                "Water consistently at base of plant"
-            )
+            // DEFAULT
             else -> listOf(
-                "Consult your local Krishi Vigyan Kendra (KVK)",
-                "Remove visibly infected leaves or parts",
-                "Apply general neem-based fungicide as preventive"
+                "Remove visibly infected leaves and destroy them",
+                "Apply appropriate fungicide or pesticide based on disease type",
+                "Consult your local agricultural extension officer for guidance"
             )
         }
     }
