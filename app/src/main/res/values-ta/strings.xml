@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">விருட்சாயுஷ்</string>
+    <string name="tagline">உங்கள் தாவரத்தின் உடல்நலம் அறிக</string>
+    <string name="get_started">தொடங்குக</string>
+    <string name="scan_plant">தாவரம் ஸ்கேன் செய்க</string>
+    <string name="scan_your_plant">உங்கள் தாவரம் ஸ்கேன் செய்க</string>
+    <string name="take_photo">புகைப்படம் எடுக்க</string>
+    <string name="gallery">கேலரி</string>
+    <string name="diagnose_now">நோய் கண்டறிக</string>
+    <string name="diagnosis_result">நோய் கண்டறிதல் முடிவு</string>
+    <string name="see_full_details">முழு விவரங்கள் காண்க</string>
+    <string name="save_to_history">வரலாற்றில் சேமிக்க</string>
+    <string name="scan_history">ஸ்கேன் வரலாறு</string>
+    <string name="crop_library">பயிர் நூலகம்</string>
+    <string name="settings">அமைப்புகள்</string>
+    <string name="treatment_recommendations">சிகிச்சை பரிந்துரைகள்</string>
+    <string name="confidence_score">நம்பகத்தன்மை மதிப்பெண்</string>
+    <string name="available_offline">ஆஃப்லைனில் கிடைக்கும் — இணையம் தேவையில்லை</string>
+    <string name="works_offline">ஆஃப்லைனில் செயல்படுகிறது</string>
+    <string name="tip_photo">குறிப்பு: இலை நல்ல வெளிச்சத்தில் சட்டத்தை நிரப்ப வேண்டும்.</string>
+    <string name="no_scans_yet">இன்னும் ஸ்கேன் இல்லை — முதல் தாவரத்தை ஸ்கேன் செய்க!</string>
+    <string name="search_disease_crop">நோய் அல்லது பயிர் தேடுக</string>
+    <string name="search_by_crop">பயிர் பெயரால் தேடுக</string>
+    <string name="language_selection">மொழி தேர்வு</string>
+    <string name="notifications">அறிவிப்புகள்</string>
+    <string name="weather_alerts">வானிலை எச்சரிக்கைகள்</string>
+    <string name="disease_outbreak_alerts">நோய் வெடிப்பு எச்சரிக்கைகள்</string>
+    <string name="export_pdf">PDF அறிக்கை ஏற்றுமதி</string>
+    <string name="clear_history">ஸ்கேன் வரலாறு அழிக்க</string>
+    <string name="available_in">இந்தி | கன்னடம் | ஆங்கிலத்தில் கிடைக்கும்</string>
+    <string name="what_is_it">இது என்ன?</string>
+    <string name="symptoms">அறிகுறிகள்</string>
+    <string name="causes">காரணங்கள்</string>
+    <string name="prevention_tips">தடுப்பு குறிப்புகள்</string>
+    <string name="organic">இயற்கை</string>
+    <string name="chemical">இரசாயன</string>
+</resources>
