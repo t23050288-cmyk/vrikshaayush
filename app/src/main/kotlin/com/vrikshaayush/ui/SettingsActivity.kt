@@ -28,16 +28,16 @@ class SettingsActivity : AppCompatActivity() {
 
         binding.btnBack.setOnClickListener { finish() }
 
-        // Highlight current language
         val currentLang = getSharedPreferences("app_prefs", MODE_PRIVATE).getString("language", "en") ?: "en"
         updateButtonStates(currentLang)
 
-        // Language selection - actually applies locale and restarts
-        binding.btnEnglish.setOnClickListener { applyLanguage("en", "English") }
-        binding.btnHindi.setOnClickListener { applyLanguage("hi", "हिंदी") }
-        binding.btnKannada.setOnClickListener { applyLanguage("kn", "ಕನ್ನಡ") }
+        binding.btnEnglish.setOnClickListener  { applyLanguage("en",  "English") }
+        binding.btnHindi.setOnClickListener    { applyLanguage("hi",  "हिंदी") }
+        binding.btnKannada.setOnClickListener  { applyLanguage("kn",  "ಕನ್ನಡ") }
+        binding.btnTamil.setOnClickListener    { applyLanguage("ta",  "தமிழ்") }
+        binding.btnTelugu.setOnClickListener   { applyLanguage("te",  "తెలుగు") }
+        binding.btnMalayalam.setOnClickListener{ applyLanguage("ml",  "മലയാളം") }
 
-        // Clear history
         binding.btnClearHistory.setOnClickListener {
             AlertDialog.Builder(this)
                 .setTitle("Clear Scan History")
@@ -54,17 +54,15 @@ class SettingsActivity : AppCompatActivity() {
                 .show()
         }
 
-        binding.tvAppVersion.text = "v1.0.0"
+        binding.tvAppVersion.text = "v2.0.0"
     }
 
     private fun applyLanguage(lang: String, langName: String) {
-        // Save preference
         getSharedPreferences("app_prefs", MODE_PRIVATE)
             .edit()
             .putString("language", lang)
             .apply()
 
-        // Apply locale immediately
         val locale = Locale(lang)
         Locale.setDefault(locale)
         val config = Configuration(resources.configuration)
@@ -74,7 +72,6 @@ class SettingsActivity : AppCompatActivity() {
 
         Toast.makeText(this, "Language changed to $langName", Toast.LENGTH_SHORT).show()
 
-        // Restart app from SplashActivity so all screens reload with new language
         val intent = Intent(this, SplashActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
@@ -82,9 +79,26 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun updateButtonStates(lang: String) {
-        binding.btnEnglish.isSelected = lang == "en"
-        binding.btnHindi.isSelected = lang == "hi"
-        binding.btnKannada.isSelected = lang == "kn"
+        val activeColor = getColor(com.vrikshaayush.R.color.primary_green)
+        val inactiveColor = getColor(com.vrikshaayush.R.color.primary_green_light)
+        val whiteColor = getColor(com.vrikshaayush.R.color.white)
+        val greenColor = getColor(com.vrikshaayush.R.color.primary_green)
+
+        listOf(
+            "en" to binding.btnEnglish,
+            "hi" to binding.btnHindi,
+            "kn" to binding.btnKannada,
+            "ta" to binding.btnTamil,
+            "te" to binding.btnTelugu,
+            "ml" to binding.btnMalayalam
+        ).forEach { (code, btn) ->
+            if (code == lang) {
+                btn.backgroundTintList = android.content.res.ColorStateList.valueOf(activeColor)
+                btn.setTextColor(whiteColor)
+            } else {
+                btn.backgroundTintList = android.content.res.ColorStateList.valueOf(inactiveColor)
+                btn.setTextColor(greenColor)
+            }
+        }
     }
 }
-

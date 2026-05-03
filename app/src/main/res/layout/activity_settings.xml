@@ -59,48 +59,96 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="16dp">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="🌐 Language"
+                        android:text="🌐 Language / ಭಾಷೆ / भाषा"
                         android:textSize="15sp"
                         android:textStyle="bold"
                         android:textColor="@color/text_primary"
                         android:layout_marginBottom="12dp"/>
+
+                    <!-- Row 1: English + Hindi + Kannada -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="8dp">
                         <Button
                             android:id="@+id/btnEnglish"
                             android:layout_width="0dp"
                             android:layout_height="44dp"
                             android:layout_weight="1"
                             android:text="English"
-                            android:textSize="13sp"
+                            android:textSize="12sp"
                             android:textColor="@color/white"
                             android:backgroundTint="@color/primary_green"
-                            android:layout_marginEnd="6dp"/>
+                            android:layout_marginEnd="4dp"/>
                         <Button
                             android:id="@+id/btnHindi"
                             android:layout_width="0dp"
                             android:layout_height="44dp"
                             android:layout_weight="1"
                             android:text="हिंदी"
-                            android:textSize="13sp"
+                            android:textSize="12sp"
                             android:textColor="@color/primary_green"
                             android:backgroundTint="@color/primary_green_light"
-                            android:layout_marginEnd="6dp"/>
+                            android:layout_marginEnd="4dp"/>
                         <Button
                             android:id="@+id/btnKannada"
                             android:layout_width="0dp"
                             android:layout_height="44dp"
                             android:layout_weight="1"
                             android:text="ಕನ್ನಡ"
-                            android:textSize="13sp"
+                            android:textSize="12sp"
                             android:textColor="@color/primary_green"
                             android:backgroundTint="@color/primary_green_light"/>
                     </LinearLayout>
+
+                    <!-- Row 2: Tamil + Telugu + Malayalam -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <Button
+                            android:id="@+id/btnTamil"
+                            android:layout_width="0dp"
+                            android:layout_height="44dp"
+                            android:layout_weight="1"
+                            android:text="தமிழ்"
+                            android:textSize="12sp"
+                            android:textColor="@color/primary_green"
+                            android:backgroundTint="@color/primary_green_light"
+                            android:layout_marginEnd="4dp"/>
+                        <Button
+                            android:id="@+id/btnTelugu"
+                            android:layout_width="0dp"
+                            android:layout_height="44dp"
+                            android:layout_weight="1"
+                            android:text="తెలుగు"
+                            android:textSize="12sp"
+                            android:textColor="@color/primary_green"
+                            android:backgroundTint="@color/primary_green_light"
+                            android:layout_marginEnd="4dp"/>
+                        <Button
+                            android:id="@+id/btnMalayalam"
+                            android:layout_width="0dp"
+                            android:layout_height="44dp"
+                            android:layout_weight="1"
+                            android:text="മലയാളം"
+                            android:textSize="12sp"
+                            android:textColor="@color/primary_green"
+                            android:backgroundTint="@color/primary_green_light"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="⚠ App restarts to apply language change"
+                        android:textSize="12sp"
+                        android:textColor="@color/text_secondary"
+                        android:layout_marginTop="8dp"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -178,7 +226,7 @@
                             android:id="@+id/tvAppVersion"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="v1.0.0"
+                            android:text="v2.0.0"
                             android:textSize="13sp"
                             android:textColor="@color/primary_green"/>
                     </LinearLayout>
@@ -192,8 +240,15 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="🌐 Available in Hindi | Kannada | English"
+                        android:text="🤖 AI Model: 98.65% accuracy | 38 diseases"
                         android:textSize="13sp"
+                        android:textColor="@color/text_secondary"
+                        android:layout_marginTop="4dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🌐 6 Languages: English | हिंदी | ಕನ್ನಡ | தமிழ் | తెలుగు | മലയാളം"
+                        android:textSize="12sp"
                         android:textColor="@color/text_secondary"
                         android:layout_marginTop="4dp"/>
                 </LinearLayout>
