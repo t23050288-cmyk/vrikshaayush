@@ -18,8 +18,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var db: AppDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        applyLocale()
         super.onCreate(savedInstanceState)
+        applyLocale()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -45,22 +45,26 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadStats() {
         lifecycleScope.launch {
-            val totalScans = db.scanDao().getTotalScans()
-            val totalDiseases = db.scanDao().getTotalDiseases()
-            val totalCrops = db.scanDao().getTotalCrops()
-            val lastScan = db.scanDao().getLastScan()
+            try {
+                val totalScans = db.scanDao().getTotalScans()
+                val totalDiseases = db.scanDao().getTotalDiseases()
+                val totalCrops = db.scanDao().getTotalCrops()
+                val lastScan = db.scanDao().getLastScan()
 
-            binding.tvTotalScans.text = totalScans.toString()
-            binding.tvTotalDiseases.text = totalDiseases.toString()
-            binding.tvTotalCrops.text = totalCrops.toString()
+                binding.tvTotalScans.text = totalScans.toString()
+                binding.tvTotalDiseases.text = totalDiseases.toString()
+                binding.tvTotalCrops.text = totalCrops.toString()
 
-            if (lastScan != null) {
-                val sdf = SimpleDateFormat("dd MMM, hh:mm a", Locale.getDefault())
-                val timeStr = sdf.format(Date(lastScan.timestamp))
-                binding.tvLastAudit.text = "${lastScan.cropType} • $timeStr"
-                binding.cardLastAudit.visibility = android.view.View.VISIBLE
-            } else {
-                binding.cardLastAudit.visibility = android.view.View.GONE
+                if (lastScan != null) {
+                    val sdf = SimpleDateFormat("dd MMM, hh:mm a", Locale.getDefault())
+                    val timeStr = sdf.format(Date(lastScan.timestamp))
+                    binding.tvLastAudit.text = "${lastScan.cropType} • $timeStr"
+                    binding.cardLastAudit.visibility = android.view.View.VISIBLE
+                } else {
+                    binding.cardLastAudit.visibility = android.view.View.GONE
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
         }
     }
