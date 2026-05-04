@@ -7,7 +7,6 @@ import java.io.FileInputStream
 import java.io.InputStreamReader
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
-import java.nio.MappedByteBuffer
 import java.nio.channels.FileChannel
 
 data class DiagnosisResult(
@@ -28,9 +27,9 @@ class DiseaseClassifier(private val context: Context) {
         const val MODEL_FILE = "plant_disease_model.tflite"
         const val LABELS_FILE = "labels.txt"
         const val INPUT_SIZE = 224
+        // 25% threshold as requested
         const val CONFIDENCE_THRESHOLD = 0.25f
 
-        // Map label prefix -> friendly crop name
         val CROP_MAP = mapOf(
             "apple" to "Apple (Seb)",
             "bean" to "Bean (Rajma)",
@@ -86,6 +85,7 @@ class DiseaseClassifier(private val context: Context) {
         val maxIndex = scores.indices.maxByOrNull { scores[it] } ?: 0
         val confidence = scores[maxIndex]
 
+        // Below 25% threshold → cannot identify
         if (confidence < CONFIDENCE_THRESHOLD) {
             return DiagnosisResult(
                 diseaseName = "Cannot Identify Plant",
@@ -97,38 +97,48 @@ class DiseaseClassifier(private val context: Context) {
             )
         }
 
-        val rawLabel = labels[maxIndex] // e.g. "tomato_early_blight" or "healthy_rice"
+        val rawLabel = labels[maxIndex]
+        // rawLabel format examples:
+        // "tomato_early_blight", "healthy_rice", "diseased_rice",
+        // "bell_pepper_bacterial_spot", "corn_cercospora_leaf_spot",
+        // "apple_apple_scab", "wheat_yellow_rust"
 
-        // Parse label: format is "crop_disease" or "healthy_crop" or "diseased_crop"
         val parts = rawLabel.split("_")
-        
+
         val cropType: String
         val diseaseName: String
-        
+
         when {
-            // healthy_cropname
-            parts[0] == "healthy" -> {
-                val crop = parts.drop(1).joinToString("_")
-                cropType = CROP_MAP[crop] ?: crop.replaceFirstChar { it.uppercase() }
+            // healthy_cropname (e.g. healthy_tomato, healthy_wheat)
+            parts[0] == "healthy" && parts.size >= 2 -> {
+                val cropKey = parts.drop(1).joinToString("_")
+                cropType = CROP_MAP[cropKey] ?: cropKey.replaceFirstChar { it.uppercase() }
                 diseaseName = "Healthy ✅"
             }
-            // diseased_cropname
-            parts[0] == "diseased" -> {
-                val crop = parts.drop(1).joinToString("_")
-                cropType = CROP_MAP[crop] ?: crop.replaceFirstChar { it.uppercase() }
+            // diseased_cropname (e.g. diseased_rice, diseased_cucumber)
+            parts[0] == "diseased" && parts.size >= 2 -> {
+                val cropKey = parts.drop(1).joinToString("_")
+                cropType = CROP_MAP[cropKey] ?: cropKey.replaceFirstChar { it.uppercase() }
                 diseaseName = "Disease Detected"
             }
-            // Try 2-word crop prefix: e.g. bell_pepper_bacterial_spot
+            // 2-word crop prefix: bell_pepper_bacterial_spot
             parts.size >= 3 && CROP_MAP.containsKey("${parts[0]}_${parts[1]}") -> {
                 val cropKey = "${parts[0]}_${parts[1]}"
                 cropType = CROP_MAP[cropKey]!!
+                // disease = remaining parts capitalized
                 diseaseName = parts.drop(2).joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
             }
-            // Single word crop prefix: e.g. tomato_early_blight
-            CROP_MAP.containsKey(parts[0]) -> {
+            // crop_crop_disease (e.g. apple_apple_scab → crop=apple, disease=Scab)
+            parts.size >= 3 && parts[0] == parts[1] && CROP_MAP.containsKey(parts[0]) -> {
+                cropType = CROP_MAP[parts[0]]!!
+                diseaseName = parts.drop(2).joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
+            }
+            // Normal: crop_disease (e.g. tomato_early_blight, wheat_yellow_rust)
+            parts.size >= 2 && CROP_MAP.containsKey(parts[0]) -> {
                 cropType = CROP_MAP[parts[0]]!!
                 diseaseName = parts.drop(1).joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
             }
+            // Fallback
             else -> {
                 cropType = parts[0].replaceFirstChar { it.uppercase() }
                 diseaseName = parts.drop(1).joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
@@ -143,7 +153,7 @@ class DiseaseClassifier(private val context: Context) {
         }
 
         return DiagnosisResult(
-            diseaseName = if (diseaseName.isBlank()) "Unknown" else diseaseName,
+            diseaseName = if (diseaseName.isBlank()) "Unknown Disease" else diseaseName,
             cropType = cropType,
             confidence = confidence * 100,
             severity = severity,
@@ -158,9 +168,9 @@ class DiseaseClassifier(private val context: Context) {
         val intValues = IntArray(INPUT_SIZE * INPUT_SIZE)
         bitmap.getPixels(intValues, 0, bitmap.width, 0, 0, bitmap.width, bitmap.height)
         intValues.forEach { pixel ->
-            byteBuffer.putFloat(((pixel shr 16 and 0xFF) / 255.0f))
-            byteBuffer.putFloat(((pixel shr 8 and 0xFF) / 255.0f))
-            byteBuffer.putFloat(((pixel and 0xFF) / 255.0f))
+            byteBuffer.putFloat((pixel shr 16 and 0xFF) / 255.0f)
+            byteBuffer.putFloat((pixel shr 8 and 0xFF) / 255.0f)
+            byteBuffer.putFloat((pixel and 0xFF) / 255.0f)
         }
         return byteBuffer
     }
