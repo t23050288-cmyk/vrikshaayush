@@ -31,54 +31,67 @@ class DiseaseDetailActivity : AppCompatActivity() {
         setupTreatmentTabs()
     }
 
-    private fun loadDiseaseInfo(diseaseName: String, cropType: String, modelLabel: String) {
+    private fun loadAllDiseases(): List<DiseaseInfo> {
         val json = assets.open("diseases.json").bufferedReader().use { it.readText() }
         val data: Map<String, Any> = Gson().fromJson(json, object : TypeToken<Map<String, Any>>() {}.type)
         val diseasesJson = Gson().toJson(data["diseases"])
-        val diseases: List<DiseaseInfo> = Gson().fromJson(diseasesJson, object : TypeToken<List<DiseaseInfo>>() {}.type)
+        return Gson().fromJson(diseasesJson, object : TypeToken<List<DiseaseInfo>>() {}.type)
+    }
 
-        // Try multiple matching strategies
-        val disease = diseases.find { d ->
-            // 1. Match by model_labels list (most accurate)
-            d.model_labels?.any { label ->
-                label.equals(modelLabel, ignoreCase = true) ||
-                modelLabel.contains(label, ignoreCase = true) ||
-                label.contains(modelLabel, ignoreCase = true)
-            } == true
-        } ?: diseases.find { d ->
-            // 2. Match by disease name
-            d.disease_name.equals(diseaseName, ignoreCase = true) ||
-            diseaseName.contains(d.disease_name, ignoreCase = true) ||
-            d.disease_name.split(" ").any { word ->
-                word.length > 4 && diseaseName.contains(word, ignoreCase = true)
+    private fun loadDiseaseInfo(diseaseName: String, cropType: String, modelLabel: String) {
+        val diseases = loadAllDiseases()
+
+        val disease = when {
+            // 1. Best match: by model_label (exact)
+            modelLabel.isNotBlank() -> {
+                diseases.find { d ->
+                    d.model_labels?.any { it.equals(modelLabel, ignoreCase = true) } == true
+                }
             }
+            else -> null
         } ?: diseases.find { d ->
-            // 3. Match by crop type
-            val cleanCrop = cropType.substringBefore("(").trim()
-            d.crop_type.contains(cleanCrop, ignoreCase = true) ||
-            cleanCrop.contains(d.crop_type, ignoreCase = true)
+            // 2. Match by disease_name exact
+            d.disease_name.equals(diseaseName, ignoreCase = true)
+        } ?: diseases.find { d ->
+            // 3. Match by disease_name contains
+            diseaseName.isNotBlank() && (
+                d.disease_name.contains(diseaseName, ignoreCase = true) ||
+                diseaseName.contains(d.disease_name, ignoreCase = true)
+            )
+        } ?: diseases.find { d ->
+            // 4. Match by crop type fallback
+            cropType.isNotBlank() && (
+                d.crop_type.contains(cropType, ignoreCase = true) ||
+                cropType.contains(d.crop_type, ignoreCase = true)
+            )
         }
 
         currentDisease = disease
 
         disease?.let { d ->
+            binding.tvTitle.text = d.disease_name
             binding.tvDescription.text = d.description["en"] ?: "Information not available"
-            binding.tvCommonIn.text = "Common in: ${d.common_in?.joinToString(", ") ?: cropType}"
+            binding.tvCommonIn.text = "Common in: ${d.common_in?.joinToString(", ") ?: d.crop_type}"
 
             val symptoms = d.symptoms["en"] ?: emptyList()
-            binding.tvSymptoms.text = symptoms.joinToString("\n") { "• $it" }
+            binding.tvSymptoms.text = if (symptoms.isEmpty()) "No symptom data available"
+            else symptoms.joinToString("\n") { "• $it" }
 
             val causes = d.causes["en"] ?: emptyList()
-            binding.tvCauses.text = causes.joinToString("  •  ")
+            binding.tvCauses.text = if (causes.isEmpty()) "No cause data available"
+            else causes.joinToString("  •  ")
 
             val prevention = d.prevention_tips["en"] ?: emptyList()
-            binding.tvPrevention.text = prevention.joinToString("\n") { "✓ $it" }
+            binding.tvPrevention.text = if (prevention.isEmpty()) "No prevention data available"
+            else prevention.joinToString("\n") { "✓ $it" }
 
             showOrganicTreatments(d)
+
         } ?: run {
-            binding.tvDescription.text = "Detailed info for $diseaseName is being added. Consult your local Krishi Vigyan Kendra (KVK) for guidance."
+            // Fallback when nothing matches
+            binding.tvDescription.text = "Detailed information for \"$diseaseName\" is being added. Please consult your local Krishi Vigyan Kendra (KVK) for guidance."
             binding.tvCommonIn.text = "Crop: $cropType"
-            binding.tvSymptoms.text = "• Check leaves for discoloration, spots or wilting\n• Look for changes in fruit or stem"
+            binding.tvSymptoms.text = "• Check leaves for discoloration, spots or wilting\n• Look for changes in fruit or stem appearance"
             binding.tvCauses.text = "Fungal, Bacterial or Environmental stress"
             binding.tvPrevention.text = "✓ Rotate crops regularly\n✓ Avoid overhead irrigation\n✓ Maintain good plant spacing"
             binding.tvTreatments.text = "1. Consult KVK\n   Contact your nearest Krishi Vigyan Kendra for specific advice.\n\n2. Neem Oil Spray\n   Apply 2% neem oil solution as general treatment.\n\n3. Copper Spray\n   Apply 0.5% Bordeaux mixture as broad-spectrum fungicide."
@@ -86,7 +99,6 @@ class DiseaseDetailActivity : AppCompatActivity() {
     }
 
     private fun setupTreatmentTabs() {
-        // Set initial state
         updateTabVisuals(true)
 
         binding.tabOrganic.setOnClickListener {
@@ -104,43 +116,37 @@ class DiseaseDetailActivity : AppCompatActivity() {
 
     private fun updateTabVisuals(organicSelected: Boolean) {
         if (organicSelected) {
-            binding.tabOrganic.backgroundTintList =
-                ContextCompat.getColorStateList(this, R.color.primary_green)
+            binding.tabOrganic.backgroundTintList = ContextCompat.getColorStateList(this, R.color.primary_green)
             binding.tabOrganic.setTextColor(ContextCompat.getColor(this, R.color.white))
-            binding.tabChemical.backgroundTintList =
-                ContextCompat.getColorStateList(this, R.color.primary_green_light)
+            binding.tabChemical.backgroundTintList = ContextCompat.getColorStateList(this, R.color.primary_green_light)
             binding.tabChemical.setTextColor(ContextCompat.getColor(this, R.color.primary_green))
         } else {
-            binding.tabChemical.backgroundTintList =
-                ContextCompat.getColorStateList(this, R.color.primary_green)
+            binding.tabChemical.backgroundTintList = ContextCompat.getColorStateList(this, R.color.primary_green)
             binding.tabChemical.setTextColor(ContextCompat.getColor(this, R.color.white))
-            binding.tabOrganic.backgroundTintList =
-                ContextCompat.getColorStateList(this, R.color.primary_green_light)
+            binding.tabOrganic.backgroundTintList = ContextCompat.getColorStateList(this, R.color.primary_green_light)
             binding.tabOrganic.setTextColor(ContextCompat.getColor(this, R.color.primary_green))
         }
     }
 
     private fun showOrganicTreatments(disease: DiseaseInfo) {
         val treatments = disease.organic_treatments["en"] ?: emptyList()
-        if (treatments.isEmpty()) {
-            binding.tvTreatments.text = "Apply neem oil spray 2% every 7 days as general organic treatment."
-            return
+        binding.tvTreatments.text = if (treatments.isEmpty()) {
+            "Apply neem oil spray (2%) every 7 days as a general organic treatment."
+        } else {
+            treatments.mapIndexed { i, t ->
+                "${i + 1}. ${t.title}\n   ${t.description}"
+            }.joinToString("\n\n")
         }
-        val text = treatments.mapIndexed { i, t ->
-            "${i + 1}. ${t.title}\n   ${t.description}"
-        }.joinToString("\n\n")
-        binding.tvTreatments.text = text
     }
 
     private fun showChemicalTreatments(disease: DiseaseInfo) {
         val treatments = disease.chemical_treatments["en"] ?: emptyList()
-        if (treatments.isEmpty()) {
-            binding.tvTreatments.text = "Consult your local agro dealer or KVK for specific chemical recommendations."
-            return
+        binding.tvTreatments.text = if (treatments.isEmpty()) {
+            "Consult your local agro dealer or KVK for specific chemical recommendations."
+        } else {
+            treatments.mapIndexed { i, t ->
+                "${i + 1}. ${t.title}\n   ${t.description}"
+            }.joinToString("\n\n")
         }
-        val text = treatments.mapIndexed { i, t ->
-            "${i + 1}. ${t.title}\n   ${t.description}"
-        }.joinToString("\n\n")
-        binding.tvTreatments.text = text
     }
 }

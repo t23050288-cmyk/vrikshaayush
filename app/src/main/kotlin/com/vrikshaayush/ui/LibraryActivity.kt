@@ -29,6 +29,8 @@ class LibraryActivity : AppCompatActivity() {
             val intent = Intent(this, DiseaseDetailActivity::class.java)
             intent.putExtra("DISEASE_NAME", disease.disease_name)
             intent.putExtra("CROP_TYPE", disease.crop_type)
+            // Pass the first model_label so DiseaseDetailActivity can match perfectly
+            intent.putExtra("MODEL_LABEL", disease.model_labels?.firstOrNull() ?: "")
             startActivity(intent)
         }
 
@@ -53,8 +55,6 @@ class LibraryActivity : AppCompatActivity() {
     }
 
     private fun setupFilters() {
-        val crops = listOf("All", "Tomato", "Rice", "Wheat", "Cotton", "Maize")
-        // Chip group — set click listeners
         binding.chipAll.setOnClickListener { filterByCrop("All") }
         binding.chipTomato.setOnClickListener { filterByCrop("Tomato") }
         binding.chipRice.setOnClickListener { filterByCrop("Rice") }
@@ -63,9 +63,10 @@ class LibraryActivity : AppCompatActivity() {
         binding.chipMaize.setOnClickListener { filterByCrop("Maize") }
     }
 
+    // Match crop_type loosely — handles "Tamatar (Tomato)", "Chawal (Rice)", etc.
     private fun filterByCrop(crop: String) {
         val filtered = if (crop == "All") allDiseases
-        else allDiseases.filter { it.crop_type.equals(crop, ignoreCase = true) }
+        else allDiseases.filter { it.crop_type.contains(crop, ignoreCase = true) }
         adapter.submitList(filtered)
     }
 
