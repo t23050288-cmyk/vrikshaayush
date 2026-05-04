@@ -27,29 +27,24 @@ class DiseaseClassifier(private val context: Context) {
         const val MODEL_FILE = "plant_disease_model.tflite"
         const val LABELS_FILE = "labels.txt"
         const val INPUT_SIZE = 224
-        // 25% threshold as requested
         const val CONFIDENCE_THRESHOLD = 0.25f
 
+        // 38-class PlantVillage MobileNetV2 model crop map
         val CROP_MAP = mapOf(
-            "apple" to "Apple (Seb)",
-            "bean" to "Bean (Rajma)",
-            "bell_pepper" to "Bell Pepper (Shimla Mirch)",
-            "cherry" to "Cherry",
-            "corn" to "Maize (Makka)",
-            "cotton" to "Cotton (Kapas)",
-            "cucumber" to "Cucumber (Kheera)",
-            "grape" to "Grape (Angoor)",
-            "groundnut" to "Groundnut (Moongphali)",
-            "guava" to "Guava (Amrood)",
-            "lemon" to "Lemon (Nimbu)",
-            "peach" to "Peach (Aadoo)",
-            "potato" to "Potato (Aloo)",
-            "pumpkin" to "Pumpkin (Kaddu)",
-            "rice" to "Rice (Chawal)",
-            "strawberry" to "Strawberry",
-            "sugarcane" to "Sugarcane (Ganna)",
-            "tomato" to "Tomato (Tamatar)",
-            "wheat" to "Wheat (Gehun)"
+            "apple"        to "Apple (Seb)",
+            "blueberry"    to "Blueberry",
+            "cherry"       to "Cherry",
+            "corn"         to "Maize (Makka)",
+            "grape"        to "Grape (Angoor)",
+            "orange"       to "Orange (Santra)",
+            "peach"        to "Peach (Aadoo)",
+            "pepper_bell"  to "Bell Pepper (Shimla Mirch)",
+            "potato"       to "Potato (Aalu)",
+            "raspberry"    to "Raspberry",
+            "soybean"      to "Soybean (Soya)",
+            "squash"       to "Squash / Pumpkin",
+            "strawberry"   to "Strawberry",
+            "tomato"       to "Tomato (Tamatar)"
         )
     }
 
@@ -98,10 +93,9 @@ class DiseaseClassifier(private val context: Context) {
         }
 
         val rawLabel = labels[maxIndex]
-        // rawLabel format examples:
-        // "tomato_early_blight", "healthy_rice", "diseased_rice",
-        // "bell_pepper_bacterial_spot", "corn_cercospora_leaf_spot",
-        // "apple_apple_scab", "wheat_yellow_rust"
+        // 38-class labels format:
+        // apple_apple_scab, apple_healthy, corn_cercospora_leaf_spot,
+        // pepper_bell_bacterial_spot, tomato_early_blight, potato_healthy, etc.
 
         val parts = rawLabel.split("_")
 
@@ -109,39 +103,38 @@ class DiseaseClassifier(private val context: Context) {
         val diseaseName: String
 
         when {
-            // healthy_cropname (e.g. healthy_tomato, healthy_wheat)
-            parts[0] == "healthy" && parts.size >= 2 -> {
-                val cropKey = parts.drop(1).joinToString("_")
-                cropType = CROP_MAP[cropKey] ?: cropKey.replaceFirstChar { it.uppercase() }
-                diseaseName = "Healthy ✅"
-            }
-            // diseased_cropname (e.g. diseased_rice, diseased_cucumber)
-            parts[0] == "diseased" && parts.size >= 2 -> {
-                val cropKey = parts.drop(1).joinToString("_")
-                cropType = CROP_MAP[cropKey] ?: cropKey.replaceFirstChar { it.uppercase() }
-                diseaseName = "Disease Detected"
-            }
-            // 2-word crop prefix: bell_pepper_bacterial_spot
-            parts.size >= 3 && CROP_MAP.containsKey("${parts[0]}_${parts[1]}") -> {
+            // pepper_bell prefix (2-word crop key)
+            parts.size >= 2 && CROP_MAP.containsKey("${parts[0]}_${parts[1]}") -> {
                 val cropKey = "${parts[0]}_${parts[1]}"
                 cropType = CROP_MAP[cropKey]!!
-                // disease = remaining parts capitalized
-                diseaseName = parts.drop(2).joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
+                val rest = parts.drop(2)
+                diseaseName = if (rest.isEmpty() || rest == listOf("healthy")) "Healthy ✅"
+                else rest.joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
             }
-            // crop_crop_disease (e.g. apple_apple_scab → crop=apple, disease=Scab)
+            // apple_apple_scab pattern (crop repeated)
             parts.size >= 3 && parts[0] == parts[1] && CROP_MAP.containsKey(parts[0]) -> {
                 cropType = CROP_MAP[parts[0]]!!
-                diseaseName = parts.drop(2).joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
+                val rest = parts.drop(2)
+                diseaseName = if (rest.isEmpty()) "Unknown" 
+                else rest.joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
             }
-            // Normal: crop_disease (e.g. tomato_early_blight, wheat_yellow_rust)
+            // crop_healthy pattern
+            parts.size == 2 && parts[1] == "healthy" && CROP_MAP.containsKey(parts[0]) -> {
+                cropType = CROP_MAP[parts[0]]!!
+                diseaseName = "Healthy ✅"
+            }
+            // Normal: crop_disease (tomato_early_blight, potato_late_blight, etc.)
             parts.size >= 2 && CROP_MAP.containsKey(parts[0]) -> {
                 cropType = CROP_MAP[parts[0]]!!
-                diseaseName = parts.drop(1).joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
+                val rest = parts.drop(1)
+                diseaseName = if (rest == listOf("healthy")) "Healthy ✅"
+                else rest.joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
             }
             // Fallback
             else -> {
                 cropType = parts[0].replaceFirstChar { it.uppercase() }
                 diseaseName = parts.drop(1).joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
+                    .ifEmpty { "Unknown Disease" }
             }
         }
 
@@ -153,7 +146,7 @@ class DiseaseClassifier(private val context: Context) {
         }
 
         return DiagnosisResult(
-            diseaseName = if (diseaseName.isBlank()) "Unknown Disease" else diseaseName,
+            diseaseName = diseaseName.ifBlank { "Unknown Disease" },
             cropType = cropType,
             confidence = confidence * 100,
             severity = severity,
