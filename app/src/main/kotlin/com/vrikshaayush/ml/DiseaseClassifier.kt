@@ -43,7 +43,6 @@ class DiseaseClassifier(private val context: Context) {
             "groundnut" to "Groundnut (Moongphali)",
             "guava" to "Guava (Amrood)",
             "lemon" to "Lemon (Nimbu)",
-            "orange" to "Orange (Santra)",
             "peach" to "Peach (Aadoo)",
             "potato" to "Potato (Aloo)",
             "pumpkin" to "Pumpkin (Kaddu)",
@@ -168,6 +167,5 @@ class DiseaseClassifier(private val context: Context) {
 
     fun close() {
         interpreter?.close()
-        interpreter = null
     }
 }
