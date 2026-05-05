@@ -37,6 +37,7 @@ class SettingsActivity : AppCompatActivity() {
         binding.btnTamil.setOnClickListener    { applyLanguage("ta",  "தமிழ்") }
         binding.btnTelugu.setOnClickListener   { applyLanguage("te",  "తెలుగు") }
         binding.btnMalayalam.setOnClickListener{ applyLanguage("ml",  "മലയാളം") }
+        binding.btnMarathi.setOnClickListener  { applyLanguage("mr",  "मराठी") }
 
         binding.btnClearHistory.setOnClickListener {
             AlertDialog.Builder(this)
@@ -90,7 +91,8 @@ class SettingsActivity : AppCompatActivity() {
             "kn" to binding.btnKannada,
             "ta" to binding.btnTamil,
             "te" to binding.btnTelugu,
-            "ml" to binding.btnMalayalam
+            "ml" to binding.btnMalayalam,
+            "mr" to binding.btnMarathi
         ).forEach { (code, btn) ->
             if (code == lang) {
                 btn.backgroundTintList = android.content.res.ColorStateList.valueOf(activeColor)

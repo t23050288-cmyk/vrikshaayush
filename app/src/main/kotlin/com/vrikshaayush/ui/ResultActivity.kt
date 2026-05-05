@@ -148,6 +148,8 @@ class ResultActivity : AppCompatActivity() {
             intent.putExtra("DISEASE_NAME", result.diseaseName)
             intent.putExtra("CROP_TYPE", result.cropType)
             intent.putExtra("MODEL_LABEL", result.label)
+            val lang = getSharedPreferences("app_prefs", MODE_PRIVATE).getString("language", "en") ?: "en"
+            intent.putExtra("LANGUAGE", lang)
             startActivity(intent)
         }
 

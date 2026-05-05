@@ -48,7 +48,7 @@
         android:textSize="14sp"
         android:inputType="text"/>
 
-    <!-- Crop Filter Chips -->
+    <!-- Crop Filter Chips — matches 38-class PlantVillage crops -->
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -84,30 +84,30 @@
                 android:layout_marginEnd="8dp"/>
 
             <Button
-                android:id="@+id/chipRice"
+                android:id="@+id/chipApple"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:text="🌾 Rice"
+                android:text="🍎 Apple"
                 android:textSize="12sp"
                 android:textColor="@color/primary_green"
                 android:backgroundTint="@color/primary_green_light"
                 android:layout_marginEnd="8dp"/>
 
             <Button
-                android:id="@+id/chipWheat"
+                android:id="@+id/chipPotato"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:text="🌿 Wheat"
+                android:text="🥔 Potato"
                 android:textSize="12sp"
                 android:textColor="@color/primary_green"
                 android:backgroundTint="@color/primary_green_light"
                 android:layout_marginEnd="8dp"/>
 
             <Button
-                android:id="@+id/chipCotton"
+                android:id="@+id/chipGrape"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:text="Cotton"
+                android:text="🍇 Grape"
                 android:textSize="12sp"
                 android:textColor="@color/primary_green"
                 android:backgroundTint="@color/primary_green_light"
@@ -120,7 +120,18 @@
                 android:text="🌽 Maize"
                 android:textSize="12sp"
                 android:textColor="@color/primary_green"
+                android:backgroundTint="@color/primary_green_light"
+                android:layout_marginEnd="8dp"/>
+
+            <Button
+                android:id="@+id/chipPepper"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="🫑 Pepper"
+                android:textSize="12sp"
+                android:textColor="@color/primary_green"
                 android:backgroundTint="@color/primary_green_light"/>
+
         </LinearLayout>
     </HorizontalScrollView>
 
