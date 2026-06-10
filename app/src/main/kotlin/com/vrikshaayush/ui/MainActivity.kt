@@ -9,8 +9,7 @@ import com.vrikshaayush.data.AppDatabase
 import com.vrikshaayush.databinding.ActivityMainBinding
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,9 +21,7 @@ class MainActivity : AppCompatActivity() {
         applyLocale()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         db = AppDatabase.getDatabase(this)
-
         loadStats()
         setupNavigation()
     }
@@ -41,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         val config = Configuration(resources.configuration)
         config.setLocale(locale)
         resources.updateConfiguration(config, resources.displayMetrics)
+        applicationContext.resources.updateConfiguration(config, applicationContext.resources.displayMetrics)
     }
 
     private fun loadStats() {
@@ -88,6 +86,8 @@ class MainActivity : AppCompatActivity() {
         binding.cardLastAudit.setOnClickListener {
             startActivity(Intent(this, HistoryActivity::class.java))
         }
+        binding.cardAiChat.setOnClickListener {
+            startActivity(Intent(this, AiChatActivity::class.java))
+        }
     }
 }
-

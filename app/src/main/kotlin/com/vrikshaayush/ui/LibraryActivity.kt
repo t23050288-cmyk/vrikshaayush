@@ -17,11 +17,15 @@ class LibraryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLibraryBinding
     private lateinit var adapter: DiseaseLibraryAdapter
     private var allDiseases: List<DiseaseInfo> = emptyList()
+    private var currentLang: String = "en"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLibraryBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        currentLang = getSharedPreferences("app_prefs", MODE_PRIVATE)
+            .getString("language", "en") ?: "en"
 
         binding.btnBack.setOnClickListener { finish() }
 
@@ -29,8 +33,8 @@ class LibraryActivity : AppCompatActivity() {
             val intent = Intent(this, DiseaseDetailActivity::class.java)
             intent.putExtra("DISEASE_NAME", disease.disease_name)
             intent.putExtra("CROP_TYPE", disease.crop_type)
-            // Pass the first model_label so DiseaseDetailActivity can match perfectly
             intent.putExtra("MODEL_LABEL", disease.model_labels?.firstOrNull() ?: "")
+            intent.putExtra("LANGUAGE", currentLang)
             startActivity(intent)
         }
 
@@ -46,24 +50,22 @@ class LibraryActivity : AppCompatActivity() {
         val json = assets.open("diseases.json").bufferedReader().use { it.readText() }
         val type = object : TypeToken<Map<String, Any>>() {}.type
         val data: Map<String, Any> = Gson().fromJson(json, type)
-
         val diseasesJson = Gson().toJson(data["diseases"])
         val diseasesType = object : TypeToken<List<DiseaseInfo>>() {}.type
         allDiseases = Gson().fromJson(diseasesJson, diseasesType)
-
         adapter.submitList(allDiseases)
     }
 
     private fun setupFilters() {
-        binding.chipAll.setOnClickListener { filterByCrop("All") }
+        binding.chipAll.setOnClickListener    { filterByCrop("All") }
         binding.chipTomato.setOnClickListener { filterByCrop("Tomato") }
-        binding.chipRice.setOnClickListener { filterByCrop("Rice") }
-        binding.chipWheat.setOnClickListener { filterByCrop("Wheat") }
-        binding.chipCotton.setOnClickListener { filterByCrop("Cotton") }
-        binding.chipMaize.setOnClickListener { filterByCrop("Maize") }
+        binding.chipApple.setOnClickListener  { filterByCrop("Apple") }
+        binding.chipPotato.setOnClickListener { filterByCrop("Potato") }
+        binding.chipGrape.setOnClickListener  { filterByCrop("Grape") }
+        binding.chipMaize.setOnClickListener  { filterByCrop("Maize") }
+        binding.chipPepper.setOnClickListener { filterByCrop("Pepper") }
     }
 
-    // Match crop_type loosely — handles "Tamatar (Tomato)", "Chawal (Rice)", etc.
     private fun filterByCrop(crop: String) {
         val filtered = if (crop == "All") allDiseases
         else allDiseases.filter { it.crop_type.contains(crop, ignoreCase = true) }
@@ -76,7 +78,7 @@ class LibraryActivity : AppCompatActivity() {
                 val query = s.toString().lowercase()
                 val filtered = allDiseases.filter {
                     it.disease_name.lowercase().contains(query) ||
-                            it.crop_type.lowercase().contains(query)
+                    it.crop_type.lowercase().contains(query)
                 }
                 adapter.submitList(filtered)
             }

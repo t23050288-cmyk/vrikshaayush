@@ -2,6 +2,7 @@ package com.vrikshaayush.ml
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.Color
 import org.tensorflow.lite.Interpreter
 import java.io.FileInputStream
 import java.io.InputStreamReader
@@ -15,7 +16,8 @@ data class DiagnosisResult(
     val confidence: Float,
     val severity: String,
     val label: String,
-    val isUncertain: Boolean = false
+    val isUncertain: Boolean = false,
+    val isNotLeaf: Boolean = false
 )
 
 class DiseaseClassifier(private val context: Context) {
@@ -29,9 +31,8 @@ class DiseaseClassifier(private val context: Context) {
         const val INPUT_SIZE = 224
         const val CONFIDENCE_THRESHOLD = 0.25f
 
-        // 38-class PlantVillage MobileNetV2 model crop map
         val CROP_MAP = mapOf(
-            git pull origin main            "apple"        to "Apple (Seb)",
+            "apple"        to "Apple (Seb)",
             "bean"         to "Bean (Rajma)",
             "bell_pepper"  to "Bell Pepper (Shimla Mirch)",
             "blueberry"    to "Blueberry",
@@ -65,12 +66,9 @@ class DiseaseClassifier(private val context: Context) {
     }
 
     private fun loadModel() {
-        val assetFileDescriptor = context.assets.openFd(MODEL_FILE)
-        val inputStream = FileInputStream(assetFileDescriptor.fileDescriptor)
-        val fileChannel = inputStream.channel
-        val startOffset = assetFileDescriptor.startOffset
-        val declaredLength = assetFileDescriptor.declaredLength
-        val model = fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, declaredLength)
+        val afd = context.assets.openFd(MODEL_FILE)
+        val inputStream = FileInputStream(afd.fileDescriptor)
+        val model = inputStream.channel.map(FileChannel.MapMode.READ_ONLY, afd.startOffset, afd.declaredLength)
         interpreter = Interpreter(model)
     }
 
@@ -80,7 +78,47 @@ class DiseaseClassifier(private val context: Context) {
         reader.close()
     }
 
+    /**
+     * Check if image is likely a plant/leaf by measuring green pixel ratio.
+     * Samples 500 pixels and checks if enough of them are "greenish".
+     */
+    private fun isLikelyLeaf(bitmap: Bitmap): Boolean {
+        val sample = Bitmap.createScaledBitmap(bitmap, 50, 50, false)
+        var greenCount = 0
+        val total = 50 * 50
+        for (x in 0 until 50) {
+            for (y in 0 until 50) {
+                val pixel = sample.getPixel(x, y)
+                val r = Color.red(pixel)
+                val g = Color.green(pixel)
+                val b = Color.blue(pixel)
+                // Green dominant = plant-like pixel
+                // Also allow brown/yellow diseased leaf tones
+                val isGreenish = g > r + 20 && g > b + 10
+                val isBrownish = r > 80 && g > 50 && b < 100 && r > b
+                val isYellowish = r > 150 && g > 150 && b < 100
+                if (isGreenish || isBrownish || isYellowish) greenCount++
+            }
+        }
+        val ratio = greenCount.toFloat() / total
+        // At least 18% of pixels should be plant-like colours
+        return ratio >= 0.18f
+    }
+
     fun classify(bitmap: Bitmap): DiagnosisResult {
+        // ── Non-leaf detection ────────────────────────────────
+        if (!isLikelyLeaf(bitmap)) {
+            return DiagnosisResult(
+                diseaseName = "No Leaf Detected",
+                cropType = "Please take a clear photo of a plant leaf",
+                confidence = 0f,
+                severity = "LOW",
+                label = "no_leaf",
+                isUncertain = false,
+                isNotLeaf = true
+            )
+        }
+
         val resizedBitmap = Bitmap.createScaledBitmap(bitmap, INPUT_SIZE, INPUT_SIZE, true)
         val byteBuffer = convertBitmapToByteBuffer(resizedBitmap)
 
@@ -91,11 +129,10 @@ class DiseaseClassifier(private val context: Context) {
         val maxIndex = scores.indices.maxByOrNull { scores[it] } ?: 0
         val confidence = scores[maxIndex]
 
-        // Below 25% threshold → cannot identify
         if (confidence < CONFIDENCE_THRESHOLD) {
             return DiagnosisResult(
                 diseaseName = "Cannot Identify Plant",
-                cropType = "Unknown",
+                cropType = "Try a clearer photo with better lighting",
                 confidence = confidence * 100,
                 severity = "LOW",
                 label = "uncertain",
@@ -104,17 +141,12 @@ class DiseaseClassifier(private val context: Context) {
         }
 
         val rawLabel = labels[maxIndex]
-        // 38-class labels format:
-        // apple_apple_scab, apple_healthy, corn_cercospora_leaf_spot,
-        // pepper_bell_bacterial_spot, tomato_early_blight, potato_healthy, etc.
-
         val parts = rawLabel.split("_")
 
         val cropType: String
         val diseaseName: String
 
         when {
-            // pepper_bell prefix (2-word crop key)
             parts.size >= 2 && CROP_MAP.containsKey("${parts[0]}_${parts[1]}") -> {
                 val cropKey = "${parts[0]}_${parts[1]}"
                 cropType = CROP_MAP[cropKey]!!
@@ -122,30 +154,24 @@ class DiseaseClassifier(private val context: Context) {
                 diseaseName = if (rest.isEmpty() || rest == listOf("healthy")) "Healthy ✅"
                 else rest.joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
             }
-            // apple_apple_scab pattern (crop repeated)
             parts.size >= 3 && parts[0] == parts[1] && CROP_MAP.containsKey(parts[0]) -> {
                 cropType = CROP_MAP[parts[0]]!!
                 val rest = parts.drop(2)
-                diseaseName = if (rest.isEmpty()) "Unknown" 
-                else rest.joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
+                diseaseName = rest.joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }.ifEmpty { "Unknown" }
             }
-            // crop_healthy pattern
             parts.size == 2 && parts[1] == "healthy" && CROP_MAP.containsKey(parts[0]) -> {
                 cropType = CROP_MAP[parts[0]]!!
                 diseaseName = "Healthy ✅"
             }
-            // Normal: crop_disease (tomato_early_blight, potato_late_blight, etc.)
             parts.size >= 2 && CROP_MAP.containsKey(parts[0]) -> {
                 cropType = CROP_MAP[parts[0]]!!
                 val rest = parts.drop(1)
                 diseaseName = if (rest == listOf("healthy")) "Healthy ✅"
                 else rest.joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
             }
-            // Fallback
             else -> {
                 cropType = parts[0].replaceFirstChar { it.uppercase() }
-                diseaseName = parts.drop(1).joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
-                    .ifEmpty { "Unknown Disease" }
+                diseaseName = parts.drop(1).joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }.ifEmpty { "Unknown Disease" }
             }
         }
 
@@ -162,7 +188,8 @@ class DiseaseClassifier(private val context: Context) {
             confidence = confidence * 100,
             severity = severity,
             label = rawLabel,
-            isUncertain = false
+            isUncertain = false,
+            isNotLeaf = false
         )
     }
 
