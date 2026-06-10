@@ -17,6 +17,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.vrikshaayush.BuildConfig
 import com.vrikshaayush.R
 import com.vrikshaayush.databinding.ActivityAiChatBinding
 import kotlinx.coroutines.*
@@ -82,11 +83,11 @@ class AiChatActivity : AppCompatActivity() {
     private lateinit var adapter: ChatAdapter
     private val scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
-    private val SARVAM_KEY   = "sk_1blcusaf_CBHJwlBsnXClMJC0vlsqCetf"
+    private val SARVAM_KEY   = BuildConfig.SARVAM_API_KEY
     private val SARVAM_URL   = "https://api.sarvam.ai/v1/chat/completions"
     private val SARVAM_MODEL = "sarvam-30b"
 
-    private val NVIDIA_KEY   = "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"
+    private val NVIDIA_KEY   = BuildConfig.NVIDIA_API_KEY
     private val NVIDIA_URL   = "https://integrate.api.nvidia.com/v1/chat/completions"
     private val NVIDIA_MODEL = "meta/llama-3.1-8b-instruct"
 
