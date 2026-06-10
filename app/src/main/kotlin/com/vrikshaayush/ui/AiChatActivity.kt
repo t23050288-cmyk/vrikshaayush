@@ -211,6 +211,7 @@ class AiChatActivity : AppCompatActivity() {
             val req = Request.Builder()
                 .url(url)
                 .addHeader("Authorization", "Bearer $key")
+                .addHeader("api-subscription-key", key)
                 .addHeader("Content-Type", "application/json")
                 .post(bodyJson.toString().toRequestBody("application/json".toMediaType()))
                 .build()
