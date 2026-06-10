@@ -48,7 +48,7 @@ class ChatAdapter(private val messages: MutableList<ChatMessage>) :
         val item = messages[position]
         holder.msg.text = item.text
         if (item.isUser) {
-            holder.sender.text = "You"
+            holder.sender.text = holder.itemView.context.getString(R.string.you_label)
             holder.sender.setTextColor(holder.itemView.context.getColor(R.color.primary_green))
             holder.layout.setBackgroundColor(holder.itemView.context.getColor(R.color.primary_green_light))
             (holder.itemView as LinearLayout).gravity = android.view.Gravity.END
@@ -57,7 +57,7 @@ class ChatAdapter(private val messages: MutableList<ChatMessage>) :
                 marginEnd = 0
             }
         } else {
-            holder.sender.text = "🤖 AI Expert"
+            holder.sender.text = holder.itemView.context.getString(R.string.ai_label)
             holder.sender.setTextColor(holder.itemView.context.getColor(R.color.primary_green_dark))
             holder.layout.setBackgroundColor(holder.itemView.context.getColor(R.color.card_white))
             (holder.itemView as LinearLayout).gravity = android.view.Gravity.START
@@ -126,9 +126,9 @@ class AiChatActivity : AppCompatActivity() {
         val online = cap?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true
         binding.layoutOfflineNotice.visibility = if (online) View.GONE else View.VISIBLE
         if (online) {
-            binding.tvStatus.text = "Online — Ask me anything about plants"
+            binding.tvStatus.text = getString(R.string.ai_online_status)
         } else {
-            binding.tvStatus.text = "Offline — Connect internet to use AI chat"
+            binding.tvStatus.text = getString(R.string.ai_offline_status)
         }
         return online
     }
