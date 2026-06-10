@@ -166,6 +166,15 @@ class ResultActivity : AppCompatActivity() {
             finish()
         }
 
+        // Ask AI about this leaf
+        binding.btnAskAi.visibility = View.VISIBLE
+        binding.btnAskAi.setOnClickListener {
+            val context = "${result.diseaseName} on ${result.cropType}"
+            val intent  = Intent(this, AiChatActivity::class.java)
+            intent.putExtra("SCAN_CONTEXT", context)
+            startActivity(intent)
+        }
+
         // SOS card — show only for HIGH severity
         if (result.severity == "HIGH") {
             binding.cardSOS.visibility = View.VISIBLE
