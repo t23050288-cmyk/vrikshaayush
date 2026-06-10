@@ -9,8 +9,7 @@ import com.vrikshaayush.data.AppDatabase
 import com.vrikshaayush.databinding.ActivityMainBinding
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,9 +21,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         db = AppDatabase.getDatabase(this)
-
         loadStats()
         setupNavigation()
     }
@@ -41,23 +38,23 @@ class MainActivity : AppCompatActivity() {
         val config = Configuration(resources.configuration)
         config.setLocale(locale)
         resources.updateConfiguration(config, resources.displayMetrics)
+        applicationContext.resources.updateConfiguration(config, applicationContext.resources.displayMetrics)
     }
 
     private fun loadStats() {
         lifecycleScope.launch {
-            val totalScans = db.scanDao().getTotalScans()
+            val totalScans    = db.scanDao().getTotalScans()
             val totalDiseases = db.scanDao().getTotalDiseases()
-            val totalCrops = db.scanDao().getTotalCrops()
-            val lastScan = db.scanDao().getLastScan()
+            val totalCrops    = db.scanDao().getTotalCrops()
+            val lastScan      = db.scanDao().getLastScan()
 
-            binding.tvTotalScans.text = totalScans.toString()
+            binding.tvTotalScans.text    = totalScans.toString()
             binding.tvTotalDiseases.text = totalDiseases.toString()
-            binding.tvTotalCrops.text = totalCrops.toString()
+            binding.tvTotalCrops.text    = totalCrops.toString()
 
             if (lastScan != null) {
                 val sdf = SimpleDateFormat("dd MMM, hh:mm a", Locale.getDefault())
-                val timeStr = sdf.format(Date(lastScan.timestamp))
-                binding.tvLastAudit.text = "${lastScan.cropType} • $timeStr"
+                binding.tvLastAudit.text = "${lastScan.cropType} • ${sdf.format(Date(lastScan.timestamp))}"
                 binding.cardLastAudit.visibility = android.view.View.VISIBLE
             } else {
                 binding.cardLastAudit.visibility = android.view.View.GONE
@@ -84,6 +81,8 @@ class MainActivity : AppCompatActivity() {
         binding.cardLastAudit.setOnClickListener {
             startActivity(Intent(this, HistoryActivity::class.java))
         }
+        binding.cardAiChat.setOnClickListener {
+            startActivity(Intent(this, AiChatActivity::class.java))
+        }
     }
 }
-
