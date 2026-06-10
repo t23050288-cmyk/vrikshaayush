@@ -7,7 +7,6 @@ import java.io.FileInputStream
 import java.io.InputStreamReader
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
-import java.nio.MappedByteBuffer
 import java.nio.channels.FileChannel
 
 data class DiagnosisResult(
@@ -30,27 +29,33 @@ class DiseaseClassifier(private val context: Context) {
         const val INPUT_SIZE = 224
         const val CONFIDENCE_THRESHOLD = 0.25f
 
-        // Map label prefix -> friendly crop name
+        // 38-class PlantVillage MobileNetV2 model crop map
         val CROP_MAP = mapOf(
-            "apple" to "Apple (Seb)",
-            "bean" to "Bean (Rajma)",
-            "bell_pepper" to "Bell Pepper (Shimla Mirch)",
-            "cherry" to "Cherry",
-            "corn" to "Maize (Makka)",
-            "cotton" to "Cotton (Kapas)",
-            "cucumber" to "Cucumber (Kheera)",
-            "grape" to "Grape (Angoor)",
-            "groundnut" to "Groundnut (Moongphali)",
-            "guava" to "Guava (Amrood)",
-            "lemon" to "Lemon (Nimbu)",
-            "peach" to "Peach (Aadoo)",
-            "potato" to "Potato (Aloo)",
-            "pumpkin" to "Pumpkin (Kaddu)",
-            "rice" to "Rice (Chawal)",
-            "strawberry" to "Strawberry",
-            "sugarcane" to "Sugarcane (Ganna)",
-            "tomato" to "Tomato (Tamatar)",
-            "wheat" to "Wheat (Gehun)"
+            git pull origin main            "apple"        to "Apple (Seb)",
+            "bean"         to "Bean (Rajma)",
+            "bell_pepper"  to "Bell Pepper (Shimla Mirch)",
+            "blueberry"    to "Blueberry",
+            "cherry"       to "Cherry",
+            "corn"         to "Maize (Makka)",
+            "cotton"       to "Cotton (Kapas)",
+            "cucumber"     to "Cucumber (Kheera)",
+            "grape"        to "Grape (Angoor)",
+            "groundnut"    to "Groundnut (Moongphali)",
+            "guava"        to "Guava (Amrood)",
+            "lemon"        to "Lemon (Nimbu)",
+            "orange"       to "Orange (Santra)",
+            "peach"        to "Peach (Aadoo)",
+            "pepper_bell"  to "Bell Pepper (Shimla Mirch)",
+            "potato"       to "Potato (Aloo)",
+            "pumpkin"      to "Pumpkin (Kaddu)",
+            "raspberry"    to "Raspberry",
+            "rice"         to "Rice (Chawal)",
+            "soybean"      to "Soybean (Soya)",
+            "squash"       to "Squash / Pumpkin",
+            "strawberry"   to "Strawberry",
+            "sugarcane"    to "Sugarcane (Ganna)",
+            "tomato"       to "Tomato (Tamatar)",
+            "wheat"        to "Wheat (Gehun)"
         )
     }
 
@@ -86,6 +91,7 @@ class DiseaseClassifier(private val context: Context) {
         val maxIndex = scores.indices.maxByOrNull { scores[it] } ?: 0
         val confidence = scores[maxIndex]
 
+        // Below 25% threshold → cannot identify
         if (confidence < CONFIDENCE_THRESHOLD) {
             return DiagnosisResult(
                 diseaseName = "Cannot Identify Plant",
@@ -97,41 +103,49 @@ class DiseaseClassifier(private val context: Context) {
             )
         }
 
-        val rawLabel = labels[maxIndex] // e.g. "tomato_early_blight" or "healthy_rice"
+        val rawLabel = labels[maxIndex]
+        // 38-class labels format:
+        // apple_apple_scab, apple_healthy, corn_cercospora_leaf_spot,
+        // pepper_bell_bacterial_spot, tomato_early_blight, potato_healthy, etc.
 
-        // Parse label: format is "crop_disease" or "healthy_crop" or "diseased_crop"
         val parts = rawLabel.split("_")
-        
+
         val cropType: String
         val diseaseName: String
-        
+
         when {
-            // healthy_cropname
-            parts[0] == "healthy" -> {
-                val crop = parts.drop(1).joinToString("_")
-                cropType = CROP_MAP[crop] ?: crop.replaceFirstChar { it.uppercase() }
-                diseaseName = "Healthy ✅"
-            }
-            // diseased_cropname
-            parts[0] == "diseased" -> {
-                val crop = parts.drop(1).joinToString("_")
-                cropType = CROP_MAP[crop] ?: crop.replaceFirstChar { it.uppercase() }
-                diseaseName = "Disease Detected"
-            }
-            // Try 2-word crop prefix: e.g. bell_pepper_bacterial_spot
-            parts.size >= 3 && CROP_MAP.containsKey("${parts[0]}_${parts[1]}") -> {
+            // pepper_bell prefix (2-word crop key)
+            parts.size >= 2 && CROP_MAP.containsKey("${parts[0]}_${parts[1]}") -> {
                 val cropKey = "${parts[0]}_${parts[1]}"
                 cropType = CROP_MAP[cropKey]!!
-                diseaseName = parts.drop(2).joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
+                val rest = parts.drop(2)
+                diseaseName = if (rest.isEmpty() || rest == listOf("healthy")) "Healthy ✅"
+                else rest.joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
             }
-            // Single word crop prefix: e.g. tomato_early_blight
-            CROP_MAP.containsKey(parts[0]) -> {
+            // apple_apple_scab pattern (crop repeated)
+            parts.size >= 3 && parts[0] == parts[1] && CROP_MAP.containsKey(parts[0]) -> {
                 cropType = CROP_MAP[parts[0]]!!
-                diseaseName = parts.drop(1).joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
+                val rest = parts.drop(2)
+                diseaseName = if (rest.isEmpty()) "Unknown" 
+                else rest.joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
             }
+            // crop_healthy pattern
+            parts.size == 2 && parts[1] == "healthy" && CROP_MAP.containsKey(parts[0]) -> {
+                cropType = CROP_MAP[parts[0]]!!
+                diseaseName = "Healthy ✅"
+            }
+            // Normal: crop_disease (tomato_early_blight, potato_late_blight, etc.)
+            parts.size >= 2 && CROP_MAP.containsKey(parts[0]) -> {
+                cropType = CROP_MAP[parts[0]]!!
+                val rest = parts.drop(1)
+                diseaseName = if (rest == listOf("healthy")) "Healthy ✅"
+                else rest.joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
+            }
+            // Fallback
             else -> {
                 cropType = parts[0].replaceFirstChar { it.uppercase() }
                 diseaseName = parts.drop(1).joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
+                    .ifEmpty { "Unknown Disease" }
             }
         }
 
@@ -143,7 +157,7 @@ class DiseaseClassifier(private val context: Context) {
         }
 
         return DiagnosisResult(
-            diseaseName = if (diseaseName.isBlank()) "Unknown" else diseaseName,
+            diseaseName = diseaseName.ifBlank { "Unknown Disease" },
             cropType = cropType,
             confidence = confidence * 100,
             severity = severity,
@@ -158,14 +172,15 @@ class DiseaseClassifier(private val context: Context) {
         val intValues = IntArray(INPUT_SIZE * INPUT_SIZE)
         bitmap.getPixels(intValues, 0, bitmap.width, 0, 0, bitmap.width, bitmap.height)
         intValues.forEach { pixel ->
-            byteBuffer.putFloat(((pixel shr 16 and 0xFF) / 255.0f))
-            byteBuffer.putFloat(((pixel shr 8 and 0xFF) / 255.0f))
-            byteBuffer.putFloat(((pixel and 0xFF) / 255.0f))
+            byteBuffer.putFloat((pixel shr 16 and 0xFF) / 255.0f)
+            byteBuffer.putFloat((pixel shr 8 and 0xFF) / 255.0f)
+            byteBuffer.putFloat((pixel and 0xFF) / 255.0f)
         }
         return byteBuffer
     }
 
     fun close() {
         interpreter?.close()
+        interpreter = null
     }
 }
