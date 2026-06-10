@@ -12,11 +12,12 @@ import com.vrikshaayush.R
 import com.vrikshaayush.data.AppDatabase
 import com.vrikshaayush.data.ScanRecord
 import com.vrikshaayush.databinding.ActivityResultBinding
-import com.vrikshaayush.ml.DiagnosisResult
 import com.vrikshaayush.ml.DiseaseClassifier
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import android.content.Intent
+import android.net.Uri
 import java.io.File
 
 class ResultActivity : AppCompatActivity() {
@@ -103,7 +104,7 @@ class ResultActivity : AppCompatActivity() {
         }
     }
 
-    private fun displayResult(result: DiagnosisResult) {
+    private fun displayResult(result: com.vrikshaayush.ml.DiagnosisResult) {
         binding.progressBar.visibility = View.GONE
         binding.layoutResult.visibility = View.VISIBLE
 
@@ -158,6 +159,24 @@ class ResultActivity : AppCompatActivity() {
 
         binding.btnSeeDetails.visibility = View.VISIBLE
         binding.btnSaveHistory.visibility = View.VISIBLE
+
+        // Quick Re-scan button
+        binding.btnRescan.setOnClickListener {
+            startActivity(Intent(this, ScannerActivity::class.java))
+            finish()
+        }
+
+        // SOS card — show only for HIGH severity
+        if (result.severity == "HIGH") {
+            binding.cardSOS.visibility = View.VISIBLE
+            binding.btnCallKVK.setOnClickListener {
+                val callIntent = Intent(Intent.ACTION_DIAL)
+                callIntent.data = Uri.parse("tel:18001801551")
+                startActivity(callIntent)
+            }
+        } else {
+            binding.cardSOS.visibility = View.GONE
+        }
 
         binding.btnSeeDetails.setOnClickListener {
             val intent = Intent(this, DiseaseDetailActivity::class.java)
