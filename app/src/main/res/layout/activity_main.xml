@@ -37,7 +37,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Vrikshaayush"
+                    android:text="@string/app_name"
                     android:textSize="19sp"
                     android:textStyle="bold"
                     android:textColor="@color/white"
@@ -45,7 +45,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Plant Health Auditor"
+                    android:text="@string/app_tagline"
                     android:textSize="11sp"
                     android:textColor="@color/white"
                     android:alpha="0.75"/>
@@ -56,7 +56,7 @@
             android:id="@+id/tvOfflineBadge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="🔒 Offline"
+            android:text="@string/offline_badge"
             android:textSize="11sp"
             android:textColor="@color/primary_green"
             android:background="@color/white"
@@ -111,7 +111,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="SCAN PLANT NOW"
+                            android:text="@string/scan_plant_now"
                             android:textSize="18sp"
                             android:textStyle="bold"
                             android:textColor="@color/white"
@@ -119,7 +119,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Take or upload a leaf photo"
+                            android:text="@string/scan_subtitle"
                             android:textSize="12sp"
                             android:textColor="@color/white"
                             android:alpha="0.8"/>
@@ -159,7 +159,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Scans"
+                            android:text="@string/scans_label"
                             android:textSize="12sp"
                             android:textColor="@color/text_secondary"/>
                     </LinearLayout>
@@ -190,7 +190,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Diseases"
+                            android:text="@string/diseases_label"
                             android:textSize="12sp"
                             android:textColor="@color/text_secondary"/>
                     </LinearLayout>
@@ -220,7 +220,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Crops"
+                            android:text="@string/crops_label"
                             android:textSize="12sp"
                             android:textColor="@color/text_secondary"/>
                     </LinearLayout>
@@ -257,7 +257,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Last Audit"
+                            android:text="@string/last_audit"
                             android:textSize="11sp"
                             android:textColor="@color/text_secondary"/>
                         <TextView
@@ -307,14 +307,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="AI Plant Expert"
+                            android:text="@string/ai_expert_title"
                             android:textSize="15sp"
                             android:textStyle="bold"
                             android:textColor="@color/white"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Ask any plant disease question"
+                            android:text="@string/ai_expert_subtitle"
                             android:textSize="12sp"
                             android:textColor="@color/white"
                             android:alpha="0.8"/>
@@ -322,7 +322,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Chat ›"
+                        android:text="@string/ai_chat_btn"
                         android:textSize="13sp"
                         android:textColor="@color/white"
                         android:background="@color/primary_green_medium"
@@ -349,7 +349,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="💡 Tips for Best Results"
+                        android:text="@string/tips_title"
                         android:textSize="13sp"
                         android:textStyle="bold"
                         android:textColor="@color/primary_green"
@@ -392,7 +392,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="History"
+                android:text="@string/history_nav"
                 android:textSize="11sp"
                 android:textColor="@color/text_secondary"/>
         </LinearLayout>
@@ -414,7 +414,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Scan"
+                android:text="@string/scan_nav"
                 android:textSize="11sp"
                 android:textColor="@color/white"
                 android:textStyle="bold"/>
@@ -436,7 +436,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Library"
+                android:text="@string/library_nav"
                 android:textSize="11sp"
                 android:textColor="@color/text_secondary"/>
         </LinearLayout>
@@ -457,7 +457,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Settings"
+                android:text="@string/settings"
                 android:textSize="11sp"
                 android:textColor="@color/text_secondary"/>
         </LinearLayout>
