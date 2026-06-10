@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">ವೃಕ್ಷಾಯುಷ</string>
+    <string name="app_tagline">ಸಸ್ಯ ಆರೋಗ್ಯ ತಪಾಸಕ</string>
     <string name="tagline">ನಿಮ್ಮ ಗಿಡದ ಆರೋಗ್ಯ ತಿಳಿಯಿರಿ</string>
-    <string name="get_started">ಪ್ರಾರಂಭಿಸಿ</string>
+    <string name="get_started">ಪ್ರಾರಂಭಿಸಿ →</string>
     <string name="scan_plant">ಗಿಡ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ</string>
+    <string name="scan_plant_now">ಈಗ ಗಿಡ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ</string>
+    <string name="scan_subtitle">ಎಲೆ ಫೋಟೋ ತೆಗೆಯಿರಿ ಅಥವಾ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ</string>
     <string name="scan_your_plant">ನಿಮ್ಮ ಗಿಡ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ</string>
-    <string name="take_photo">ಫೋಟೋ ತೆಗೆಯಿರಿ</string>
+    <string name="take_photo">ಕ್ಯಾಮೆರಾ</string>
     <string name="gallery">ಗ್ಯಾಲರಿ</string>
     <string name="diagnose_now">ರೋಗ ಪರೀಕ್ಷಿಸಿ</string>
     <string name="diagnosis_result">ರೋಗ ಫಲಿತಾಂಶ</string>
@@ -13,14 +16,17 @@
     <string name="save_to_history">ಇತಿಹಾಸದಲ್ಲಿ ಉಳಿಸಿ</string>
     <string name="scan_history">ಸ್ಕ್ಯಾನ್ ಇತಿಹಾಸ</string>
     <string name="crop_library">ಬೆಳೆ ಗ್ರಂಥಾಲಯ</string>
+    <string name="crop_disease_library">ಬೆಳೆ ರೋಗ ಗ್ರಂಥಾಲಯ</string>
     <string name="settings">ಸೆಟ್ಟಿಂಗ್‌ಗಳು</string>
     <string name="treatment_recommendations">ಚಿಕಿತ್ಸಾ ಸಲಹೆಗಳು</string>
     <string name="confidence_score">ವಿಶ್ವಾಸ ಅಂಕ</string>
     <string name="available_offline">ಆಫ್‌ಲೈನ್‌ನಲ್ಲಿ ಲಭ್ಯ — ಇಂಟರ್ನೆಟ್ ಅಗತ್ಯವಿಲ್ಲ</string>
     <string name="works_offline">ಆಫ್‌ಲೈನ್‌ನಲ್ಲಿ ಕಾರ್ಯ ನಿರ್ವಹಿಸುತ್ತದೆ</string>
-    <string name="tip_photo">ಸಲಹೆ: ಎಲೆ ಚೌಕಟ್ಟಿನಲ್ಲಿ ಉತ್ತಮ ಬೆಳಕಿನಲ್ಲಿ ಇರಬೇಕು.</string>
-    <string name="no_scans_yet">ಇನ್ನೂ ಯಾವುದೇ ಸ್ಕ್ಯಾನ್ ಇಲ್ಲ — ಮೊದಲ ಗಿಡ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ!</string>
-    <string name="search_disease_crop">ರೋಗ ಅಥವಾ ಬೆಳೆ ಹುಡುಕಿ</string>
+    <string name="tip_photo">💡 ಸಲಹೆ: ಒಂದು ಎಲೆ ಚೌಕಟ್ಟು ತುಂಬಬೇಕು. ಉತ್ತಮ ಬೆಳಕು = ಹೆಚ್ಚಿನ ನಿಖರತೆ.</string>
+    <string name="tap_camera_gallery">ಕ್ಯಾಮೆರಾ ಅಥವಾ ಗ್ಯಾಲರಿ ಒತ್ತಿ\nಎಲೆ ಫೋಟೋ ಆಯ್ಕೆಮಾಡಿ</string>
+    <string name="no_scans_yet">ಇನ್ನೂ ಯಾವುದೇ ಸ್ಕ್ಯಾನ್ ಇಲ್ಲ</string>
+    <string name="no_scans_subtitle">ಮೊದಲ ಗಿಡ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ಫಲಿತಾಂಶ ನೋಡಿ</string>
+    <string name="search_disease_crop">ರೋಗ ಅಥವಾ ಬೆಳೆ ಹುಡುಕಿ…</string>
     <string name="search_by_crop">ಬೆಳೆ ಹೆಸರಿನಿಂದ ಹುಡುಕಿ</string>
     <string name="language_selection">ಭಾಷೆ ಆಯ್ಕೆಮಾಡಿ</string>
     <string name="notifications">ಅಧಿಸೂಚನೆಗಳು</string>
@@ -28,6 +34,10 @@
     <string name="disease_outbreak_alerts">ರೋಗ ಪ್ರಕೋಪ ಎಚ್ಚರಿಕೆಗಳು</string>
     <string name="export_pdf">PDF ವರದಿ ರಫ್ತು ಮಾಡಿ</string>
     <string name="clear_history">ಸ್ಕ್ಯಾನ್ ಇತಿಹಾಸ ತೆರವುಗೊಳಿಸಿ</string>
+    <string name="clear_history_title">ಸ್ಕ್ಯಾನ್ ಇತಿಹಾಸ ತೆರವುಗೊಳಿಸಿ</string>
+    <string name="clear_history_msg">ಇದು ಎಲ್ಲ ಸ್ಕ್ಯಾನ್ ದಾಖಲೆಗಳನ್ನು ಅಳಿಸಿಹಾಕುತ್ತದೆ. ಖಚಿತವಾ?</string>
+    <string name="clear_confirm">ತೆರವುಗೊಳಿಸಿ</string>
+    <string name="cancel">ರದ್ದು</string>
     <string name="available_in">ಹಿಂದಿ | ಕನ್ನಡ | ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಲಭ್ಯ</string>
     <string name="what_is_it">ಇದು ಏನು?</string>
     <string name="symptoms">ಲಕ್ಷಣಗಳು</string>
@@ -35,4 +45,34 @@
     <string name="prevention_tips">ತಡೆಗಟ್ಟುವ ಸಲಹೆಗಳು</string>
     <string name="organic">ಸಾವಯವ</string>
     <string name="chemical">ರಾಸಾಯನಿಕ</string>
+    <string name="disease_detail">ರೋಗ ವಿವರ</string>
+    <string name="scans_label">ಸ್ಕ್ಯಾನ್‌ಗಳು</string>
+    <string name="diseases_label">ರೋಗಗಳು</string>
+    <string name="crops_label">ಬೆಳೆಗಳು</string>
+    <string name="last_audit">ಕೊನೆಯ ತಪಾಸಣೆ</string>
+    <string name="offline_badge">🔒 ಆಫ್‌ಲೈನ್</string>
+    <string name="ai_expert_title">AI ಸಸ್ಯ ತಜ್ಞ</string>
+    <string name="ai_expert_subtitle">ಸಸ್ಯ ರೋಗದ ಬಗ್ಗೆ ಯಾವುದೇ ಪ್ರಶ್ನೆ ಕೇಳಿ</string>
+    <string name="ai_chat_btn">ಚಾಟ್ ›</string>
+    <string name="tips_title">💡 ಉತ್ತಮ ಫಲಿತಾಂಶಕ್ಕೆ ಸಲಹೆಗಳು</string>
+    <string name="tips_content">• ಒಂದು ಎಲೆ ಕ್ಯಾಮೆರಾಗೆ ಹತ್ತಿರ ಹಿಡಿಯಿರಿ\n• ನೈಸರ್ಗಿಕ ಬೆಳಕು ಬಳಸಿ\n• ಮಸುಕು ಅಥವಾ ಕತ್ತಲೆ ಫೋಟೋ ತಪ್ಪಿಸಿ\n• ಎಲೆ ಚೌಕಟ್ಟು ತುಂಬಬೇಕು</string>
+    <string name="history_nav">ಇತಿಹಾಸ</string>
+    <string name="scan_nav">ಸ್ಕ್ಯಾನ್</string>
+    <string name="library_nav">ಗ್ರಂಥಾಲಯ</string>
+    <string name="filter_all">ಎಲ್ಲಾ</string>
+    <string name="app_restart_notice">⚠ ಭಾಷಾ ಬದಲಾವಣೆ ಅನ್ವಯಿಸಲು ಅಪ್ಲಿಕೇಶನ್ ಮರುಪ್ರಾರಂಭಿಸುತ್ತದೆ</string>
+    <string name="data_management">🗂 ಡೇಟಾ ನಿರ್ವಹಣೆ</string>
+    <string name="about_title">ℹ ಬಗ್ಗೆ</string>
+    <string name="about_app_name">ವೃಕ್ಷಾಯುಷ — ಸಸ್ಯ ಆರೋಗ್ಯ ತಪಾಸಕ</string>
+    <string name="version_label">ಆವೃತ್ತಿ: </string>
+    <string name="offline_works">🔒 100% ಆಫ್‌ಲೈನ್ — ಇಂಟರ್ನೆಟ್ ಅಗತ್ಯವಿಲ್ಲ</string>
+    <string name="ai_model_info">🤖 AI ಮಾದರಿ: 95.28% ನಿಖರತೆ | 38 ರೋಗಗಳು</string>
+    <string name="language_support">🌐 7 ಭಾಷೆಗಳು: English | हिंदी | ಕನ್ನಡ | தமிழ் | తెలుగు | മലയാളം | मराठी</string>
+    <string name="ai_online_status">ಆನ್‌ಲೈನ್ — ಸಸ್ಯಗಳ ಬಗ್ಗೆ ಯಾವುದೇ ಪ್ರಶ್ನೆ ಕೇಳಿ</string>
+    <string name="ai_offline_status">ಆಫ್‌ಲೈನ್ — AI ಚಾಟ್‌ಗೆ ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕಿಸಿ</string>
+    <string name="ai_thinking">🤖 ಯೋಚಿಸುತ್ತಿದ್ದೇನೆ…</string>
+    <string name="ai_input_hint">ಸಸ್ಯ ರೋಗದ ಬಗ್ಗೆ ಕೇಳಿ…</string>
+    <string name="no_internet_notice">⚠️ ಇಂಟರ್ನೆಟ್ ಇಲ್ಲ — AI ಚಾಟ್‌ಗೆ ಸಂಪರ್ಕ ಅಗತ್ಯ</string>
+    <string name="you_label">ನೀವು</string>
+    <string name="ai_label">🤖 AI ತಜ್ಞ</string>
 </resources>
