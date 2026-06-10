@@ -221,6 +221,82 @@
                 android:textColor="@color/primary_green"
                 android:backgroundTint="@color/white"
                 android:layout_marginBottom="20dp"/>
+            <!-- Emergency SOS Card (only shown for HIGH severity) -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardSOS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="4dp"
+                android:visibility="gone"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@color/severity_high_bg">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🆘 Severe Disease Detected"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/severity_high"
+                        android:layout_marginBottom="4dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Contact your nearest Krishi Vigyan Kendra for expert help."
+                        android:textSize="12sp"
+                        android:textColor="@color/text_primary"
+                        android:layout_marginBottom="10dp"/>
+                    <LinearLayout
+                        android:id="@+id/btnCallKVK"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:background="@color/severity_high">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="📞  Call KVK Helpline: 1800-180-1551"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"/>
+                    </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Free government helpline — available Mon–Sat 9AM to 5PM"
+                        android:textSize="11sp"
+                        android:textColor="@color/text_secondary"
+                        android:layout_marginTop="6dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Quick Re-scan Button -->
+            <LinearLayout
+                android:id="@+id/btnRescan"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/primary_green_light">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📷  Scan Another Plant"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary_green"/>
+            </LinearLayout>
+
+
 
         </LinearLayout>
     </ScrollView>
