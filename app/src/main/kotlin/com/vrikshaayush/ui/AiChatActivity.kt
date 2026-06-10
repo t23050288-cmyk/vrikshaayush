@@ -74,13 +74,17 @@ class AiChatActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAiChatBinding
     private val messages = mutableListOf<ChatMessage>()
     private lateinit var adapter: ChatAdapter
-    private val client = OkHttpClient()
+    private val client = OkHttpClient.Builder()
+        .connectTimeout(15, java.util.concurrent.TimeUnit.SECONDS)
+        .readTimeout(30, java.util.concurrent.TimeUnit.SECONDS)
+        .writeTimeout(15, java.util.concurrent.TimeUnit.SECONDS)
+        .build()
     private val scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
     // ── NVIDIA API KEY ──────────────────────────────────────
     private val NVIDIA_API_KEY = "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"
     private val API_URL = "https://integrate.api.nvidia.com/v1/chat/completions"
-    private val MODEL = "deepseek-ai/deepseek-r1"
+    private val MODEL = "meta/llama-3.1-8b-instruct"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         applyLocale()
@@ -168,7 +172,7 @@ class AiChatActivity : AppCompatActivity() {
                     })
                 })
                 put("temperature", 0.7)
-                put("max_tokens", 1024)
+                put("max_tokens", 512)
             }
 
             val request = Request.Builder()
@@ -186,11 +190,15 @@ class AiChatActivity : AppCompatActivity() {
             }
 
             val json = JSONObject(responseBody)
-            json.getJSONArray("choices")
+            var reply = json.getJSONArray("choices")
                 .getJSONObject(0)
                 .getJSONObject("message")
                 .getString("content")
                 .trim()
+            // Remove any <think>...</think> reasoning blocks (for thinking models)
+            reply = reply.replace(Regex("<think>[\s\S]*?</think>"), "").trim()
+            if (reply.isEmpty()) reply = "I processed your question but got an empty response. Please try again."
+            reply
 
         } catch (e: IOException) {
             "Network error. Please check your connection and try again."
