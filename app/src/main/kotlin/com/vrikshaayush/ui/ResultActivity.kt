@@ -106,6 +106,21 @@ class ResultActivity : AppCompatActivity() {
         binding.progressBar.visibility = View.GONE
         binding.layoutResult.visibility = View.VISIBLE
 
+        if (result.isNotLeaf) {
+            binding.tvDiseaseName.text = "🍃 No Leaf Detected"
+            binding.tvCropType.text = "Please take a clear photo of a plant leaf"
+            binding.tvConfidence.text = "—"
+            binding.progressConfidence.progress = 0
+            binding.tvSeverity.text = "N/A"
+            binding.tvSeverity.setBackgroundColor(androidx.core.content.ContextCompat.getColor(this, R.color.text_secondary))
+            binding.tvTreatment1.text = "• Point the camera at a plant leaf — not a person, wall, or object"
+            binding.tvTreatment2.text = "• The leaf should fill most of the photo frame"
+            binding.tvTreatment3.text = "• Use natural daylight for best results"
+            binding.btnSeeDetails.visibility = View.GONE
+            binding.btnSaveHistory.visibility = View.GONE
+            return
+        }
+
         if (result.isUncertain) {
             binding.tvDiseaseName.text = "⚠️ Cannot Identify Plant"
             binding.tvCropType.text = "Please retake with better lighting"
