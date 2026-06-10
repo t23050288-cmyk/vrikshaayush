@@ -35,4 +35,7 @@ interface ScanDao {
 
     @Query("SELECT * FROM scan_records ORDER BY timestamp DESC LIMIT 1")
     suspend fun getLastScan(): ScanRecord?
+
+    @Query("SELECT * FROM scan_records ORDER BY timestamp DESC LIMIT :limit")
+    suspend fun getRecentScans(limit: Int): List<ScanRecord>
 }
