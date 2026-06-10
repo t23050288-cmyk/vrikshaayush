@@ -39,6 +39,7 @@
         <activity android:name=".ui.LibraryActivity" android:exported="false" />
         <activity android:name=".ui.SettingsActivity" android:exported="false" />
         <activity android:name=".ui.AiChatActivity" android:exported="false" />
+        <activity android:name=".ui.CropCalendarActivity" android:exported="false" />
 
         <!-- FileProvider for camera capture -->
         <provider
