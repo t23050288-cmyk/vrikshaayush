@@ -196,7 +196,7 @@ class AiChatActivity : AppCompatActivity() {
                 .getString("content")
                 .trim()
             // Remove any <think>...</think> reasoning blocks (for thinking models)
-            reply = reply.replace(Regex("<think>[\s\S]*?</think>"), "").trim()
+            reply = reply.replace(Regex("<think>[\\s\\S]*?</think>"), "").trim()
             if (reply.isEmpty()) reply = "I processed your question but got an empty response. Please try again."
             reply
 

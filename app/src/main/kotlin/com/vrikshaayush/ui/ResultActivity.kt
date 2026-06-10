@@ -12,11 +12,11 @@ import com.vrikshaayush.R
 import com.vrikshaayush.data.AppDatabase
 import com.vrikshaayush.data.ScanRecord
 import com.vrikshaayush.databinding.ActivityResultBinding
+import com.vrikshaayush.ml.DiagnosisResult
 import com.vrikshaayush.ml.DiseaseClassifier
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import android.content.Intent
 import android.net.Uri
 import java.io.File
 
