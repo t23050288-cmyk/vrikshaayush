@@ -225,12 +225,16 @@ class AiChatActivity : AppCompatActivity() {
                 } catch (e: Exception) { "HTTP ${resp.code}" }
             }
 
-            var reply = JSONObject(respBody)
+            val messageObj = JSONObject(respBody)
                 .getJSONArray("choices")
                 .getJSONObject(0)
                 .getJSONObject("message")
-                .getString("content")
-                .trim()
+
+            var reply = messageObj.optString("content", "").trim()
+            
+            if (reply == "null" || reply.isEmpty()) {
+                return "ERR: API returned null content. Raw response: $respBody"
+            }
 
             reply = reply.replace(Regex("<think>[\\s\\S]*?</think>", RegexOption.IGNORE_CASE), "").trim()
             if (reply.isEmpty()) "ERR: Empty reply from model" else reply
