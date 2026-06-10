@@ -1,29 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Primary palette -->
-    <color name="primary_green">#2E7D32</color>
-    <color name="primary_green_dark">#1B5E20</color>
+    <color name="primary_green">#1B7A3E</color>
+    <color name="primary_green_dark">#145C2E</color>
     <color name="primary_green_light">#E8F5E9</color>
+    <color name="primary_green_medium">#2E9E55</color>
     <color name="accent_amber">#F9A825</color>
-    <color name="accent_amber_dark">#F57F17</color>
-    <color name="background_cream">#F5F5F0</color>
-    <color name="text_primary">#1C1C1C</color>
-    <color name="text_secondary">#757575</color>
+    <color name="accent_amber_dark">#E65100</color>
+    <color name="background_cream">#F2F6F3</color>
+    <color name="card_white">#FFFFFF</color>
+    <color name="text_primary">#1A2E1F</color>
+    <color name="text_secondary">#6B7C72</color>
     <color name="white">#FFFFFF</color>
+    <color name="divider">#E0E8E2</color>
+    <color name="chat_bubble_user">#1B7A3E</color>
+    <color name="chat_bubble_ai">#FFFFFF</color>
+    <color name="gradient_start">#1B7A3E</color>
+    <color name="gradient_end">#2E9E55</color>
 
     <!-- Severity -->
     <color name="severity_high">#C62828</color>
-    <color name="severity_medium">#F9A825</color>
-    <color name="severity_low">#2E7D32</color>
+    <color name="severity_high_bg">#FFEBEE</color>
+    <color name="severity_medium">#E65100</color>
+    <color name="severity_medium_bg">#FFF3E0</color>
+    <color name="severity_low">#1B7A3E</color>
+    <color name="severity_low_bg">#E8F5E9</color>
 
     <!-- System -->
-    <color name="colorPrimary">#2E7D32</color>
-    <color name="colorPrimaryVariant">#1B5E20</color>
+    <color name="colorPrimary">#1B7A3E</color>
+    <color name="colorPrimaryVariant">#145C2E</color>
     <color name="colorOnPrimary">#FFFFFF</color>
     <color name="colorSecondary">#F9A825</color>
     <color name="colorOnSecondary">#FFFFFF</color>
-    <color name="colorBackground">#F5F5F0</color>
+    <color name="colorBackground">#F2F6F3</color>
     <color name="colorSurface">#FFFFFF</color>
-    <color name="colorOnBackground">#1C1C1C</color>
-    <color name="colorOnSurface">#1C1C1C</color>
+    <color name="colorOnBackground">#1A2E1F</color>
+    <color name="colorOnSurface">#1A2E1F</color>
 </resources>
