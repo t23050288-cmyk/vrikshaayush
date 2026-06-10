@@ -2,9 +2,12 @@ package com.vrikshaayush.ui
 
 import android.content.Context
 import android.content.res.Configuration
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,39 +30,47 @@ import java.util.concurrent.TimeUnit
 
 data class ChatMessage(val text: String, val isUser: Boolean)
 
-class ChatAdapter(private val messages: MutableList<ChatMessage>) :
+class ChatAdapter(private val msgs: MutableList<ChatMessage>) :
     RecyclerView.Adapter<ChatAdapter.VH>() {
 
     inner class VH(view: View) : RecyclerView.ViewHolder(view) {
-        val layout: LinearLayout = view.findViewById(R.id.layoutBubble)
-        val sender: TextView     = view.findViewById(R.id.tvSender)
-        val msg: TextView        = view.findViewById(R.id.tvMessage)
+        val tvSender: TextView  = view.findViewById(R.id.tvSender)
+        val tvMessage: TextView = view.findViewById(R.id.tvMessage)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH =
-        VH(LayoutInflater.from(parent.context).inflate(R.layout.item_chat_message, parent, false))
+        VH(LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_chat_message, parent, false))
 
-    override fun getItemCount() = messages.size
+    override fun getItemCount() = msgs.size
 
-    override fun onBindViewHolder(holder: VH, position: Int) {
-        val item = messages[position]
-        holder.msg.text = item.text
+    override fun onBindViewHolder(holder: VH, pos: Int) {
+        val item = msgs[pos]
+        holder.tvMessage.text = item.text
+
+        val bg = GradientDrawable().apply {
+            shape = GradientDrawable.RECTANGLE
+            cornerRadius = 18f
+        }
+
         if (item.isUser) {
-            holder.sender.text = holder.itemView.context.getString(R.string.you_label)
-            holder.sender.setTextColor(holder.itemView.context.getColor(R.color.primary_green))
-            holder.layout.setBackgroundColor(holder.itemView.context.getColor(R.color.primary_green_light))
-            (holder.itemView as LinearLayout).gravity = android.view.Gravity.END
-            (holder.layout.layoutParams as ViewGroup.MarginLayoutParams).apply {
-                marginStart = 60; marginEnd = 0
-            }
+            holder.tvSender.text = "You"
+            holder.tvSender.setTextColor(Color.parseColor("#1B7A3E"))
+            bg.setColor(Color.parseColor("#E8F5E9"))
+            holder.tvMessage.background = bg
+            holder.tvMessage.setPadding(24, 16, 24, 16)
+            (holder.tvSender.layoutParams  as LinearLayout.LayoutParams).gravity = Gravity.END
+            (holder.tvMessage.layoutParams as LinearLayout.LayoutParams).gravity = Gravity.END
+            (holder.itemView as LinearLayout).gravity = Gravity.END
         } else {
-            holder.sender.text = holder.itemView.context.getString(R.string.ai_label)
-            holder.sender.setTextColor(holder.itemView.context.getColor(R.color.primary_green_dark))
-            holder.layout.setBackgroundColor(holder.itemView.context.getColor(R.color.card_white))
-            (holder.itemView as LinearLayout).gravity = android.view.Gravity.START
-            (holder.layout.layoutParams as ViewGroup.MarginLayoutParams).apply {
-                marginStart = 0; marginEnd = 60
-            }
+            holder.tvSender.text = "\uD83E\uDD16 AI Expert"
+            holder.tvSender.setTextColor(Color.parseColor("#145C2E"))
+            bg.setColor(Color.WHITE)
+            holder.tvMessage.background = bg
+            holder.tvMessage.setPadding(24, 16, 24, 16)
+            (holder.tvSender.layoutParams  as LinearLayout.LayoutParams).gravity = Gravity.START
+            (holder.tvMessage.layoutParams as LinearLayout.LayoutParams).gravity = Gravity.START
+            (holder.itemView as LinearLayout).gravity = Gravity.START
         }
     }
 }
@@ -71,24 +82,22 @@ class AiChatActivity : AppCompatActivity() {
     private lateinit var adapter: ChatAdapter
     private val scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
-    // ── API CONFIG ────────────────────────────────────────────
-    // Primary: Sarvam AI  (set SARVAM_API_KEY to your key)
-    private val SARVAM_API_KEY = "sk_1blcusaf_CBHJwlBsnXClMJC0vlsqCetf"
-    private val SARVAM_URL     = "https://api.sarvam.ai/v1/chat/completions"
-    private val SARVAM_MODEL   = "sarvam-30b"
+    private val SARVAM_KEY   = "sk_1blcusaf_CBHJwlBsnXClMJC0vlsqCetf"
+    private val SARVAM_URL   = "https://api.sarvam.ai/v1/chat/completions"
+    private val SARVAM_MODEL = "sarvam-30b"
 
-    // Fallback: NVIDIA (set to your new key when available)
-    private val NVIDIA_API_KEY = "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"
-    private val NVIDIA_URL     = "https://integrate.api.nvidia.com/v1/chat/completions"
-    private val NVIDIA_MODEL   = "meta/llama-3.1-8b-instruct"
+    private val NVIDIA_KEY   = "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"
+    private val NVIDIA_URL   = "https://integrate.api.nvidia.com/v1/chat/completions"
+    private val NVIDIA_MODEL = "meta/llama-3.1-8b-instruct"
 
-    private val client = OkHttpClient.Builder()
-        .connectTimeout(20, TimeUnit.SECONDS)
-        .readTimeout(45, TimeUnit.SECONDS)
-        .writeTimeout(20, TimeUnit.SECONDS)
-        .build()
+    private val httpClient by lazy {
+        OkHttpClient.Builder()
+            .connectTimeout(20, TimeUnit.SECONDS)
+            .readTimeout(45, TimeUnit.SECONDS)
+            .writeTimeout(20, TimeUnit.SECONDS)
+            .build()
+    }
 
-    // Context from scan result (set when launched from ResultActivity)
     private var scanContext: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -98,28 +107,27 @@ class AiChatActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         adapter = ChatAdapter(messages)
-        binding.rvChat.layoutManager = LinearLayoutManager(this).apply { stackFromEnd = true }
+        val lm = LinearLayoutManager(this).apply { stackFromEnd = true }
+        binding.rvChat.layoutManager = lm
         binding.rvChat.adapter = adapter
+        binding.rvChat.itemAnimator = null
 
         binding.btnBack.setOnClickListener { finish() }
 
-        // Check if launched from scan result with leaf context
         scanContext = intent.getStringExtra("SCAN_CONTEXT")
 
-        val welcomeMsg = if (scanContext != null) {
-            "🌿 I can see the scan result for **${scanContext}**.\n\nYou can ask me:\n• What causes this disease?\n• How to treat it organically?\n• Which pesticide is safe to use?\n• How to prevent it next season?\n\nI need internet to answer."
-        } else {
-            "Hello! 🌿 I am your AI Plant Expert.\n\nAsk me:\n• How to treat tomato early blight?\n• What causes apple black rot?\n• Which pesticide is safe for potatoes?\n• How to identify leaf diseases?\n\nI need internet to answer. If offline, use the Disease Library."
-        }
-        addMessage(ChatMessage(welcomeMsg, false))
+        val welcome = if (scanContext != null)
+            "\uD83C\uDF3F I can see you scanned: $scanContext\n\nAsk me anything — symptoms, causes, treatment, prevention. I answer based on Indian farming conditions."
+        else
+            "\uD83C\uDF3F Hello! I am your AI Plant Expert.\n\nAsk me:\n\u2022 How to treat Tomato Late Blight?\n\u2022 Which pesticide is safe for Wheat?\n\u2022 How to prevent fungal disease in monsoon?\n\nI only answer farming and agriculture questions."
 
-        // If scan context provided, auto-ask first question
+        addMessage(ChatMessage(welcome, false))
+
         if (scanContext != null) {
-            val autoQuestion = "I just scanned a plant leaf and it was diagnosed as: $scanContext. Please explain this disease simply and tell me the best treatment for an Indian farmer."
-            binding.etMessage.setText(autoQuestion)
+            binding.etMessage.setText("Explain $scanContext and tell me the best treatment for an Indian farmer.")
         }
 
-        checkConnectivity()
+        updateConnectivityUI()
 
         binding.btnSend.setOnClickListener {
             val text = binding.etMessage.text.toString().trim()
@@ -139,113 +147,98 @@ class AiChatActivity : AppCompatActivity() {
         resources.updateConfiguration(config, resources.displayMetrics)
     }
 
-    private fun checkConnectivity(): Boolean {
+    private fun isOnline(): Boolean {
         val cm  = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val cap = cm.getNetworkCapabilities(cm.activeNetwork)
-        val online = cap?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true
-        binding.layoutOfflineNotice.visibility = if (online) View.GONE else View.VISIBLE
-        binding.tvStatus.text = if (online)
-            getString(R.string.ai_online_status)
-        else
-            getString(R.string.ai_offline_status)
-        return online
+        return cap?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true
     }
 
-    private fun sendMessage(text: String) {
-        if (!checkConnectivity()) {
-            Toast.makeText(this, "No internet connection", Toast.LENGTH_SHORT).show()
+    private fun updateConnectivityUI() {
+        val online = isOnline()
+        binding.layoutOfflineNotice.visibility = if (online) View.GONE else View.VISIBLE
+        binding.tvStatus.text = if (online) "Online \u2014 Ask me about plant diseases" else "Offline \u2014 Need internet for AI"
+    }
+
+    private fun sendMessage(userText: String) {
+        updateConnectivityUI()
+        if (!isOnline()) {
+            Toast.makeText(this, "No internet \u2014 please connect and try again", Toast.LENGTH_SHORT).show()
             return
         }
-        addMessage(ChatMessage(text, true))
+        addMessage(ChatMessage(userText, true))
         binding.tvTyping.visibility = View.VISIBLE
-        binding.btnSend.isEnabled  = false
+        binding.btnSend.isEnabled   = false
 
         scope.launch {
-            val response = withContext(Dispatchers.IO) { callApi(text) }
+            val reply = withContext(Dispatchers.IO) { callAi(userText) }
             binding.tvTyping.visibility = View.GONE
             binding.btnSend.isEnabled   = true
-            addMessage(ChatMessage(response, false))
+            addMessage(ChatMessage(reply, false))
         }
     }
 
-    private fun callApi(userMessage: String): String {
-        val systemPrompt = buildString {
-            append("You are an expert agricultural assistant for Indian farmers, specializing in plant diseases and crop health. ")
-            append("Answer clearly and simply in short paragraphs. Give practical advice. ")
-            append("Always mention safety precautions for any chemical treatments. ")
-            if (scanContext != null) {
-                append("The farmer's plant was diagnosed as: $scanContext. Keep this context in mind when answering. ")
-            }
+    private fun callAi(userText: String): String {
+        val system = buildString {
+            append("You are an expert agricultural assistant for Indian farmers. ")
+            append("You ONLY answer questions about farming, plant diseases, crops, pesticides, fertilizers, and agriculture. ")
+            append("If asked anything unrelated to farming/agriculture, say: 'I only answer farming and plant questions.' ")
+            append("Keep answers short and practical for a rural Indian farmer. ")
+            append("Always mention safety precautions for chemical treatments. ")
+            if (scanContext != null) append("The farmer scanned a plant diagnosed as: $scanContext. ")
         }
 
-        // Try Sarvam first, fall back to NVIDIA
-        val useSarvam = SARVAM_API_KEY != "sk_1blcusaf_CBHJwlBsnXClMJC0vlsqCetf"
-        val useNvidia = NVIDIA_API_KEY != "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"
+        val sarvam = callEndpoint(SARVAM_URL, SARVAM_KEY, SARVAM_MODEL, system, userText)
+        if (!sarvam.startsWith("ERR:")) return sarvam
 
-        if (!useSarvam && !useNvidia) {
-            return "⚠️ No API key configured. Please contact the app developer to set up the AI service."
-        }
+        val nvidia = callEndpoint(NVIDIA_URL, NVIDIA_KEY, NVIDIA_MODEL, system, userText)
+        if (!nvidia.startsWith("ERR:")) return nvidia
 
-        return if (useSarvam) {
-            callEndpoint(SARVAM_URL, SARVAM_API_KEY, SARVAM_MODEL, systemPrompt, userMessage)
-                .takeIf { !it.startsWith("ERROR:") }
-                ?: if (useNvidia) callEndpoint(NVIDIA_URL, NVIDIA_API_KEY, NVIDIA_MODEL, systemPrompt, userMessage)
-                   else "Sorry, could not reach AI service. Please try again."
-        } else {
-            callEndpoint(NVIDIA_URL, NVIDIA_API_KEY, NVIDIA_MODEL, systemPrompt, userMessage)
-        }
+        return "\u26A0\uFE0F AI service unavailable right now.\nPlease check your internet and try again.\n\nDetails: ${sarvam.removePrefix("ERR:")}"
     }
 
     private fun callEndpoint(url: String, key: String, model: String, system: String, user: String): String {
         return try {
-            val body = JSONObject().apply {
+            val bodyJson = JSONObject().apply {
                 put("model", model)
                 put("messages", JSONArray().apply {
                     put(JSONObject().apply { put("role", "system"); put("content", system) })
                     put(JSONObject().apply { put("role", "user");   put("content", user)   })
                 })
-                put("temperature", 0.6)
-                put("max_tokens", 512)
+                put("temperature", 0.5)
+                put("max_tokens", 600)
             }
-
-            val request = Request.Builder()
+            val req = Request.Builder()
                 .url(url)
                 .addHeader("Authorization", "Bearer $key")
                 .addHeader("Content-Type", "application/json")
-                .post(body.toString().toRequestBody("application/json".toMediaType()))
+                .post(bodyJson.toString().toRequestBody("application/json".toMediaType()))
                 .build()
 
-            val resp = client.newCall(request).execute()
-            val respBody = resp.body?.string() ?: return "ERROR: Empty response from server."
+            val resp     = httpClient.newCall(req).execute()
+            val respBody = resp.body?.string() ?: return "ERR: Empty response"
 
             if (!resp.isSuccessful) {
-                // Parse error message if possible
-                return try {
-                    val errJson = JSONObject(respBody)
-                    val errMsg = errJson.optJSONObject("error")?.optString("message")
-                        ?: errJson.optString("detail")
-                        ?: "HTTP ${resp.code}"
-                    "ERROR: $errMsg"
-                } catch (e: Exception) { "ERROR: HTTP ${resp.code}" }
+                return "ERR: " + try {
+                    JSONObject(respBody).optJSONObject("error")?.optString("message") ?: "HTTP ${resp.code}"
+                } catch (e: Exception) { "HTTP ${resp.code}" }
             }
 
-            val json   = JSONObject(respBody)
-            var reply  = json.getJSONArray("choices")
+            var reply = JSONObject(respBody)
+                .getJSONArray("choices")
                 .getJSONObject(0)
                 .getJSONObject("message")
                 .getString("content")
                 .trim()
-            // Remove <think> blocks from reasoning models
+
             reply = reply.replace(Regex("<think>[\\s\\S]*?</think>", RegexOption.IGNORE_CASE), "").trim()
-            if (reply.isEmpty()) return "I processed your question but got an empty response. Please try again."
-            reply
+            if (reply.isEmpty()) "ERR: Empty reply from model" else reply
 
         } catch (e: java.net.SocketTimeoutException) {
-            "ERROR: Request timed out. The AI is taking too long — please try again."
+            "ERR: Timed out — AI is busy, try again"
         } catch (e: java.io.IOException) {
-            "ERROR: Network error — ${e.message}"
+            "ERR: Network error — ${e.message}"
         } catch (e: Exception) {
-            "ERROR: ${e.message}"
+            "ERR: ${e.message}"
         }
     }
 
@@ -258,6 +251,5 @@ class AiChatActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         scope.cancel()
-        client.dispatcher.executorService.shutdown()
     }
 }
