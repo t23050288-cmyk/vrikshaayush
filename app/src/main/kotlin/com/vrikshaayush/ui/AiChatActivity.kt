@@ -73,12 +73,12 @@ class AiChatActivity : AppCompatActivity() {
 
     // ── API CONFIG ────────────────────────────────────────────
     // Primary: Sarvam AI  (set SARVAM_API_KEY to your key)
-    private val SARVAM_API_KEY = "PASTE_SARVAM_KEY_HERE"
+    private val SARVAM_API_KEY = "sk_1blcusaf_CBHJwlBsnXClMJC0vlsqCetf"
     private val SARVAM_URL     = "https://api.sarvam.ai/v1/chat/completions"
-    private val SARVAM_MODEL   = "sarvam-m"
+    private val SARVAM_MODEL   = "sarvam-30b"
 
     // Fallback: NVIDIA (set to your new key when available)
-    private val NVIDIA_API_KEY = "PASTE_NVIDIA_KEY_HERE"
+    private val NVIDIA_API_KEY = "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"
     private val NVIDIA_URL     = "https://integrate.api.nvidia.com/v1/chat/completions"
     private val NVIDIA_MODEL   = "meta/llama-3.1-8b-instruct"
 
@@ -179,8 +179,8 @@ class AiChatActivity : AppCompatActivity() {
         }
 
         // Try Sarvam first, fall back to NVIDIA
-        val useSarvam = SARVAM_API_KEY != "PASTE_SARVAM_KEY_HERE"
-        val useNvidia = NVIDIA_API_KEY != "PASTE_NVIDIA_KEY_HERE"
+        val useSarvam = SARVAM_API_KEY != "sk_1blcusaf_CBHJwlBsnXClMJC0vlsqCetf"
+        val useNvidia = NVIDIA_API_KEY != "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"
 
         if (!useSarvam && !useNvidia) {
             return "⚠️ No API key configured. Please contact the app developer to set up the AI service."
