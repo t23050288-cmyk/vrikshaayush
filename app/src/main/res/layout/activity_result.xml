@@ -296,6 +296,25 @@
                     android:textColor="@color/primary_green"/>
             </LinearLayout>
 
+            <!-- Ask AI About This Leaf -->
+            <LinearLayout
+                android:id="@+id/btnAskAi"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="16dp"
+                android:background="@color/primary_green"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🤖  Ask AI About This Disease"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
 
 
         </LinearLayout>
