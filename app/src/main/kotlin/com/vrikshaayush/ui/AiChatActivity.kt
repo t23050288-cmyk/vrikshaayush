@@ -1,6 +1,6 @@
 package com.vrikshaayush.ui
 
-import android.content.Context
+import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
@@ -40,22 +40,16 @@ class ChatAdapter(private val msgs: MutableList<ChatMessage>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH =
-        VH(LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_chat_message, parent, false))
+        VH(LayoutInflater.from(parent.context).inflate(R.layout.item_chat_message, parent, false))
 
     override fun getItemCount() = msgs.size
 
     override fun onBindViewHolder(holder: VH, pos: Int) {
         val item = msgs[pos]
         holder.tvMessage.text = item.text
-
-        val bg = GradientDrawable().apply {
-            shape = GradientDrawable.RECTANGLE
-            cornerRadius = 18f
-        }
-
+        val bg = GradientDrawable().apply { shape = GradientDrawable.RECTANGLE; cornerRadius = 18f }
         if (item.isUser) {
-            holder.tvSender.text = "You"
+            holder.tvSender.text = "\uD83D\uDC68\u200D\uD83C\uDF3E You"
             holder.tvSender.setTextColor(Color.parseColor("#1B7A3E"))
             bg.setColor(Color.parseColor("#E8F5E9"))
             holder.tvMessage.background = bg
@@ -100,6 +94,9 @@ class AiChatActivity : AppCompatActivity() {
     }
 
     private var scanContext: String? = null
+    private var returnSuggestion: Boolean = false
+    private var lastAiReply: String = ""
+    private var currentLang: String = "en"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         applyLocale()
@@ -107,25 +104,32 @@ class AiChatActivity : AppCompatActivity() {
         binding = ActivityAiChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        currentLang = getSharedPreferences("app_prefs", MODE_PRIVATE).getString("language", "en") ?: "en"
+
         adapter = ChatAdapter(messages)
         val lm = LinearLayoutManager(this).apply { stackFromEnd = true }
         binding.rvChat.layoutManager = lm
         binding.rvChat.adapter = adapter
         binding.rvChat.itemAnimator = null
 
-        binding.btnBack.setOnClickListener { finish() }
+        binding.btnBack.setOnClickListener {
+            // If launched from ResultActivity asking for a suggestion, return it
+            if (returnSuggestion && lastAiReply.isNotEmpty()) {
+                val resultIntent = Intent()
+                resultIntent.putExtra("AI_SUGGESTION", lastAiReply)
+                setResult(RESULT_OK, resultIntent)
+            }
+            finish()
+        }
 
         scanContext = intent.getStringExtra("SCAN_CONTEXT")
+        returnSuggestion = intent.getBooleanExtra("RETURN_SUGGESTION", false)
 
-        val welcome = if (scanContext != null)
-            "\uD83C\uDF3F I can see you scanned: $scanContext\n\nAsk me anything — symptoms, causes, treatment, prevention. I answer based on Indian farming conditions."
-        else
-            "\uD83C\uDF3F Hello! I am your AI Plant Expert.\n\nAsk me:\n\u2022 How to treat Tomato Late Blight?\n\u2022 Which pesticide is safe for Wheat?\n\u2022 How to prevent fungal disease in monsoon?\n\nI only answer farming and agriculture questions."
-
+        val welcome = buildWelcomeMessage()
         addMessage(ChatMessage(welcome, false))
 
         if (scanContext != null) {
-            binding.etMessage.setText("Explain $scanContext and tell me the best treatment for an Indian farmer.")
+            binding.etMessage.setText(getAutoQuestion(scanContext!!))
         }
 
         updateConnectivityUI()
@@ -148,8 +152,37 @@ class AiChatActivity : AppCompatActivity() {
         resources.updateConfiguration(config, resources.displayMetrics)
     }
 
+    private fun buildWelcomeMessage(): String {
+        return when (currentLang) {
+            "hi" -> if (scanContext != null)
+                "\uD83C\uDF3F मैं देख सकता हूँ आपने स्कैन किया: $scanContext\n\nइस रोग के बारे में कुछ भी पूछें — लक्षण, कारण, उपचार। मैं भारतीय किसानों की मदद के लिए हूँ।"
+            else
+                "\uD83C\uDF3F नमस्ते! मैं आपका AI पौध विशेषज्ञ हूँ।\n\nआप पूछ सकते हैं:\n• टमाटर की अगेती झुलसा कैसे ठीक करें?\n• गेहूँ के लिए कौन सी दवा सुरक्षित है?\n• मानसून में फफूंद रोग कैसे रोकें?\n\nमैं खेती और पौध रोग से जुड़े सभी सवालों का जवाब दूँगा।"
+            "kn" -> if (scanContext != null)
+                "\uD83C\uDF3F ನೀವು ಸ್ಕ್ಯಾನ್ ಮಾಡಿದ್ದೀರಿ: $scanContext\n\nಈ ರೋಗದ ಬಗ್ಗೆ ಏನಾದರೂ ಕೇಳಿ — ಲಕ್ಷಣಗಳು, ಕಾರಣಗಳು, ಚಿಕಿತ್ಸೆ।"
+            else
+                "\uD83C\uDF3F ನಮಸ್ಕಾರ! ನಾನು ನಿಮ್ಮ AI ಸಸ್ಯ ತಜ್ಞ.\n\nಕೇಳಿ:\n• ಟೊಮೇಟೋ ಬ್ಲೈಟ್ ಹೇಗೆ ಗುಣಪಡಿಸುವುದು?\n• ಮಳೆಗಾಲದಲ್ಲಿ ಶಿಲೀಂಧ್ರ ರೋಗ ತಡೆಯುವುದು ಹೇಗೆ?"
+            "ta" -> "\uD83C\uDF3F வணக்கம்! நான் உங்கள் AI தாவர நிபுணன்.\n\nகேளுங்கள்:\n• தக்காளி நோய்களை எப்படி குணப்படுத்துவது?\n• பருவமழையில் பூஞ்சை நோய்களை எப்படி தடுப்பது?"
+            "te" -> "\uD83C\uDF3F నమస్కారం! నేను మీ AI మొక్కల నిపుణుడిని.\n\nఅడగండి:\n• టమాటో వ్యాధులను ఎలా నివారించాలి?\n• వర్షాకాలంలో శిలీంధ్ర వ్యాధులు ఎలా నిరోధించాలి?"
+            "ml" -> "\uD83C\uDF3F നമസ്കാരം! ഞാൻ നിങ്ങളുടെ AI സസ്യ വിദഗ്ദ്ധനാണ്.\n\nചോദിക്കൂ:\n• തക്കാളി രോഗങ്ങൾ എങ്ങനെ ചികിത്സിക്കാം?\n• മൺസൂണിൽ ഫംഗൽ രോഗങ്ങൾ എങ്ങനെ തടയാം?"
+            "mr" -> "\uD83C\uDF3F नमस्कार! मी तुमचा AI वनस्पती तज्ञ आहे.\n\nविचारा:\n• टोमॅटोच्या रोगांवर काय उपाय आहे?\n• पावसाळ्यात बुरशीजन्य रोग कसे रोखायचे?"
+            else -> if (scanContext != null)
+                "\uD83C\uDF3F I can see you scanned: $scanContext\n\nAsk me anything — symptoms, causes, treatment, prevention. I answer based on Indian farming conditions."
+            else
+                "\uD83C\uDF3F Hello! I am your AI Plant Expert.\n\nAsk me:\n• How to treat Tomato Late Blight?\n• Which pesticide is safe for Wheat?\n• How to prevent fungal disease in monsoon?\n\nI answer all farming and agriculture questions!"
+        }
+    }
+
+    private fun getAutoQuestion(context: String): String {
+        return when (currentLang) {
+            "hi" -> "$context के बारे में बताएं और भारतीय किसान के लिए सबसे अच्छा उपचार क्या है?"
+            "kn" -> "$context ಬಗ್ಗೆ ವಿವರಿಸಿ ಮತ್ತು ಭಾರತೀಯ ರೈತರಿಗೆ ಉತ್ತಮ ಚಿಕಿತ್ಸೆ ಏನು?"
+            else  -> "Explain $context and tell me the best treatment for an Indian farmer."
+        }
+    }
+
     private fun isOnline(): Boolean {
-        val cm  = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val cm  = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
         val cap = cm.getNetworkCapabilities(cm.activeNetwork)
         return cap?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true
     }
@@ -157,35 +190,62 @@ class AiChatActivity : AppCompatActivity() {
     private fun updateConnectivityUI() {
         val online = isOnline()
         binding.layoutOfflineNotice.visibility = if (online) View.GONE else View.VISIBLE
-        binding.tvStatus.text = if (online) "Online \u2014 Ask me about plant diseases" else "Offline \u2014 Need internet for AI"
+        binding.tvStatus.text = if (online)
+            getString(R.string.ai_online_status)
+        else
+            getString(R.string.ai_offline_status)
     }
 
     private fun sendMessage(userText: String) {
         updateConnectivityUI()
         if (!isOnline()) {
-            Toast.makeText(this, "No internet \u2014 please connect and try again", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.no_internet_msg), Toast.LENGTH_SHORT).show()
             return
         }
         addMessage(ChatMessage(userText, true))
         binding.tvTyping.visibility = View.VISIBLE
-        binding.btnSend.isEnabled   = false
+        binding.btnSend.isEnabled = false
 
         scope.launch {
             val reply = withContext(Dispatchers.IO) { callAi(userText) }
             binding.tvTyping.visibility = View.GONE
-            binding.btnSend.isEnabled   = true
+            binding.btnSend.isEnabled = true
+            lastAiReply = reply   // remember for history saving
             addMessage(ChatMessage(reply, false))
         }
     }
 
     private fun callAi(userText: String): String {
-        val system = buildString {
-            append("You are an expert agricultural assistant for Indian farmers. ")
-            append("You ONLY answer questions about farming, plant diseases, crops, pesticides, fertilizers, and agriculture. ")
-            append("If asked anything unrelated to farming/agriculture, say: 'I only answer farming and plant questions.' ")
-            append("Keep answers short and practical for a rural Indian farmer. ")
-            append("Always mention safety precautions for chemical treatments. ")
-            if (scanContext != null) append("The farmer scanned a plant diagnosed as: $scanContext. ")
+        // Detect greeting/small talk
+        val isGreeting = userText.trim().lowercase() in listOf(
+            "hi", "hello", "hey", "namaste", "hii", "helo", "hai",
+            "नमस्ते", "हेलो", "हाय", "ನಮಸ್ಕಾರ", "வணக்கம்", "నమస్కారం"
+        )
+
+        val langInstruction = when (currentLang) {
+            "hi" -> "Always reply in Hindi (हिंदी). "
+            "kn" -> "Always reply in Kannada (ಕನ್ನಡ). "
+            "ta" -> "Always reply in Tamil (தமிழ்). "
+            "te" -> "Always reply in Telugu (తెలుగు). "
+            "ml" -> "Always reply in Malayalam (മലയാളം). "
+            "mr" -> "Always reply in Marathi (मराठी). "
+            else -> "Reply in English. "
+        }
+
+        val system = if (isGreeting) {
+            // Friendly greeting — no farming restriction for hello
+            langInstruction + "You are a friendly AI plant expert. Respond warmly to greetings and ask how you can help with their plants or farming questions. Keep it short and welcoming."
+        } else {
+            buildString {
+                append(langInstruction)
+                append("You are an expert agricultural assistant for Indian farmers. ")
+                append("Answer questions about farming, plant diseases, crops, pesticides, fertilizers, and agriculture. ")
+                append("For casual conversation (how are you, what's your name, etc.) respond naturally and briefly, then steer toward plants/farming. ")
+                append("If asked something completely unrelated (movies, politics, etc.) say: 'I specialise in plants and farming — let me know if you have any crop or disease questions!' ")
+                append("Keep answers short and practical for a rural Indian farmer. ")
+                append("Always mention safety precautions for chemical treatments. ")
+                if (scanContext != null) append("The farmer scanned a plant diagnosed as: $scanContext. ")
+            }
         }
 
         val sarvam = callEndpoint(SARVAM_URL, SARVAM_KEY, SARVAM_MODEL, system, userText)
@@ -194,7 +254,7 @@ class AiChatActivity : AppCompatActivity() {
         val nvidia = callEndpoint(NVIDIA_URL, NVIDIA_KEY, NVIDIA_MODEL, system, userText)
         if (!nvidia.startsWith("ERR:")) return nvidia
 
-        return "\u26A0\uFE0F AI service unavailable right now.\nPlease check your internet and try again.\n\nDetails: ${sarvam.removePrefix("ERR:")}"
+        return "\u26A0\uFE0F AI service unavailable.\nPlease check your internet and try again.\n\nDetails: ${sarvam.removePrefix("ERR:")}"
     }
 
     private fun callEndpoint(url: String, key: String, model: String, system: String, user: String): String {
@@ -205,13 +265,12 @@ class AiChatActivity : AppCompatActivity() {
                     put(JSONObject().apply { put("role", "system"); put("content", system) })
                     put(JSONObject().apply { put("role", "user");   put("content", user)   })
                 })
-                put("temperature", 0.5)
+                put("temperature", 0.6)
                 put("max_tokens", 600)
             }
             val req = Request.Builder()
                 .url(url)
                 .addHeader("Authorization", "Bearer $key")
-                .addHeader("api-subscription-key", key)
                 .addHeader("Content-Type", "application/json")
                 .post(bodyJson.toString().toRequestBody("application/json".toMediaType()))
                 .build()
@@ -225,19 +284,12 @@ class AiChatActivity : AppCompatActivity() {
                 } catch (e: Exception) { "HTTP ${resp.code}" }
             }
 
-            val messageObj = JSONObject(respBody)
-                .getJSONArray("choices")
-                .getJSONObject(0)
-                .getJSONObject("message")
-
-            var reply = messageObj.optString("content", "").trim()
-            
-            if (reply == "null" || reply.isEmpty()) {
-                return "ERR: API returned null content. Raw response: $respBody"
-            }
+            var reply = JSONObject(respBody)
+                .getJSONArray("choices").getJSONObject(0)
+                .getJSONObject("message").getString("content").trim()
 
             reply = reply.replace(Regex("<think>[\\s\\S]*?</think>", RegexOption.IGNORE_CASE), "").trim()
-            if (reply.isEmpty()) "ERR: Empty reply from model" else reply
+            if (reply.isEmpty()) "ERR: Empty reply" else reply
 
         } catch (e: java.net.SocketTimeoutException) {
             "ERR: Timed out — AI is busy, try again"
