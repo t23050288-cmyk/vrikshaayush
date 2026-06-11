@@ -12,7 +12,7 @@ import com.vrikshaayush.databinding.ActivityLibraryBinding
 import com.vrikshaayush.model.DiseaseInfo
 import com.vrikshaayush.ui.adapter.DiseaseLibraryAdapter
 
-class LibraryActivity : AppCompatActivity() {
+class LibraryActivity : BaseActivity() {
 
     private lateinit var binding: ActivityLibraryBinding
     private lateinit var adapter: DiseaseLibraryAdapter
