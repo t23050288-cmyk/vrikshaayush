@@ -28,26 +28,14 @@
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
-            <!-- Leaf icon -->
-            <FrameLayout
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="12dp">
-                <View
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="#FFFFFF18"
-                    android:layout_gravity="center"/>
-                <!-- Leaf shape via background -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="᪥"
-                    android:textSize="22sp"
-                    android:textColor="#D4A853"
-                    android:fontFamily="sans-serif-light"/>
-            </FrameLayout>
+            <!-- Vrikshaayush logo image -->
+            <ImageView
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_vriksha_logo"
+                android:scaleType="fitCenter"
+                android:contentDescription="Vrikshaayush Logo"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -631,36 +619,36 @@
     </LinearLayout>
 
     <!-- ═══════════════════════════════════════════════════
-         FLOATING AI BUTTON (compact, bottom-right)
+         FLOATING SARVAM AI BUTTON (compact, bottom-right)
     ═══════════════════════════════════════════════════ -->
     <LinearLayout
         android:id="@+id/cardAiChat"
         android:layout_width="wrap_content"
-        android:layout_height="46dp"
+        android:layout_height="50dp"
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="90dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:paddingStart="14dp"
+        android:paddingStart="10dp"
         android:paddingEnd="16dp"
         android:background="@drawable/bg_scan_button"
         android:elevation="8dp"
         android:foreground="?android:attr/selectableItemBackground"
         android:clickable="true"
         android:focusable="true">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="✦"
-            android:textSize="14sp"
-            android:textColor="#D4A853"
-            android:layout_marginEnd="6dp"/>
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_sarvam_logo"
+            android:scaleType="fitCenter"
+            android:contentDescription="Sarvam AI"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/ai_chat_short"
-            android:textSize="12.5sp"
+            android:textSize="13sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF"
             android:letterSpacing="0.02"/>
