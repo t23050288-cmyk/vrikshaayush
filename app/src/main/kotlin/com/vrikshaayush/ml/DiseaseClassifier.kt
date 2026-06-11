@@ -129,7 +129,14 @@ class DiseaseClassifier(private val context: Context) {
         val maxIndex = scores.indices.maxByOrNull { scores[it] } ?: 0
         val confidence = scores[maxIndex]
 
-        if (confidence < CONFIDENCE_THRESHOLD) {
+        val rawLabelCheck = labels[maxIndex]
+        val isHealthyPrediction = rawLabelCheck.endsWith("healthy")
+        
+        // For disease predictions, require at least 40% confidence to avoid false positives
+        // For healthy predictions, use lower threshold (25%) - better to show healthy than wrong disease
+        val effectiveThreshold = if (isHealthyPrediction) CONFIDENCE_THRESHOLD else 0.40f
+        
+        if (confidence < effectiveThreshold) {
             return DiagnosisResult(
                 diseaseName = "Cannot Identify Plant",
                 cropType = "Try a clearer photo with better lighting",
