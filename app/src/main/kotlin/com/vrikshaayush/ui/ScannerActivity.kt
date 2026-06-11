@@ -1,6 +1,7 @@
 package com.vrikshaayush.ui
 
 import android.Manifest
+import android.content.res.Configuration
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -73,6 +74,7 @@ class ScannerActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        applyLocale()
         super.onCreate(savedInstanceState)
         binding = ActivityScannerBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -147,4 +149,13 @@ class ScannerActivity : AppCompatActivity() {
         }
         return file.absolutePath
     }
+    private fun applyLocale() {
+        val lang = getSharedPreferences("app_prefs", MODE_PRIVATE).getString("language", "en") ?: "en"
+        val locale = java.util.Locale(lang)
+        java.util.Locale.setDefault(locale)
+        val config = Configuration(resources.configuration)
+        config.setLocale(locale)
+        resources.updateConfiguration(config, resources.displayMetrics)
+    }
+
 }
