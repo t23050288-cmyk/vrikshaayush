@@ -70,7 +70,7 @@ class ChatAdapter(private val msgs: MutableList<ChatMessage>) :
     }
 }
 
-class AiChatActivity : AppCompatActivity() {
+class AiChatActivity : BaseActivity() {
 
     private lateinit var binding: ActivityAiChatBinding
     private val messages = mutableListOf<ChatMessage>()
@@ -99,7 +99,6 @@ class AiChatActivity : AppCompatActivity() {
     private var currentLang: String = "en"
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        applyLocale()
         super.onCreate(savedInstanceState)
         binding = ActivityAiChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -143,14 +142,6 @@ class AiChatActivity : AppCompatActivity() {
         }
     }
 
-    private fun applyLocale() {
-        val lang = getSharedPreferences("app_prefs", MODE_PRIVATE).getString("language", "en") ?: "en"
-        val locale = Locale(lang)
-        Locale.setDefault(locale)
-        val config = Configuration(resources.configuration)
-        config.setLocale(locale)
-        resources.updateConfiguration(config, resources.displayMetrics)
-    }
 
     private fun buildWelcomeMessage(): String {
         return when (currentLang) {
