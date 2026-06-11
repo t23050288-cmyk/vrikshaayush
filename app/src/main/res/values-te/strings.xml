@@ -116,6 +116,6 @@
     <string name="cal_rabi_diseases">పసుపు తుప్పు (గోధుమ), పౌడరీ మిల్డ్యూ (బఠానీ/ఆవాలు), కాండం కుళ్ళు</string>
     <string name="cal_rabi_warning">చలి కాలంలో పసుపు తుప్పు వేగంగా వ్యాపిస్తుంది. వారానికి ఒకసారి తనిఖీ చేయండి.</string>
     <string name="online_badge">ఆన్‌లైన్</string>
-    <string name="ai_chat_short">AI నిపుణుడు</string>
+    <string name="ai_chat_short">Sarvam AI</string>
     <string name="label_last_audit">చివరి తనిఖీ</string>
 </resources>
