@@ -396,7 +396,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Season Alert"
+                            android:text="@string/season_alert_title"
                             android:textSize="12sp"
                             android:textStyle="bold"
                             android:textColor="@color/primary_green"
@@ -451,7 +451,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Most Affected Crop"
+                                android:text="@string/most_affected_crop"
                                 android:textSize="10sp"
                                 android:textColor="@color/text_secondary"/>
                             <TextView
@@ -473,7 +473,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Most Common Disease"
+                                android:text="@string/most_common_disease"
                                 android:textSize="10sp"
                                 android:textColor="@color/text_secondary"/>
                             <TextView
@@ -531,7 +531,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Which diseases to watch this season"
+                            android:text="@string/crop_calendar_subtitle"
                             android:textSize="11sp"
                             android:textColor="@color/text_secondary"/>
                     </LinearLayout>
