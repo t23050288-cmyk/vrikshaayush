@@ -75,4 +75,15 @@
     <string name="no_internet_notice">⚠️ No internet — AI chat needs connection</string>
     <string name="you_label">You</string>
     <string name="ai_label">🤖 AI Expert</string>
+    <string name="no_leaf_detected">No Leaf Detected</string>
+    <string name="no_leaf_hint">Please take a clear photo of a plant leaf</string>
+    <string name="no_leaf_tip1">Point camera at a plant leaf</string>
+    <string name="no_leaf_tip2">The leaf should fill most of the photo frame</string>
+    <string name="no_leaf_tip3">Use natural daylight for best results</string>
+    <string name="cannot_identify">Cannot Identify Plant</string>
+    <string name="retake_hint">Please retake with better lighting</string>
+    <string name="unclear_tip1">Make sure the leaf fills most of the photo</string>
+    <string name="unclear_tip2">Take photo in good natural lighting outdoors</string>
+    <string name="unclear_tip3">Focus on ONE leaf — avoid shadows</string>
+    <string name="no_internet_msg">No internet — please connect and try again</string>
 </resources>
