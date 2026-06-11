@@ -175,7 +175,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Treatment Recommendations"
+                        android:text="@string/treatment_recommendations"
                         android:textSize="15sp"
                         android:textStyle="bold"
                         android:textColor="@color/text_primary"
@@ -240,7 +240,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="🆘 Severe Disease Detected"
+                        android:text="@string/severe_disease_detected"
                         android:textSize="14sp"
                         android:textStyle="bold"
                         android:textColor="@color/severity_high"
@@ -262,7 +262,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="📞  Call KVK Helpline: 1800-180-1551"
+                            android:text="@string/call_kvk"
                             android:textSize="13sp"
                             android:textStyle="bold"
                             android:textColor="@color/white"/>
@@ -270,7 +270,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Free government helpline — available Mon–Sat 9AM to 5PM"
+                        android:text="@string/kvk_hours"
                         android:textSize="11sp"
                         android:textColor="@color/text_secondary"
                         android:layout_marginTop="6dp"/>
@@ -290,7 +290,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="📷  Scan Another Plant"
+                    android:text="@string/scan_another_plant"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     android:textColor="@color/primary_green"/>
@@ -309,7 +309,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="🤖  Ask AI About This Disease"
+                    android:text="@string/ask_ai_disease"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     android:textColor="@color/white"/>
