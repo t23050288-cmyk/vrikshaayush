@@ -9,7 +9,7 @@ import com.vrikshaayush.R
 import com.vrikshaayush.databinding.ActivityDiseaseDetailBinding
 import com.vrikshaayush.model.DiseaseInfo
 
-class DiseaseDetailActivity : AppCompatActivity() {
+class DiseaseDetailActivity : BaseActivity() {
 
     private lateinit var binding: ActivityDiseaseDetailBinding
     private var currentDisease: DiseaseInfo? = null
