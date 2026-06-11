@@ -75,4 +75,10 @@
     <string name="no_internet_notice">⚠️ ఇంటర్నెట్ లేదు — AI చాట్‌కు కనెక్షన్ అవసరం</string>
     <string name="you_label">మీరు</string>
     <string name="ai_label">🤖 AI నిపుణుడు</string>
+    <string name="severe_disease_detected">🆘 తీవ్రమైన వ్యాధి గుర్తించబడింది</string>
+    <string name="call_kvk">📞  KVK హెల్ప్‌లైన్: 1800-180-1551</string>
+    <string name="kvk_hours">ఉచిత ప్రభుత్వ హెల్ప్‌లైన్ — సోమ–శని ఉదయం 9 నుండి సాయంత్రం 5</string>
+    <string name="scan_another_plant">📷  మరొక మొక్కను స్కాన్ చేయండి</string>
+    <string name="ask_ai_disease">🤖  ఈ వ్యాధి గురించి AI ని అడగండి</string>
+    <string name="contact_kvk">నిపుణుల సహాయం కోసం మీ సమీప కృషి విజ్ఞాన కేంద్రాన్ని సంప్రదించండి.</string>
 </resources>
