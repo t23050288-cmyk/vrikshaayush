@@ -6,7 +6,6 @@ import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.vrikshaayush.R
@@ -21,7 +20,7 @@ import android.net.Uri
 import java.io.File
 import java.util.Locale
 
-class ResultActivity : AppCompatActivity() {
+class ResultActivity : BaseActivity() {
 
     private lateinit var binding: ActivityResultBinding
     private lateinit var db: AppDatabase
@@ -31,10 +30,14 @@ class ResultActivity : AppCompatActivity() {
     private var severity: String = ""
     private var confidence: Float = 0f
     private var modelLabel: String = ""
-    private var pendingAiSuggestion: String = ""   // set when user comes back from AI chat
+
+    // Key used to pass AI suggestion via SharedPrefs between activities
+    companion object {
+        const val PREF_PENDING_AI = "pending_ai_suggestion"
+        const val PREF_PENDING_LABEL = "pending_ai_label"  // which scan this is for
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        applyLocale()
         super.onCreate(savedInstanceState)
         binding = ActivityResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -44,6 +47,12 @@ class ResultActivity : AppCompatActivity() {
 
         binding.btnBack.setOnClickListener { finish() }
 
+        // Clear any old pending AI suggestion for a different scan
+        val prefs = getSharedPreferences("app_prefs", MODE_PRIVATE)
+        if (prefs.getString(PREF_PENDING_LABEL, "") != imagePath) {
+            prefs.edit().remove(PREF_PENDING_AI).putString(PREF_PENDING_LABEL, imagePath).apply()
+        }
+
         if (imagePath.isNotEmpty() && File(imagePath).exists()) {
             runDiagnosis()
         } else {
@@ -51,13 +60,14 @@ class ResultActivity : AppCompatActivity() {
         }
     }
 
-    private fun applyLocale() {
-        val lang = getSharedPreferences("app_prefs", MODE_PRIVATE).getString("language", "en") ?: "en"
-        val locale = Locale(lang)
-        Locale.setDefault(locale)
-        val config = Configuration(resources.configuration)
-        config.setLocale(locale)
-        resources.updateConfiguration(config, resources.displayMetrics)
+    override fun onResume() {
+        super.onResume()
+        // Check if AI returned a suggestion via SharedPrefs
+        val prefs = getSharedPreferences("app_prefs", MODE_PRIVATE)
+        val pending = prefs.getString(PREF_PENDING_AI, "") ?: ""
+        if (pending.isNotEmpty()) {
+            Toast.makeText(this, "✅ AI suggestion ready — tap Save to History to include it", Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun showError(title: String, msg: String) {
@@ -119,7 +129,6 @@ class ResultActivity : AppCompatActivity() {
             binding.btnSaveHistory.visibility = View.GONE
             binding.btnAskAi.visibility = View.GONE
             binding.cardSOS.visibility = View.GONE
-            // Scan another plant still works
             binding.btnRescan.setOnClickListener { launchScanner() }
             return
         }
@@ -165,20 +174,22 @@ class ResultActivity : AppCompatActivity() {
         binding.btnSeeDetails.visibility = View.VISIBLE
         binding.btnSaveHistory.visibility = View.VISIBLE
 
-        // ── Scan Another Plant — goes back to SCANNER cleanly ──
         binding.btnRescan.setOnClickListener { launchScanner() }
 
-        // ── Ask AI — passes context and comes back with suggestion ──
         binding.btnAskAi.visibility = View.VISIBLE
         binding.btnAskAi.setOnClickListener {
+            // Clear old pending suggestion for this scan
+            getSharedPreferences("app_prefs", MODE_PRIVATE).edit()
+                .remove(PREF_PENDING_AI)
+                .putString(PREF_PENDING_LABEL, imagePath)
+                .apply()
             val context = "${result.diseaseName} on ${result.cropType}"
             val intent = Intent(this, AiChatActivity::class.java)
             intent.putExtra("SCAN_CONTEXT", context)
-            intent.putExtra("RETURN_SUGGESTION", true)
-            startActivityForResult(intent, REQUEST_AI_SUGGESTION)
+            intent.putExtra("SAVE_SUGGESTION_KEY", PREF_PENDING_AI)  // AI will save reply here
+            startActivity(intent)
         }
 
-        // ── SOS card ──
         if (result.severity == "HIGH") {
             binding.cardSOS.visibility = View.VISIBLE
             binding.btnCallKVK.setOnClickListener {
@@ -202,49 +213,38 @@ class ResultActivity : AppCompatActivity() {
     }
 
     private fun launchScanner() {
-        // Go back to scanner — clears back stack so user gets a fresh scan
         val intent = Intent(this, ScannerActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
         startActivity(intent)
         finish()
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_AI_SUGGESTION && resultCode == RESULT_OK) {
-            pendingAiSuggestion = data?.getStringExtra("AI_SUGGESTION") ?: ""
-            if (pendingAiSuggestion.isNotEmpty()) {
-                Toast.makeText(this, "✅ AI suggestion ready — tap Save to History", Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
-
     private fun saveToHistory() {
+        // Grab AI suggestion from SharedPrefs if available
+        val prefs = getSharedPreferences("app_prefs", MODE_PRIVATE)
+        val aiSuggestion = prefs.getString(PREF_PENDING_AI, "") ?: ""
+
         lifecycleScope.launch(Dispatchers.IO) {
             db.scanDao().insert(
                 ScanRecord(
-                    imagePath   = imagePath,
-                    cropType    = cropType,
-                    diseaseName = diseaseName,
-                    confidence  = confidence,
-                    severity    = severity,
-                    aiSuggestion = pendingAiSuggestion
+                    imagePath    = imagePath,
+                    cropType     = cropType,
+                    diseaseName  = diseaseName,
+                    confidence   = confidence,
+                    severity     = severity,
+                    aiSuggestion = aiSuggestion
                 )
             )
+            // Clear the pending AI after saving
+            prefs.edit().remove(PREF_PENDING_AI).apply()
+
             withContext(Dispatchers.Main) {
-                val msg = if (pendingAiSuggestion.isNotEmpty())
-                    "✅ Saved with AI suggestion!"
-                else
-                    "✅ Saved to history!"
+                val msg = if (aiSuggestion.isNotEmpty()) "✅ Saved with AI suggestion!" else "✅ Saved to history!"
                 Toast.makeText(this@ResultActivity, msg, Toast.LENGTH_SHORT).show()
                 binding.btnSaveHistory.isEnabled = false
                 binding.btnSaveHistory.text = "✓ Saved"
             }
         }
-    }
-
-    companion object {
-        const val REQUEST_AI_SUGGESTION = 1001
     }
 
     private fun getTreatmentTips(label: String, disease: String): List<String> {
@@ -263,11 +263,6 @@ class ResultActivity : AppCompatActivity() {
                 "Remove and destroy infected plant parts immediately",
                 "Apply Mancozeb 75 WP @ 2.5g/litre every 7-10 days",
                 "Improve drainage and avoid waterlogging"
-            )
-            label.contains("leaf_curl") || disease.contains("Leaf Curl") -> listOf(
-                "Remove severely infected leaves and stems",
-                "Spray Imidacloprid 17.8 SL @ 0.5ml/litre to control whitefly",
-                "Use yellow sticky traps to monitor insect vectors"
             )
             label.contains("powdery_mildew") || disease.contains("Powdery Mildew") -> listOf(
                 "Apply wettable sulfur 80 WP @ 3g/litre spray",
@@ -296,7 +291,7 @@ class ResultActivity : AppCompatActivity() {
             )
             else -> listOf(
                 "Remove and destroy infected plant parts immediately",
-                "Apply appropriate fungicide or pesticide as recommended",
+                "Apply appropriate fungicide as recommended",
                 "Consult your local Krishi Vigyan Kendra for guidance"
             )
         }
