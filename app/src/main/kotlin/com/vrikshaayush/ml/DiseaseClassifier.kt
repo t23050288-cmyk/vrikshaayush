@@ -134,7 +134,7 @@ class DiseaseClassifier(private val context: Context) {
         
         // For disease predictions, require at least 40% confidence to avoid false positives
         // For healthy predictions, use lower threshold (25%) - better to show healthy than wrong disease
-        val effectiveThreshold = if (isHealthyPrediction) CONFIDENCE_THRESHOLD else 0.40f
+        val effectiveThreshold = if (isHealthyPrediction) CONFIDENCE_THRESHOLD else 0.30f
         
         if (confidence < effectiveThreshold) {
             return DiagnosisResult(
