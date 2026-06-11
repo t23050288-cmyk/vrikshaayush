@@ -222,7 +222,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/label_scans"
+                        android:text="@string/scans_label"
                         android:textSize="11sp"
                         android:textColor="@color/text_secondary"
                         android:layout_marginTop="2dp"
@@ -250,7 +250,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/label_diseases"
+                        android:text="@string/diseases_label"
                         android:textSize="11sp"
                         android:textColor="@color/text_secondary"
                         android:layout_marginTop="2dp"
@@ -277,7 +277,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/label_crops"
+                        android:text="@string/crops_label"
                         android:textSize="11sp"
                         android:textColor="@color/text_secondary"
                         android:layout_marginTop="2dp"
@@ -592,7 +592,7 @@
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:text="⊟" android:textSize="20sp" android:textColor="@color/text_secondary"/>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="@string/nav_history" android:textSize="10sp"
+                android:text="@string/history_nav" android:textSize="10sp"
                 android:textColor="@color/text_secondary" android:layout_marginTop="3dp"/>
         </LinearLayout>
 
@@ -620,7 +620,7 @@
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:text="⊞" android:textSize="20sp" android:textColor="@color/text_secondary"/>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="@string/nav_library" android:textSize="10sp"
+                android:text="@string/library_nav" android:textSize="10sp"
                 android:textColor="@color/text_secondary" android:layout_marginTop="3dp"/>
         </LinearLayout>
 
@@ -632,7 +632,7 @@
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:text="⊙" android:textSize="20sp" android:textColor="@color/text_secondary"/>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="@string/nav_settings" android:textSize="10sp"
+                android:text="@string/settings" android:textSize="10sp"
                 android:textColor="@color/text_secondary" android:layout_marginTop="3dp"/>
         </LinearLayout>
     </LinearLayout>

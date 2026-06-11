@@ -31,13 +31,13 @@ class ScanHistoryAdapter : ListAdapter<ScanRecord, ScanHistoryAdapter.ViewHolder
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(scan: ScanRecord) {
-            binding.tvDiseaseName.text = scan.diseaseName
-            binding.tvCropType.text = scan.cropType
+            binding.tvHistoryDisease.text = scan.diseaseName
+            binding.tvHistoryCrop.text = scan.cropType
 
             val sdf = SimpleDateFormat("MMM dd, hh:mm a", Locale.getDefault())
-            binding.tvTimestamp.text = sdf.format(Date(scan.timestamp))
+            binding.tvHistoryDate.text = sdf.format(Date(scan.timestamp))
 
-            binding.tvSeverity.text = scan.severity
+            binding.tvHistorySeverity.text = scan.severity
 
             val context = binding.root.context
             val severityColor = when (scan.severity) {
@@ -45,8 +45,7 @@ class ScanHistoryAdapter : ListAdapter<ScanRecord, ScanHistoryAdapter.ViewHolder
                 "MEDIUM" -> ContextCompat.getColor(context, R.color.severity_medium)
                 else -> ContextCompat.getColor(context, R.color.severity_low)
             }
-            binding.viewSeverityDot.setBackgroundColor(severityColor)
-            binding.tvSeverity.setTextColor(severityColor)
+            binding.tvHistorySeverity.setTextColor(severityColor)
 
             val imageFile = File(scan.imagePath)
             if (imageFile.exists()) {
@@ -54,7 +53,7 @@ class ScanHistoryAdapter : ListAdapter<ScanRecord, ScanHistoryAdapter.ViewHolder
                     .load(imageFile)
                     .centerCrop()
                     .placeholder(R.drawable.ic_leaf_placeholder)
-                    .into(binding.ivThumbnail)
+                    .into(binding.ivHistoryImage)
             }
         }
     }
