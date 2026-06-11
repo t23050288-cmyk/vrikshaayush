@@ -116,6 +116,6 @@
     <string name="cal_rabi_diseases">ಹಳದಿ ತುಕ್ಕು (ಗೋಧಿ), ಪೌಡರಿ ಮಿಲ್ಡ್ಯೂ (ಬಟಾಣಿ/ಸಾಸಿವೆ), ಕಾಂಡ ಕೊಳೆ</string>
     <string name="cal_rabi_warning">ತಂಪು ಹವೆಯಲ್ಲಿ ಹಳದಿ ತುಕ್ಕು ವೇಗವಾಗಿ ಹರಡುತ್ತದೆ. ಪ್ರತಿ ವಾರ ನಿರೀಕ್ಷಿಸಿ.</string>
     <string name="online_badge">ಆನ್‌ಲೈನ್</string>
-    <string name="ai_chat_short">AI ತಜ್ಞ</string>
+    <string name="ai_chat_short">Sarvam AI</string>
     <string name="label_last_audit">ಕೊನೆ ತಪಾಸಣೆ</string>
 </resources>
