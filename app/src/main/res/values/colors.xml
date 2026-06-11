@@ -1,39 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Primary palette -->
-    <color name="primary_green">#1B7A3E</color>
-    <color name="primary_green_dark">#145C2E</color>
-    <color name="primary_green_light">#E8F5E9</color>
-    <color name="primary_green_medium">#2E9E55</color>
-    <color name="accent_amber">#F9A825</color>
-    <color name="accent_amber_dark">#E65100</color>
-    <color name="background_cream">#F2F6F3</color>
+    <color name="primary_green">#1A6B35</color>
+    <color name="primary_green_dark">#0F4A22</color>
+    <color name="primary_green_light">#E8F5EC</color>
+    <color name="primary_green_medium">#28A857</color>
+    <color name="accent_amber">#F59E0B</color>
+    <color name="accent_amber_dark">#D97706</color>
+    <color name="background_cream">#F7F8F4</color>
     <color name="card_white">#FFFFFF</color>
-    <color name="text_primary">#1A2E1F</color>
-    <color name="text_secondary">#6B7C72</color>
+    <color name="text_primary">#0F2419</color>
+    <color name="text_secondary">#5A7265</color>
     <color name="white">#FFFFFF</color>
-    <color name="divider">#E0E8E2</color>
-    <color name="chat_bubble_user">#1B7A3E</color>
+    <color name="divider">#E2EAE5</color>
+    <color name="chat_bubble_user">#1A6B35</color>
     <color name="chat_bubble_ai">#FFFFFF</color>
-    <color name="gradient_start">#1B7A3E</color>
-    <color name="gradient_end">#2E9E55</color>
+    <color name="gradient_start">#0F4A22</color>
+    <color name="gradient_end">#1A6B35</color>
+
+    <!-- Premium extras -->
+    <color name="header_dark">#0D3D1C</color>
+    <color name="online_green">#22C55E</color>
+    <color name="offline_red">#EF4444</color>
+    <color name="sage_light">#D4E8D8</color>
+    <color name="gold_accent">#D4A853</color>
+    <color name="scan_card_bg">#1A6B35</color>
+    <color name="fab_bg">#0D3D1C</color>
+    <color name="card_border">#E2EAE5</color>
 
     <!-- Severity -->
-    <color name="severity_high">#C62828</color>
-    <color name="severity_high_bg">#FFEBEE</color>
-    <color name="severity_medium">#E65100</color>
-    <color name="severity_medium_bg">#FFF3E0</color>
-    <color name="severity_low">#1B7A3E</color>
-    <color name="severity_low_bg">#E8F5E9</color>
+    <color name="severity_high">#DC2626</color>
+    <color name="severity_high_bg">#FEF2F2</color>
+    <color name="severity_medium">#D97706</color>
+    <color name="severity_medium_bg">#FFFBEB</color>
+    <color name="severity_low">#16A34A</color>
+    <color name="severity_low_bg">#F0FDF4</color>
 
     <!-- System -->
-    <color name="colorPrimary">#1B7A3E</color>
-    <color name="colorPrimaryVariant">#145C2E</color>
+    <color name="colorPrimary">#1A6B35</color>
+    <color name="colorPrimaryVariant">#0F4A22</color>
     <color name="colorOnPrimary">#FFFFFF</color>
-    <color name="colorSecondary">#F9A825</color>
+    <color name="colorSecondary">#F59E0B</color>
     <color name="colorOnSecondary">#FFFFFF</color>
-    <color name="colorBackground">#F2F6F3</color>
+    <color name="colorBackground">#F7F8F4</color>
     <color name="colorSurface">#FFFFFF</color>
-    <color name="colorOnBackground">#1A2E1F</color>
-    <color name="colorOnSurface">#1A2E1F</color>
+    <color name="colorOnBackground">#0F2419</color>
+    <color name="colorOnSurface">#0F2419</color>
 </resources>
