@@ -127,7 +127,7 @@ class ResultActivity : BaseActivity() {
             binding.tvTreatment3.text = getString(R.string.no_leaf_tip3)
             binding.btnSeeDetails.visibility = View.GONE
             binding.btnSaveHistory.visibility = View.GONE
-            binding.btnAskAi.visibility = View.GONE
+            binding.fabAiExpert.visibility = View.GONE
             binding.cardSOS.visibility = View.GONE
             binding.btnRescan.setOnClickListener { launchScanner() }
             return
@@ -145,7 +145,7 @@ class ResultActivity : BaseActivity() {
             binding.tvTreatment3.text = getString(R.string.unclear_tip3)
             binding.btnSeeDetails.visibility = View.GONE
             binding.btnSaveHistory.visibility = View.GONE
-            binding.btnAskAi.visibility = View.GONE
+            binding.fabAiExpert.visibility = View.GONE
             binding.cardSOS.visibility = View.GONE
             binding.btnRescan.setOnClickListener { launchScanner() }
             return
@@ -176,8 +176,8 @@ class ResultActivity : BaseActivity() {
 
         binding.btnRescan.setOnClickListener { launchScanner() }
 
-        binding.btnAskAi.visibility = View.VISIBLE
-        binding.btnAskAi.setOnClickListener {
+        binding.fabAiExpert.visibility = View.VISIBLE
+        binding.fabAiExpert.setOnClickListener {
             // Clear old pending suggestion for this scan
             getSharedPreferences("app_prefs", MODE_PRIVATE).edit()
                 .remove(PREF_PENDING_AI)
