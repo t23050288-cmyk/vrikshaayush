@@ -116,6 +116,6 @@
     <string name="cal_rabi_diseases">மஞ்சள் துரு (கோதுமை), பவுடரி மில்டூ (பட்டாணி/கடுகு), தண்டு அழுகல்</string>
     <string name="cal_rabi_warning">குளிர்ந்த காலத்தில் மஞ்சள் துரு வேகமாக பரவும். வாராந்திர பரிசோதனை செய்யுங்கள்.</string>
     <string name="online_badge">நெட்வொர்க்</string>
-    <string name="ai_chat_short">AI நிபுணர்</string>
+    <string name="ai_chat_short">Sarvam AI</string>
     <string name="label_last_audit">கடைசி பரிசோதனை</string>
 </resources>

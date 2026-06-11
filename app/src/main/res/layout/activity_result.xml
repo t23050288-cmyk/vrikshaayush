@@ -13,7 +13,7 @@
         android:layout_height="56dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:background="@color/primary_green"
+        android:background="@drawable/bg_header_gradient"
         android:paddingStart="12dp"
         android:paddingEnd="16dp">
         <Button
@@ -144,7 +144,7 @@
                             android:layout_width="0dp"
                             android:layout_height="8dp"
                             android:layout_weight="1"
-                            android:progressTint="@color/primary_green"
+                            android:progressTint="@color/primary_green_medium"
                             android:max="100"/>
                         <TextView
                             android:id="@+id/tvConfidence"
@@ -296,28 +296,49 @@
                     android:textColor="@color/primary_green"/>
             </LinearLayout>
 
-            <!-- Ask AI About This Leaf -->
-            <LinearLayout
-                android:id="@+id/btnAskAi"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_marginBottom="16dp"
-                android:background="@color/primary_green"
-                android:visibility="gone">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/ask_ai_disease"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"/>
-            </LinearLayout>
+            <!-- AI Expert compact placeholder (actual FAB added in CoordinatorLayout) -->
+            <View android:id="@+id/btnAskAi"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"/>
 
 
 
         </LinearLayout>
     </ScrollView>
 
+
+
+    <!-- Compact floating AI Expert pill -->
+    <LinearLayout
+        android:id="@+id/fabAiExpert"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="10dp"
+        android:paddingEnd="16dp"
+        android:background="@drawable/bg_scan_button"
+        android:elevation="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground">
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_sarvam_logo"
+            android:scaleType="fitCenter"
+            android:contentDescription="Sarvam AI"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ai_chat_short"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"/>
+    </LinearLayout>
 </LinearLayout>

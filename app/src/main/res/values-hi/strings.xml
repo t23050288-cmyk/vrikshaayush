@@ -116,6 +116,6 @@
     <string name="cal_rabi_diseases">पीला रस्ट (गेहूँ), पाउडरी मिल्ड्यू (मटर/सरसों), तना सड़न</string>
     <string name="cal_rabi_warning">ठंड में पीला रस्ट तेजी से फैलता है। हर हफ्ते जांचें।</string>
     <string name="online_badge">ऑनलाइन</string>
-    <string name="ai_chat_short">AI विशेषज्ञ</string>
+    <string name="ai_chat_short">Sarvam AI</string>
     <string name="label_last_audit">अंतिम जांच</string>
 </resources>

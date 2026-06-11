@@ -116,6 +116,6 @@
     <string name="cal_rabi_diseases">മഞ്ഞ തുരുമ്പ് (ഗോതമ്പ്), പൗഡറി മിൽഡ്യൂ (പയർ/കടുക്), കാണ്ഡ ചീഞ്ഞഴുകൽ</string>
     <string name="cal_rabi_warning">ശൈത്യകാലത്ത് മഞ്ഞ തുരുമ്പ് വേഗം പടരുന്നു. ആഴ്ചതോറും പരിശോധിക്കൂ.</string>
     <string name="online_badge">ഓൺലൈൻ</string>
-    <string name="ai_chat_short">AI വിദഗ്ദ്ധൻ</string>
+    <string name="ai_chat_short">Sarvam AI</string>
     <string name="label_last_audit">അവസാന പരിശോധന</string>
 </resources>
