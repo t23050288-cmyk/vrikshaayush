@@ -75,4 +75,10 @@
     <string name="no_internet_notice">⚠️ இணையம் இல்லை — AI அரட்டைக்கு இணைப்பு தேவை</string>
     <string name="you_label">நீங்கள்</string>
     <string name="ai_label">🤖 AI நிபுணர்</string>
+    <string name="severe_disease_detected">🆘 கடுமையான நோய் கண்டறியப்பட்டது</string>
+    <string name="call_kvk">📞  KVK உதவி எண்: 1800-180-1551</string>
+    <string name="kvk_hours">இலவச அரசு உதவி — திங்கள்–சனி காலை 9 முதல் மாலை 5 வரை</string>
+    <string name="scan_another_plant">📷  மற்றொரு செடியை ஸ்கேன் செய்</string>
+    <string name="ask_ai_disease">🤖  இந்த நோயைப் பற்றி AI யிடம் கேளுங்கள்</string>
+    <string name="contact_kvk">நிபுணர் உதவிக்கு உங்கள் அருகிலுள்ள கிருஷி விக்யான் கேந்திரத்தை தொடர்பு கொள்ளுங்கள்.</string>
 </resources>
