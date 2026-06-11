@@ -126,4 +126,7 @@
     <string name="cal_rabi_crops">Wheat, Barley, Mustard, Chickpea, Peas</string>
     <string name="cal_rabi_diseases">Yellow Rust (Wheat), Powdery Mildew (Pea/Mustard), Stem Rot</string>
     <string name="cal_rabi_warning">Yellow rust spreads fast in cool humid winters. Check weekly.</string>
+    <string name="online_badge">Online</string>
+    <string name="ai_chat_short">AI Expert</string>
+    <string name="label_last_audit">LAST AUDIT</string>
 </resources>
