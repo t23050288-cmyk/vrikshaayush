@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.vrikshaayush.databinding.ActivitySplashBinding
 import java.util.Locale
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity() {
 
     private lateinit var binding: ActivitySplashBinding
 
@@ -30,13 +30,4 @@ class SplashActivity : AppCompatActivity() {
         }
     }
 
-    private fun applyLocale() {
-        val lang = getSharedPreferences("app_prefs", MODE_PRIVATE).getString("language", "en") ?: "en"
-        val locale = Locale(lang)
-        Locale.setDefault(locale)
-        val config = Configuration(resources.configuration)
-        config.setLocale(locale)
-        resources.updateConfiguration(config, resources.displayMetrics)
-        applicationContext.resources.updateConfiguration(config, applicationContext.resources.displayMetrics)
-    }
 }
