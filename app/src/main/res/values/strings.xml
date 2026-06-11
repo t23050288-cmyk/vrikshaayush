@@ -86,4 +86,10 @@
     <string name="unclear_tip2">Take photo in good natural lighting outdoors</string>
     <string name="unclear_tip3">Focus on ONE leaf — avoid shadows</string>
     <string name="no_internet_msg">No internet — please connect and try again</string>
+    <string name="severe_disease_detected">🆘 Severe Disease Detected</string>
+    <string name="call_kvk">📞  Call KVK Helpline: 1800-180-1551</string>
+    <string name="kvk_hours">Free government helpline — available Mon–Sat 9AM to 5PM</string>
+    <string name="scan_another_plant">📷  Scan Another Plant</string>
+    <string name="ask_ai_disease">🤖  Ask AI About This Disease</string>
+    <string name="contact_kvk">Contact your nearest Krishi Vigyan Kendra for expert help.</string>
 </resources>
