@@ -94,7 +94,7 @@ class AiChatActivity : AppCompatActivity() {
     }
 
     private var scanContext: String? = null
-    private var returnSuggestion: Boolean = false
+    private var saveSuggestionKey: String? = null
     private var lastAiReply: String = ""
     private var currentLang: String = "en"
 
@@ -113,17 +113,17 @@ class AiChatActivity : AppCompatActivity() {
         binding.rvChat.itemAnimator = null
 
         binding.btnBack.setOnClickListener {
-            // If launched from ResultActivity asking for a suggestion, return it
-            if (returnSuggestion && lastAiReply.isNotEmpty()) {
-                val resultIntent = Intent()
-                resultIntent.putExtra("AI_SUGGESTION", lastAiReply)
-                setResult(RESULT_OK, resultIntent)
+            // Save last AI reply to SharedPrefs so ResultActivity can pick it up
+            if (saveSuggestionKey != null && lastAiReply.isNotEmpty()) {
+                getSharedPreferences("app_prefs", MODE_PRIVATE).edit()
+                    .putString(saveSuggestionKey, lastAiReply)
+                    .apply()
             }
             finish()
         }
 
         scanContext = intent.getStringExtra("SCAN_CONTEXT")
-        returnSuggestion = intent.getBooleanExtra("RETURN_SUGGESTION", false)
+        saveSuggestionKey = intent.getStringExtra("SAVE_SUGGESTION_KEY")
 
         val welcome = buildWelcomeMessage()
         addMessage(ChatMessage(welcome, false))
@@ -210,7 +210,13 @@ class AiChatActivity : AppCompatActivity() {
             val reply = withContext(Dispatchers.IO) { callAi(userText) }
             binding.tvTyping.visibility = View.GONE
             binding.btnSend.isEnabled = true
-            lastAiReply = reply   // remember for history saving
+            lastAiReply = reply
+            // Auto-save to SharedPrefs so ResultActivity always has it
+            if (saveSuggestionKey != null) {
+                getSharedPreferences("app_prefs", MODE_PRIVATE).edit()
+                    .putString(saveSuggestionKey, reply)
+                    .apply()
+            }
             addMessage(ChatMessage(reply, false))
         }
     }
@@ -284,10 +290,19 @@ class AiChatActivity : AppCompatActivity() {
                 } catch (e: Exception) { "HTTP ${resp.code}" }
             }
 
-            var reply = JSONObject(respBody)
-                .getJSONArray("choices").getJSONObject(0)
-                .getJSONObject("message").getString("content").trim()
-
+            val jsonResp = JSONObject(respBody)
+            val choices = jsonResp.optJSONArray("choices")
+            if (choices == null || choices.length() == 0) return "ERR: No choices in response"
+            
+            val message = choices.getJSONObject(0).optJSONObject("message")
+            val rawContent = message?.opt("content")
+            
+            // Handle null content (some models return JSON null)
+            if (rawContent == null || rawContent == JSONObject.NULL || rawContent.toString() == "null") {
+                return "ERR: Empty reply from AI — please try again"
+            }
+            
+            var reply = rawContent.toString().trim()
             reply = reply.replace(Regex("<think>[\\s\\S]*?</think>", RegexOption.IGNORE_CASE), "").trim()
             if (reply.isEmpty()) "ERR: Empty reply" else reply
 
