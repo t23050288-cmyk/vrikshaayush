@@ -75,4 +75,10 @@
     <string name="no_internet_notice">⚠️ ಇಂಟರ್ನೆಟ್ ಇಲ್ಲ — AI ಚಾಟ್‌ಗೆ ಸಂಪರ್ಕ ಅಗತ್ಯ</string>
     <string name="you_label">ನೀವು</string>
     <string name="ai_label">🤖 AI ತಜ್ಞ</string>
+    <string name="severe_disease_detected">🆘 ತೀವ್ರ ರೋಗ ಪತ್ತೆಯಾಗಿದೆ</string>
+    <string name="call_kvk">📞  KVK ಸಹಾಯವಾಣಿ: 1800-180-1551</string>
+    <string name="kvk_hours">ಉಚಿತ ಸರ್ಕಾರಿ ಸಹಾಯವಾಣಿ — ಸೋಮ–ಶನಿ ಬೆಳಿಗ್ಗೆ 9 ರಿಂದ ಸಂಜೆ 5</string>
+    <string name="scan_another_plant">📷  ಮತ್ತೊಂದು ಸಸ್ಯ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ</string>
+    <string name="ask_ai_disease">🤖  ಈ ರೋಗದ ಬಗ್ಗೆ AI ಅನ್ನು ಕೇಳಿ</string>
+    <string name="contact_kvk">ತಜ್ಞರ ಸಹಾಯಕ್ಕಾಗಿ ನಿಮ್ಮ ಹತ್ತಿರದ ಕೃಷಿ ವಿಜ್ಞಾನ ಕೇಂದ್ರವನ್ನು ಸಂಪರ್ಕಿಸಿ.</string>
 </resources>
