@@ -25,14 +25,13 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class HistoryActivity : AppCompatActivity() {
+class HistoryActivity : BaseActivity() {
 
     private lateinit var binding: ActivityHistoryBinding
     private lateinit var db: AppDatabase
     private var showingAi = false   // false = Plant Disease tab, true = AI Suggestions tab
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        applyLocale()
         super.onCreate(savedInstanceState)
         binding = ActivityHistoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -60,14 +59,6 @@ class HistoryActivity : AppCompatActivity() {
         switchTab(false)
     }
 
-    private fun applyLocale() {
-        val lang = getSharedPreferences("app_prefs", MODE_PRIVATE).getString("language", "en") ?: "en"
-        val locale = Locale(lang)
-        Locale.setDefault(locale)
-        val config = Configuration(resources.configuration)
-        config.setLocale(locale)
-        resources.updateConfiguration(config, resources.displayMetrics)
-    }
 
     private fun switchTab(aiTab: Boolean) {
         showingAi = aiTab
