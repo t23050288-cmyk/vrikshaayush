@@ -1,6 +1,7 @@
 package com.vrikshaayush.ui
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.View
@@ -12,13 +13,13 @@ import com.vrikshaayush.R
 import com.vrikshaayush.data.AppDatabase
 import com.vrikshaayush.data.ScanRecord
 import com.vrikshaayush.databinding.ActivityResultBinding
-import com.vrikshaayush.ml.DiagnosisResult
 import com.vrikshaayush.ml.DiseaseClassifier
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import android.net.Uri
 import java.io.File
+import java.util.Locale
 
 class ResultActivity : AppCompatActivity() {
 
@@ -30,8 +31,10 @@ class ResultActivity : AppCompatActivity() {
     private var severity: String = ""
     private var confidence: Float = 0f
     private var modelLabel: String = ""
+    private var pendingAiSuggestion: String = ""   // set when user comes back from AI chat
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        applyLocale()
         super.onCreate(savedInstanceState)
         binding = ActivityResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -44,20 +47,32 @@ class ResultActivity : AppCompatActivity() {
         if (imagePath.isNotEmpty() && File(imagePath).exists()) {
             runDiagnosis()
         } else {
-            // Show error - do NOT finish, let user see the problem
-            binding.progressBar.visibility = View.GONE
-            binding.layoutResult.visibility = View.VISIBLE
-            binding.tvDiseaseName.text = "⚠️ Image Not Found"
-            binding.tvCropType.text = "Please go back and select a photo again"
-            binding.tvConfidence.text = "0%"
-            binding.progressConfidence.progress = 0
-            binding.tvSeverity.text = "ERROR"
-            binding.tvTreatment1.text = "• Go back using the ← button"
-            binding.tvTreatment2.text = "• Take a new photo or select from gallery"
-            binding.tvTreatment3.text = "• Make sure the photo is clear and well-lit"
-            binding.btnSeeDetails.visibility = View.GONE
-            binding.btnSaveHistory.visibility = View.GONE
+            showError("Image not found", "Please go back and select a photo again")
         }
+    }
+
+    private fun applyLocale() {
+        val lang = getSharedPreferences("app_prefs", MODE_PRIVATE).getString("language", "en") ?: "en"
+        val locale = Locale(lang)
+        Locale.setDefault(locale)
+        val config = Configuration(resources.configuration)
+        config.setLocale(locale)
+        resources.updateConfiguration(config, resources.displayMetrics)
+    }
+
+    private fun showError(title: String, msg: String) {
+        binding.progressBar.visibility = View.GONE
+        binding.layoutResult.visibility = View.VISIBLE
+        binding.tvDiseaseName.text = "⚠️ $title"
+        binding.tvCropType.text = msg
+        binding.tvConfidence.text = "0%"
+        binding.progressConfidence.progress = 0
+        binding.tvSeverity.text = "ERROR"
+        binding.tvTreatment1.text = "• Go back using the ← button"
+        binding.tvTreatment2.text = "• Take a new photo or select from gallery"
+        binding.tvTreatment3.text = "• Make sure the photo is clear and well-lit"
+        binding.btnSeeDetails.visibility = View.GONE
+        binding.btnSaveHistory.visibility = View.GONE
     }
 
     private fun runDiagnosis() {
@@ -66,12 +81,8 @@ class ResultActivity : AppCompatActivity() {
 
         lifecycleScope.launch(Dispatchers.IO) {
             try {
-                val bitmap = BitmapFactory.decodeFile(imagePath)
-                    ?: throw Exception("Failed to decode image")
-                
-                withContext(Dispatchers.Main) {
-                    binding.ivPlantPhoto.setImageBitmap(bitmap)
-                }
+                val bitmap = BitmapFactory.decodeFile(imagePath) ?: throw Exception("Failed to decode image")
+                withContext(Dispatchers.Main) { binding.ivPlantPhoto.setImageBitmap(bitmap) }
 
                 val classifier = DiseaseClassifier(this@ResultActivity)
                 val result = classifier.classify(bitmap)
@@ -86,20 +97,7 @@ class ResultActivity : AppCompatActivity() {
                     displayResult(result)
                 }
             } catch (e: Exception) {
-                withContext(Dispatchers.Main) {
-                    binding.progressBar.visibility = View.GONE
-                    binding.layoutResult.visibility = View.VISIBLE
-                    binding.tvDiseaseName.text = "⚠️ Diagnosis Failed"
-                    binding.tvCropType.text = "Error: ${e.message}"
-                    binding.tvConfidence.text = "0%"
-                    binding.progressConfidence.progress = 0
-                    binding.tvSeverity.text = "ERROR"
-                    binding.tvTreatment1.text = "• Go back and try with a clearer photo"
-                    binding.tvTreatment2.text = "• Ensure the leaf is well-lit"
-                    binding.tvTreatment3.text = "• Try selecting from gallery instead"
-                    binding.btnSeeDetails.visibility = View.GONE
-                    binding.btnSaveHistory.visibility = View.GONE
-                }
+                withContext(Dispatchers.Main) { showError("Diagnosis Failed", e.message ?: "Unknown error") }
             }
         }
     }
@@ -109,45 +107,52 @@ class ResultActivity : AppCompatActivity() {
         binding.layoutResult.visibility = View.VISIBLE
 
         if (result.isNotLeaf) {
-            binding.tvDiseaseName.text = "🍃 No Leaf Detected"
-            binding.tvCropType.text = "Please take a clear photo of a plant leaf"
+            binding.tvDiseaseName.text = getString(R.string.no_leaf_detected)
+            binding.tvCropType.text = getString(R.string.no_leaf_hint)
             binding.tvConfidence.text = "—"
             binding.progressConfidence.progress = 0
             binding.tvSeverity.text = "N/A"
-            binding.tvSeverity.setBackgroundColor(androidx.core.content.ContextCompat.getColor(this, R.color.text_secondary))
-            binding.tvTreatment1.text = "• Point the camera at a plant leaf — not a person, wall, or object"
-            binding.tvTreatment2.text = "• The leaf should fill most of the photo frame"
-            binding.tvTreatment3.text = "• Use natural daylight for best results"
+            binding.tvTreatment1.text = getString(R.string.no_leaf_tip1)
+            binding.tvTreatment2.text = getString(R.string.no_leaf_tip2)
+            binding.tvTreatment3.text = getString(R.string.no_leaf_tip3)
             binding.btnSeeDetails.visibility = View.GONE
             binding.btnSaveHistory.visibility = View.GONE
+            binding.btnAskAi.visibility = View.GONE
+            binding.cardSOS.visibility = View.GONE
+            // Scan another plant still works
+            binding.btnRescan.setOnClickListener { launchScanner() }
             return
         }
 
         if (result.isUncertain) {
-            binding.tvDiseaseName.text = "⚠️ Cannot Identify Plant"
-            binding.tvCropType.text = "Please retake with better lighting"
+            binding.tvDiseaseName.text = getString(R.string.cannot_identify)
+            binding.tvCropType.text = getString(R.string.retake_hint)
             binding.tvConfidence.text = "${result.confidence.toInt()}%"
             binding.progressConfidence.progress = result.confidence.toInt()
             binding.tvSeverity.text = "UNCLEAR"
             binding.tvSeverity.setBackgroundColor(ContextCompat.getColor(this, R.color.severity_low))
-            binding.tvTreatment1.text = "• Make sure the leaf fills most of the photo"
-            binding.tvTreatment2.text = "• Take photo in good natural lighting outdoors"
-            binding.tvTreatment3.text = "• Focus on ONE leaf — avoid shadows or blurry images"
+            binding.tvTreatment1.text = getString(R.string.unclear_tip1)
+            binding.tvTreatment2.text = getString(R.string.unclear_tip2)
+            binding.tvTreatment3.text = getString(R.string.unclear_tip3)
             binding.btnSeeDetails.visibility = View.GONE
             binding.btnSaveHistory.visibility = View.GONE
+            binding.btnAskAi.visibility = View.GONE
+            binding.cardSOS.visibility = View.GONE
+            binding.btnRescan.setOnClickListener { launchScanner() }
             return
         }
 
+        // ── Normal result ──
         binding.tvDiseaseName.text = result.diseaseName
         binding.tvCropType.text = result.cropType
         binding.tvConfidence.text = "${result.confidence.toInt()}%"
         binding.progressConfidence.progress = result.confidence.toInt()
 
         val severityColor = when (result.severity) {
-            "HIGH" -> ContextCompat.getColor(this, R.color.severity_high)
-            "MEDIUM" -> ContextCompat.getColor(this, R.color.severity_medium)
+            "HIGH"    -> ContextCompat.getColor(this, R.color.severity_high)
+            "MEDIUM"  -> ContextCompat.getColor(this, R.color.severity_medium)
             "HEALTHY" -> ContextCompat.getColor(this, R.color.severity_low)
-            else -> ContextCompat.getColor(this, R.color.severity_low)
+            else      -> ContextCompat.getColor(this, R.color.severity_low)
         }
         binding.tvSeverity.text = result.severity
         binding.tvSeverity.setBackgroundColor(severityColor)
@@ -160,28 +165,24 @@ class ResultActivity : AppCompatActivity() {
         binding.btnSeeDetails.visibility = View.VISIBLE
         binding.btnSaveHistory.visibility = View.VISIBLE
 
-        // Quick Re-scan button
-        binding.btnRescan.setOnClickListener {
-            startActivity(Intent(this, ScannerActivity::class.java))
-            finish()
-        }
+        // ── Scan Another Plant — goes back to SCANNER cleanly ──
+        binding.btnRescan.setOnClickListener { launchScanner() }
 
-        // Ask AI about this leaf
+        // ── Ask AI — passes context and comes back with suggestion ──
         binding.btnAskAi.visibility = View.VISIBLE
         binding.btnAskAi.setOnClickListener {
             val context = "${result.diseaseName} on ${result.cropType}"
-            val intent  = Intent(this, AiChatActivity::class.java)
+            val intent = Intent(this, AiChatActivity::class.java)
             intent.putExtra("SCAN_CONTEXT", context)
-            startActivity(intent)
+            intent.putExtra("RETURN_SUGGESTION", true)
+            startActivityForResult(intent, REQUEST_AI_SUGGESTION)
         }
 
-        // SOS card — show only for HIGH severity
+        // ── SOS card ──
         if (result.severity == "HIGH") {
             binding.cardSOS.visibility = View.VISIBLE
             binding.btnCallKVK.setOnClickListener {
-                val callIntent = Intent(Intent.ACTION_DIAL)
-                callIntent.data = Uri.parse("tel:18001801551")
-                startActivity(callIntent)
+                startActivity(Intent(Intent.ACTION_DIAL).apply { data = Uri.parse("tel:18001801551") })
             }
         } else {
             binding.cardSOS.visibility = View.GONE
@@ -197,8 +198,24 @@ class ResultActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.btnSaveHistory.setOnClickListener {
-            saveToHistory()
+        binding.btnSaveHistory.setOnClickListener { saveToHistory() }
+    }
+
+    private fun launchScanner() {
+        // Go back to scanner — clears back stack so user gets a fresh scan
+        val intent = Intent(this, ScannerActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+        startActivity(intent)
+        finish()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_AI_SUGGESTION && resultCode == RESULT_OK) {
+            pendingAiSuggestion = data?.getStringExtra("AI_SUGGESTION") ?: ""
+            if (pendingAiSuggestion.isNotEmpty()) {
+                Toast.makeText(this, "✅ AI suggestion ready — tap Save to History", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -206,115 +223,81 @@ class ResultActivity : AppCompatActivity() {
         lifecycleScope.launch(Dispatchers.IO) {
             db.scanDao().insert(
                 ScanRecord(
-                    imagePath = imagePath,
-                    cropType = cropType,
+                    imagePath   = imagePath,
+                    cropType    = cropType,
                     diseaseName = diseaseName,
-                    confidence = confidence,
-                    severity = severity
+                    confidence  = confidence,
+                    severity    = severity,
+                    aiSuggestion = pendingAiSuggestion
                 )
             )
             withContext(Dispatchers.Main) {
-                Toast.makeText(this@ResultActivity, "✅ Saved to history!", Toast.LENGTH_SHORT).show()
+                val msg = if (pendingAiSuggestion.isNotEmpty())
+                    "✅ Saved with AI suggestion!"
+                else
+                    "✅ Saved to history!"
+                Toast.makeText(this@ResultActivity, msg, Toast.LENGTH_SHORT).show()
                 binding.btnSaveHistory.isEnabled = false
                 binding.btnSaveHistory.text = "✓ Saved"
             }
         }
     }
 
+    companion object {
+        const val REQUEST_AI_SUGGESTION = 1001
+    }
+
     private fun getTreatmentTips(label: String, disease: String): List<String> {
         return when {
-            // HEALTHY
             disease.contains("Healthy", ignoreCase = true) -> listOf(
                 "Your plant looks healthy! Keep up the good care.",
                 "Water regularly and ensure adequate sunlight.",
                 "Monitor weekly for any early signs of disease."
             )
-            // RICE
-            label.contains("rice") -> listOf(
-                "Remove infected leaves and apply Tricyclazole 75WP 0.6g/L spray",
-                "Ensure proper water drainage in paddy fields",
-                "Use certified disease-resistant rice seeds next season"
-            )
-            // WHEAT
-            label.contains("wheat") -> listOf(
-                "Apply Propiconazole 25EC 1ml/L at first sign of rust or blight",
-                "Harvest early if disease is severe to reduce losses",
-                "Use treated seeds with Carboxin + Thiram next sowing"
-            )
-            // COTTON
-            label.contains("cotton") -> listOf(
-                "Apply Imidacloprid 17.8SL 0.5ml/L for aphid/army worm control",
-                "Remove and burn heavily infected plants to stop spread",
-                "Spray copper oxychloride for bacterial blight control"
-            )
-            // SUGARCANE
-            label.contains("sugarcane") -> listOf(
-                "Use disease-free setts for planting",
-                "Apply Carbendazim 50WP 1g/L for fungal diseases",
-                "Rogue out infected plants early in the season"
-            )
-            // GROUNDNUT
-            label.contains("groundnut") -> listOf(
-                "Spray Mancozeb 75WP 2.5g/L for leaf spot diseases",
-                "Maintain proper spacing for air circulation",
-                "Apply gypsum at flowering stage to improve pod filling"
-            )
-            // LEMON / CITRUS
-            label.contains("lemon") -> listOf(
-                "Apply copper oxychloride 50WP 3g/L for canker and blight",
-                "Remove and burn infected twigs and fruits",
-                "Spray Imidacloprid for citrus psyllid vector control"
-            )
-            // TOMATO
-            label.contains("tomato") && disease.contains("Early Blight", ignoreCase = true) -> listOf(
+            label.contains("early_blight") || disease.contains("Early Blight") -> listOf(
                 "Remove infected leaves immediately and burn them",
                 "Apply neem oil 2% spray every 7 days",
                 "Avoid overhead watering — water at base only"
             )
-            label.contains("tomato") && disease.contains("Late Blight", ignoreCase = true) -> listOf(
-                "Remove and destroy infected plants same day",
-                "Spray copper-based fungicide every 5-7 days",
-                "Do not compost infected material"
+            label.contains("late_blight") || disease.contains("Late Blight") -> listOf(
+                "Remove and destroy infected plant parts immediately",
+                "Apply Mancozeb 75 WP @ 2.5g/litre every 7-10 days",
+                "Improve drainage and avoid waterlogging"
             )
-            label.contains("tomato") && disease.contains("Mosaic", ignoreCase = true) -> listOf(
-                "No chemical cure — remove infected plant immediately",
-                "Wash hands with soap before touching other plants",
-                "Use certified virus-free seeds next season"
+            label.contains("leaf_curl") || disease.contains("Leaf Curl") -> listOf(
+                "Remove severely infected leaves and stems",
+                "Spray Imidacloprid 17.8 SL @ 0.5ml/litre to control whitefly",
+                "Use yellow sticky traps to monitor insect vectors"
             )
-            label.contains("tomato") && disease.contains("Yellow Leaf Curl", ignoreCase = true) -> listOf(
-                "Remove infected plants to stop spread",
-                "Control whiteflies using yellow sticky traps",
-                "Spray Imidacloprid to kill whitefly vectors"
+            label.contains("powdery_mildew") || disease.contains("Powdery Mildew") -> listOf(
+                "Apply wettable sulfur 80 WP @ 3g/litre spray",
+                "Improve air circulation by pruning crowded branches",
+                "Avoid watering leaves — water soil directly"
             )
-            // POTATO
-            label.contains("potato") -> listOf(
-                "Apply Mancozeb 75WP 2.5g/L every 10 days",
-                "Destroy infected tubers — do not leave in field",
-                "Use certified disease-free seed potatoes next season"
+            label.contains("rust") || disease.contains("Rust") -> listOf(
+                "Remove and destroy all infected plant parts",
+                "Apply Propiconazole 25 EC @ 1ml/litre spray",
+                "Avoid overhead irrigation — water at ground level"
             )
-            // CORN/MAIZE
-            label.contains("corn") -> listOf(
-                "Apply Mancozeb 75WP 2.5g/L every 10-14 days",
-                "Use resistant hybrid maize varieties next season",
-                "Deep plow after harvest to bury infected debris"
+            label.contains("mosaic") || disease.contains("Mosaic") -> listOf(
+                "Remove and destroy infected plants to prevent spread",
+                "Control aphids with neem oil spray @ 5ml/litre",
+                "Use virus-free certified seeds next season"
             )
-            // APPLE
-            label.contains("apple") -> listOf(
-                "Apply captan 50WP or myclobutanil fungicide spray",
-                "Prune dead branches and remove fallen leaves",
-                "Use resistant apple varieties like Enterprise or Liberty"
+            label.contains("black_rot") || disease.contains("Black Rot") -> listOf(
+                "Prune and destroy infected wood and leaves",
+                "Apply Bordeaux mixture 1% spray at early stage",
+                "Avoid wetting foliage — use drip irrigation"
             )
-            // GRAPE
-            label.contains("grape") -> listOf(
-                "Apply copper-based fungicide before and after rain",
-                "Prune to improve air circulation in canopy",
-                "Remove and destroy all infected leaves and fruit"
+            label.contains("leaf_spot") || disease.contains("Leaf Spot") -> listOf(
+                "Remove infected leaves and dispose away from field",
+                "Apply Carbendazim 50 WP @ 1g/litre spray",
+                "Ensure proper spacing for good air circulation"
             )
-            // DEFAULT
             else -> listOf(
-                "Remove visibly infected leaves and destroy them",
-                "Apply appropriate fungicide or pesticide based on disease type",
-                "Consult your local agricultural extension officer for guidance"
+                "Remove and destroy infected plant parts immediately",
+                "Apply appropriate fungicide or pesticide as recommended",
+                "Consult your local Krishi Vigyan Kendra for guidance"
             )
         }
     }
