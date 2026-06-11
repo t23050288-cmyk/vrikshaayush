@@ -75,4 +75,10 @@
     <string name="no_internet_notice">⚠️ ഇന്റർനെറ്റ് ഇല്ല — AI ചാറ്റിന് കണക്ഷൻ ആവശ്യം</string>
     <string name="you_label">നിങ്ങൾ</string>
     <string name="ai_label">🤖 AI വിദഗ്ധൻ</string>
+    <string name="severe_disease_detected">🆘 ഗുരുതരമായ രോഗം കണ്ടെത്തി</string>
+    <string name="call_kvk">📞  KVK ഹെൽപ്‌ലൈൻ: 1800-180-1551</string>
+    <string name="kvk_hours">സൗജന്യ സർക്കാർ ഹെൽപ്‌ലൈൻ — തിങ്ക–ശനി രാവിലെ 9 മുതൽ വൈകിട്ട് 5</string>
+    <string name="scan_another_plant">📷  മറ്റൊരു സസ്യം സ്കാൻ ചെയ്യൂ</string>
+    <string name="ask_ai_disease">🤖  ഈ രോഗത്തെക്കുറിച്ച് AI യോട് ചോദിക്കൂ</string>
+    <string name="contact_kvk">വിദഗ്ദ്ധ സഹായത്തിനായി നിങ്ങളുടെ അടുത്തുള്ള കൃഷി വിജ്ഞാന കേന്ദ്രം സന്ദർശിക്കൂ.</string>
 </resources>
