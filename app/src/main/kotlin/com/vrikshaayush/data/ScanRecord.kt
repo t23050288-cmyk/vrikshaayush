@@ -12,5 +12,6 @@ data class ScanRecord(
     val diseaseName: String,
     val confidence: Float,
     val severity: String,
+    val aiSuggestion: String = "",        // stores AI chat text if user saved it
     val timestamp: Long = System.currentTimeMillis()
 )
