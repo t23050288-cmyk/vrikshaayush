@@ -23,7 +23,7 @@ import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ScannerActivity : AppCompatActivity() {
+class ScannerActivity : BaseActivity() {
 
     private lateinit var binding: ActivityScannerBinding
     private var photoUri: Uri? = null
@@ -74,7 +74,6 @@ class ScannerActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        applyLocale()
         super.onCreate(savedInstanceState)
         binding = ActivityScannerBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -148,14 +147,6 @@ class ScannerActivity : AppCompatActivity() {
             bitmap.compress(Bitmap.CompressFormat.JPEG, 92, out)
         }
         return file.absolutePath
-    }
-    private fun applyLocale() {
-        val lang = getSharedPreferences("app_prefs", MODE_PRIVATE).getString("language", "en") ?: "en"
-        val locale = java.util.Locale(lang)
-        java.util.Locale.setDefault(locale)
-        val config = Configuration(resources.configuration)
-        config.setLocale(locale)
-        resources.updateConfiguration(config, resources.displayMetrics)
     }
 
 }
