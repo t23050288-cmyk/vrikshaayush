@@ -115,4 +115,7 @@
     <string name="cal_rabi_crops">गहू, बार्ली, मोहरी, हरभरा, वाटाणे</string>
     <string name="cal_rabi_diseases">पिवळा गंज (गहू), पावडरी मिल्ड्यू (वाटाणे/मोहरी), खोड कुज</string>
     <string name="cal_rabi_warning">थंडीत पिवळा गंज वेगाने पसरतो. दर आठवड्याला तपासा.</string>
+    <string name="online_badge">ऑनलाइन</string>
+    <string name="ai_chat_short">AI तज्ञ</string>
+    <string name="label_last_audit">शेवटची तपासणी</string>
 </resources>
