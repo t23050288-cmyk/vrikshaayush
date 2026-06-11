@@ -144,7 +144,7 @@
                             android:layout_width="0dp"
                             android:layout_height="8dp"
                             android:layout_weight="1"
-                            android:progressTint="@color/primary_green"
+                            android:progressTint="@color/primary_green_medium"
                             android:max="100"/>
                         <TextView
                             android:id="@+id/tvConfidence"
