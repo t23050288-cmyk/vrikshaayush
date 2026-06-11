@@ -574,15 +574,8 @@
         android:layout_height="72dp"
         android:layout_gravity="bottom"
         android:orientation="horizontal"
-        android:background="#FFFFFF"
+        android:background="@drawable/bg_bottom_nav"
         android:elevation="16dp">
-
-        <!-- Shadow line on top -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/divider"
-            android:layout_gravity="top"/>
 
         <LinearLayout android:id="@+id/navHistory"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
